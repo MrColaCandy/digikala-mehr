@@ -11,7 +11,8 @@ export default defineConfig({
       '@components': path.resolve(__dirname, './src/components'),
       '@configs': path.resolve(__dirname, './src/configs'),
       '@services': path.resolve(__dirname, './src/services'),
-      '@pages': path.resolve(__dirname, './src/pages')
+      '@pages': path.resolve(__dirname, './src/pages'),
+      '@localization': path.resolve(__dirname, './src/localization'),
     }
   },
   plugins: [react()],
