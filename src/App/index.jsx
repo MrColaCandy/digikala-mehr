@@ -1,11 +1,9 @@
-import sampleImage from "@assets/vite.svg";
+import Router from '@components/Router'
+import { routes } from '@configs/routes';
 
 function App() {
   return (
-    <>
-      <p>Hello World</p>
-      <img src={sampleImage} />
-    </>
+    <Router routes={routes} />
   );
 }
 
