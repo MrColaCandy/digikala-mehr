@@ -1,0 +1,32 @@
+:root{
+    --color-primary:#00B189;
+    --color-primaryLight:#9BFDD9;
+    --color-primaryLight2:#2DE7BD;
+    --color-primaryDark:#059675;
+    --color-white:#ffffff;
+    --color-black:#000000;
+    --color-digikalaMehrBranding:#00B088;
+    --color-digikalaMehrBrandingFill:#FFFFFE;
+    --color-N700:#424750;
+    --color-N500:#81858B;
+    --color-N200:#E0E0E2;
+    --color-homeIcon1:#545409;
+    --color-homeIcon2:#233104;
+    --color-homeIcon3:#064242;
+    --color-homeIcon4:#038857;
+    --color-textDark:#43474F;
+    --color-textLight:#82858A;
+    --color-textHeading:#0C0C0C;
+    --color-textMid:#63666C;
+    --color-loginSignUpText:#3F4064;
+    --color-darkBlue:#080A38;
+    --color-loginSignUp1:#008EB2;
+    --color-loginSignUp2:#59BCD0;
+    --color-purpleDark:#0B3B90;
+    --color-input:#C3C3CE;
+    --color-red:#E84242;
+    --color-border:#E0E0E6;
+    --color-backgroundPriceUserEdit1:#00B1120D;
+    --color-backgroundPriceUserEdit2:#0071A20D;
+    --color-greenCat:#1BC64D;
+}
