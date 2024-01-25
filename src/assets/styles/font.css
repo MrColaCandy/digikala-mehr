@@ -1,31 +1,11 @@
-p,span,h1,h2,h3,h4,h6,ul,li.ol,*{
-  text-align: right;
-  direction: rtl;
-  font-family: "Yekan", Vazirmatn;
-}
 @font-face {
-  font-family: "Yekan", Vazirmatn;
-  
-  src: url("../fonts/Yekan.woff2") format("woff2"),
-    url("../fonts/Yekan.woff") format("woff"),
-    url("../fonts/Yekan.ttf") format("truetype");
-   src:  url("../fonts/Vazirmatn-Regular.ttf") format("truetype");
+  font-family: yekan;
+
+  src: url("@assets/fonts/Yekan.woff2") format("woff2"),
+    url("@assets/fonts/Yekan.woff") format("woff"),
+    url("@assets/fonts/Yekan.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   text-rendering: optimizeLegibility;
   font-display: auto;
-}
-
-/* Define the font face for regular weight */
-@font-face {
-  font-family: "Yekan";
-  src: url("../fonts/Yekan.ttf") format("truetype");
-  font-weight: 400;
-}
-
-/* Define the font face for bold weight */
-@font-face {
-  font-family: "Yekan";
-  src: url("../fonts/Yekan.ttf") format("truetype");
-  font-weight: 700;
 }
