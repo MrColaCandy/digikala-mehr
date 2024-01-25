@@ -1,11 +1,12 @@
 import Router from '@components/Router'
 import { routes } from '@configs/routes';
-import DropDownIcon from "../components/DropDownIcon/DropDownIcon"
+import AuthContext from '@components/AuthContext';
 
 function App() {
   return (
-    // <Router routes={routes} />
-    <DropDownIcon/>
+    <AuthContext>
+      <Router routes={routes} />
+    </AuthContext>
   );
 }
 
