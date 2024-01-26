@@ -1,0 +1,135 @@
+.user-icon {
+    background-color: var(--color-digikalaMehrBrandingFill);
+    width: 70px;
+    height: 40px;
+    position: absolute;
+    border-radius: 4px;
+    cursor: pointer;
+    top: var(--space-12);
+    left: var(--space-16);
+    gap: var(--space-12);
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+
+.dropdown-container {
+    position: absolute;
+    background-color: var(--color-digikalaMehrBrandingFill);
+    border-radius: 8px;
+    width: 250px;
+    height: 206px;
+    left: 16px;
+    top: var(--space-40);
+    transition: all 0.2s;
+    display: none;
+    box-shadow: 0px 10px 15px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-container.open {
+    display: block;
+    top: 53px;
+}
+
+.main-dropdown {
+    width: 226px;
+    height: 182px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.main-dropdown ul, li {
+    color: var(--color-N700);
+    list-style: none;
+    direction: rtl;
+
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-black);
+}
+
+.main-dropdown ul li span {
+    font-size: var(--font-size-small);
+    font-weight: bolder;
+}
+
+.main-dropdown ul li a {
+    padding: 0 8px 0 8px;
+    font-size: var(--font-size-medium);
+}
+
+.img-user {
+
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--color-N500);
+    background-color: var(--color-N200);
+}
+
+.account-id {
+    margin-right: var(--space-10);
+
+}
+
+.account-id p {
+    font-weight: lighter;
+    color: gray;
+    font-size: var(--font-size-xtiny);
+}
+
+.account-id a {
+    font-size: var(--font-size-small);
+}
+
+.account-id span {
+    font-size: var(--font-size-tiny);
+}
+
+.last-donate, .exit {
+    display: flex;
+}
+
+.last-donate-description, .exit-description {
+    width: 100%;
+}
+
+.last-donate-description {
+    border-top: 1px solid var(--color-N200);
+    border-bottom: 1px solid var(--color-border);
+
+}
+
+.FaRegUserStyle {
+    font-size: var(--font-size-xhuge);
+    right: var(--space-10);
+    top: var(--space-10);
+    position: absolute;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.FaSortDownStyle {
+    font-size: var(--font-size-xhuge);
+    position: absolute;
+    top: var(--space-10);
+    left: var(--space-16);
+}
+
+.dropdown-icons {
+    height: 24px;
+    width: 24px;
+    color: #424750;
+    text-align: center;
+    margin-top: 8px;
+}
+
+.dropdown-li {
+    display: flex;
+    line-height: var(--space-22);
+    padding: 8px 0 8px  0;
+}
