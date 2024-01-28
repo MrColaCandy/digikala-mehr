@@ -1,0 +1,96 @@
+.navBar {
+    width: 100%;
+    padding: var(--space-16);
+    background: var(--color-white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.digiMehrLogoTitleWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-10);
+}
+
+.digiMehrLogoWrapper__wrapperLogo {
+    width: 32px;
+    height: 30px;
+    background: var(--color-primary);
+    border-radius: 2px 12px 12px 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.digiMehrLogoWrapper__insideLogo {
+    width: 19.79px;
+    height: 17.48px;
+}
+
+.digiMehrLogoWrapper__titleName {
+    width: 141.35px;
+    height: 20.6px;
+}
+
+.signInProfileBtn {
+    padding: 5px var(--space-16);
+    background: var(--color-white);
+    border: 1px solid var(--color-N200);
+    border-radius: var(--space-8);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-12);
+}
+
+.signInProfileBtn__signInIcon {
+    width: 20px;
+    height: 20px;
+}
+
+.signInProfileBtn__text {
+    font-weight: 400;
+    font-size: var(--font-size-tiny);
+    line-height: 26px;
+}
+
+@media(max-width:390px) 
+{
+
+
+    .navBar {
+        width: 100%;
+    }
+
+    .digiMehrLogoTitleWrapper {
+        position: relative;
+    }
+
+    .digiMehrLogoWrapper__wrapperLogo {
+        width: 25.86px;
+        height: 24px;
+        border-radius: 2px 12px 12px 1px;
+    }
+
+    .digiMehrLogoWrapper__insideLogo {
+        width: 15.83px;
+        height: 13.98px;
+    }
+
+    .digiMehrLogoWrapper__titleName {
+        width: 131.58px;
+        height: 16.94px;
+        position: relative;
+        left: 15px;
+    }
+
+    .signInProfileBtn {
+        display: none;
+    }
+
+
+
+}

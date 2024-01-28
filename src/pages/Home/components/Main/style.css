@@ -1,0 +1,18 @@
+.main {
+    width: 100%;
+    padding: 0 var(--space-16);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 160px;
+}
+
+@media(max-width:390px){
+    .main {
+        width: 100%;
+        height: auto;
+        padding: var(--space-64) var(--space-16);
+        gap: var(--space-64);
+    }
+}

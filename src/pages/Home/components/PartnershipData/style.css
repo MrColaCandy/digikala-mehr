@@ -1,0 +1,121 @@
+
+.partnershipBlock__data {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--space-48);
+}
+
+.partnershipBlock__title {
+    width: 100%;
+    color: var(--color-white);
+    font-size: var(--font-size-xhuge);
+    line-height: var(--space-48);
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: -0.5px;
+}
+
+.partnershipBlock__dataBox {
+    position: relative;
+    width: 600px;
+    height: 139px;
+    padding: var(--space-12) var(--space-24);
+    background: var(--color-primaryDark);
+    border-radius: var(--space-12);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-40);
+}
+
+.partnershipBlock__dataBox::after {
+    content: ' ';
+    width: 1px;
+    height: 92px;
+    background: var(--color-primaryLight2);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(50%, -50%);
+}
+
+.partnershipBlock__membersNumber {
+    width: 236px;
+    height: 92px;
+    padding: var(--space-12);
+    color: var(--color-white);
+    font-size: var(--font-size-xhuge);
+    text-align: right;
+    font-weight: 700;
+    /* letter-spacing: -0.5px; */
+    line-height: var(--space-32);
+    border-radius: var(--space-12);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: var(--space-12);
+}
+
+.partnershipBlock__staticMembersDescription--smallFont {
+    height: var(--space-24);
+    font-size: var(--font-size-small);
+    line-height: var(--space-24);
+    font-weight: 400;
+    text-align: right;
+    /* letter-spacing: -0.5px; */
+}
+
+.partnershipBlock__lastMembers {
+    width: 236px;
+    height: 112px;
+    padding: var(--space-12);
+    color: var(--color-white);
+    border-radius: var(--space-12);    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: var(--space-12)
+}
+
+.partnershipBlock__lastMembers {
+    color: var(--color-primaryLight);
+    font-size: var(--font-size-small);
+    line-height: var(--space-24);
+    /* letter-spacing: -0.5px; */
+    text-align: right;
+}
+
+.partnershipBlock__lastTwinMembers {
+    width: 212px;
+    height: 52px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.partnershipBlock__lastMembersWrapper {
+    display: flex;
+    gap: var(--space-8);
+}
+
+.partnershipBlock__lastMembersIcon {
+    width: var(--space-20);
+    height: var(--space-20);
+}
+
+.partnershipBlock__lastMembersName {
+    color: var(--color-white);
+    font-size: var(--font-size-small);
+    line-height: var(--space-20);
+    font-weight: 300;
+    text-align: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
