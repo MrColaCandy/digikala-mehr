@@ -1,0 +1,202 @@
+.login{
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+.img{
+    width:334px;
+    height:40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-10);
+}
+.title{
+    font-size: var(--font-size-xlarge);
+    font-weight: 700;
+    line-height: 32px;    
+    color:  var(--color-darkBlue);
+}
+.input{
+    width: 334px;
+    height: 48px;
+    border-radius: 8px;
+    border: 1px solid   var(--color-red);
+}
+.btn{
+    width: 334px;
+    height: 48px;
+    cursor: pointer;
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    line-height: 24px;
+    padding: 12px 155px;
+    border-radius: 8px;
+    background-color:  var(--color-primary);
+    color: var(--color-white);
+    border: 1px solid  var(--color-primary);
+}
+.paragraph--color{
+    color:var(--color-loginSignUp1);
+    cursor: pointer;
+}
+.addPhonenumber{
+    display: flex;
+    direction: rtl;
+    width: 400px;
+    height:420px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 30px;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    gap: var(--space-20);
+}
+.addPhonenumber__information{
+    width: 335px;
+    height:290px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:  var(--space-20);
+}
+.addPhonenumber__details{
+    display: flex;
+    flex-direction: column;
+    gap:  var(--space-24);
+}
+.addPhonenumber__paragraph,.paragraph{
+    font-size: var(--font-size-tiny);
+    font-weight: 400;
+    line-height: 16px;    
+    color: var(--color-loginSignUpText);
+}
+.addPhonenumber__paragraph{
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+}
+.addPhonenumber__vorod{
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-32);
+}
+.addPhonenumber__inputEror{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.addPhonenumber__Eror{
+    font-size: var(--font-size-tiny);
+    font-weight: 400;
+    line-height: 16px;
+    color: var(--color-red);
+}
+
+
+
+
+
+.ersalCode{
+    display: flex;
+    display: none;
+    width:400px;
+    height: 405px;
+    direction: rtl;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 30px;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    gap: var(--space-20);
+}
+.ersalCode__information{
+    width: 335px;
+    height:280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-20);
+}
+.ersalCode__paragraph{
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+}
+.ersalCode__vorod{
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-32);
+}
+.ersalCode__vorodDetails{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-24);
+}
+
+
+
+
+
+
+
+.erorPhonenumber{
+    display: flex;
+    display: none;
+    width: 321px;
+    height: 458px;
+    direction: rtl;
+    margin: 130px 0;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-64);
+}
+.erorPhonenumber__btn{
+    width: 300px;
+    height: 50px;
+    padding: 12px 155px;
+    cursor: pointer;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: 1px solid var(--color-primary);
+}
+.erorPhonenumber__btn--word{
+    width: 104px;
+    height: 24px;
+    display: inline-block;
+    font-size:   var(--font-size-small);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 24px;
+} 
+.erorPhonenumber__information{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-32);
+}
+.erorPhonenumber__paragraph{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-12);
+}
+.erorPhonenumber__img{
+    width:192px;
+    height:226px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
