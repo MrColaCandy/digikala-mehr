@@ -1,7 +1,7 @@
 import Home from "@pages/Home";
-import { home } from "./route-paths";
+import { choosePlan, home,login } from "./route-paths";
 import Login from "@pages/Login";
-import { login } from "./route-paths";
+import ChoosePlan from "@pages/ChoosePlan";
 export const routes = [
   {
     path: home,
@@ -10,5 +10,9 @@ export const routes = [
   {
     path:login,
     element:<Login/>,
+  },
+  {
+    path:choosePlan,
+    element: <ChoosePlan/>
   }
 ];
