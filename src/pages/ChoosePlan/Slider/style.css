@@ -2,7 +2,8 @@
     position: relative;
 }
 .slider__view {
-  width: var(--slide-width);
+  max-width: var(--slide-width);
+  width: 100vw;
   position: relative;
   overflow: hidden;
   height: var(--slide-height);
@@ -10,6 +11,8 @@
 
 .slider__container {
     display: flex;
+    align-items: center;
+    justify-items: center;
     flex-wrap: nowrap;
     overflow-x: scroll;
 }
@@ -43,4 +46,11 @@
     position: absolute;
     top: 50%;
     left: 0;
+}
+
+@media screen and (max-width: 360px) {
+  .slider{
+    width: 90vw;
+    max-width: 325px;
+  }
 }

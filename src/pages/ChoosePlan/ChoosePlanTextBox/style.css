@@ -1,16 +1,17 @@
-.choosePlanTextBox__text{
+.choosePlanTextBox__text {
     color: #82858A;
     font-size: 14px;
     font-weight: 400;
     line-height: 24.64px;
     word-wrap: break-word;
-    width: 488px;
+    width: 90vw;
+    max-width: 488px;
     margin: 0 44px;
     text-align: right;
-    
+
 }
-.choosePlanTextBox__button
-{
+
+.choosePlanTextBox__button {
     color: #00B189;
     font-size: 14px;
     font-family: Montserrat;
@@ -18,22 +19,70 @@
     line-height: 20px;
     word-wrap: break-word;
     margin-top: 13px;
-    margin-right: 44px;
     display: flex;
     align-items: center;
     gap: 8px;
     cursor: pointer;
+    max-width: 480px;
+    width: 90vw;
+    margin: 0 auto;
 }
-.choosePlanTextBox__text--truncated
-{
+
+.choosePlanTextBox__text--truncated {
     color: #82858A;
     font-size: 14px;
     font-weight: 400;
     line-height: 24.64px;
     word-wrap: break-word;
-    width: 488px;
-    margin: 0 auto;
+    width: 90vw;
+    max-width: 488px;
+   
     text-align: right;
     height: 75px;
     overflow: hidden;
+}
+
+@media screen and (max-width: 360px) {
+    .choosePlanTextBox__text {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 24.64px;
+        word-wrap: break-word;
+        width: 90vw;
+        max-width: 304px;
+        margin: 0 14px;
+        text-align: right;
+        padding: 0;
+
+    }
+
+    .choosePlanTextBox__text--truncated {
+        color: #82858A;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 24.64px;
+        word-wrap: break-word;
+        width: 90vw;
+        max-width: 304px;
+        margin: 0 auto;
+        text-align: right;
+        height: 75px;
+        overflow: hidden;
+        padding: 0 12px;
+        
+    }
+    .choosePlanTextBox__button {
+        color: #00B189;
+        font-size: 14px;
+        font-family: Montserrat;
+        font-weight: 500;
+        line-height: 20px;
+        word-wrap: break-word;
+        margin-top: 14px;
+        margin-right: 24px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+    }
 }

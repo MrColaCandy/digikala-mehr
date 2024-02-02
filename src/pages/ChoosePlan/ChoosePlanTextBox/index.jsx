@@ -1,8 +1,8 @@
 
 import { FaChevronLeft } from "react-icons/fa";
 import "./style.css"
-const ChoosePlanTextBox = ({text, maxLines = 3, lineLength = 15,showFullText,setShowFullText=()=>{} }) => {
-    
+function ChoosePlanTextBox({ text, maxLines = 3, lineLength = 15, showFullText, setShowFullText = () => { } }) {
+
 
     const toggleText = () => {
         setShowFullText(!showFullText);
@@ -16,11 +16,11 @@ const ChoosePlanTextBox = ({text, maxLines = 3, lineLength = 15,showFullText,set
 
     return (
         <div className='choosePlanTextBox'>
-            <div className={showFullText? "choosePlanTextBox__text":"choosePlanTextBox__text--truncated"}>
+            <div className={showFullText ? "choosePlanTextBox__text" : "choosePlanTextBox__text--truncated"}>
                 {showFullText ? text : getTruncatedText()}
             </div>
             <div onClick={toggleText} className="choosePlanTextBox__button">
-                <div>{showFullText?"بستن":"بیشتر بدانید"}</div>
+                <div>{showFullText ? "بستن" : "بیشتر بدانید"}</div>
                 <FaChevronLeft size={"10px"} />
             </div>
 

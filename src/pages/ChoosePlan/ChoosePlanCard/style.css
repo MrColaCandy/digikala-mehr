@@ -1,10 +1,15 @@
 .choosePlanCard {
     width: 576px;
     height: 388px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .choosePlanCard__image {
-    width: 536px;
+    width: 90vw;
+    max-width: 536px;
     height: 152px;
     border-radius: 16px;
     margin: 20px;
@@ -24,14 +29,15 @@
     font-weight: 400;
     line-height: 24.64px;
     word-wrap: break-word;
-    width: 488px;
+    width: 90vw;
+    max-width: 488px;
     height: 75px;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     margin: 0 auto;
-    text-align: right;
+    text-align: justify;
 
 
 }
@@ -67,7 +73,8 @@
 }
 
 .choosePlanCard__imageHeader {
-    width: 327px;
+    width: 90vw;
+    max-width: 327px;
     height: 64px;
     color: white;
     font-size: 18px;
@@ -82,7 +89,6 @@
     gap: 8px;
     align-items: center;
     justify-content: flex-start;
-    width: 142px;
     height: 30px;
 }
 
@@ -93,10 +99,52 @@
     font-weight: 400;
     line-height: 28.21px;
     word-wrap: break-word;
-    width: 106px;
+
 }
-.choosePlanCard__logoImage
-{
+
+.choosePlanCard__logoImage {
     width: 40px;
     height: 40px;
+}
+
+.choosePlaneCard__header {
+    color: #43474F;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 32px;
+    word-wrap: break-word;
+    margin-bottom: 16px;
+    margin-top: 8px;
+    text-align: center;
+
+}
+
+@media screen and (max-width: 390px) {
+    .choosePlanCard {
+        width: 90vw;
+        max-width: 328px;
+    }
+
+    .choosePlanCard__image {
+        width: 90vw;
+        max-width: 304px;
+        margin: 10px;
+    }
+
+    .choosePlanCard__imageHeader {
+        width: 90vw;
+        max-width: 288px;
+    }
+
+    .choosePlaneCard__header {
+        color: #43474F;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 32px;
+        word-wrap: break-word;
+        margin-bottom: 16px;
+        margin-top: 8px;
+        margin-right: 14px;
+
+    }
 }

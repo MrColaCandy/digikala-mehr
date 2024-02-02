@@ -1,11 +1,12 @@
-import Container from "../../components/Container"
-import NavBar from "../../components/NavBar"
-import Slider from "../../components/Slider"
+import NavBar from "@components/NavBar"
+import Slider from "./Slider"
 import ChoosePlanCard from "./ChoosePlanCard"
-
+import projectsData from "./data/projects.json"
 import "./style.css"
+import Container from "@components/Container"
 const ChoosePlan = () => {
   return (
+
     <Container>
       <NavBar />
       <section className="choosePlan">
@@ -15,15 +16,26 @@ const ChoosePlan = () => {
           <div className="choosePlan__headerText">حالا تو این مرحله باید انتخاب کنی کمک‌ات صرف چه <span className="choosePlane_TextGreen">کار خیری</span> بشه.</div>
         </div>
       </section>
-      <Slider slideWidth={576} slideHeight={388}>
-      <ChoosePlanCard/>
-      <ChoosePlanCard/>
-      <ChoosePlanCard/>
+      <Slider>
+        {
+          projectsData.map((project, index, array) => {
+            return <ChoosePlanCard
+              key={project.id}
+              currentSlide={index + 1}
+              totalSlides={array.length}
+              image={project.image}
+              subtitleImage={project.subtitleImage}
+              title={project.title}
+              bodyText={project.description}
+              subtitle={project.subtitle} />
+          })
+        }
       </Slider>
       <button className="choosePlan__button">
-      انتخاب 
+        انتخاب
       </button>
     </Container>
+
   )
 }
 
