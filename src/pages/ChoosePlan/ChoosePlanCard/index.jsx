@@ -1,11 +1,13 @@
 import {  useState } from 'react';
 import ChoosePlanTextBox from "../ChoosePlanTextBox"
 import "./style.css"
+import { useMedia } from '../hooks/useMedia';
 
 const ChoosePlanCard = ({title,subtitle,bodyText,image,subtitleImage,currentSlide=1,totalSlides=5}) => {
     const subtitleImageUrl = new URL(subtitleImage, import.meta.url)
     const ImageUrl = new URL(image, import.meta.url)
     const [showFullText, setShowFullText] = useState(false);
+    const currentWidth= useMedia()
     return (
         <section id='slide' className="choosePlanCard">
             {
@@ -24,7 +26,10 @@ const ChoosePlanCard = ({title,subtitle,bodyText,image,subtitleImage,currentSlid
             }
             <ChoosePlanTextBox setShowFullText={setShowFullText} showFullText={showFullText} text={bodyText} />
 
-            {!showFullText && <div className="choosePlanCard__currentSlide">{currentSlide} از {totalSlides}</div>}
+            {
+                !showFullText && currentWidth >= 390 &&
+                <div className="choosePlanCard__currentSlide">{currentSlide} از {totalSlides}</div>
+            }
         </section>
     )
 }

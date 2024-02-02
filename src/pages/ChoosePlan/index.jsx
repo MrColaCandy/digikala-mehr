@@ -1,22 +1,21 @@
 import NavBar from "@components/NavBar"
-import Slider from "./Slider"
+import Container from "@components/Container"
+import ChoosePlaneSlider from "./ChoosePlanSlider"
 import ChoosePlanCard from "./ChoosePlanCard"
 import projectsData from "./data/projects.json"
+import ChoosePlaneHeader from "./choosePlanHeader"
+import ChoosePlanButton from "./ChoosePlanButton"
 import "./style.css"
-import Container from "@components/Container"
+import { useState } from "react"
+import { useMedia } from "./hooks/useMedia"
 const ChoosePlan = () => {
+  const [currentSlide,setCurrentSlide]=useState(1);
+  const currentWidth=useMedia();
   return (
-
     <Container>
       <NavBar />
-      <section className="choosePlan">
-        <div className="choosePlan__header">
-          <div className="choosePlan__currentPhase">مرحله ۲ از ۳</div>
-          <div className="choosePlan__headerTextGreen">از اینکه تصمیم گرفتی با ما همراه باشی ازت ممنونیم.</div>
-          <div className="choosePlan__headerText">حالا تو این مرحله باید انتخاب کنی کمک‌ات صرف چه <span className="choosePlane_TextGreen">کار خیری</span> بشه.</div>
-        </div>
-      </section>
-      <Slider>
+      <ChoosePlaneHeader />
+      <ChoosePlaneSlider currentSlide={currentSlide} setCurrentSlide={setCurrentSlide}>
         {
           projectsData.map((project, index, array) => {
             return <ChoosePlanCard
@@ -30,12 +29,17 @@ const ChoosePlan = () => {
               subtitle={project.subtitle} />
           })
         }
-      </Slider>
-      <button className="choosePlan__button">
-        انتخاب
-      </button>
+      </ChoosePlaneSlider>
+      {
+        currentWidth <=390 &&
+        <div className="choosePlan__slidesPaginationMobile">
+           {currentSlide}
+           از
+          {projectsData.length}
+        </div>
+      }
+      <ChoosePlanButton />
     </Container>
-
   )
 }
 
