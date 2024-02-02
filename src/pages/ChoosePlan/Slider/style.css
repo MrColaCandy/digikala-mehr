@@ -15,6 +15,7 @@
     justify-items: center;
     flex-wrap: nowrap;
     overflow-x: scroll;
+    
 }
 .slider__nextButton,
 .slider__previousButton

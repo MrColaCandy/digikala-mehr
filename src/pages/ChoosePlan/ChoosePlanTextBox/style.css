@@ -4,7 +4,7 @@
     font-weight: 400;
     line-height: 24.64px;
     word-wrap: break-word;
-    width: 90vw;
+    width: 85vw;
     max-width: 488px;
     margin: 0 44px;
     text-align: right;
@@ -24,7 +24,7 @@
     gap: 8px;
     cursor: pointer;
     max-width: 480px;
-    width: 90vw;
+    width: 85vw;
     margin: 0 auto;
 }
 
@@ -34,7 +34,7 @@
     font-weight: 400;
     line-height: 24.64px;
     word-wrap: break-word;
-    width: 90vw;
+    width: 85vw;
     max-width: 488px;
    
     text-align: right;
@@ -48,7 +48,7 @@
         font-weight: 400;
         line-height: 24.64px;
         word-wrap: break-word;
-        width: 90vw;
+        width: 85vw;
         max-width: 304px;
         margin: 0 14px;
         text-align: right;
@@ -62,7 +62,7 @@
         font-weight: 400;
         line-height: 24.64px;
         word-wrap: break-word;
-        width: 90vw;
+        width: 85vw;
         max-width: 304px;
         margin: 0 auto;
         text-align: right;
