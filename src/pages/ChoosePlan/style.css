@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-   
+
 }
 
 .choosePlan__currentPhase {
@@ -17,7 +17,7 @@
 
 }
 
-.choosePlan__slidesPaginationMobile{
+.choosePlan__slidesPaginationMobile {
     width: 175px;
     height: 40px;
     display: flex;
@@ -25,4 +25,9 @@
     align-items: center;
     margin-top: 20px;
     margin-bottom: 40px;
+    color: #43474F;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 24px;
+    word-wrap: break-word
 }

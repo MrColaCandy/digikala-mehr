@@ -15,7 +15,7 @@ const ChoosePlan = () => {
     <Container>
       <NavBar />
       <ChoosePlaneHeader />
-      <ChoosePlaneSlider currentSlide={currentSlide} setCurrentSlide={setCurrentSlide}>
+      <ChoosePlaneSlider totalSlides={projectsData.length} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide}>
         {
           projectsData.map((project, index, array) => {
             return <ChoosePlanCard

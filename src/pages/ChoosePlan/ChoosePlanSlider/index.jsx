@@ -3,37 +3,35 @@ import { FaChevronLeft,FaChevronRight  } from "react-icons/fa6";
 import './style.css';
 
 const ChoosePlaneSlider = ({ children,currentSlide=1,setCurrentSlide=()=>{}}) => {
-    const DEAD_ZONE = 50; 
     const containerRef = useRef(null);
-    const previousButtonRef = useRef(null);
-    const nextButtonRef = useRef(null);
+    const previousButton = useRef(null);
+    const nextButton = useRef(null);
     const [scrollLeft, setScrollLeft] = useState(0);
     const [slideWidth,setSlideWidth]=useState(null);
     const [slideHeight,setSlideHeight]=useState(null);
-
+    const [totalSlides,setTotalSlides]=useState(0);
     function getSlideRect()
     {
         return  containerRef.current.querySelector("#slide").getBoundingClientRect(); 
     }
-    
+    function handleButtonsVisibilities()
+    {
+        console.log(currentSlide);
+        nextButton.current.style.display=currentSlide===totalSlides?"none":"flex";
+        previousButton.current.style.display=currentSlide===1?"none":"flex";
+    }
     function updateSlideDimensions() {
         const {width,height} = getSlideRect()
         setSlideWidth(width);
         setSlideHeight(height);
     }
-    function setButtonsVisibility(nextButtonRef, containerRef, previousButtonRef) {
-        const {width} = getSlideRect()
-        nextButtonRef.current.style.display = "none";
-        containerRef.current.onscroll = function () {
-    
-            previousButtonRef.current.style.display = (containerRef.current.scrollWidth + containerRef.current.scrollLeft) - DEAD_ZONE <= width? "none" : "flex";
-            nextButtonRef.current.style.display = containerRef.current.scrollLeft === 0 ? "none" : "flex";
-        };
-    }
+    useEffect(()=>{
+     handleButtonsVisibilities()
+    },[currentSlide])
 
     useEffect(() => {
         if (!containerRef.current)return;
-            
+            setTotalSlides(containerRef.current.querySelectorAll("#slide").length)
             updateSlideDimensions();
             const resizeObserver=new ResizeObserver(()=>{
                 updateSlideDimensions();
@@ -46,7 +44,7 @@ const ChoosePlaneSlider = ({ children,currentSlide=1,setCurrentSlide=()=>{}}) =>
                 containerRef.current.scrollLeft=0;
                 setCurrentSlide(1)
             })
-        setButtonsVisibility(nextButtonRef, containerRef, previousButtonRef);
+       
     }, []);
     const handleScroll = (scrollOffset) => {
         const newScrollLeft = scrollLeft + scrollOffset;
@@ -66,15 +64,17 @@ const ChoosePlaneSlider = ({ children,currentSlide=1,setCurrentSlide=()=>{}}) =>
                     {children}
                 </div>
             </div>
-            <button ref={el => previousButtonRef.current = el} className='slider__previousButton' onClick={() => {
+            <button ref={el => nextButton.current = el} className='slider__nextButton' onClick={() => {
                 handleScroll(-slideWidth)
                 setCurrentSlide(currentSlide+1)
+                
             }}>
                 <FaChevronLeft size={"20px"} />
             </button>
-            <button ref={el => nextButtonRef.current = el} className='slider__nextButton' onClick={() => {
+            <button ref={el => previousButton.current = el} className='slider__previousButton' onClick={() => {
                 handleScroll(slideWidth)
                 setCurrentSlide(currentSlide-1)
+                
                 }}>
                 <FaChevronRight size={"20px"} />
             </button>
