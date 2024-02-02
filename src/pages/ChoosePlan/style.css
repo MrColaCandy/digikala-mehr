@@ -20,7 +20,6 @@
 .choosePlan__slidesPaginationMobile{
     width: 175px;
     height: 40px;
-    outline: 1px solid red;
     display: flex;
     justify-content: center;
     align-items: center;

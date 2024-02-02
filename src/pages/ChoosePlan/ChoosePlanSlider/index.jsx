@@ -3,7 +3,7 @@ import { FaChevronLeft,FaChevronRight  } from "react-icons/fa6";
 import './style.css';
 
 const ChoosePlaneSlider = ({ children,currentSlide=1,setCurrentSlide=()=>{}}) => {
-    const DEAD_ZONE = 25; 
+    const DEAD_ZONE = 50; 
     const containerRef = useRef(null);
     const previousButtonRef = useRef(null);
     const nextButtonRef = useRef(null);
@@ -44,6 +44,7 @@ const ChoosePlaneSlider = ({ children,currentSlide=1,setCurrentSlide=()=>{}}) =>
                 updateSlideDimensions();
                 setScrollLeft(0);
                 containerRef.current.scrollLeft=0;
+                setCurrentSlide(1)
             })
         setButtonsVisibility(nextButtonRef, containerRef, previousButtonRef);
     }, []);
