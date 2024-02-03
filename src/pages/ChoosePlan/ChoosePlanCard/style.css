@@ -12,61 +12,42 @@
     max-width: 536px;
     height: 152px;
     border-radius: 16px;
-    margin: 20px;
+    margin: var(--space-20);
     background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.603) 100%), var(--card-image);
     box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.08);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 100% 27%;
-    padding: 12px 20px;
-
-
-}
-
-.choosePlanCard__text {
-    color: #82858A;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 24.64px;
-    word-wrap: break-word;
-    width: 90vw;
-    max-width: 488px;
-    height: 75px;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    margin: 0 auto;
-    text-align: justify;
+    padding: var(--space-12) var(--space-20);
 
 
 }
 
 .choosePlanCard__more {
-    color: #00B189;
-    font-size: 14px;
+    color: var(--color-primary);
+    font-size: var(--font-size-small);
     font-family: Montserrat;
     font-weight: 500;
-    line-height: 20px;
+    line-height: var(--space-20);
     word-wrap: break-word;
-    margin-top: 13px;
-    margin-right: 44px;
+    margin-top: var(--space-13);
+    margin-right: var(--space-44);
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: var(--space-8);
     cursor: pointer;
 }
 
 .choosePlanCard__currentSlide {
     width: 39px;
     height: 24px;
-    color: #43474F;
-    font-size: 16px;
+    color: var(--color-textDark);
+    font-size: var(--font-size-normal);
     font-weight: 700;
-    line-height: 24px;
+    line-height: var(--space-24);
     word-wrap: break-word;
-    margin-top: 24px;
-    margin-bottom: 16px;
+    margin-top: var(--space-24);
+    margin-bottom: var(--space-16);
     margin-left: auto;
     margin-right: auto;
 
@@ -77,27 +58,27 @@
     max-width: 327px;
     height: 64px;
     color: white;
-    font-size: 18px;
+    font-size: var(--font-size-large);
     font-weight: 700;
-    line-height: 32px;
+    line-height: var(--space-32);
     word-wrap: break-word;
-    font-family: yekan;
+    
 }
 
 .choosePlanCard__logo {
     display: flex;
-    gap: 8px;
+    gap: var(--space-8);
     align-items: center;
     justify-content: flex-start;
-    height: 30px;
+    height: var(--space-32);
 }
 
 .choosePlanCard__logoTitle {
     width: 100%;
     color: white;
-    font-size: 13px;
+    font-size: var(--font-size-xsmall);
     font-weight: 400;
-    line-height: 28.21px;
+    line-height: var(--space-28);
     word-wrap: break-word;
 
 }
@@ -108,13 +89,13 @@
 }
 
 .choosePlaneCard__header {
-    color: #43474F;
-    font-size: 18px;
+    color: var(--color-textDark);
+    font-size: var(--font-size-large);
     font-weight: 700;
-    line-height: 24px;
+    line-height: var(--space-24);
     word-wrap: break-word;
-    margin-bottom: 8px;
-    margin-top: 16px;
+    margin-bottom: var(--space-8);
+    margin-top: var(--space-16);
     text-align: center;
 
 }
@@ -128,23 +109,11 @@
     .choosePlanCard__image {
         width: 90vw;
         max-width: 304px;
-        margin: 10px;
+        margin: var(--space-10);
     }
 
     .choosePlanCard__imageHeader {
         width: 90vw;
         max-width: 288px;
-    }
-
-    .choosePlaneCard__header {
-        color: #43474F;
-        font-size: 18px;
-        font-weight: 700;
-        line-height: 32px;
-        word-wrap: break-word;
-        margin-bottom: 16px;
-        margin-top: 8px;
-        margin-right: 14px;
-
     }
 }
