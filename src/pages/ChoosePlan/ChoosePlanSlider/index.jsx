@@ -1,8 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
 import { FaChevronLeft,FaChevronRight  } from "react-icons/fa6";
 import './style.css';
+import { variants } from '../Variants';
 
-const ChoosePlaneSlider = ({ children,currentSlide=1,setCurrentSlide=()=>{}}) => {
+
+const ChoosePlaneSlider = ({ children,gap,currentSlide=1,setCurrentSlide=()=>{},variant}) => {
     const containerRef = useRef(null);
     const previousButton = useRef(null);
     const nextButton = useRef(null);
@@ -15,9 +17,8 @@ const ChoosePlaneSlider = ({ children,currentSlide=1,setCurrentSlide=()=>{}}) =>
         return  containerRef.current.querySelector("#slide").getBoundingClientRect(); 
     }
     function handleButtonsVisibilities()
-    {
-        console.log(currentSlide);
-        nextButton.current.style.display=currentSlide===totalSlides?"none":"flex";
+    {   
+        nextButton.current.style.display=currentSlide===totalSlides ?"none":"flex";
         previousButton.current.style.display=currentSlide===1?"none":"flex";
     }
     function updateSlideDimensions() {
@@ -44,7 +45,15 @@ const ChoosePlaneSlider = ({ children,currentSlide=1,setCurrentSlide=()=>{}}) =>
                 containerRef.current.scrollLeft=0;
                 setCurrentSlide(1)
             })
-       
+            containerRef.current.onscroll=()=>{
+                if((containerRef.current.scrollWidth+containerRef.current.scrollLeft-containerRef.current.getBoundingClientRect().width)<20)
+                {
+                    nextButton.current.style.display="none";
+                }
+                else{
+                    nextButton.current.style.display="flex";
+                }
+            }
     }, []);
     const handleScroll = (scrollOffset) => {
         const newScrollLeft = scrollLeft + scrollOffset;
@@ -59,20 +68,21 @@ const ChoosePlaneSlider = ({ children,currentSlide=1,setCurrentSlide=()=>{}}) =>
 
     return (
         <div className='slider'>
-            <div className="slider__view" style={{ "--slide-width": `${slideWidth}px`, "--slide-height": `${slideHeight}px` }}>
-                <div className="slider__container" ref={el => containerRef.current = el}>
+            <div className={`slider__view--${variant}`} style={{ "--slide-width": `${slideWidth}px`, "--slide-height": `${slideHeight}px`,"--slides-gap":`${gap}px` }}>
+                <div className={`slider__container--${variant}`} ref={el => containerRef.current = el}>
                     {children}
                 </div>
             </div>
-            <button ref={el => nextButton.current = el} className='slider__nextButton' onClick={() => {
-                handleScroll(-slideWidth)
+            <button ref={el => nextButton.current = el} className={`slider__nextButton--${variant}`} onClick={() => {
+                
+                handleScroll((-slideWidth-gap)+(variant===variants.Style3? 30:0))
                 setCurrentSlide(currentSlide+1)
                 
             }}>
                 <FaChevronLeft size={"20px"} />
             </button>
-            <button ref={el => previousButton.current = el} className='slider__previousButton' onClick={() => {
-                handleScroll(slideWidth)
+            <button ref={el => previousButton.current = el} className={`slider__previousButton--${variant}`} onClick={() => {
+                handleScroll((slideWidth+gap)-(variant===variants.Style3? 30:0))
                 setCurrentSlide(currentSlide-1)
                 
                 }}>

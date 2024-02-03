@@ -1,27 +1,47 @@
 .slider {
   position: relative;
+  margin: 0 auto;
 }
 
-.slider__view {
+.slider__view--Style2,
+.slider__view--Style1 {
   max-width: var(--slide-width);
-  width: 100vw;
+  width: 98vw;
   position: relative;
   overflow: hidden;
   height: var(--slide-height);
 }
-
-.slider__container {
+.slider__view--Style3{
+  max-width: calc( var(--slide-width) * 2.35);
+  width: 98vw;
+  position: relative;
+  overflow: hidden;
+  height: var(--slide-height);
+}
+.slider__container--Style1,
+.slider__container--Style2 {
   display: flex;
   align-items: center;
   justify-items: center;
   flex-wrap: nowrap;
   overflow-x: scroll;
-
+  gap: var(--slides-gap);
+}
+.slider__container--Style3{
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  gap: var(--space-16)
 }
 
-.slider__nextButton,
-.slider__previousButton {
-
+.slider__nextButton--Style1,
+.slider__nextButton--Style2,
+.slider__nextButton--Style3,
+.slider__previousButton--Style1,
+.slider__previousButton--Style2, 
+.slider__previousButton--Style3{
   padding: var(--space-8);
   width: 30px;
   height: 30px;
@@ -35,16 +55,20 @@
   border: 1px #E0E0E2 solid
 }
 
-.slider__previousButton {
+.slider__previousButton--Style1,
+.slider__previousButton--Style2,
+.slider__previousButton--Style3 {
   position: absolute;
-  top: 50%;
-  right: 0;
+  top: 40%;
+  right: -2vw;
 }
 
-.slider__nextButton {
+.slider__nextButton--Style1,
+.slider__nextButton--Style2,
+.slider__nextButton--Style3 {
   position: absolute;
-  top: 50%;
-  left: 0;
+  top: 40%;
+  left: -2vw;
 }
 
 @media screen and (max-width: 390px) {
@@ -52,18 +76,37 @@
     width: 90vw;
     max-width: 325px;
   }
-
-  .slider__previousButton {
+  
+  .slider__previousButton--Style1,
+  .slider__previousButton--Style2 {
     position: absolute;
-    top: 109%;
+    top: 106%;
     right: 23%;
   }
 
-  .slider__nextButton {
+  .slider__nextButton--Style1,
+  .slider__nextButton--Style2 {
     position: absolute;
-    top: 109%;
+    top: 106%;
     left: 23%;
   }
-
-
+  .slider__nextButton--Style3{
+    position: absolute;
+    top: 40%;
+    left: -4vw;
+  }
+  .slider__previousButton--Style3{
+    position: absolute;
+    top: 40%;
+    right: -4vw;
+  }
+  .slider__view--Style2,
+  .slider__view--Style1 {
+    max-width: var(--slide-width);
+  }
+  .slider__view--Style3{
+    max-width: calc( var(--slide-width) * 1.1);
+  }
+ 
+ 
 }

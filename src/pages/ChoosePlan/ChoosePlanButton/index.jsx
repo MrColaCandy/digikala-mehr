@@ -1,8 +1,8 @@
 import "./style.css"
 
-const ChoosePlanButton = () => {
+const ChoosePlanButton = ({variant}) => {
     return (
-        <button className="choosePlan__button">
+        <button className={`choosePlan__button--${variant}`}>
             انتخاب
         </button>
     )

@@ -1,18 +1,54 @@
-.choosePlanTextBox__text {
+.choosePlanTextBox--Style1,
+.choosePlanTextBox--Style2{
+    width: 100%;
+    max-width: 576px;
+}
+.choosePlanTextBox--Style3{
+    width: 100%;
+    max-width: 360px;
+}
+.choosePlanTextBox__text--Style2,
+.choosePlanTextBox__text--Style1 {
     color: var(--color-textLight);
     font-size: var(--font-size-small);
     font-weight: 400;
     line-height: var(--space-24);
     word-wrap: break-word;
     width: 85vw;
-    max-width: 488px;
-    margin: 0 var(--space-40);
+    max-width: 460px;
     text-align: right;
-   
-
+    margin-right: var(--space-16);
+    
 }
-
-.choosePlanTextBox__button {
+.choosePlanTextBox__text--Style3{
+    color: var(--color-textLight);
+    font-size: var(--font-size-small);
+    font-weight: 400;
+    line-height: var(--space-24);
+    word-wrap: break-word;
+    width: 85vw;
+    max-width:340px;
+    text-align: right;
+}
+.choosePlanTextBox__button--Style1, 
+.choosePlanTextBox__button--Style2 {
+    color:var(--color-primary);
+    font-size: var(--font-size-small);
+    font-family: Montserrat;
+    font-weight: 500;
+    line-height: var(--space-20);
+    word-wrap: break-word;
+    margin-top: var(--space-13);
+    display: flex;
+    align-items: center;
+    justify-content: baseline;
+    gap:var(--space-8);
+    cursor: pointer;
+    max-width: 480px;
+    width: 85vw;
+    margin-right: var(--space-20);
+}
+.choosePlanTextBox__button--Style3{
     color:var(--color-primary);
     font-size: var(--font-size-small);
     font-family: Montserrat;
@@ -24,67 +60,54 @@
     align-items: center;
     gap:var(--space-8);
     cursor: pointer;
-    max-width: 480px;
+    max-width: 340px;
     width: 85vw;
-    margin: 0 auto;
+    
+}
+.choosePlanTextBox__text--truncated--Style2,
+.choosePlanTextBox__text--truncated--Style1 {
+    color: var(--color-textLight);
+    font-size: var(--font-size-small);
+    font-weight: 400;
+    line-height: var(--space-24);
+    word-wrap: break-word;
+    width: 77vw;
+    max-width: 460px;
+    text-align: right;
+    height: 75px;
+    overflow: hidden;
 }
 
-.choosePlanTextBox__text--truncated {
+.choosePlanTextBox__text--truncated--Style3{
     color: var(--color-textLight);
     font-size: var(--font-size-small);
     font-weight: 400;
     line-height: var(--space-24);
     word-wrap: break-word;
     width: 85vw;
-    max-width: 488px;
-   
+    max-width: 340px;
     text-align: right;
     height: 75px;
     overflow: hidden;
 }
 
-@media screen and (max-width: 360px) {
-    .choosePlanTextBox__text {
-        font-size: var(--font-size-small);
-        font-weight: 400;
-        line-height: var(--space-24);
-        word-wrap: break-word;
-        width: 85vw;
-        max-width: 304px;
-        margin: 0 var(--space-14);
-        text-align: right;
-        padding-right: var(--space-16);
-        
-
+@media screen and (max-width: 390px) {
+    .choosePlanTextBox__text--Style1,
+    .choosePlanTextBox__text--Style2 {
+        max-width: 289px;
     }
 
-    .choosePlanTextBox__text--truncated {
-        color: var(--color-textLight);
-        font-size: var(--font-size-small);
-        font-weight: 400;
-        line-height: var(--space-24);
-        word-wrap: break-word;
-        width: 94vw;
-        max-width: 304px;
-        margin: 0 auto;
-        text-align: right;
-        height: 75px;
-        overflow: hidden;
-        padding: 0 var(--space-12);
-        
+    .choosePlanTextBox__text--Style3{
+        max-width: 289px;
     }
-    .choosePlanTextBox__button {
-        color:var(--color-primary);
-        font-size: var(--font-size-small);
-        font-family: Montserrat;
-        font-weight: 500;
-        line-height: var(--space-20);
-        word-wrap: break-word;
-        margin-top: var(--space-10);
-        margin-right: var(--space-20);
-        display: flex;
-        align-items: center;
-        gap: var(--space-8);
-        cursor: pointer;
+
+    .choosePlanTextBox__text--truncated--Style1,
+    .choosePlanTextBox__text--truncated--Style2 {
+        max-width: 289px;
     }
+
+    .choosePlanTextBox__text--truncated--Style3{
+        max-width: 289px;
+    }
+
 }

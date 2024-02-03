@@ -1,11 +1,11 @@
-.choosePlan__button {
+.choosePlan__button--Style1 {
     color: white;
     font-size: var(--font-size-xsmall);
     font-family: yekan;
     font-weight: 700;
     line-height: var(--space-16);
     word-wrap: break-word;
-    width: 90vw;
+    width: 85vw;
     max-width: 536px;
     height: var(--space-48);
     text-align: center;
@@ -14,11 +14,53 @@
     border-radius: 8px;
     cursor: pointer;
     margin: 0 auto;
+ 
 }
-
+.choosePlan__button--Style2 {
+    color: white;
+    font-size: var(--font-size-xsmall);
+    font-family: yekan;
+    font-weight: 700;
+    line-height: var(--space-16);
+    word-wrap: break-word;
+    width: 85vw;
+    max-width: 536px;
+    height: var(--space-48);
+    text-align: center;
+    padding: var(--space-16) var(--space-24);
+    background-color: var(--color-primary);
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 0 auto;
+    margin-top: var(--space-40);
+ 
+}
+.choosePlan__button--Style3 {
+    color: var(--color-primary);
+    font-size: var(--font-size-xsmall);
+    font-family: yekan;
+    font-weight: 700;
+    line-height: var(--space-16);
+    word-wrap: break-word;
+    width: 85vw;
+    max-width: 360px;
+    height: var(--space-48);
+    text-align: center;
+    padding: var(--space-16) var(--space-24);
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 0 auto;
+    margin-top: var(--space-40);
+    border: 2px solid var(--color-primary);
+    background-color: transparent;
+}
 @media screen and (max-width: 390px) {
-    .choosePlan__button {
-        width: 90vw;
-        max-width: 313px;
+    .choosePlan__button--Style1 {
+        max-width: 285px;
+        
+    }
+    .choosePlan__button--Style2 {
+        max-width: 285px;
+       
     }
 }

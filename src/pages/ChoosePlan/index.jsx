@@ -8,14 +8,17 @@ import ChoosePlanButton from "./ChoosePlanButton"
 import "./style.css"
 import { useState } from "react"
 import { useMedia } from "./hooks/useMedia"
+import { variants } from "./Variants"
+
 const ChoosePlan = () => {
+  const variant=variants.Style3; // change this to switch to other variants 
   const [currentSlide,setCurrentSlide]=useState(1);
   const currentWidth=useMedia();
   return (
     <Container>
       <NavBar />
       <ChoosePlaneHeader />
-      <ChoosePlaneSlider totalSlides={projectsData.length} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide}>
+      <ChoosePlaneSlider gap={50} variant={variant} totalSlides={projectsData.length} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide}>
         {
           projectsData.map((project, index, array) => {
             return <ChoosePlanCard
@@ -26,19 +29,23 @@ const ChoosePlan = () => {
               subtitleImage={project.subtitleImage}
               title={project.title}
               bodyText={project.description}
-              subtitle={project.subtitle} />
+              subtitle={project.subtitle}
+              variant={variant} />
           })
         }
       </ChoosePlaneSlider>
       {
-        currentWidth <=390 &&
+        currentWidth <=390 && variant!==variants.Style3 &&
         <div className="choosePlan__slidesPaginationMobile">
            {currentSlide}
            از
           {projectsData.length}
         </div>
       }
-      <ChoosePlanButton />
+      {
+        variant===variants.Style1 &&
+        <ChoosePlanButton variant={variant} />
+      }
     </Container>
   )
 }
