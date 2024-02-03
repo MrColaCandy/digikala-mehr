@@ -95,15 +95,17 @@
     line-height: var(--space-24);
     word-wrap: break-word;
     margin-bottom: var(--space-8);
-    margin-top: var(--space-16);
-    text-align: center;
-
+    margin-top: var(--space-10);
+    text-align: right;
+    width: 100%;
+    margin-right: var(--space-24);
 }
 
 @media screen and (max-width: 390px) {
     .choosePlanCard {
         width: 90vw;
         max-width: 328px;
+        max-height: 285px;
     }
 
     .choosePlanCard__image {

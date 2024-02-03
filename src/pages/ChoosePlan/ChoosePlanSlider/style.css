@@ -55,13 +55,13 @@
 
   .slider__previousButton {
     position: absolute;
-    top: 106%;
+    top: 109%;
     right: 23%;
   }
 
   .slider__nextButton {
     position: absolute;
-    top: 106%;
+    top: 109%;
     left: 23%;
   }
 
