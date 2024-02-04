@@ -44,13 +44,10 @@ const ChoosePlaneSlider = ({ children, gap, currentSlide = 1, setCurrentSlide = 
             setCurrentSlide(1)
         })
         containerRef.current.onscroll = () => {
-            if ((containerRef.current.scrollWidth + containerRef.current.scrollLeft - containerRef.current.getBoundingClientRect().width) < 20) {
-                nextButton.current.style.display = "none";
-            }
-            else {
-                nextButton.current.style.display = "flex";
-            }
-
+            const atEnd=(containerRef.current.scrollWidth + containerRef.current.scrollLeft - containerRef.current.getBoundingClientRect().width)<20;
+            const atStart=containerRef.current.scrollLeft==0;
+            nextButton.current.style.display = atEnd? "none":"flex"
+            previousButton.current.style.display=atStart?"none":"flex";
             const slides = document.querySelectorAll('#slide');
 
             
