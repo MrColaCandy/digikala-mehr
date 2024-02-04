@@ -4,7 +4,7 @@ import './style.css';
 import { variants } from '../Variants';
 
 
-const ChoosePlaneSlider = ({ children, gap, currentSlide = 1, setCurrentSlide = () => { }, variant }) => {
+const ChoosePlaneSlider = ({ children,setCurrentProject, gap, currentSlide = 1, setCurrentSlide = () => { }, variant }) => {
     const containerRef = useRef(null);
     const previousButton = useRef(null);
     const nextButton = useRef(null);
@@ -57,7 +57,7 @@ const ChoosePlaneSlider = ({ children, gap, currentSlide = 1, setCurrentSlide = 
                     
                     let currentSlideNumber = i + 1; 
                     setCurrentSlide(currentSlideNumber);
-                    
+                    setCurrentProject(slide.dataset.project);
                 }
             }
         }

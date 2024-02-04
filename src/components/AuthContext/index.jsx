@@ -28,7 +28,13 @@ function AuthContext({ children }) {
             console.log("This code is valid.");
             setToken(token);
             document.cookie=serialize("token",token);
-            setUser({})
+            setUser({
+                name:"Mahmood",
+                lastName:"khodadady",
+                phone:"09930151706",
+                token:token,
+                currentProject:null
+            })
             setIsLoggedIn(true);
         } catch (error) {
             console.log("Failed to validate code . Error", error.message)

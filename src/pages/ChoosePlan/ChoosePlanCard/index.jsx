@@ -4,13 +4,13 @@ import "./style.css"
 import { useMedia } from '../hooks/useMedia';
 import { variants } from '../Variants';
 import ChoosePlanButton from '../ChoosePlanButton';
-const ChoosePlanCard = ({title,subtitle,bodyText,image,subtitleImage,currentSlide=1,totalSlides=5,variant}) => {
+const ChoosePlanCard = ({id,title,subtitle,bodyText,image,subtitleImage,currentSlide=1,totalSlides=5,variant}) => {
     const subtitleImageUrl = new URL(subtitleImage, import.meta.url)
     const ImageUrl = new URL(image, import.meta.url)
     const [showFullText, setShowFullText] = useState(false);
     const currentWidth= useMedia()
     return (
-        <section id='slide' className={`choosePlanCard--${variant}`}>
+        <section id='slide' data-project={id} className={`choosePlanCard--${variant}`}>
             {
                 !showFullText &&
                 <div className={`choosePlanCard__image--${variant}`} style={{ "--card-image": `url('${ImageUrl}')` }} >
@@ -39,7 +39,7 @@ const ChoosePlanCard = ({title,subtitle,bodyText,image,subtitleImage,currentSlid
             }
             {
                 variant!=variants.Style1 &&
-                <ChoosePlanButton variant={variant}/>
+                <ChoosePlanButton projectId={id} variant={variant}/>
             }
         </section>
     )

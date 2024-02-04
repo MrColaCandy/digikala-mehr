@@ -13,15 +13,17 @@ import { variants } from "./Variants"
 const ChoosePlan = () => {
   const variant=variants.Style2; // change this to switch to other variants 
   const [currentSlide,setCurrentSlide]=useState(1);
+  const [currentProject,setCurrentProject]=useState(null);
   const currentWidth=useMedia();
   return (
     <Container>
       <NavBar />
       <ChoosePlaneHeader />
-      <ChoosePlaneSlider gap={50} variant={variant} totalSlides={projectsData.length} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide}>
+      <ChoosePlaneSlider setCurrentProject={setCurrentProject} gap={50} variant={variant} totalSlides={projectsData.length} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide}>
         {
           projectsData.map((project, index, array) => {
             return <ChoosePlanCard
+              id={project.id}
               key={project.id}
               currentSlide={index + 1}
               totalSlides={array.length}
@@ -44,7 +46,7 @@ const ChoosePlan = () => {
       }
       {
         variant===variants.Style1 &&
-        <ChoosePlanButton variant={variant} />
+        <ChoosePlanButton projectId={currentProject} variant={variant} />
       }
     </Container>
   )
