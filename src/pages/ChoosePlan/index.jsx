@@ -11,7 +11,7 @@ import { useMedia } from "./hooks/useMedia"
 import { variants } from "./Variants"
 
 const ChoosePlan = () => {
-  const variant=variants.Style3; // change this to switch to other variants 
+  const variant=variants.Style2; // change this to switch to other variants 
   const [currentSlide,setCurrentSlide]=useState(1);
   const currentWidth=useMedia();
   return (

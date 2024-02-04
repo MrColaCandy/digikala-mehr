@@ -17,7 +17,7 @@
     width: 85vw;
     max-width: 460px;
     text-align: right;
-    margin-right: var(--space-16);
+   
     
 }
 .choosePlanTextBox__text--Style3{
@@ -46,7 +46,7 @@
     cursor: pointer;
     max-width: 480px;
     width: 85vw;
-    margin-right: var(--space-20);
+    
 }
 .choosePlanTextBox__button--Style3{
     color:var(--color-primary);
