@@ -19,7 +19,7 @@ const ChoosePlan = () => {
     <Container>
       <NavBar />
       <ChoosePlaneHeader />
-      <ChoosePlaneSlider setCurrentProject={setCurrentProject} gap={50} variant={variant} totalSlides={projectsData.length} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide}>
+      <ChoosePlaneSlider setCurrentProject={setCurrentProject} gap={32} variant={variant} totalSlides={projectsData.length} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide}>
         {
           projectsData.map((project, index, array) => {
             return <ChoosePlanCard

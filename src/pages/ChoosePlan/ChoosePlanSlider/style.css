@@ -1,6 +1,6 @@
 .slider {
   position: relative;
-  margin: 0 auto;
+
 }
 
 .slider__view--Style2,
@@ -33,7 +33,7 @@
   justify-items: center;
   flex-wrap: nowrap;
   overflow-x: scroll;
-  gap: var(--space-16)
+  gap: var(--slides-gap);
 }
 
 .slider__nextButton--Style1,
@@ -52,7 +52,8 @@
   align-items: center;
   background-color: white;
   color: #424750;
-  border: 1px #E0E0E2 solid
+  border: 1px #E0E0E2 solid;
+  z-index: 100;
 }
 
 .slider__previousButton--Style1,
@@ -72,11 +73,8 @@
 }
 
 @media screen and (max-width: 390px) {
-  .slider {
-    width: 90vw;
-    max-width: 325px;
-  }
   
+ 
   .slider__previousButton--Style1,
   .slider__previousButton--Style2 {
     position: absolute;
