@@ -69,9 +69,9 @@ const ChoosePlaneSlider = ({ children,setCurrentProject, gap, currentSlide , set
                 
                 setCurrentSlide(currentSlide + 1)
                 const slides= containerRef.current.querySelectorAll("#slide");
-                slides[index+1].scrollIntoView({  
+                slides[index+1]?.scrollIntoView({  
                 behavior: 'smooth',
-                block: 'center',
+                block: 'nearest',
                 inline: 'center'})
                 setIndex((index+1)%totalSlides)
 
@@ -82,9 +82,9 @@ const ChoosePlaneSlider = ({ children,setCurrentProject, gap, currentSlide , set
                
                 setCurrentSlide(currentSlide - 1)
                 const slides= containerRef.current.querySelectorAll("#slide");
-                slides[index-1].scrollIntoView({  
+                slides[index-1]?.scrollIntoView({  
                     behavior: 'smooth',
-                    block: 'center',
+                    block: 'nearest',
                     inline: 'center'})
                 setIndex((index-1)%totalSlides)
             }}>

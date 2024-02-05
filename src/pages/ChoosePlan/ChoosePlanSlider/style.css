@@ -59,16 +59,16 @@
 .slider__previousButton--Style2,
 .slider__previousButton--Style3 {
   position: absolute;
-  top: 40%;
-  right: -2vw;
+  top: 30%;
+  right: 2vw;
 }
 
 .slider__nextButton--Style1,
 .slider__nextButton--Style2,
 .slider__nextButton--Style3 {
   position: absolute;
-  top: 40%;
-  left: -2vw;
+  top: 30%;
+  left: 2vw;
 }
 
 @media screen and (max-width: 390px) {
@@ -92,12 +92,12 @@
   }
   .slider__nextButton--Style3{
     position: absolute;
-    top: 40%;
+    top: 30%;
     left: -4vw;
   }
   .slider__previousButton--Style3{
     position: absolute;
-    top: 40%;
+    top: 30%;
     right: -4vw;
   }
   .slider__view--Style2,
