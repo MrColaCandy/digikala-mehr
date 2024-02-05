@@ -49,6 +49,7 @@ const ChoosePlaneSlider = ({ children, setCurrentProject, gap, currentSlide=1, s
                     let currentSlideNumber = i + 1;
                     setCurrentSlide(currentSlideNumber);
                     setCurrentProject(slide.dataset.project);
+                    setIndex(i);
                 }
             }
         }
