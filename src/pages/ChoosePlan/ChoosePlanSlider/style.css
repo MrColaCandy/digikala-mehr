@@ -26,6 +26,7 @@
   flex-wrap: nowrap;
   overflow-x: scroll;
   gap: var(--slides-gap);
+  scroll-behavior: smooth;
 }
 .slider__container--Style3{
   display: flex;
@@ -34,6 +35,7 @@
   flex-wrap: nowrap;
   overflow-x: scroll;
   gap: var(--slides-gap);
+  scroll-behavior: smooth;
 }
 
 .slider__nextButton--Style1,

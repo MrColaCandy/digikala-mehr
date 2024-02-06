@@ -11,15 +11,15 @@ import { useMedia } from "./hooks/useMedia"
 import { variants } from "./Variants"
 
 const ChoosePlan = () => {
-  const variant=variants.Style3; // change this to switch to other variants 
-  const [currentSlide,setCurrentSlide]=useState(1);
+  const variant=variants.Style2; // change this to switch to other variants 
+  const [index,setIndex]=useState(0);
   const [currentProject,setCurrentProject]=useState(null);
   const currentWidth=useMedia();
   return (
     <Container>
       <NavBar />
       <ChoosePlaneHeader />
-      <ChoosePlaneSlider setCurrentProject={setCurrentProject} gap={32} variant={variant} totalSlides={projectsData.length} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide}>
+      <ChoosePlaneSlider setCurrentProject={setCurrentProject} gap={44} variant={variant} totalSlides={projectsData.length} index={index} setIndex={setIndex}>
         {
           projectsData.map((project, index, array) => {
             return <ChoosePlanCard
@@ -39,7 +39,7 @@ const ChoosePlan = () => {
       {
         currentWidth <=390 && variant!==variants.Style3 &&
         <div className="choosePlan__slidesPaginationMobile">
-           {currentSlide}
+           {index+1}
            از
           {projectsData.length}
         </div>
