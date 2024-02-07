@@ -12,14 +12,14 @@ import { variants } from "./Variants"
 
 const ChoosePlan = () => {
   const variant=variants.Style2; // change this to switch to other variants 
-  const [index,setIndex]=useState(0);
+  const [currentSlide,setCurrentSlide]=useState(0);
   const [currentProject,setCurrentProject]=useState(null);
   const currentWidth=useMedia();
   return (
     <Container>
       <NavBar />
       <ChoosePlaneHeader />
-      <ChoosePlaneSlider setCurrentProject={setCurrentProject} gap={44} variant={variant} totalSlides={projectsData.length} index={index} setIndex={setIndex}>
+      <ChoosePlaneSlider setCurrentProject={setCurrentProject} gap={44} variant={variant} totalSlides={projectsData.length} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide}>
         {
           projectsData.map((project, index, array) => {
             return <ChoosePlanCard
@@ -39,7 +39,7 @@ const ChoosePlan = () => {
       {
         currentWidth <=390 && variant!==variants.Style3 &&
         <div className="choosePlan__slidesPaginationMobile">
-           {index+1}
+           {currentSlide+1}
            از
           {projectsData.length}
         </div>
