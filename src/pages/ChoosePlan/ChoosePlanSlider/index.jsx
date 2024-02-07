@@ -46,17 +46,18 @@ const ChoosePlaneSlider = ({ children, setCurrentProject, gap, index, setIndex, 
             nextButton.current.style.display = atEnd ? "none" : "flex"
             previousButton.current.style.display = atStart ? "none" : "flex";
         })
+        window.addEventListener("mouseenter",(e)=>{
+            console.log(e.target);
+        })
         containerRef.current.addEventListener("scrollend", () => {
 
            const slides = containerRef.current.querySelectorAll("#slide");
            for (let index = 0; index < slides.length; index++) {
                const slide = slides[index];
                if (isScrolledIntoView(slide)) {
-                   setIndex(index)
                    setCurrentProject(index+1);
                    break;
                }
-
            }
         })
     }, []);
