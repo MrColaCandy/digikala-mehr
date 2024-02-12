@@ -3,7 +3,6 @@ import digikalaMehrLogo from '@assets/decorations/digikala-mehr-logo.png'
 import phoneNumberErorCat from '@assets/decorations/phone-number-eror-cat.png'
 function Login() {
     return (
-        <>
             <article className="login">
                 <section className="addPhonenumber">
                     <img src={digikalaMehrLogo} className="img" />
@@ -23,7 +22,7 @@ function Login() {
                             </div>
                         </div>
                         <p className="paragraph">ورود شما به معنای پذیرش <span className="paragraph--color">
-                            شرایط دیجی‌کالا</span>و <span className="paragraph--color">قوانین حریم خصوصی</span> است</p>
+                            شرایط دیجی‌کالا </span>و <span className="paragraph--color">قوانین حریم خصوصی</span> است</p>
                     </div>
                 </section>
                 <section className="ersalCode">
@@ -56,7 +55,6 @@ function Login() {
                     <button className="erorPhonenumber__btn"><span className="erorPhonenumber__btn--word">تغییر شماره تلفن</span></button>
                 </section>
             </article>
-        </>
     )
 }
 export default Login;

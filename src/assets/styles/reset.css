@@ -124,14 +124,12 @@ a {
   background: transparent;
 }
 
-/* change colors to suit your needs */
 ins {
   background-color: #ff9;
   color: #000;
   text-decoration: none;
 }
 
-/* change colors to suit your needs */
 mark {
   background-color: #ff9;
   color: #000;
@@ -154,7 +152,6 @@ table {
   border-spacing: 0;
 }
 
-/* change border color to suit your needs */
 hr {
   display: block;
   height: 1px;
@@ -167,4 +164,10 @@ hr {
 input,
 select {
   vertical-align: middle;
+}
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }

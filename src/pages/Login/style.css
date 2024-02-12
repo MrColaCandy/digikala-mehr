@@ -1,149 +1,158 @@
-.login{
+.login {
     display: flex;
     min-height: 100vh;
     align-items: center;
     justify-content: center;
 }
-.img{
-    width:334px;
-    height:40px;
+
+.img {
+    width: 334px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: var(--space-10);
 }
-.title{
+
+.title {
     font-size: var(--font-size-xlarge);
     font-weight: 700;
-    line-height: 32px;    
-    color:  var(--color-darkBlue);
+    line-height: var(--lineHeight-32);
+    color: var(--color-darkBlue);
 }
-.input{
+
+.input {
     width: 334px;
     height: 48px;
-    border-radius: 8px;
-    border: 1px solid   var(--color-red);
+    padding: 0 var(--padding-8);
+    border-radius: var(--borderRadius-8);
+    border: 1px solid var(--color-red);
 }
-.btn{
+
+.btn {
     width: 334px;
     height: 48px;
     cursor: pointer;
     font-size: var(--font-size-small);
     font-weight: 700;
-    line-height: 24px;
-    padding: 12px 155px;
-    border-radius: 8px;
-    background-color:  var(--color-primary);
+    line-height: var(--lineHeight-24);
+    padding: var(--padding-12) 155px;
+    border-radius: var(--borderRadius-8);
+    background-color: var(--color-primary);
     color: var(--color-white);
-    border: 1px solid  var(--color-primary);
+    border: 1px solid var(--color-primary);
 }
-.paragraph--color{
-    color:var(--color-loginSignUp1);
+
+.paragraph--color {
+    color: var(--color-loginSignUp1);
     cursor: pointer;
 }
-.addPhonenumber{
+
+.addPhonenumber {
     display: flex;
     direction: rtl;
     width: 400px;
-    height:420px;
+    height: 420px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 32px 30px;
-    border-radius: 8px;
+    padding: var(--padding-32) 30px;
+    border-radius: var(--borderRadius-8);
     border: 1px solid var(--color-border);
     gap: var(--space-20);
 }
-.addPhonenumber__information{
+
+.addPhonenumber__information {
     width: 335px;
-    height:290px;
+    height: 290px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap:  var(--space-20);
+    gap: var(--space-20);
 }
-.addPhonenumber__details{
+
+.addPhonenumber__details {
     display: flex;
     flex-direction: column;
-    gap:  var(--space-24);
+    gap: var(--space-24);
 }
-.addPhonenumber__paragraph,.paragraph{
+
+.addPhonenumber__paragraph,
+.paragraph {
     font-size: var(--font-size-tiny);
     font-weight: 400;
-    line-height: 16px;    
+    line-height: var(--lineHeight-16);
     color: var(--color-loginSignUpText);
 }
-.addPhonenumber__paragraph{
+
+.addPhonenumber__paragraph {
     display: flex;
     flex-direction: column;
     gap: var(--space-12);
 }
-.addPhonenumber__vorod{
+
+.addPhonenumber__vorod {
     display: flex;
     flex-direction: column;
     gap: var(--space-32);
 }
-.addPhonenumber__inputEror{
+
+.addPhonenumber__inputEror {
     display: flex;
     flex-direction: column;
     gap: 4px;
 }
-.addPhonenumber__Eror{
+
+.addPhonenumber__Eror {
     font-size: var(--font-size-tiny);
     font-weight: 400;
-    line-height: 16px;
+    line-height: var(--lineHeight-16);
     color: var(--color-red);
 }
 
-
-
-
-
-.ersalCode{
+.ersalCode {
     display: flex;
     display: none;
-    width:400px;
+    width: 400px;
     height: 405px;
     direction: rtl;
     flex-direction: column;
     align-items: center;
-    padding: 32px 30px;
-    border-radius: 8px;
+    padding: var(--padding-32) 30px;
+    border-radius: var(--borderRadius-8);
     border: 1px solid var(--color-border);
     gap: var(--space-20);
 }
-.ersalCode__information{
+
+.ersalCode__information {
     width: 335px;
-    height:280px;
+    height: 280px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: var(--space-20);
 }
-.ersalCode__paragraph{
+
+.ersalCode__paragraph {
     display: flex;
     flex-direction: column;
     gap: var(--space-8);
 }
-.ersalCode__vorod{
+
+.ersalCode__vorod {
     display: flex;
     flex-direction: column;
     gap: var(--space-32);
 }
-.ersalCode__vorodDetails{
+
+.ersalCode__vorodDetails {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: var(--space-24);
 }
 
-
-
-
-
-
-
-.erorPhonenumber{
+.erorPhonenumber {
     display: flex;
     display: none;
     width: 321px;
@@ -154,12 +163,13 @@
     align-items: center;
     gap: var(--space-64);
 }
-.erorPhonenumber__btn{
+
+.erorPhonenumber__btn {
     width: 300px;
     height: 50px;
-    padding: 12px 155px;
+    padding: var(--padding-12) 155px;
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: var(--borderRadius-8);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -168,34 +178,38 @@
     color: var(--color-white);
     border: 1px solid var(--color-primary);
 }
-.erorPhonenumber__btn--word{
+
+.erorPhonenumber__btn--word {
     width: 104px;
     height: 24px;
     display: inline-block;
-    font-size:   var(--font-size-small);
+    font-size: var(--font-size-small);
     font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
-    line-height: 24px;
-} 
-.erorPhonenumber__information{
+    line-height: var(--lineHeight-24);
+}
+
+.erorPhonenumber__information {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: var(--space-32);
 }
-.erorPhonenumber__paragraph{
+
+.erorPhonenumber__paragraph {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: var(--space-12);
 }
-.erorPhonenumber__img{
-    width:192px;
-    height:226px;
+
+.erorPhonenumber__img {
+    width: 192px;
+    height: 226px;
     display: flex;
     align-items: center;
     justify-content: center;

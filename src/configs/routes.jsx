@@ -1,14 +1,24 @@
+import { home, login, profile, paymenthistory } from "./route-paths";
 import Home from "@pages/Home";
-import { home } from "./route-paths";
 import Login from "@pages/Login";
-import { login } from "./route-paths";
+import Profile from "@pages/Profile";
+import PaymentHistory from "@pages/PaymentHistory";
 export const routes = [
   {
     path: home,
-    element:<Home/>,
+    element: <Home />,
   },
   {
-    path:login,
-    element:<Login/>,
+    path: login,
+    element: <Login />,
+  },
+  {
+    path: profile,
+    element: <Profile />,
+  },
+  {
+    path: paymenthistory,
+    element: <PaymentHistory />,
   }
 ];
+
