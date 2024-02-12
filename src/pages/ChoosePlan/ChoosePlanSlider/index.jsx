@@ -24,7 +24,7 @@ const ChoosePlaneSlider = ({  scrollBehavior="smooth",children, gap, currentSlid
     }
     function isInView(element)
     {   const rect=element.getBoundingClientRect();
-        return rect.x + rect.width <= window.innerWidth 
+        return rect.right <= window.innerWidth 
     }
     
     useEffect(() => {
@@ -52,6 +52,7 @@ const ChoosePlaneSlider = ({  scrollBehavior="smooth",children, gap, currentSlid
         containerRef.current.addEventListener("scrollend", () => {
             if(!isMediaMatches)return;
            setTimeout(() => {
+            const slides=containerRef.current.querySelectorAll("#slide")
             for (let index = 0; index < slides.length; index++) {
                 const slide = slides[index];
                 if (isInView(slide)) {
