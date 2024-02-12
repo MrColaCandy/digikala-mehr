@@ -1,16 +1,6 @@
-.choosePlanCard--Style2,
-.choosePlanCard--Style1 {
-    width: 576px;
-    height: 380px;
-    min-height: 380px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    padding-bottom: var(--space-8);
-}
 
-.choosePlanCard--Style3 {
+
+.choosePlanCard {
     width: 360px;
     height: 400px;
     min-height: 400px;
@@ -21,25 +11,10 @@
     padding-bottom: var(--space-8);
 }
 
-.choosePlanCard__image--Style2,
-.choosePlanCard__image--Style1 {
-    width: 85vw;
-    max-width: 536px;
-    height: 152px;
-    border-radius: 16px;
-    margin-bottom: var(--space-32);
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.603) 100%), var(--card-image);
-    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.08);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 100% 27%;
-    padding: var(--space-12) var(--space-20);
 
 
-}
-
-.choosePlanCard__image--Style3 {
-    width: 85vw;
+.choosePlanCard__image {
+    width: 90vw;
     max-width: 360px;
     height: 152px;
     border-radius: 16px;
@@ -108,22 +83,9 @@
     height: 40px;
 }
 
-.choosePlaneCard__header--Style2,
-.choosePlaneCard__header--Style1 {
-    color: var(--color-textDark);
-    font-size: var(--font-size-normal);
-    font-weight: 700;
-    line-height: var(--space-24);
-    word-wrap: break-word;
-    margin-bottom: var(--space-8);
-    margin-top: var(--space-10);
-    text-align: right;
-    width: 85vw;
-    max-width: 534px;
-  
-}
 
-.choosePlaneCard__header--Style3 {
+
+.choosePlaneCard__header {
     color: var(--color-textDark);
     font-size: var(--font-size-normal);
     font-weight: 700;
@@ -132,7 +94,7 @@
     margin-bottom: var(--space-8);
     margin-top: var(--space-10);
     text-align: right;
-    width: 85vw;
+    width: 90vw;
     max-width: 360px;
     
 }
@@ -140,25 +102,15 @@
 @media screen and (max-width: 390px) {
 
 
-    .choosePlanCard--Style2,
-    .choosePlanCard--Style1 {
-        width: 330px;
+ 
+
+    .choosePlanCard {
+        width: 300px;
         height: 450px;
         min-height: 450px;
     }
 
-    .choosePlanCard--Style3 {
-        width: 308px;
-        height: 450px;
-        min-height: 450px;
-    }
-
-    .choosePlanCard__image--Style2,
-    .choosePlanCard__image--Style1 {
-        max-width: 300px;
-    }
-
-    .choosePlanCard__image--Style3 {
+    .choosePlanCard__image {
         max-width: 300px;
     }
 
@@ -166,13 +118,8 @@
         max-width: 150px;
     }
 
-    .choosePlaneCard__header--Style2,
-    .choosePlaneCard__header--Style1 {
-        max-width: 300px;
-      
-    }
-    
-    .choosePlaneCard__header--Style3 {
+  
+    .choosePlaneCard__header {
         width: 85vw;
         max-width: 285px;
         font-size: var(--font-size-small);

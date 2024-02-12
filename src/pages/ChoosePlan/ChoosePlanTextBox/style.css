@@ -1,26 +1,10 @@
-.choosePlanTextBox--Style1,
-.choosePlanTextBox--Style2{
-    width: 100%;
-    max-width: 576px;
-}
-.choosePlanTextBox--Style3{
+
+.choosePlanTextBox{
     width: 100%;
     max-width: 360px;
 }
-.choosePlanTextBox__text--Style2,
-.choosePlanTextBox__text--Style1 {
-    color: var(--color-textLight);
-    font-size: var(--font-size-small);
-    font-weight: 400;
-    line-height: var(--space-24);
-    word-wrap: break-word;
-    width: 85vw;
-    max-width: 460px;
-    text-align: right;
-   
-    
-}
-.choosePlanTextBox__text--Style3{
+
+.choosePlanTextBox__text{
     color: var(--color-textLight);
     font-size: var(--font-size-small);
     font-weight: 400;
@@ -30,25 +14,8 @@
     max-width:340px;
     text-align: right;
 }
-.choosePlanTextBox__button--Style1, 
-.choosePlanTextBox__button--Style2 {
-    color:var(--color-primary);
-    font-size: var(--font-size-small);
-    font-family: Montserrat;
-    font-weight: 500;
-    line-height: var(--space-20);
-    word-wrap: break-word;
-    margin-top: var(--space-13);
-    display: flex;
-    align-items: center;
-    justify-content: baseline;
-    gap:var(--space-8);
-    cursor: pointer;
-    max-width: 480px;
-    width: 85vw;
-    
-}
-.choosePlanTextBox__button--Style3{
+
+.choosePlanTextBox__button{
     color:var(--color-primary);
     font-size: var(--font-size-small);
     font-family: Montserrat;
@@ -64,21 +31,8 @@
     width: 85vw;
     
 }
-.choosePlanTextBox__text--truncated--Style2,
-.choosePlanTextBox__text--truncated--Style1 {
-    color: var(--color-textLight);
-    font-size: var(--font-size-small);
-    font-weight: 400;
-    line-height: var(--space-24);
-    word-wrap: break-word;
-    width: 77vw;
-    max-width: 460px;
-    text-align: right;
-    height: 75px;
-    overflow: hidden;
-}
 
-.choosePlanTextBox__text--truncated--Style3{
+.choosePlanTextBox__text--truncated{
     color: var(--color-textLight);
     font-size: var(--font-size-small);
     font-weight: 400;
@@ -92,21 +46,13 @@
 }
 
 @media screen and (max-width: 390px) {
-    .choosePlanTextBox__text--Style1,
-    .choosePlanTextBox__text--Style2 {
+  
+    .choosePlanTextBox__text{
         max-width: 289px;
     }
 
-    .choosePlanTextBox__text--Style3{
-        max-width: 289px;
-    }
 
-    .choosePlanTextBox__text--truncated--Style1,
-    .choosePlanTextBox__text--truncated--Style2 {
-        max-width: 289px;
-    }
-
-    .choosePlanTextBox__text--truncated--Style3{
+    .choosePlanTextBox__text--truncated{
         max-width: 289px;
     }
 

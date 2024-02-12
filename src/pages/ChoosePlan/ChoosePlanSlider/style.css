@@ -3,47 +3,30 @@
 
 }
 
-.slider__view--Style2,
-.slider__view--Style1 {
-  max-width: var(--slide-width);
-  width: 98vw;
-  position: relative;
-  overflow: hidden;
-  height: var(--slide-height);
-}
-.slider__view--Style3{
+
+.slider__view{
   max-width: calc( var(--slide-width) * 2.35);
   width: 98vw;
   position: relative;
   overflow: hidden;
   height: var(--slide-height);
 }
-.slider__container--Style1,
-.slider__container--Style2 {
+
+.slider__container{
   display: flex;
   align-items: center;
   justify-items: center;
   flex-wrap: nowrap;
   overflow-x: scroll;
   gap: var(--slides-gap);
-  scroll-behavior: smooth;
-}
-.slider__container--Style3{
-  display: flex;
-  align-items: center;
-  justify-items: center;
-  flex-wrap: nowrap;
-  overflow-x: scroll;
-  gap: var(--slides-gap);
-  scroll-behavior: smooth;
+  scroll-behavior: var(--scroll-behavior);
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
 }
 
-.slider__nextButton--Style1,
-.slider__nextButton--Style2,
-.slider__nextButton--Style3,
-.slider__previousButton--Style1,
-.slider__previousButton--Style2, 
-.slider__previousButton--Style3{
+
+.slider__nextButton,
+.slider__previousButton{
   padding: var(--space-8);
   width: 30px;
   height: 30px;
@@ -58,17 +41,15 @@
   z-index: 100;
 }
 
-.slider__previousButton--Style1,
-.slider__previousButton--Style2,
-.slider__previousButton--Style3 {
+
+.slider__previousButton {
   position: absolute;
   top: 30%;
   right: 2vw;
 }
 
-.slider__nextButton--Style1,
-.slider__nextButton--Style2,
-.slider__nextButton--Style3 {
+
+.slider__nextButton {
   position: absolute;
   top: 30%;
   left: 2vw;
@@ -77,36 +58,26 @@
 @media screen and (max-width: 390px) {
   
  
-  .slider__previousButton--Style1,
-  .slider__previousButton--Style2 {
+ 
+ 
+  .slider__nextButton{
     position: absolute;
-    top: 106%;
-    right: 23%;
+    top: 30%;
+    left: 5vw;
   }
+  .slider__previousButton{
+    position: absolute;
+    top: 30%;
+    right: 5vw;
+  }
+  
+  .slider__view{
+    max-width: calc( var(--slide-width) * 1.2);
+  }
+ 
+ 
+}
 
-  .slider__nextButton--Style1,
-  .slider__nextButton--Style2 {
-    position: absolute;
-    top: 106%;
-    left: 23%;
-  }
-  .slider__nextButton--Style3{
-    position: absolute;
-    top: 30%;
-    left: -4vw;
-  }
-  .slider__previousButton--Style3{
-    position: absolute;
-    top: 30%;
-    right: -4vw;
-  }
-  .slider__view--Style2,
-  .slider__view--Style1 {
-    max-width: var(--slide-width);
-  }
-  .slider__view--Style3{
-    max-width: calc( var(--slide-width) * 1.1);
-  }
- 
- 
+#slide{
+  scroll-snap-align: start;
 }

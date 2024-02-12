@@ -4,22 +4,26 @@ import ChoosePlaneSlider from "./ChoosePlanSlider"
 import ChoosePlanCard from "./ChoosePlanCard"
 import projectsData from "./data/projects.json"
 import ChoosePlaneHeader from "./choosePlanHeader"
-import ChoosePlanButton from "./ChoosePlanButton"
+
 import "./style.css"
-import { useState } from "react"
-import { useMedia } from "./hooks/useMedia"
-import { variants } from "./Variants"
+import { useEffect, useState } from "react"
+
+
 
 const ChoosePlan = () => {
-  const variant=variants.Style2; // change this to switch to other variants 
-  const [currentSlide,setCurrentSlide]=useState(0);
-  const [currentProject,setCurrentProject]=useState(null);
-  const currentWidth=useMedia();
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMediaMatches,setIsMediaMatches]=useState(window.matchMedia("(max-width: 390px)").matches);
+  useEffect(()=>{
+   window.addEventListener("resize",()=>{
+    setIsMediaMatches(window.matchMedia("(max-width: 390px)").matches)
+   })
+  },[])
   return (
     <Container>
       <NavBar />
       <ChoosePlaneHeader />
-      <ChoosePlaneSlider setCurrentProject={setCurrentProject} gap={44} variant={variant} totalSlides={projectsData.length} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide}>
+      <ChoosePlaneSlider gap={32} totalSlides={projectsData.length} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide}>
         {
           projectsData.map((project, index, array) => {
             return <ChoosePlanCard
@@ -32,21 +36,17 @@ const ChoosePlan = () => {
               title={project.title}
               bodyText={project.description}
               subtitle={project.subtitle}
-              variant={variant} />
+            />
           })
         }
       </ChoosePlaneSlider>
       {
-        currentWidth <=390 && variant!==variants.Style3 &&
+        isMediaMatches &&
         <div className="choosePlan__slidesPaginationMobile">
-           {currentSlide+1}
-           از
+          {currentSlide + 1}
+          از
           {projectsData.length}
         </div>
-      }
-      {
-        variant===variants.Style1 &&
-        <ChoosePlanButton projectId={currentProject} variant={variant} />
       }
     </Container>
   )
