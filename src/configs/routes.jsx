@@ -1,8 +1,9 @@
-import { home, login, profile, paymenthistory } from "./route-paths";
+import { home, login, profile, paymenthistory, pricing } from "./route-paths";
 import Home from "@pages/Home";
 import Login from "@pages/Login";
 import Profile from "@pages/Profile";
 import PaymentHistory from "@pages/PaymentHistory";
+import PricingPlan from "@pages/PricingPlan";
 export const routes = [
   {
     path: home,
@@ -19,6 +20,10 @@ export const routes = [
   {
     path: paymenthistory,
     element: <PaymentHistory />,
+  },
+  {
+    path: pricing,
+    element: <PricingPlan />
   }
 ];
 
