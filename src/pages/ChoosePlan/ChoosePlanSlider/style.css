@@ -4,15 +4,15 @@
 }
 
 
-.slider__view{
-  max-width: calc( var(--slide-width) * 2.35);
+.slider__view {
+  max-width: calc(var(--slide-width) * 2.35);
   width: 98vw;
   position: relative;
   overflow: hidden;
   height: var(--slide-height);
 }
 
-.slider__container{
+.slider__container {
   display: flex;
   align-items: center;
   justify-items: center;
@@ -22,11 +22,12 @@
   scroll-behavior: var(--scroll-behavior);
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
+
 }
 
 
 .slider__nextButton,
-.slider__previousButton{
+.slider__previousButton {
   padding: var(--space-8);
   width: 30px;
   height: 30px;
@@ -56,28 +57,28 @@
 }
 
 @media screen and (max-width: 390px) {
-  
- 
- 
- 
-  .slider__nextButton{
+
+  .slider__nextButton {
     position: absolute;
     top: 30%;
     left: 5vw;
   }
-  .slider__previousButton{
+
+  .slider__previousButton {
     position: absolute;
     top: 30%;
     right: 5vw;
   }
-  
-  .slider__view{
-    max-width: calc( var(--slide-width) * 1.2);
+
+  .slider__view {
+    max-width: calc(var(--slide-width) * 1.2);
   }
- 
- 
+
+  #slide {
+    scroll-snap-align: start;
+  }
 }
 
-#slide{
-  scroll-snap-align: start;
+#slide {
+  scroll-snap-align: center;
 }

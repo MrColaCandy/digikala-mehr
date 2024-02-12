@@ -10,7 +10,13 @@ const ChoosePlaneSlider = ({  scrollBehavior="smooth",children, gap, currentSlid
     const nextButton = useRef(null);
     const [width, setWidth] = useState(0);
     const [height, setHeight] = useState(0);
- 
+    const [slides,setSlides]=useState(null);
+    const [isMediaMatches,setIsMediaMatches]=useState(window.matchMedia("(max-width: 390px)").matches);
+    useEffect(()=>{
+     window.addEventListener("resize",()=>{
+        setIsMediaMatches(window.matchMedia("(max-width: 390px)").matches);
+     })
+    },[])
     function updateSlideDimensions() {
         const { width, height } = containerRef.current.querySelector("#slide").getBoundingClientRect()
         setWidth(width);
@@ -18,12 +24,12 @@ const ChoosePlaneSlider = ({  scrollBehavior="smooth",children, gap, currentSlid
     }
     function isInView(element)
     {   const rect=element.getBoundingClientRect();
-        return rect.x + rect.width <=window.innerWidth 
+        return rect.x + rect.width <= window.innerWidth 
     }
     
     useEffect(() => {
         if (!containerRef.current) return;
-
+        setSlides([...containerRef.current.querySelectorAll("#slide")]);
         updateSlideDimensions();
         const resizeObserver = new ResizeObserver(() => {
             updateSlideDimensions();
@@ -44,8 +50,8 @@ const ChoosePlaneSlider = ({  scrollBehavior="smooth",children, gap, currentSlid
             previousButton.current.style.display = atStart ? "none" : "flex";
         })
         containerRef.current.addEventListener("scrollend", () => {
+            if(!isMediaMatches)return;
            setTimeout(() => {
-            const slides = [...containerRef.current.querySelectorAll("#slide")];
             for (let index = 0; index < slides.length; index++) {
                 const slide = slides[index];
                 if (isInView(slide)) {
@@ -58,10 +64,10 @@ const ChoosePlaneSlider = ({  scrollBehavior="smooth",children, gap, currentSlid
         })
     }, []);
     useEffect(() => {
-        const slides = [...containerRef.current.querySelectorAll("#slide")];
-        slides[currentSlide].scrollIntoView(true)
+        if(!slides)return;
+        slides[currentSlide].scrollIntoView({inline:"center",block:"center"})
 
-    }, [currentSlide])
+    }, [currentSlide,slides])
     return (
         <div className='slider'>
             <div className={`slider__view`} style={{ "--slide-width": `${width}px`, "--slide-height": `${height}px`, "--slides-gap": `${gap}px`,"--scroll-behavior":`${scrollBehavior}` }}>
@@ -71,8 +77,7 @@ const ChoosePlaneSlider = ({  scrollBehavior="smooth",children, gap, currentSlid
             </div>
             <button ref={nextButton} className={`slider__nextButton`} onClick={() => {
                 setCurrentSlide(prevSlide => prevSlide + 1);
-
-
+                console.log(currentSlide);
             }}>
                 <FaChevronLeft size={"20px"} />
             </button>
