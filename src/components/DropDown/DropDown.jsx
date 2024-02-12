@@ -4,9 +4,14 @@ import {IoExitOutline} from "react-icons/io5";
 import {PiClipboardTextThin} from "react-icons/pi";
 import Toman from "@assets/icons/Toman.svg"
 import './DropDown.css';
+import { useAuth } from '@components/AuthContext/context';
 
 
 const DropDown = () => {
+    const {logout,user}=useAuth();
+    function handleLogoutClick(){
+        logout();
+    }
     const [isDropdownOpen, setDropdownOpen] = useState(false);
     let menuRef = useRef()
     useEffect(() => {
@@ -38,7 +43,7 @@ const DropDown = () => {
                         <ul>
                             <li className="dropdown-li">
                                 <div className='img-user'><img src="" alt=""/></div>
-                                <div className="account-id"><a href="#"><span>User Name</span></a><p>جمع نیکوکاری های
+                                <div className="account-id"><a href="#"><span>{user?.name}</span></a><p>جمع نیکوکاری های
                                     شما</p><span>00 <img src={Toman} alt="تومان"/></span>
                                 </div>
                             </li>
@@ -55,7 +60,7 @@ const DropDown = () => {
                             <div className="exit">
                                 <IoExitOutline className="dropdown-icons"/>
                                 <div className="exit-description">
-                                    <li className="dropdown-li"><a href="#">خروج</a></li>
+                                    <li className="dropdown-li"><a onClick={handleLogoutClick} href="#">خروج</a></li>
                                 </div>
                             </div>
                         </ul>

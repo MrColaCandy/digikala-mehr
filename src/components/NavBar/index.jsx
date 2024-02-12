@@ -1,27 +1,48 @@
-import {BsBoxArrowInLeft} from "react-icons/bs";
-import Fillinside_digimehr_logo_i from '@assets/decorations/Fillinside_digimehr_logo_i.svg'
-import Digikala_Mehr_Brandingasa from '@assets/decorations/Digikala_Mehr_Brandingasa.svg'
-import './style.css'
+import { BsBoxArrowInLeft } from "react-icons/bs";
+import FillInside_digiMehr_logo_i from "@assets/decorations/FillInside_digiMehr_logo_i.svg";
+import Digikala_Mehr_Branding from "@assets/decorations/Digikala_Mehr_Branding.svg";
+import "./style.css";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../AuthContext/context";
+import DropDown from "../DropDown/DropDown";
 
 function NavBar() {
-    return (
-        <nav className="navBar">
-            <div className=" digiMehrLogoTitleWrapper">
-                <div className="digiMehrLogoWrapper__wrapperLogo">
-                    <img className="digiMehrLogoWrapper__insideLogo" src={Fillinside_digimehr_logo_i}
-                         alt="digiLogo"/>
-                </div>
-                <img className="digiMehrLogoWrapper__titleName" src={Digikala_Mehr_Brandingasa}
-                     alt="digiTitleName"/>
-            </div>
+  const { isLoggedIn } = useAuth();
+  const navigate = useNavigate();
+  function handleSignInButtonClick() {
+    navigate("/login");
+  }
 
-            <button className="signInProfileBtn">
-                <BsBoxArrowInLeft className="signInProfileBtn__signInIcon"/>
-                <span className="signInProfileBtn__text">پروفایل I ثبت نام</span>
-            </button>
-        </nav>
-    )
+  function getLoginButton() {
+    return !isLoggedIn ? (
+      <button onClick={handleSignInButtonClick} className="signInProfileBtn">
+        <BsBoxArrowInLeft className="signInProfileBtn__signInIcon" />
+        <span className="signInProfileBtn__text">پروفایل I ثبت نام</span>
+      </button>
+    ) : (
+      <DropDown />
+    );
+  }
+  return (
+    <nav className="navBar">
+      <div className=" digiMehrLogoTitleWrapper">
+        <div className="digiMehrLogoWrapper__wrapperLogo">
+          <img
+            className="digiMehrLogoWrapper__insideLogo"
+            src={FillInside_digiMehr_logo_i}
+            alt="digiLogo"
+          />
+        </div>
+        <img
+          className="digiMehrLogoWrapper__titleName"
+          src={Digikala_Mehr_Branding}
+          alt="digiTitleName"
+        />
+      </div>
+
+      {getLoginButton()}
+    </nav>
+  );
 }
-
 
 export default NavBar;

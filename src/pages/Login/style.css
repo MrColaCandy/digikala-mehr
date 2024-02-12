@@ -17,15 +17,14 @@
 .title {
     font-size: var(--font-size-xlarge);
     font-weight: 700;
-    line-height: var(--lineHeight-32);
+    line-height: 32px;
     color: var(--color-darkBlue);
 }
 
 .input {
     width: 334px;
     height: 48px;
-    padding: 0 var(--padding-8);
-    border-radius: var(--borderRadius-8);
+    border-radius: 8px;
     border: 1px solid var(--color-red);
 }
 
@@ -35,24 +34,32 @@
     cursor: pointer;
     font-size: var(--font-size-small);
     font-weight: 700;
-    line-height: var(--lineHeight-24);
-    padding: var(--padding-12) 155px;
-    border-radius: var(--borderRadius-8);
+    line-height: 24px;
+    padding: 12px 155px;
+    border-radius: 8px;
     background-color: var(--color-primary);
     color: var(--color-white);
     border: 1px solid var(--color-primary);
+    text-align: center;
+    font-family: yekan;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
+.btn:disabled
+{
+    background-color: #00b1888a;
+}
 .paragraph--color {
     color: var(--color-loginSignUp1);
     cursor: pointer;
 }
 
-.addPhonenumber {
+.addPhoneNumber {
     display: flex;
     direction: rtl;
     width: 400px;
-    height: 420px;
+    height: 450px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -62,7 +69,7 @@
     gap: var(--space-20);
 }
 
-.addPhonenumber__information {
+.addPhoneNumber__information {
     width: 335px;
     height: 290px;
     display: flex;
@@ -71,50 +78,49 @@
     gap: var(--space-20);
 }
 
-.addPhonenumber__details {
+.addPhoneNumber__details {
     display: flex;
     flex-direction: column;
     gap: var(--space-24);
 }
 
-.addPhonenumber__paragraph,
+.addPhoneNumber__paragraph,
 .paragraph {
     font-size: var(--font-size-tiny);
     font-weight: 400;
-    line-height: var(--lineHeight-16);
+    line-height: 16px;
     color: var(--color-loginSignUpText);
 }
 
-.addPhonenumber__paragraph {
+.addPhoneNumber__paragraph {
     display: flex;
     flex-direction: column;
     gap: var(--space-12);
 }
 
-.addPhonenumber__vorod {
+.addPhoneNumber__entrance {
     display: flex;
     flex-direction: column;
     gap: var(--space-32);
 }
 
-.addPhonenumber__inputEror {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
 
-.addPhonenumber__Eror {
+
+.addPhoneNumber__Error {
     font-size: var(--font-size-tiny);
     font-weight: 400;
     line-height: var(--lineHeight-16);
     color: var(--color-red);
+    margin-top: var(--space-10);
+    margin-bottom: var(--space-24);
+    height: 50px;
+   
 }
 
-.ersalCode {
+.sendCode {
     display: flex;
-    display: none;
     width: 400px;
-    height: 405px;
+    height: 450px;
     direction: rtl;
     flex-direction: column;
     align-items: center;
@@ -124,7 +130,7 @@
     gap: var(--space-20);
 }
 
-.ersalCode__information {
+.sendCode__information {
     width: 335px;
     height: 280px;
     display: flex;
@@ -133,28 +139,25 @@
     gap: var(--space-20);
 }
 
-.ersalCode__paragraph {
+.sendCode__paragraph {
     display: flex;
     flex-direction: column;
     gap: var(--space-8);
 }
 
-.ersalCode__vorod {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-32);
+.inputGroup{
+    height: 85px;
 }
 
-.ersalCode__vorodDetails {
+.sendCode__entranceDetails {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: var(--space-24);
 }
 
-.erorPhonenumber {
+.errorPhoneNumber {
     display: flex;
-    display: none;
     width: 321px;
     height: 458px;
     direction: rtl;
@@ -164,7 +167,7 @@
     gap: var(--space-64);
 }
 
-.erorPhonenumber__btn {
+.errorPhoneNumber__btn {
     width: 300px;
     height: 50px;
     padding: var(--padding-12) 155px;
@@ -179,7 +182,7 @@
     border: 1px solid var(--color-primary);
 }
 
-.erorPhonenumber__btn--word {
+.errorPhoneNumber__btn--word {
     width: 104px;
     height: 24px;
     display: inline-block;
@@ -188,10 +191,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    line-height: var(--lineHeight-24);
+    line-height: 24px;
 }
 
-.erorPhonenumber__information {
+.errorPhoneNumber__information {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -199,7 +202,7 @@
     gap: var(--space-32);
 }
 
-.erorPhonenumber__paragraph {
+.errorPhoneNumber__paragraph {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -207,10 +210,47 @@
     gap: var(--space-12);
 }
 
-.erorPhonenumber__img {
+.errorPhoneNumber__img {
     width: 192px;
     height: 226px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+.resend-code {
+    color: var(--color-loginSignUpText);
+    font-size: var(--font-size-tiny);
+    font-family: yekan;
+    font-weight: 400;
+    line-height: var(--font-size-normal);
+    word-wrap: break-word
+}
+
+
+
+
+
+/* HTML: <div class="loader"></div> */
+.loader {
+    width: 20px;
+    aspect-ratio: 1;
+    background: var(--color-primary);
+    box-shadow: 0 0 60px 15px var(--color-primary);
+    transform: translate(-80px);
+    clip-path: inset(0);
+    animation:
+      l4-1 0.5s ease-in-out infinite alternate,
+      l4-2 1s   ease-in-out infinite;
+  }
+  @keyframes l4-1 {
+    100% {transform: translateX(80px)}
+  }
+  @keyframes l4-2 {
+     33% {clip-path: inset(0 0 0 -100px)}
+     50% {clip-path: inset(0 0 0 0)     }
+     83% {clip-path: inset(0 -100px 0 0)}
+  }
+  .paragraph.greeting{
+    margin-top: var(--space-32);
+  }
