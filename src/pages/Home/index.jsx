@@ -12,7 +12,6 @@ function Home() {
   return (
    <Layout>
       <Banner />
-      <main className="main-home">
         <PresentationSection />
         <PartnerShipSection>
           <PartnershipData />
@@ -20,7 +19,6 @@ function Home() {
           <AboutPartnership />
         </PartnerShipSection>
         <FAQSection />
-      </main>
    </Layout>
   );
 }

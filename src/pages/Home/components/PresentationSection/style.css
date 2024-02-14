@@ -1,5 +1,6 @@
 .presentation {
-    width: 1031px;
+    width: 99vw;
+    max-width: 1031px;
     background: var(--color-white);
     display: flex;
     flex-direction: column;
@@ -9,7 +10,8 @@
 }
 
 .presentation__videoSection {
-    width: 696px;
+    width: 99vw;
+    max-width: 696px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -18,7 +20,8 @@
 }
 
 .presentation__header {
-    width: 620px;
+    width: 99vw;
+    max-width: 620px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -36,7 +39,8 @@
 }
 
 .presentation__description {
-    width: 338px;
+    width: 99vw;
+    max-width: 338px;
     color: var(--color-textLight);
     font-size: var(--font-size-xsmall);
     font-weight: 400;
@@ -107,24 +111,18 @@
 }
 
 .presentation__startPlanItems {
-    width: 656px;
-    height: 24px;
+    width: 99vw;
+    max-width: 700px;
+    height: auto;
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    gap: var(--space-48);
-}
-
-.firstRow,
-.secondRow {
-    width: 50%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: var(--space-48);
+    gap: var(--space-32);
 }
 
 .presentation__startPlanItem {
+    min-width: 137px;
     width: auto;
     height: 24px;
     display: flex;
@@ -184,7 +182,8 @@
 }
 
 .presentation__startPlanBtn {
-    width: 232px;
+    width: 99vw;
+    max-width: 232px;
     height: 48px;
     color: var(--color-white);
     background: var(--color-primary);
@@ -214,7 +213,7 @@
     }
 
     .presentation__header {
-        width: 100%;
+        width: 99vw;
         max-width: 338px;
     }
 
@@ -284,7 +283,8 @@
     }
 
     .presentation__startPlanBtn {
-        width: 232px;
+        width: 99vw;
+        max-width: 232px;
         height: 48px;
     }
 }

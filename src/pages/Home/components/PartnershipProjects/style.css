@@ -45,7 +45,8 @@
 }
 
 .partnershipBlock__projectsDescription {
-    width: 390px;
+    width: 99vw;
+    max-width: 390px;
     font-size: var(--font-size-xlarge);
     line-height: var(--lineHeight-24);
     font-weight: 400;
@@ -54,7 +55,8 @@
 }
 
 .partnershipBlock__startProjectBtn {
-    width: 232px;
+    width: 99vw;
+    max-width: 232px;
     height: 48px;
     color: var(--color-textDark);
     background: var(--color-white);
@@ -126,7 +128,8 @@
     }
     
     .partnershipBlock__projectsHeader {
-        width: 273px;
+        width: 99vw;
+        max-width: 273px;
         height: 64px;
         gap: var(--space-10);
     }

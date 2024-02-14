@@ -19,7 +19,8 @@
 
 .partnershipBlock__dataBox {
     position: relative;
-    width: 600px;
+    width: 99vw;
+    max-width: 600px;
     height: 139px;
     padding: var(--padding-12) var(--padding-24);
     background: var(--color-primaryDark);
@@ -42,7 +43,8 @@
 }
 
 .partnershipBlock__membersNumber {
-    width: 236px;
+    width: 99vw;
+    max-width: 236px;
     height: 92px;
     padding: var(--padding-12);
     color: var(--color-white);
@@ -67,7 +69,8 @@
 }
 
 .partnershipBlock__lastMembers {
-    width: 236px;
+    width: 99vw;
+    max-width: 236px;
     height: 112px;
     padding: var(--padding-12);
     color: var(--color-white);
@@ -87,7 +90,8 @@
 }
 
 .partnershipBlock__lastTwinMembers {
-    width: 212px;
+    width: 99vw;
+    max-width: 212px;
     height: 52px;
     display: flex;
     flex-direction: column;

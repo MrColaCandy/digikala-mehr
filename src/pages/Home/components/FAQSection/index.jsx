@@ -1,7 +1,6 @@
 import { BsQuestionSquare } from "react-icons/bs";
 import { FaChevronDown } from "react-icons/fa6";
 import './style.css'
-<FaChevronDown />
 
 function FAQSection (){
     return (
@@ -34,7 +33,7 @@ function FAQSection (){
           <div className="FAQBlock__questionItem">
             <div className="FAQBlock__questionPart">
               <span className="FAQBlock__questionText">
-                 در صورتی که از پرداخت این مبلغ منصرف بشم چطور می تونم لغوش کنم؟
+                در صورتی که از پرداخت این مبلغ منصرف بشم چطور می تونم لغوش کنم؟
               </span>
               <FaChevronDown className="FAQBlock__questionIconDown" />
             </div>
@@ -43,7 +42,7 @@ function FAQSection (){
           <div className="FAQBlock__questionItem">
             <div className="FAQBlock__questionPart">
               <span className="FAQBlock__questionText">
-                 چطور می تونیم مبلغ و یا حوزه انتخابی رو تغییر بدم؟
+                چطور می تونیم مبلغ و یا حوزه انتخابی رو تغییر بدم؟
               </span>
               <FaChevronDown className="FAQBlock__questionIconDown" />
             </div>

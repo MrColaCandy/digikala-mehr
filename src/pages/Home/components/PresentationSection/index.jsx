@@ -36,37 +36,37 @@ function PresentationSection() {
 
         <div className="presentation__startPlanItems">
 
-          <div className="firstRow">
-            <div className="presentation__startPlanItem">
-              <div className="presentation__startPlanItemIconWrapper presentation__startPlanItemIconWrapper--login">
-                <BsPerson className="  presentation__startPlanItemIcon--login" />
-              </div>
-              <span className="presentation__startPlanItemText">وارد شو</span>
+
+          <div className="presentation__startPlanItem">
+            <div className="presentation__startPlanItemIconWrapper presentation__startPlanItemIconWrapper--login">
+              <BsPerson className="  presentation__startPlanItemIcon--login" />
             </div>
-            <div className="presentation__startPlanItem">
-              <div className="presentation__startPlanItemIconWrapper presentation__startPlanItemIconWrapper--project">
+            <span className="presentation__startPlanItemText">وارد شو</span>
+          </div>
+          <div className="presentation__startPlanItem">
+            <div className="presentation__startPlanItemIconWrapper presentation__startPlanItemIconWrapper--project">
               <BsClipboard2Check className="presentation__startPlanItemIcon--project" />
-              </div>
-              <span className="presentation__startPlanItemText">پروژه‌تو انتخاب کن</span>
             </div>
+            <span className="presentation__startPlanItemText">پروژه‌تو انتخاب کن</span>
           </div>
 
-          <div className="secondRow">
-            <div className="presentation__startPlanItem">
-              <div className="presentation__startPlanItemIconWrapper presentation__startPlanItemIconWrapper--money">
+
+
+          <div className="presentation__startPlanItem">
+            <div className="presentation__startPlanItemIconWrapper presentation__startPlanItemIconWrapper--money">
               <FaMoneyBill className="presentation__startPlanItemIcon--money" />
-              </div>
-              <span className="presentation__startPlanItemText">مبلغ رو تعیین کن</span>
             </div>
-            <div className="presentation__startPlanItem">
-              <div className="presentation__startPlanItemIconWrapper presentation__startPlanItemIconWrapper--withUs">
-              <FaRegCircleCheck className="presentation__startPlanItemIcon--withUs" />
-              </div>
-              <span className="presentation__startPlanItemText">بقیه‌ش با ما</span>
-            </div>
+            <span className="presentation__startPlanItemText">مبلغ رو تعیین کن</span>
           </div>
-
+          <div className="presentation__startPlanItem">
+            <div className="presentation__startPlanItemIconWrapper presentation__startPlanItemIconWrapper--withUs">
+              <FaRegCircleCheck className="presentation__startPlanItemIcon--withUs" />
+            </div>
+            <span className="presentation__startPlanItemText">بقیه‌ش با ما</span>
+          </div>
         </div>
+
+
         <button className="presentation__startPlanBtn">
           <span>برای شروع کلیک کن</span>
           <FaChevronLeft className="presentation__startPlanBtnIcon" />
