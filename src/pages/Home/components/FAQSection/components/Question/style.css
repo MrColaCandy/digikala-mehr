@@ -4,7 +4,6 @@
     border-bottom: 1px solid;
     border-image: linear-gradient(to right, transparent, #4FAE8B, transparent) 50;
     height:72px;
-    transition: height 150ms;
     background-color: white;
     position: relative;
     display: flex;
@@ -22,7 +21,7 @@
     border-bottom: 1px solid;
     border-image: linear-gradient(to right, transparent, #4FAE8B, transparent) 50;
     height: 200px;
-    transition: height 150ms;
+    transition: height 200ms;
     background-color: transparent;
     position: relative;
     display: flex;
@@ -63,8 +62,8 @@
 .question__answer--hide
 {  
     
-    transition:visibility, transform 200ms;
-    transform: translateY(1000%);
+    
+    transform: translateY(100%) scale(0.8);
     position: absolute;
     
 }
@@ -75,9 +74,9 @@
     line-height: var(--lineHeight-24);
     font-weight: 400;
     height: 200px;
-    width: 100%;
+    width: 95%;
     transition: transform 200ms;
-    transform: translateY(0) ;
+    transform: translateY(0) scale(1) ;
     position: relative;
 }
 
