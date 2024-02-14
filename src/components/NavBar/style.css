@@ -2,9 +2,11 @@
     width: 99%;
     padding: var(--space-16);
     background: var(--color-white);
+    box-shadow: 1px 2px 30px 0px #00000014;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .digiMehrLogoTitleWrapper {
@@ -18,7 +20,7 @@
     width: 32px;
     height: 30px;
     background: var(--color-primary);
-    border-radius: 2px 12px 12px 1px;
+    border-radius: 2px var(--borderRadius-12) var(--borderRadius-12) 1px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,10 +37,10 @@
 }
 
 .signInProfileBtn {
-    padding: 5px var(--space-16);
+    padding: 5px var(--padding-16);
     background: var(--color-white);
     border: 1px solid var(--color-N200);
-    border-radius: var(--space-8);
+    border-radius: var(--borderRadius-8);
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -59,8 +61,6 @@
 
 @media(max-width:390px) 
 {
-
-
     .navBar {
         width: 100%;
     }
@@ -72,7 +72,7 @@
     .digiMehrLogoWrapper__wrapperLogo {
         width: 25.86px;
         height: 24px;
-        border-radius: 2px 12px 12px 1px;
+        border-radius: 2px var(--borderRadius-12) var(--borderRadius-12) 1px;
     }
 
     .digiMehrLogoWrapper__insideLogo {
@@ -90,7 +90,4 @@
     .signInProfileBtn {
         display: none;
     }
-
-
-
 }

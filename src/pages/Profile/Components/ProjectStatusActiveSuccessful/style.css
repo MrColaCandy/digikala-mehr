@@ -1,0 +1,86 @@
+.partnerStatusProject__activeStatus--successful {
+    width: 100%;
+    height: 88px;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--borderRadius-8);
+}
+
+.currentProject--successful {
+    width: 100%;
+    height: 100%;
+    padding: var(--padding-16);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.currentProject__projectOrganData--successful {
+    width: 1055px;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--space-12);
+}
+
+.currentProject__oraganLogoImage--successful {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--borderRadius-10);
+}
+
+.currentProject__dataTexts--successful {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.currentProject__activeProjectName--successful {
+    width: 372px;
+    color: var(--color-N700);
+    font-size: var(--font-size-normal);
+    font-weight: 400;
+    line-height: var(--lineHeight-24);
+}
+
+.currentProject__activeOraganName--successful {
+    color: var(--color-textLight);
+    font-size: var(--font-size-tiny);
+    font-weight: 400;
+    line-height: var(--lineHeight-20);
+}
+
+.currentProject__changeBtns--successful {
+    padding: var(--padding-12) var(--padding-16);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-10);
+}
+
+
+.currentProject__editBtn,
+.currentProject__cancelBtn {
+    color: var(--color-primary);
+    font-size: var(--font-size-tiny);
+    line-height: var(--lineHeight-12);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.currentProject__cancelBtn {
+    position: relative;
+}
+
+.currentProject__cancelBtn::before {
+    content: ' ';
+    width: 1px;
+    height: 100%;
+    background: var(--color-primary);
+    position: absolute;
+    top: 0;
+    right: -50%;
+}

@@ -1,20 +1,21 @@
+
 import Container from "@components/Container";
+import NavBar from "@components/NavBar";
 import Header from "./components/Header";
-import Main from "./components/Main";
 import PresentationSection from "./components/PresentationSection";
 import PartnershipData from "./components/PartnershipData";
 import PartnerShipSection from "./components/PartnerShipSection";
 import PartnershipProjects from "./components/PartnershipProjects";
 import AboutPartnership from "./components/AboutPartnership";
 import FAQSection from "./components/FAQSection";
-import NavBar from "@components/NavBar";
+import "./style.css"
 
 function Home() {
   return (
-    <Container>
+    <div className="container-home">
       <NavBar />
       <Header />
-      <Main>
+      <main className="main-home">
         <PresentationSection />
         <PartnerShipSection>
           <PartnershipData />
@@ -22,8 +23,8 @@ function Home() {
           <AboutPartnership />
         </PartnerShipSection>
         <FAQSection />
-      </Main>
-    </Container>
+      </main>
+    </div>
   );
 }
 

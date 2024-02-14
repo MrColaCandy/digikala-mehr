@@ -1,0 +1,283 @@
+.container {
+    position: relative;
+}
+
+.main-pricing-plan-section {
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-header-div {
+    width: 100%;
+    height: 100%;
+    margin: var(--space-32) auto 0 auto;
+    display: grid;
+    justify-content: center;
+}
+
+.Pricing-Plan-Header {
+    height: 100%;
+    width: 100%;
+    max-width: 401px;
+    display: grid;
+    gap: var(--space-8);
+}
+
+.third-step, .header-content, .main-header-content {
+    text-align: center;
+}
+
+.main-header-content {
+    font-weight: 700;
+    line-height: 20px;
+}
+
+.third-step {
+    color: var(--color-textLight);
+    font-size: var(--font-size-tiny);
+}
+
+.header-content {
+    font-size: var(--font-size-huge);
+    font-weight: 600;
+}
+
+.header-content-span {
+    color: var(--color-primary);
+}
+
+.main-header-content {
+    line-height: 20px;
+    font-size: var(--font-size-xsmall);
+    color: var(--color-textLight);
+}
+
+.main-header-content-link {
+    font-weight: 700;
+    color: var(--color-primary);
+    cursor: pointer;
+}
+
+.main-price-section {
+    margin-top: var(--space-32);
+    width: 100%;
+    max-width: 442px;
+    display: grid;
+    gap: var(--space-24);
+}
+
+.pricing-plan-form {
+    display: grid;
+    gap: var(--space-12);
+    justify-content: center;
+}
+
+.main-price-section-label {
+    font-size: var(--font-size-normal);
+    font-weight: 700;
+}
+
+.price-section-body {
+    display: grid;
+    gap: var(--space-64);
+}
+
+.manual-gap {
+    display: grid;
+    gap: var(--space-12);
+}
+
+.price-input {
+    border: 1px solid var(--color-input);
+    border-radius: var(--space-8);
+    font-weight: 700;
+    width: 100%;
+    padding: 13px;
+
+}
+
+.price-input {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.toman-span {
+    position: absolute;
+    left: 15px;
+    top: var(--space-16);
+    font-weight: 400;
+    font-size: var(--font-size-tiny);
+    color: var(--color-primary);
+}
+
+.price-section {
+    position: relative;
+    display: grid;
+    gap: var(--space-4);
+}
+
+.price-detail {
+    font-weight: 400;
+    font-size: var(--font-size-tiny);
+    line-height: var(--space-16);
+    color: var(--color-primary);
+}
+
+.proposal-text {
+    display: grid;
+    gap: var(--space-12);
+}
+
+.proposal-text-content {
+    font-size: var(--font-size-small);
+    line-height: var(--space-32);
+    color: var(--color-textMid);
+    font-weight: 400;
+}
+
+
+.proposal-buttons {
+    background: var(--color-white);
+    position: relative;
+    border: 1px solid var(--color-input);
+    font-size: 14px;
+    color: var(--color-black);
+    border-radius: var(--space-4);
+    width: 95px;
+    padding: var(--space-8) var(--space-12) var(--space-8) var(--space-12);
+    max-height: 36px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.3s;
+}
+
+.proposal-buttons-span {
+    position: absolute;
+    left: 5px;
+    top: var(--space-12);
+    font-size: var(--space-10);
+    line-height: var(--space-16);
+    font-weight: 400;
+    color: var(--color-primary);
+}
+
+.proposal-buttons:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.proposal-buttons:hover .proposal-buttons-span {
+    color: var(--color-primaryLight);
+}
+
+.active-button {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.active-button span {
+    color: var(--color-primaryLight);
+}
+
+.highest-price {
+    width: 106px;
+}
+
+.main-pricing-footer {
+    display: grid;
+    gap: var(--space-16);
+}
+
+.pricing-footer-content {
+    background: linear-gradient(216.85deg, rgba(0, 177, 18, 0.05) 30.34%, rgba(0, 113, 162, 0.05) 96.4%);
+    width: 100%;
+    border-radius: var(--space-12);
+    padding: var(--space-12);
+    display: grid;
+    gap: var(--space-12);
+}
+
+.pricing-footer-content-text {
+    line-height: var(--space-16);
+    font-size: var(--font-size-tiny);
+    font-weight: 400;
+    color: var(--color-textLight);
+}
+
+.confirm-price-button {
+    width: 100%;
+    text-align: center;
+    padding: var(--space-12) 155.33px var(--space-12) 154.67px;
+    max-height: 48px;
+    border-radius: var(--space-8);
+    background-color: var(--color-primary);
+    font-weight: 700;
+    font-size: var(--font-size-small);
+    line-height: var(--space-24);
+    color: var(--color-white);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.main-proposal-buttons :nth-child(2) , :nth-child(3) , :nth-child(4) {
+    margin-right: var(--space-8);
+}
+.main-proposal-buttons :nth-child(4) {
+    width: 105px;
+}
+
+.confirm-price-button:hover {
+    background-color: #01c79c;
+}
+
+@media only screen and (max-width: 330px) {
+    .fourth-button {
+        margin-right: 0;
+        margin-top: var(--space-4);
+    }
+
+    .main-price-section {
+        max-width: 328px;
+    }
+
+    .Pricing-Plan-Header {
+        max-width: 328px;
+    }
+
+    .confirm-price-button {
+        max-width: 328px;
+    }
+
+    .pricing-footer-content {
+        max-width: 328px;
+    }
+
+    .price-input {
+        max-width: 328px;
+    }
+}
+
+@media only screen and (max-width: 422px) {
+    .Pricing-Plan-Header {
+        max-width: 328px;
+    }
+    .proposal-buttons {
+        font-size: var(--font-size-tiny);
+        width: 89px;
+    }
+    .proposal-buttons-span {
+        left: var(--space-8);
+        top: var(--space-10);
+    }
+    .main-proposal-buttons :nth-child(4) {
+        margin-right: 0;
+        width: 98px;
+        margin-top: var(--space-4);
+    }
+
+    .main-price-section {
+        max-width: 328px;
+    }
+}

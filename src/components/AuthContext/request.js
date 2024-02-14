@@ -3,11 +3,11 @@ export function getCode(phone) {
     return new Promise((resolve, reject) => {
         if (phone) {
             setTimeout(() => {
-                resolve("here your fake code: 123456");
+                resolve("123456");
             }, 2000);
         }
         else {
-            reject(new Error("can't send you a fake code!"))
+            reject(new Error("ارسال کد ناموفق بود!"))
         }
     })
 }
@@ -22,7 +22,21 @@ export function validateCode(phone, code) {
             }, 2000);
         }
         else {
-            reject(new Error("code is not valid!"))
+            reject(new Error("کد ارسالی نامعتبر است!"))
+        }
+    })
+}
+
+export function validateToken(token){
+     // mocking response
+     return new Promise((resolve, reject) => {
+        if (token!=null) {
+            setTimeout(() => {
+                resolve(true);
+            }, 500);
+        }
+        else {
+            reject(new Error("Token is Invalid!"))
         }
     })
 }

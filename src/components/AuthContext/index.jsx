@@ -1,7 +1,7 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { parse,serialize } from "cookie";
 import { context } from "./context";
-import { getCode,validateCode } from "./request"
+import { getCode,validateCode, validateToken } from "./request"
 
 // Define the AuthContext component, which will provide the authentication context
 
@@ -18,7 +18,27 @@ function AuthContext({ children }) {
     const [isLoggedIn,setIsLoggedIn]=useState(false);
     const [token,setToken]=useState(parse(document.cookie).token || null)
  
-    
+    useEffect(()=>{
+      async function postToken()
+      {
+        try {
+            const isValid=await validateToken(token);
+            setIsLoggedIn(isValid);
+            setUser({
+                name:"Mahmood",
+                lastName:"Khodadady",
+                email:"MahmoodKhodadady10@gmail.com",
+                token:token,
+                
+            })
+            setIsLoggedIn(true);
+        } catch (error) {
+            logout();
+            console.log("Token is not valid!");
+        }
+      }
+      postToken();
+    },[])
    
     async function sendOTPCode(phone) {
         try {
@@ -27,6 +47,7 @@ function AuthContext({ children }) {
             return code;
         } catch (error) {
             console.log("Failed to send OTP code!. Error: ", error.message)
+            throw error;
         }
     }
 
@@ -39,8 +60,10 @@ function AuthContext({ children }) {
             document.cookie=serialize("token",token);
             setUser(fakeUser)
             setIsLoggedIn(true);
+            return token;
         } catch (error) {
             console.log("Failed to validate code . Error", error.message)
+            throw error;
         }
     }
     function logout()

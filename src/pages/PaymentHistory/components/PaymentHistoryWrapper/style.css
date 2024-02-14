@@ -1,0 +1,371 @@
+.historyOfAllPayments {
+    width: 100%;
+    width: 1248px;
+    background: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.historyOfAllPayments__header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--space-10);
+}
+
+.historyOfAllPayments__headerGoBackLink {
+    color: var(--color-primary);
+    font-size: var(--font-size-small);
+    line-height: var(--lineHeight-20);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.historyOfAllPayments__headerTitleWrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--space-8);
+}
+
+.historyOfAllPayments__headerTitleIcon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.historyOfAllPayments__headerTitleText {
+    color: var(--color-textDark);
+    font-size: var(--font-size-xlarge);
+    line-height: var(--lineHeight-32);
+    font-weight: 400;
+}
+
+.historyOfAllPayments__headerDateSort {
+    color: var(--color-textLight);
+    font-size: var(--font-size-tiny);
+    line-height: var(--lineHeight-24);
+    font-weight: 400;
+}
+
+.allPaymentsListWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.allPaymentsHeader {
+    width: 100%;
+    height: 32px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.allPaymentsHeader__dateTitle,
+.allPaymentsHeader__statusTitle,
+.allPaymentsHeader__projectTitle,
+.allPaymentsHeader__costTitle {
+    height: 100%;
+    padding: 6px var(--space-16);
+    color: var(--color-textMid);
+    font-size: var(--font-size-tiny);
+    line-height: var(--lineHeight-20);
+    font-weight: 400;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.allPaymentsHeader__dateTitle,
+.allPaymentsHeader__statusTitle {
+    width: 132px;
+}
+
+.allPaymentsHeader__projectTitle {
+    flex: 1;
+}
+
+.allPaymentsHeader__costTitle {
+    width: 100px;
+}
+
+.allPaymentsList {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: var(--space-10);
+}
+
+.allPaymentsList__projectItem {
+    width: 100%;
+    height: 56px;
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.allPaymentsList__projectItem:last-of-type {
+    border: none;
+    position: relative;
+}
+
+.allPaymentsList__projectItem:last-of-type::after {
+    content: ' ';
+    width: 1232px;
+    height: 1px;
+    background: var(--color-border);
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+}
+
+.allPaymentsList__itemDate,
+.allPaymentsList__itemStatus,
+.allPaymentsList__itemProjectName,
+.allPaymentsList__itemCost {
+    height: 100%;
+    padding: 6px var(--space-16);
+    color: var(--color-textMid);
+    font-size: var(--font-size-tiny);
+    line-height: var(--lineHeight-20);
+    font-weight: 400;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.allPaymentsList__itemDate,
+.allPaymentsList__itemStatus {
+    width: 132px;
+}
+
+.allPaymentsList__itemStatus--nextPayment {
+    color: var(--color-purpleDark);
+}
+
+.allPaymentsList__itemStatus--successful {
+    color: var(--color-primary);
+    gap: var(--space-4);
+}
+
+.allPaymentsList__itemStatus--checkIcon {
+    width: 10.75px;
+    height: 10.75px;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.allPaymentsList__itemProjectName {
+    flex: 1;
+}
+
+.allPaymentsList__itemCost {
+    width: 100px;
+    gap: 2px;
+}
+
+.allPaymentsList__itemCost--dynamicNumberCost {
+    color: var(--color-textDark);
+}
+
+.allPaymentsList__itemCost--staticTomanText {
+    color: var(--color-textLight);
+    font-size: var(--font-size-xxtiny);
+    line-height: var(--lineHeight-12);
+}
+
+.allPaymentsSlidePagination {
+    width: 1232px;
+    height: 57px;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.allPaymentsSlidePagination__perviousBtn,
+.allPaymentsSlidePagination__nextBtn {
+    width: 85px;
+    height: 36px;
+    color: var(--color-primary);
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-8);
+}
+
+.allPaymentsSlidePagination__perviousBtn i,
+.allPaymentsSlidePagination__nextBtn i {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.allPaymentsSlidePagination__pagesNumbers {
+    max-width: 380px;
+    height: 36px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.allPaymentsSlidePagination__pagesNumbersItem {
+    width: 36px;
+    height: 36px;
+    color: var(--color-N700);
+    font-size: var(--font-size-tiny);
+    line-height: calc(var(--lineHeight-16) + var(--lineHeight-10));
+    font-style: normal;
+    font-weight: 700;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.allPaymentsSlidePagination__pagesNumbersItem--selected {
+    color: var(--color-white);
+    background: var(--color-primary);
+    border: 1px solid var(--color-primary);
+}
+
+.allPaymentsSlidePagination__pagesNumbersItem:hover {
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+}
+
+.allPaymentsSlidePagination__pagesNumbersItem--selected:hover {
+    color: var(--color-white);
+}
+
+.allPaymentsSlidePagination__morePageItem {
+    width: 20px;
+    height: 26px;
+    color: var(--color-N700);
+    font-size: var(--font-size-tiny);
+    font-weight: 600;
+    line-height: calc(var(--lineHeight-16) + var(--lineHeight-10));
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media(max-width:320px) {
+    .historyOfAllPayments {
+        width: calc(100% - (2* var(--space-16)));
+        padding: 0;
+        border-radius: 0;
+        border: none; 
+    }
+
+    .allPaymentsHeader {
+        display: none;
+    }
+
+    .historyOfAllPayments__headerTitleIcon {
+        width: 20px;
+        height: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .historyOfAllPayments__headerTitleText {
+        font-size: var(--font-size-normal);
+    }
+
+    .allPaymentsList {
+        max-height: 1150px;
+        gap: var(--space-16);
+        overflow: scroll;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    
+    .allPaymentsList::-webkit-scrollbar {
+        display: none;
+    }
+
+    .allPaymentsList__projectItem {
+        padding: var(--space-10) var(--space-12);
+        min-height: 112px;
+        border: 1px solid var(--color-border);
+        border-radius: var(--space-8);
+        position: relative;
+    }
+
+    .allPaymentsList__itemDate {
+        width: calc(100% - (2 * var(--space-12)));
+        height: 20px;
+        padding: 0;
+        font-size: var(--font-size-small);
+        font-weight: 700;
+        position: absolute;
+        top: 10px;
+        right: 12px;
+    }
+
+    .allPaymentsList__itemProjectName {
+        width: calc(100% - (2 * var(--space-12)));
+
+        height: 20px;
+        padding: 0;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 12px;
+    }
+
+    .allPaymentsList__itemStatus {
+        width: fit-content;
+        height: 20px;
+        padding: 0;
+        position: absolute;
+        right: 12px;
+        bottom: 10px;
+    }
+
+    .allPaymentsList__itemCost {
+        width: fit-content;
+        height: 20px;
+        padding: 0;
+        position: absolute;
+        left: 12px;
+        bottom: 10px;
+        gap: 2px;
+    }
+
+    .allPaymentsSlidePagination,
+    .allPaymentsList__projectItem:last-of-type::after {
+        display: none;
+    }
+
+    .allPaymentsList__projectItem:last-of-type {
+        border: 1px solid var(--color-border);
+    }
+}
