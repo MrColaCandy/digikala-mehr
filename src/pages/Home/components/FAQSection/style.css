@@ -44,11 +44,7 @@
 .FAQ__questionsWrapper {
     width: 99vw;
     max-width: 800px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: var(--space-12);
+    height: auto;
 }
 
 .FAQ__questionItem {

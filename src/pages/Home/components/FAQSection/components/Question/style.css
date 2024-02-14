@@ -1,43 +1,93 @@
-.FAQ__questionItem {
+.question--noAnswer {
     width: 99vw;
     max-width: 800px;
-    padding: var(--padding-8) var(--padding-12);
     border-bottom: 1px solid;
     border-image: linear-gradient(to right, transparent, #4FAE8B, transparent) 50;
+    height:72px;
+    transition: height 150ms;
+    background-color: white;
+    position: relative;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-}
+    position: relative;
+    overflow-y: hidden;
+    
 
-.FAQ__questionPart {
-    width: 95vw;
-    max-width: 776px;
-    padding: var(--padding-16) 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: var(--space-8);
 }
-
-.FAQ__questionText {
-    max-width: 744px;
+.question--answer {
     width: 99vw;
+    max-width: 800px;
+    border-bottom: 1px solid;
+    border-image: linear-gradient(to right, transparent, #4FAE8B, transparent) 50;
+    height: 200px;
+    transition: height 150ms;
+    background-color: transparent;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: white;
+    overflow-y: hidden;
+    
+
+}
+
+.question__text {
+    width: 99%;
     color: var(--color-textHeading);
     font-size: var(--font-size-normal);
     line-height: var(--lineHeight-24);
     font-weight: 400;
     text-align: right;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    position: relative;
+    padding: 0 var(--space-16);
+    min-height: 100px;
 }
 
-.FAQ__questionIconDown {
+.question__icon {
     color: var(--color-N700);
     font-size: var(--font-size-xtiny);
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.question__answer--hide
+{  
+    
+    transition:visibility, transform 200ms;
+    transform: translateY(1000%);
+    position: absolute;
+    
+}
+.question__answer--show
+{
+    color: var(--color-textLight);
+    font-size: var(--font-size-normal);
+    line-height: var(--lineHeight-24);
+    font-weight: 400;
+    height: 200px;
+    width: 100%;
+    transition: transform 200ms;
+    transform: translateY(0) ;
+    position: relative;
+}
+
+@media screen and (max-width: 390px) {
+    .question--noAnswer
+    {
+        height: 95px;
+    }
+    .question--answer
+    {
+        height: 300px;
+    }
 }
