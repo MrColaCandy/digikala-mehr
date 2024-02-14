@@ -1,12 +1,10 @@
-import NavBar from "@components/NavBar"
-import Container from "@components/Container"
-import ChoosePlaneSlider from "./ChoosePlanSlider"
-import ChoosePlanCard from "./ChoosePlanCard"
-import projectsData from "./data/projects.json"
-import ChoosePlaneHeader from "./choosePlanHeader"
-
-import "./style.css"
 import { useEffect, useState } from "react"
+import Layout from "@components/Layout"
+import ChoosePlaneSlider from "./components/ChoosePlanSlider"
+import ChoosePlanCard from "./components/ChoosePlanCard"
+import projectsData from "./data/projects.json"
+import ChoosePlaneHeader from "./components/choosePlanHeader"
+import "./style.css"
 
 
 
@@ -20,8 +18,7 @@ const ChoosePlan = () => {
    })
   },[])
   return (
-    <Container>
-      <NavBar />
+    <Layout>
       <ChoosePlaneHeader />
       <ChoosePlaneSlider gap={32} totalSlides={projectsData.length} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide}>
         {
@@ -48,7 +45,7 @@ const ChoosePlan = () => {
           {projectsData.length}
         </div>
       }
-    </Container>
+    </Layout>
   )
 }
 

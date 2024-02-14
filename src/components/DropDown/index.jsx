@@ -3,7 +3,7 @@ import {FaRegUser, FaSortDown} from 'react-icons/fa';
 import {IoExitOutline} from "react-icons/io5";
 import {PiClipboardTextThin} from "react-icons/pi";
 import Toman from "@assets/icons/Toman.svg"
-import './DropDown.css';
+import './style.css';
 import { useAuth } from '@components/AuthContext/context';
 
 

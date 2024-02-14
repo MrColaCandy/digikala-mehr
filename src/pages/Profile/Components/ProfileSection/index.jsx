@@ -5,18 +5,18 @@ import './style.css'
 
 function ProfileSection() {
     return (
-        <section class="partnerProfileData">
-        <section class="partnerPersonalData">
-          <img class="partnerPersonalData__partnerAvatar partnerPersonalData__partnerAvatar--notLoggedIn"
+        <section className="partnerProfileData">
+        <section className="partnerPersonalData">
+          <img className="partnerPersonalData__partnerAvatar partnerPersonalData__partnerAvatar--notLoggedIn"
             src={emptyProfile}alt="partnerAvatarNotSignUp" />
-          <img class="partnerPersonalData__partnerAvatar partnerPersonalData__partnerAvatar--LoggedIn"
+          <img className="partnerPersonalData__partnerAvatar partnerPersonalData__partnerAvatar--LoggedIn"
             src={userAvatar} alt="partnerAvatarSignUp" />
-          <section class="partnerPersonalDataWrapper">
-            <span class="partnerPersonalData__partnerName">سارا کمالی</span>
-            <span class="partnerPersonalData__partnerTelNumber">۰۹۲۱۶۴۲۲۹۵۳</span>
+          <section className="partnerPersonalDataWrapper">
+            <span className="partnerPersonalData__partnerName">سارا کمالی</span>
+            <span className="partnerPersonalData__partnerTelNumber">۰۹۲۱۶۴۲۲۹۵۳</span>
           </section>
         </section>
-        <a href="#" class="partnerPersonalData__editBtn">ویرایش اطلاعات شخصی</a>
+        <a href="#" className="partnerPersonalData__editBtn">ویرایش اطلاعات شخصی</a>
       </section>
     )
 }

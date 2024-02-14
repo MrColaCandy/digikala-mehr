@@ -1,4 +1,4 @@
-.navBar {
+.header {
     width: 99%;
     padding: var(--space-16);
     background: var(--color-white);
@@ -61,7 +61,7 @@
 
 @media(max-width:390px) 
 {
-    .navBar {
+    .header {
         width: 100%;
     }
 

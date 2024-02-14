@@ -1,4 +1,4 @@
-import { home, login, profile, paymenthistory, pricing,choosPlan } from "./route-paths";
+import { home, login, profile, paymentHistory, pricing,choosePlan } from "./route-paths";
 import Home from "@pages/Home";
 import Login from "@pages/Login";
 import ChoosePlan from "@pages/ChoosePlan";
@@ -24,7 +24,7 @@ export const routes = [
     element: <Profile />,
   },
   {
-    path: paymenthistory,
+    path: paymentHistory,
     element: <PaymentHistory />,
   },
   {

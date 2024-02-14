@@ -3,10 +3,10 @@ import FillInside_digiMehr_logo_i from "@assets/decorations/FillInside_digiMehr_
 import Digikala_Mehr_Branding from "@assets/decorations/Digikala_Mehr_Branding.svg";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../AuthContext/context";
-import DropDown from "../DropDown/DropDown";
+import { useAuth } from "@components/AuthContext/context";
+import DropDown from "@components/DropDown";
 
-function NavBar() {
+function Header() {
   const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
   function handleSignInButtonClick() {
@@ -24,7 +24,7 @@ function NavBar() {
     );
   }
   return (
-    <nav className="navBar">
+    <nav className="header">
       <div className=" digiMehrLogoTitleWrapper">
         <div className="digiMehrLogoWrapper__wrapperLogo">
           <img
@@ -45,4 +45,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default Header;

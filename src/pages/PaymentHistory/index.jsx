@@ -1,16 +1,13 @@
-import NavBar from "@components/NavBar";
 import PaymentHistoryWrapper from "./components/PaymentHistoryWrapper"
 import "./style.css"
+import Layout from "@components/Layout";
 
 function PaymentHistory() {
   return (
-    <div className="container-paymentHistory">
-      <NavBar />
-      <main className="">
-        <PaymentHistoryWrapper/>
-      </main>
-    </div>
+    <Layout>
+        <PaymentHistoryWrapper />
+    </Layout>
   );
 }
 
- export default PaymentHistory ;
+export default PaymentHistory;
