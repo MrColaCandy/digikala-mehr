@@ -1,4 +1,4 @@
-.FAQBlock {
+.FAQ {
     width: 99vw;
     max-width: 800px;
     display: flex;
@@ -8,7 +8,7 @@
     gap: var(--space-40);
 }
 
-.FAQBlock__header {
+.FAQ__header {
     width: 99vw;
     max-width: 127px;
     background: var(--color-white);
@@ -19,7 +19,7 @@
     gap: var(--space-8);
 }
 
-.FAQBlock__iconWrapper{
+.FAQ__iconWrapper{
     width: 56px;
     height: 56px;
     background: #00B1890D;
@@ -29,19 +29,19 @@
     align-items: center;
 }
 
-.FAQBlock__icon {
+.FAQ__icon {
     color: var(--color-primary);
     font-size: var(--font-size-xlarge);
 }
 
-.FAQBlock__title {
+.FAQ__title {
     color: var(--color-textHeading);
     font-size: var(--font-size-xlarge);
     line-height: var(--lineHeight-32);
     font-weight: 400;
 }
 
-.FAQBlock__questionsWrapper {
+.FAQ__questionsWrapper {
     width: 99vw;
     max-width: 800px;
     display: flex;
@@ -51,7 +51,7 @@
     gap: var(--space-12);
 }
 
-.FAQBlock__questionItem {
+.FAQ__questionItem {
     width: 99vw;
     max-width: 800px;
     padding: var(--padding-8) var(--padding-12);
@@ -62,7 +62,7 @@
     align-items: center;
 }
 
-.FAQBlock__questionPart {
+.FAQ__questionPart {
     width: 95vw;
     max-width: 776px;
     padding: var(--padding-16) 0;
@@ -72,7 +72,7 @@
     gap: var(--space-8);
 }
 
-.FAQBlock__questionText {
+.FAQ__questionText {
     max-width: 744px;
     width: 99vw;
     color: var(--color-textHeading);
@@ -86,7 +86,7 @@
     align-items: flex-start;
 }
 
-.FAQBlock__questionIconDown {
+.FAQ__questionIconDown {
     color: var(--color-N700);
     font-size: var(--font-size-xtiny);
     cursor: pointer;
@@ -96,21 +96,21 @@
 }
 
 @media(max-width:390px){
-    .FAQBlock {
+    .FAQ {
         width: 100%;
     }
 
-    .FAQBlock__questionsWrapper {
+    .FAQ__questionsWrapper {
         width: 100%;
     }
 
-    .FAQBlock__questionItem {
+    .FAQ__questionItem {
         width: 100%;
     }
 
     
 
-    .FAQBlock__questionText {
+    .FAQ__questionText {
         width: 99vw;
         max-width: 294px;
         font-size: var(--font-size-small);

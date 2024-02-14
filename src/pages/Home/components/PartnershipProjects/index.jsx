@@ -4,15 +4,15 @@ import ProjectSlider from "@components/ProjectSlider";
 
 function PartnershipProjects() {
   return (
-    <section className="partnershipBlock__projects">
-      <section className="partnershipBlock__projectsHeader">
-        <h3 className="partnershipBlock__projectsTitle">حالا چه پروژه‌هایی؟</h3>
-        <h4 className="partnershipBlock__projectsDescription">پروژه‌هایی که تو این فاز منتظر کمک شما هستن</h4>
+    <section className="partnershipProjects">
+      <section className="partnershipProjects__header">
+        <h3 className="partnershipProjects__title">حالا چه پروژه‌هایی؟</h3>
+        <h4 className="partnershipProjects__bodyText">پروژه‌هایی که تو این فاز منتظر کمک شما هستن</h4>
       </section>
       <ProjectSlider/>
-      <button className="partnershipBlock__startProjectBtn">
+      <button className="partnershipProjects__button">
         <span>برای شروع کلیک کن</span>
-        <FaChevronLeft className="partnershipBlock__startProjectBtnIcon" />
+        <FaChevronLeft className="partnershipProjects__icon" />
       </button>
     </section>
   )
