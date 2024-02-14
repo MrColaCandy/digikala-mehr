@@ -16,6 +16,8 @@
     justify-content: center;
     align-items: center;
     gap: var(--space-10);
+    width: 85vw;
+    max-width: 173px;
 }
 
 .digiMehrLogoWrapper__wrapperLogo {
@@ -63,9 +65,7 @@
 
 @media(max-width:390px) 
 {
-    .header {
-        width: 100%;
-    }
+   
 
     .digiMehrLogoTitleWrapper {
         position: relative;
@@ -83,7 +83,8 @@
     }
 
     .digiMehrLogoWrapper__titleName {
-        width: 131.58px;
+        width: 85vw;
+        max-width: 131.58px;
         height: 16.94px;
         position: relative;
         left: 15px;

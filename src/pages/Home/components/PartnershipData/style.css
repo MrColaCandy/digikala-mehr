@@ -1,4 +1,4 @@
-.partnershipBlock__data {
+.partnershipData {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -7,7 +7,7 @@
     gap: var(--space-48);
 }
 
-.partnershipBlock__title {
+.partnershipData__title {
     width: 100%;
     color: var(--color-white);
     font-size: var(--font-size-xhuge);
@@ -17,21 +17,22 @@
     letter-spacing: -0.5px;
 }
 
-.partnershipBlock__dataBox {
+.partnershipData__dataBox {
     position: relative;
     width: 99vw;
     max-width: 600px;
-    height: 139px;
+    height: auto;
     padding: var(--padding-12) var(--padding-24);
     background: var(--color-primaryDark);
     border-radius: var(--borderRadius-12);
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
     gap: var(--space-40);
 }
 
-.partnershipBlock__dataBox::after {
+.partnershipData__dataBox::after {
     content: ' ';
     width: 1px;
     height: 92px;
@@ -42,7 +43,7 @@
     transform: translate(50%, -50%);
 }
 
-.partnershipBlock__membersNumber {
+.partnershipData__membersNumber {
     width: 99vw;
     max-width: 236px;
     height: 92px;
@@ -60,7 +61,7 @@
     gap: var(--space-12);
 }
 
-.partnershipBlock__staticMembersDescription--smallFont {
+.partnershipData__staticMembersDescription--smallFont {
     height: var(--space-24);
     font-size: var(--font-size-small);
     line-height: var(--lineHeight-24);
@@ -68,8 +69,8 @@
     text-align: right;
 }
 
-.partnershipBlock__lastMembers {
-    width: 99vw;
+.partnershipData__lastMembers {
+    width: 100vw;
     max-width: 236px;
     height: 112px;
     padding: var(--padding-12);
@@ -82,15 +83,15 @@
     gap: var(--space-12)
 }
 
-.partnershipBlock__lastMembers {
+.partnershipData__lastMembers {
     color: var(--color-primaryLight);
     font-size: var(--font-size-small);
     line-height: var(--lineHeight-24);
     text-align: right;
 }
 
-.partnershipBlock__lastTwinMembers {
-    width: 99vw;
+.partnershipData__lastTwinMembers {
+    width: 90vw;
     max-width: 212px;
     height: 52px;
     display: flex;
@@ -99,17 +100,17 @@
     align-items: flex-start;
 }
 
-.partnershipBlock__lastMembersWrapper {
+.partnershipData__lastMembersWrapper {
     display: flex;
     gap: var(--space-8);
 }
 
-.partnershipBlock__lastMembersIcon {
+.partnershipData__lastMembersIcon {
     width: 20px;
     height: 20px;
 }
 
-.partnershipBlock__lastMembersName {
+.partnershipData__lastMembersName {
     color: var(--color-white);
     font-size: var(--font-size-small);
     line-height: var(--lineHeight-20);
