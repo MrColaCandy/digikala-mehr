@@ -1,6 +1,6 @@
 .navBar {
-    width: 100%;
-    padding: var(--padding-16);
+    width: 99%;
+    padding: var(--space-16);
     background: var(--color-white);
     box-shadow: 1px 2px 30px 0px #00000014;
     display: flex;

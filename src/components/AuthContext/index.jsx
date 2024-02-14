@@ -4,6 +4,15 @@ import { context } from "./context";
 import { getCode,validateCode, validateToken } from "./request"
 
 // Define the AuthContext component, which will provide the authentication context
+
+
+// mocking user data from response
+const fakeUser={
+    name:"Mahmood",
+    lastName:"khodadady",
+    phone:"09930151706",
+    currentProject:null
+}
 function AuthContext({ children }) {
     const [user,setUser]=useState(null);
     const [isLoggedIn,setIsLoggedIn]=useState(false);
@@ -49,13 +58,7 @@ function AuthContext({ children }) {
             console.log("This code is valid.");
             setToken(token);
             document.cookie=serialize("token",token);
-            setUser({
-                name:"Mahmood",
-                lastName:"Khodadady",
-                email:"MahmoodKhodadady10@gmail.com",
-                token:token,
-                phone:phone,
-            })
+            setUser(fakeUser)
             setIsLoggedIn(true);
             return token;
         } catch (error) {

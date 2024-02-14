@@ -166,8 +166,7 @@ select {
   vertical-align: middle;
 }
 
-body{
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+html,body,#root
+{
+  width: 100%;
 }
