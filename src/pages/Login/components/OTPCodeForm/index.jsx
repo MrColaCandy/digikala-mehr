@@ -62,34 +62,32 @@ function OTPCodeForm({ phone }) {
 
     }
     return (
-        <form onSubmit={handleConfirmSubmit} className="sendCode">
-            <img src={digikalaMehrLogo} className="img" />
-            <div className="sendCode__information">
-                <div className="sendCode__paragraph">
+        <form onSubmit={handleConfirmSubmit} className='login__form'>
+            <img src={digikalaMehrLogo} className="login__image" />
+          
+                <div className="login__header">
                     <p className="paragraph greeting">دلارام عزیز سلام، برای شروع</p>
-                    <h2 className="title">رمز یک‌بار‌مصرفی که برات ارسال شد را وارد کن</h2>
+                    <h2 className="login__title">رمز یک‌بار‌مصرفی که برات ارسال شد را وارد کن</h2>
+                    <p className="login__paragraph">کد تایید برای شماره {phone} ارسال شد.</p>
                 </div>
-                <p className="paragraph">کد تایید برای شماره {phone} ارسال شد.</p>
-                <div className="sendCode__entrance">
-                    <div className='inputGroup'>
-                        <input autoFocus onBlur={(e) => validate(e.target.value)} ref={inputRef} value={code} onChange={handleCodeInputChange} name='OTPCode' type="text" className="input" />
-                        {error && <p className="addPhoneNumber__Error">{error}</p>}
-                    </div>
-                    <div className="sendCode__entranceDetails">
-                        <div className='resend-code'>{seconds} : {minutes} مانده تا دریافت مجدد کد</div>
-                        <button disabled={isLoading} className="btn">
-                            {
-                                isLoading &&
-                                <div className='loader'></div>
-                            }
-                            {
-                                !isLoading &&
-                                <div>ورود</div>
-                            }
-                        </button>
-                    </div>
+                
+
+                <div className='login__input'>
+                    <input autoFocus onBlur={(e) => validate(e.target.value)} ref={inputRef} value={code} onChange={handleCodeInputChange} name='OTPCode' type="text" className="login__inputController" />
+                    {error && <p className="login__error">{error}</p>}
                 </div>
-            </div>
+                <div className='resend-code'>{seconds} : {minutes} مانده تا دریافت مجدد کد</div>
+                <button disabled={isLoading} className="login__button">
+                    {
+                        isLoading &&
+                        <div className='loader'></div>
+                    }
+                    {
+                        !isLoading &&
+                        <div>ورود</div>
+                    }
+                </button>
+
         </form>
     );
 }

@@ -5,8 +5,9 @@
     justify-content: center;
 }
 
-.img {
-    width: 334px;
+.login__image {
+    width: 100%;
+    max-width: 334px;
     height: 40px;
     display: flex;
     align-items: center;
@@ -14,28 +15,30 @@
     gap: var(--space-10);
 }
 
-.title {
-    font-size: var(--font-size-xlarge);
+.login__title {
+    font-size: var(--font-size-large);
     font-weight: 700;
     line-height: 32px;
     color: var(--color-darkBlue);
 }
 
-.input {
-    width: 334px;
+.login__inputController {
+
+    width: 100%;
+    max-width: 334px;
     height: 48px;
     border-radius: 8px;
     border: 1px solid var(--color-red);
 }
 
-.btn {
-    width: 334px;
+.login__button {
+    width: 100%;
+    max-width: 334px;
     height: 48px;
     cursor: pointer;
     font-size: var(--font-size-small);
     font-weight: 700;
     line-height: 24px;
-    padding: 12px 155px;
     border-radius: 8px;
     background-color: var(--color-primary);
     color: var(--color-white);
@@ -46,31 +49,32 @@
     justify-content: center;
     align-items: center;
 }
-.btn:disabled
+.login__button:disabled
 {
-    background-color: #00b1888a;
+    background-color: #00b18857;
 }
-.paragraph--color {
+.login__paragraphBlue {
     color: var(--color-loginSignUp1);
     cursor: pointer;
 }
 
-.addPhoneNumber {
+.login__form {
     display: flex;
     direction: rtl;
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     height: 450px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: var(--padding-32) 30px;
     border-radius: var(--borderRadius-8);
     border: 1px solid var(--color-border);
-    gap: var(--space-20);
+    gap: var(--space-8);
 }
 
 .addPhoneNumber__information {
-    width: 335px;
+    width: 100%;
+    max-width: 335px;
     height: 290px;
     display: flex;
     flex-direction: column;
@@ -85,10 +89,10 @@
 }
 
 .addPhoneNumber__paragraph,
-.paragraph {
+.login__paragraph{
     font-size: var(--font-size-tiny);
     font-weight: 400;
-    line-height: 16px;
+    line-height: var(--space-24);
     color: var(--color-loginSignUpText);
 }
 
@@ -106,20 +110,30 @@
 
 
 
-.addPhoneNumber__Error {
+.login__error {
     font-size: var(--font-size-tiny);
     font-weight: 400;
     line-height: var(--lineHeight-16);
     color: var(--color-red);
-    margin-top: var(--space-10);
-    margin-bottom: var(--space-24);
-    height: 50px;
+    margin-top: var(--space-4);
+    height: 16px;
+    width: 100%;
+    max-width: 332px
+  
    
 }
-
-.sendCode {
+.login__header{
+    width: 100%;
+    max-width: 332px;
     display: flex;
-    width: 400px;
+    flex-direction: column;
+    gap: var(--space-24);
+}
+
+.login__code {
+    display: flex;
+    width: 100%;
+    max-width: 400px;
     height: 450px;
     direction: rtl;
     flex-direction: column;
@@ -131,7 +145,8 @@
 }
 
 .sendCode__information {
-    width: 335px;
+    width: 100%;
+    max-width: 335px;
     height: 280px;
     display: flex;
     flex-direction: column;
@@ -145,8 +160,15 @@
     gap: var(--space-8);
 }
 
-.inputGroup{
-    height: 85px;
+.login__input{
+    height: 70px;
+    width: 100%;
+    max-width: 332px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: right;
 }
 
 .sendCode__entranceDetails {
@@ -156,67 +178,25 @@
     gap: var(--space-24);
 }
 
-.errorPhoneNumber {
+.loginCatError {
     display: flex;
-    width: 321px;
-    height: 458px;
+    width: 100%;
+    max-width: 321px;
     direction: rtl;
-    margin: 130px 0;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-64);
+    gap: var(--space-16);
+    
 }
 
-.errorPhoneNumber__btn {
-    width: 300px;
-    height: 50px;
-    padding: var(--padding-12) 155px;
-    cursor: pointer;
-    border-radius: var(--borderRadius-8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    border: 1px solid var(--color-primary);
-}
 
-.errorPhoneNumber__btn--word {
-    width: 104px;
-    height: 24px;
-    display: inline-block;
-    font-size: var(--font-size-small);
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 24px;
-}
 
-.errorPhoneNumber__information {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: var(--space-32);
-}
 
-.errorPhoneNumber__paragraph {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-12);
-}
 
-.errorPhoneNumber__img {
-    width: 192px;
-    height: 226px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
+
+
+
 
 .resend-code {
     color: var(--color-loginSignUpText);
