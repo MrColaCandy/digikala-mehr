@@ -4,23 +4,26 @@ import './style.css';
 
 
 
-const ChoosePlaneSlider = ({ scrollBehavior = "smooth", children, gap, currentSlide, setCurrentSlide }) => {
+const Slider = ({ viewPortWidth = 800, scrollBehavior = "smooth", children = null, gap }) => {
     const containerRef = useRef(null);
     const previousButton = useRef(null);
     const nextButton = useRef(null);
-    const [width, setWidth] = useState(0);
     const [height, setHeight] = useState(0);
+    const [currentScroll, setCurrentScroll] = useState(0);
 
 
 
     function updateSlideDimensions() {
-        const { width, height } = containerRef.current.querySelector("#slide").getBoundingClientRect()
-        setWidth(width);
+        if (children === null) return;
+        const { height } = containerRef.current.querySelector("#slide").getBoundingClientRect()
         setHeight(height);
     }
 
-
     useEffect(() => {
+        containerRef.current.scrollTo(currentScroll, 0)
+    }, [currentScroll])
+    useEffect(() => {
+        if (children === null) return;
         if (!containerRef.current) return;
         updateSlideDimensions();
         const resizeObserver = new ResizeObserver(() => {
@@ -31,46 +34,37 @@ const ChoosePlaneSlider = ({ scrollBehavior = "smooth", children, gap, currentSl
             updateSlideDimensions();
         })
         previousButton.current.style.display = "none";
-      
+
         containerRef.current.addEventListener("scroll", () => {
-            const atEnd = (containerRef.current.scrollWidth + containerRef.current.scrollLeft - containerRef.current.getBoundingClientRect().width) < 20;
+            const atEnd = containerRef.current.scrollWidth <= Math.ceil(Math.abs(containerRef.current.scrollLeft - containerRef.current.offsetWidth - gap));
             const atStart = containerRef.current.scrollLeft > -1;
             nextButton.current.style.display = atEnd ? "none" : "flex"
             previousButton.current.style.display = atStart ? "none" : "flex"
-         
-        })
-
-        containerRef.current.addEventListener("scrollend", () => {
-            const slides=[...containerRef.current.querySelectorAll("#slide")];
-            const slidesLength=slides.length;
-            const scrollPercentage = Math.abs(Math.ceil(100 * containerRef.current.scrollLeft / (containerRef.current.scrollWidth-containerRef.current.clientWidth))); 
-            const currentIndex = Math.floor(scrollPercentage / (100 / slidesLength));
-            setCurrentSlide(currentIndex)
 
         })
     }, []);
-    useEffect(() => {
-        const slides = containerRef.current.querySelectorAll("#slide")
-        slides[currentSlide]?.scrollIntoView({ inline: "center", block: "center" })
 
-    }, [currentSlide])
     return (
-        <div className='slider'>
-            <div className={`slider__view`} style={{ "--slide-width": `${width}px`, "--slide-height": `${height}px`, "--slides-gap": `${gap}px`, "--scroll-behavior": `${scrollBehavior}` }}>
+        <div className='slider' style={{ "--view-port-width": `${viewPortWidth}px`, "--slides-gap": `${gap}px`, "--scroll-behavior": `${scrollBehavior}`, "--slide-height": `${height}px` }} >
+            <div className={`slider__view`} >
                 <div id="slider-container" className={`slider__container`} ref={containerRef}>
                     {children}
                 </div>
             </div>
             <button ref={nextButton} className={`slider__nextButton`} onClick={() => {
+                if (!children) return;
+                const slide = containerRef.current.querySelector("#slide");
+                setCurrentScroll(prev => prev - slide.getBoundingClientRect().width - gap);
 
-                setCurrentSlide(prevSlide => prevSlide + 1);
 
             }}>
                 <FaChevronLeft size={"20px"} />
             </button>
             <button ref={previousButton} className={`slider__previousButton`} onClick={() => {
+                if (!children) return;
+                const slide = containerRef.current.querySelector("#slide");
+                setCurrentScroll(prev => prev + slide.getBoundingClientRect().width + gap);
 
-                setCurrentSlide(prevSlide => prevSlide - 1);
 
             }}>
                 <FaChevronRight size={"20px"} />
@@ -82,7 +76,7 @@ const ChoosePlaneSlider = ({ scrollBehavior = "smooth", children, gap, currentSl
 
 
 
-export default ChoosePlaneSlider;
+export default Slider;
 
 
 

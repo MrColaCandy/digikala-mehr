@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 import Layout from "@components/Layout"
-import ChoosePlaneSlider from "./components/ChoosePlanSlider"
 import ChoosePlanCard from "./components/ChoosePlanCard"
 import projectsData from "./data/projects.json"
 import ChoosePlaneHeader from "./components/choosePlanHeader"
 import "./style.css"
+import Slider from "@components/Slider"
 
 
 
@@ -20,7 +20,7 @@ const ChoosePlan = () => {
   return (
     <Layout>
       <ChoosePlaneHeader />
-      <ChoosePlaneSlider gap={32} totalSlides={projectsData.length} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide}>
+      <Slider slidesInView={3.2} gap={32} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide}>
         {
           projectsData.map((project, index, array) => {
             return <ChoosePlanCard
@@ -36,7 +36,7 @@ const ChoosePlan = () => {
             />
           })
         }
-      </ChoosePlaneSlider>
+      </Slider>
       {
         isMediaMatches &&
         <div className="choosePlan__slidesPaginationMobile">

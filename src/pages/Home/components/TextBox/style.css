@@ -1,0 +1,102 @@
+.textBox {
+    width: 100%;
+    height: 100%;
+    padding: var(--space-8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+
+}
+
+.textBox__text {
+    color: var(--color-textLight);
+    font-size: var(--font-size-small);
+    font-weight: 400;
+    line-height: var(--space-24);
+    word-wrap: break-word;
+    width: 80vw;
+    max-width: var(--text-width);
+    text-align: right;
+    padding: var(--space-16);
+
+}
+
+.textBox__button {
+    color: var(--color-primary);
+    font-size: var(--font-size-small);
+    font-family: Montserrat;
+    font-weight: 500;
+    line-height: var(--space-20);
+    word-wrap: break-word;
+    margin-top: var(--space-13);
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    cursor: pointer;
+    width: 95vw;
+    max-width: var(--text-width);
+
+}
+
+.textBox__text--truncated {
+    color: var(--color-textLight);
+    font-size: var(--font-size-small);
+    font-weight: 400;
+    line-height: var(--space-24);
+    word-wrap: break-word;
+    width: 80vw;
+    max-width: var(--text-width);
+    text-align: right;
+    height: auto;
+    overflow: hidden;
+    padding: 0 var(--space-16);
+}
+
+.textBox__header--truncated {
+    margin-top: 128px;
+    color: var(--color-textDark);
+    font-size: var(--font-size-normal);
+    font-weight: 700;
+    line-height: var(--space-32);
+    word-wrap: break-word;
+    margin-bottom: var(--space-8);
+    text-align: right;
+    width: 100%;
+    padding: 0 var(--space-16);
+    height: auto;
+}
+
+.textBox__header {
+    color: var(--color-textDark);
+    font-size: var(--font-size-normal);
+    font-weight: 700;
+    line-height: var(--space-32);
+    word-wrap: break-word;
+    margin-bottom: var(--space-8);
+    text-align: right;
+    width: 100%;
+    padding: 0 var(--space-16);
+    height: auto;
+}
+
+@media screen and (max-width: 390px) {
+    .textBox__header {
+        font-size: var(--font-size-xsmall);
+    }
+    .textBox__text
+    {
+        width: 73vw;
+    }
+    .textBox__text--truncated
+    {
+        width: 73vw;
+    }
+    .textBox__header,.textBox__header--truncated
+    {
+        font-size: var(--font-size-xsmall);
+    }
+
+
+}

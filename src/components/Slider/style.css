@@ -1,12 +1,14 @@
 .slider {
   position: relative;
-
+  width: 100%;
+  height: 100%;
 }
 
-
+.slider #slide{
+  scroll-snap-align: start;
+}
 .slider__view {
-  max-width: calc(var(--slide-width) * 2.35);
-  width: 98vw;
+  width: var(--slide-width);
   position: relative;
   overflow: hidden;
   height: var(--slide-height);
@@ -24,9 +26,6 @@
   scroll-snap-type: x mandatory;
 
 }
-#slide {
-  scroll-snap-align: center;
-}
 
 .slider__nextButton,
 .slider__previousButton {
@@ -41,41 +40,30 @@
   background-color: white;
   color: #424750;
   border: 1px #E0E0E2 solid;
-  z-index: 100;
+  z-index: 200;
 }
 
 
 .slider__previousButton {
   position: absolute;
-  top: 30%;
-  right: 2vw;
+  top: 20%;
+  right: 5vw;
+
 }
 
 
 .slider__nextButton {
   position: absolute;
-  top: 30%;
-  left: 2vw;
+  top: 20%;
+  left: 5vw;
+
 }
+
 
 @media screen and (max-width: 390px) {
-
-  .slider__nextButton {
-    position: absolute;
-    top: 30%;
-    left: 5vw;
-  }
-
-  .slider__previousButton {
-    position: absolute;
-    top: 30%;
-    right: 5vw;
-  }
-
-  .slider__view {
-    max-width: calc(var(--slide-width) * 1.2);
-  }
- 
- 
+ .slider__container
+ {
+  gap: 16px;
+ }
+  
 }
-
