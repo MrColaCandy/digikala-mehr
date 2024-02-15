@@ -1,5 +1,5 @@
 .choosePlan {
-    width: 90vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,7 +13,7 @@
     font-weight: 400;
     line-height: var(--space-16);
     word-wrap: break-word;
-    width: 90vw;
+    width: 100%;
 
 }
 
@@ -32,3 +32,10 @@
     word-wrap: break-word
 }
 
+@media screen and (max-width: 390px) {
+
+    .choosePlan__card{
+       width: 306px !important;
+    }
+    
+}

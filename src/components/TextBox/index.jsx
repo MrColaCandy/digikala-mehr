@@ -1,7 +1,8 @@
+import { useEffect, useState } from "react";
+import Button from "@components/Button"
 import { FaChevronLeft } from "react-icons/fa";
 import "./style.css"
-import { useEffect, useState } from "react";
-function TextBox({ title, width = 360, text = null, maxLines = 3, lineLength = 15, showFullText, setShowFullText = () => { }, button = null }) {
+function TextBox({ className="",title, width = 360, text = null, maxLines = 3, lineLength = 15, showFullText, setShowFullText = () => { },variant=0 }) {
 
     const [length,setLength]=useState(lineLength);
     useEffect(()=>{
@@ -31,27 +32,23 @@ function TextBox({ title, width = 360, text = null, maxLines = 3, lineLength = 1
 
     return (
         <>
-            <div className={`textBox__header${!showFullText?"":"--truncated"}`}>{title}</div>
+            <div className={`textBox__header${!showFullText?"":"--truncated"} ${className}`}>{title}</div>
             <div className="textBox" style={{ "--text-width": `${width}px` }}>
 
                 <div className={showFullText ? `textBox__text` : `textBox__text--truncated`}>
                     {showFullText ? text : getTruncatedText()}
                 </div>
-                {
-                    !button &&
-                    <div onClick={toggleText} className={`textBox__button`}>
+                 {
+                    variant===0 &&
+                    <div onClick={toggleText} className={`textBox__button${!showFullText?"--truncated":""}`}>
                         <div>{showFullText ? "بستن" : "بیشتر بدانید"}</div>
                         <FaChevronLeft size={"10px"} />
                     </div>
-                }
-                {
-                    button &&
-                    <>
-                        {
-                            button
-                        }
-                    </>
-                }
+                 }
+                 {
+                    variant===1 &&
+                    <Button text={showFullText?"بستن":"بیشتر بدانید"} onClick={()=>setShowFullText(!showFullText)}/>
+                 }
 
             </div>
         </>
