@@ -4,7 +4,7 @@ import Login from "@pages/Login";
 import ChoosePlan from "@pages/ChoosePlan";
 import Profile from "@pages/Profile";
 import PaymentHistory from "@pages/PaymentHistory";
-import PricingPlan from "@pages/PricingPlan";
+import ChoosePrice from "../pages/ChoosePrice";
 
 export const routes = [
   {
@@ -29,7 +29,7 @@ export const routes = [
   },
   {
     path: pricing,
-    element: <PricingPlan />
+    element: <ChoosePrice />
   }
 ];
 

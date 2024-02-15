@@ -15,6 +15,9 @@
     margin-top: var(--space-16);
     border: 2px solid var(--color-primary);
     background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .button--filled {
     color: white;
@@ -33,6 +36,13 @@
     margin-top: var(--space-16);
     border: 2px solid var(--color-primary);
     background-color:var(--color-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.button--filled:disabled,.button--outlined:disabled
+{
+    background-color: #00b1883b;
 }
 @media screen and (max-width: 390px) {
     .button--outlined {

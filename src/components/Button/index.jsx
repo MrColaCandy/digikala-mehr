@@ -1,11 +1,18 @@
 import "./style.css"
 
-const Button = ({text,onClick,variant="outlined",className=""}) => {
+const Button = ({isLoading=false,width,margin,text,onClick,variant="outlined",className=""}) => {
     
     
     return (
-        <button onClick={onClick} className={`button--${variant} ${className}`}>
-            {text}
+        <button disabled={isLoading} style={{maxWidth:`${width}`,margin:`${margin}`}} onClick={onClick} className={`button--${variant} ${className}`}>
+            {
+                !isLoading &&
+                <div>{text}</div>
+            }
+            {
+                isLoading &&
+                <div className="loader"></div>
+            }
         </button>
     )
 }

@@ -10,6 +10,7 @@ import '@assets/styles/line-height-size.css'
 import "@assets/styles/reset.css"
 import "@assets/styles/font.css"
 import "@assets/styles/rtl.css"
+import "@assets/styles/loading-animations.css"
 
 
 const root = createRoot(document.getElementById("root"));

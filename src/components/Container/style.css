@@ -3,7 +3,7 @@
     width: 100%;
     max-width: 1280px;
     margin: 0 auto;
-    padding-bottom: var(--space-48);
+    padding-bottom: var(--space-32);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
