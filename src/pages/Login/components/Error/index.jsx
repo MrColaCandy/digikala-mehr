@@ -1,4 +1,5 @@
 import phoneNumberErrorCat from '@assets/decorations/phone-number-error-cat.png'
+import Button from '@components/Button';
 
 function Error({ phone, setRegistrationError, setHasCode }) {
   function handleChangePhoneButtonClick() {
@@ -7,15 +8,11 @@ function Error({ phone, setRegistrationError, setHasCode }) {
   }
   return (
     <section className="loginCatError">
-
-
       <h2 className="login__title">شماره‌ی موبایل ثبت نشده!</h2>
       <p className="login__paragraph">شماره‌ی {phone} در لیست همکاران دیجی‌کالا موجود نیست</p>
       <p className="login__paragraph">حتما شماره‌ای که در شرکت ثبت شده را وارد کنید.</p>
-
-      <img src={phoneNumberErrorCat} />
-
-      <button onClick={handleChangePhoneButtonClick} className="login__button"><span className="errorPhoneNumber__btn--word">تغییر شماره تلفن</span></button>
+      <img className='loginCatError__image' src={phoneNumberErrorCat} />
+      <Button width='332px' onClick={handleChangePhoneButtonClick} variant='filled' text={"تغییر شماره"}/>
     </section>
   );
 }

@@ -3,6 +3,7 @@ import { useAuth } from '@components/AuthContext/context'
 import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useCountdown from './useCountdown';
+import Button from '@components/Button';
 
 
 function OTPCodeForm({ phone }) {
@@ -73,21 +74,11 @@ function OTPCodeForm({ phone }) {
                 
 
                 <div className='login__input'>
-                    <input autoFocus onBlur={(e) => validate(e.target.value)} ref={inputRef} value={code} onChange={handleCodeInputChange} name='OTPCode' type="text" className="login__inputController" />
+                    <input autoFocus onBlur={(e) => validate(e.target.value)} ref={inputRef} value={code} onChange={handleCodeInputChange} name='OTPCode' type="text" className={`login__inputController${error?"--error":""}`} />
                     {error && <p className="login__error">{error}</p>}
                 </div>
-                <div className='resend-code'>{seconds} : {minutes} مانده تا دریافت مجدد کد</div>
-                <button disabled={isLoading} className="login__button">
-                    {
-                        isLoading &&
-                        <div className='loader'></div>
-                    }
-                    {
-                        !isLoading &&
-                        <div>ورود</div>
-                    }
-                </button>
-
+                <div className='login__countdown'>{seconds} : {minutes} مانده تا دریافت مجدد کد</div>
+                <Button variant='filled' width={"332px"} text={"تایید"} isLoading={isLoading}/>
         </form>
     );
 }

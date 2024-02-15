@@ -1,6 +1,7 @@
 import { useState, useRef } from "react"
 import digikalaMehrLogo from '@assets/decorations/digikala-mehr-logo.png'
 import { useAuth } from "@components/AuthContext/context"
+import Button from "@components/Button"
 function PhoneNumberForm({ phone, setPhone, setHasCode, setRegistrationError }) {
 
     const { sendOTPCode } = useAuth()
@@ -55,19 +56,11 @@ function PhoneNumberForm({ phone, setPhone, setHasCode, setRegistrationError }) 
             </div>
 
             <div className="login__input">
-                <input onBlur={(e) => validate(e.target.value)} autoFocus ref={inputRef} name="phone" value={phone} onChange={handlePhoneInputChange} type="tel" className="login__inputController" />
+                <input onBlur={(e) => validate(e.target.value)} autoFocus ref={inputRef} name="phone" value={phone} onChange={handlePhoneInputChange} type="tel" className={`login__inputController${error?"--error":""}`} />
                 {error && <p className="login__error">{error}</p>}
             </div>
-            <button disabled={isLoading} className="login__button">
-                {
-                    isLoading &&
-                    <div className="loader"></div>
-                }
-                {
-                    !isLoading &&
-                    <div>ورود</div>
-                }
-            </button>
+            <Button width={"332px"} isLoading={isLoading} text={"ورود"} variant={"filled"}/>
+            
 
 
             <p className="login__paragraph">ورود شما به معنای پذیرش <span className="login__paragraphBlue">

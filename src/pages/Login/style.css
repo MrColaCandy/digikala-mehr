@@ -28,6 +28,14 @@
     max-width: 334px;
     height: 48px;
     border-radius: 8px;
+    border: 1px solid var(--color-border);
+}
+.login__inputController--error {
+
+    width: 100%;
+    max-width: 334px;
+    height: 48px;
+    border-radius: 8px;
     border: 1px solid var(--color-red);
 }
 
@@ -130,35 +138,9 @@
     gap: var(--space-24);
 }
 
-.login__code {
-    display: flex;
-    width: 100%;
-    max-width: 400px;
-    height: 450px;
-    direction: rtl;
-    flex-direction: column;
-    align-items: center;
-    padding: var(--padding-32) 30px;
-    border-radius: var(--borderRadius-8);
-    border: 1px solid var(--color-border);
-    gap: var(--space-20);
-}
 
-.sendCode__information {
-    width: 100%;
-    max-width: 335px;
-    height: 280px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: var(--space-20);
-}
 
-.sendCode__paragraph {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-8);
-}
+
 
 .login__input{
     height: 70px;
@@ -171,12 +153,6 @@
     text-align: right;
 }
 
-.sendCode__entranceDetails {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-24);
-}
 
 .loginCatError {
     display: flex;
@@ -188,6 +164,11 @@
     gap: var(--space-16);
     
 }
+.loginCatError__image
+{
+    width: 100%;
+    max-width: 192px;
+}
 
 
 
@@ -197,8 +178,7 @@
 
 
 
-
-.resend-code {
+.login__countdown {
     color: var(--color-loginSignUpText);
     font-size: var(--font-size-tiny);
     font-family: yekan;
