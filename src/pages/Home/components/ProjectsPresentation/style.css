@@ -1,0 +1,194 @@
+.projectsPresentation {
+    width: 99vw;
+    max-width: 1031px;
+    background: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--space-48);
+    margin-top: var(--space-48);
+    margin-bottom: 160px;
+}
+
+.projectsPresentation__video {
+    width: 99vw;
+    max-width: 696px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--space-48);
+}
+
+.projectsPresentation__header {
+    width: 99vw;
+    max-width: 620px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--space-12);
+}
+
+.projectsPresentation__title {
+    color: var(--color-textDark);
+    font-size: var(--font-size-xhuge);
+    font-weight: 400;
+    line-height: var(--space-48);
+    text-align: center;
+    letter-spacing: -0.5px;
+}
+
+.projectsPresentation__description {
+    width: 99vw;
+    max-width: 338px;
+    color: var(--color-textLight);
+    font-size: var(--font-size-xsmall);
+    font-weight: 400;
+    line-height: var(--space-20);
+    letter-spacing: -0.5px;
+    text-align: center;
+}
+
+.projectsPresentation__sliderIndicators {
+    width: 68px;
+    height: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-8);
+}
+
+.projectsPresentation__sliderDots {
+    width: 4px;
+    height: 4px;
+    border-radius: 999px;
+    background: var(--color-N200);
+}
+
+.projectsPresentation__dotsEllipse {
+    width: 16px;
+    height: 6px;
+}
+
+.projectsPresentation__bigDotes {
+    width: 6px;
+    height: 6px;
+}
+
+.projectsPresentation__startPlan {
+    width: 100%;
+    padding: var(--space-24);
+    background: linear-gradient(216.85deg, rgba(0, 177, 18, 0.05) 30.34%, rgba(0, 113, 162, 0.05) 96.4%);
+    border-radius: var(--space-12);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-24);
+}
+
+.projectsPresentation__text {
+    color: var(--color-textDark);
+    font-weight: 400;
+    font-size: var(--font-size-huge);
+    letter-spacing: -0.5px;
+    line-height: var(--space-48);
+    text-align: center;
+}
+
+.projectsPresentation__boldText {
+    font-weight: 700;
+}
+
+.projectsPresentation__greenText {
+    color: var(--color-primary);
+}
+
+.projectsPresentation__startPlanItems {
+    width: 99vw;
+    max-width: 656px;
+    height: auto;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-48);
+}
+
+
+
+.projectsPresentation__startPlanItem {
+ 
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-12);
+    min-width: 100px;
+}
+
+
+
+
+.projectsPresentation__startPlanItemText {
+    color: var(--color-textDark);
+    font-size: var(--font-size-normal);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.projectsPresentation__startPlanBtn {
+    width: 99vw;
+    max-width: 232px;
+    height: 48px;
+    color: var(--color-white);
+    background: var(--color-primary);
+    font-size: var(--font-size-large);
+    line-height: calc(var(--font-size-normal) + var(--font-size-tiny));
+    border-radius: var(--space-12);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-8);
+}
+
+
+
+
+
+.projectsPresentation__loginIcon {
+    color: var(--color-homeIcon1);
+    background: linear-gradient(158.66deg, #EFEDEC 3.16%, #F9FBF3 100.67%);
+}
+
+
+.projectsPresentation__projectIcon {
+    color: var(--color-homeIcon2);
+    background: linear-gradient(161.84deg, #F5FBE9 5.39%, #F6F9EF 100.76%);
+}
+
+
+
+.projectsPresentation__moneyIcon {
+    color: var(--color-homeIcon3);
+    background: linear-gradient(156.61deg, #F8FCEE 6.4%, #F4FAFC 94.45%);
+}
+
+
+
+.projectsPresentation__withUsIcon {
+    color: var(--color-homeIcon4);
+    background: linear-gradient(146.36deg, #DCF5EC 4.7%, #EFF9F5 91.33%);
+}
+
+
+@media screen and (max-width: 390px) {
+    .projectsPresentation__startPlanItems
+    {
+        gap: var(--space-12);
+    }
+    
+}

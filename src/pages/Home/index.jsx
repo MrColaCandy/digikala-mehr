@@ -5,11 +5,13 @@ import AboutPartnership from "./components/AboutPartnership";
 import FAQSection from "./components/FAQSection";
 import "./style.css"
 import Layout from "@components/Layout";
+import ProjectsPresentation from "./components/ProjectsPresentation";
 
 function Home() {
   return (
     <Layout>
       <Banner />
+      <ProjectsPresentation/>
       <section className="partnerships">
         <PartnershipData />
         <PartnershipProjects />
