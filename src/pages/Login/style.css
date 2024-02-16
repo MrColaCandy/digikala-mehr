@@ -23,7 +23,8 @@
 }
 
 .login__inputController {
-
+ 
+    padding: 0 var(--space-16);
     width: 100%;
     max-width: 334px;
     height: 48px;
@@ -31,7 +32,7 @@
     border: 1px solid var(--color-border);
 }
 .login__inputController--error {
-
+    padding: 0 var(--space-16);
     width: 100%;
     max-width: 334px;
     height: 48px;

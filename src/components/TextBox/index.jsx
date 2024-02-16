@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Button from "@components/Button"
 import { FaChevronLeft } from "react-icons/fa";
 import "./style.css"
-function TextBox({ className="",title, width = 360, text = null, maxLines = 3, lineLength = 15, showFullText, setShowFullText = () => { },variant=0 }) {
+function TextBox({ className="",title, text = null, maxLines = 3, lineLength = 15, showFullText, setShowFullText = () => { },variant=0 }) {
 
     const [length,setLength]=useState(lineLength);
     useEffect(()=>{
@@ -33,7 +33,7 @@ function TextBox({ className="",title, width = 360, text = null, maxLines = 3, l
     return (
         <>
             <div className={`textBox__header${!showFullText?"":"--truncated"} ${className}`}>{title}</div>
-            <div className="textBox" style={{ "--text-width": `${width}px` }}>
+            <div className="textBox" >
 
                 <div className={showFullText ? `textBox__text` : `textBox__text--truncated`}>
                     {showFullText ? text : getTruncatedText()}

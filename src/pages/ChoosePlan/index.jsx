@@ -18,11 +18,10 @@ const ChoosePlan = () => {
   return (
     <Layout>
       <ChoosePlaneHeader />
-      <Slider className="choosePlan__slider" viewPortWidth={360 * 2.5}  gap={40} >
+      <Slider slideHeight={450} slideWidth={360}  viewPortWidth={360 * 2.5}  gap={40} >
         {
           projectsData.map((project)=>{
             return <Card
-            className="choosePlan__card"
             width={360}
             height={448}
             key={project.id}

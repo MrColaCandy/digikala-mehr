@@ -19,10 +19,3 @@
 
 
 
-@media screen and (max-width: 390px) {
-
-    .choosePlan__card{
-       width: 306px !important;
-    }
-    
-}

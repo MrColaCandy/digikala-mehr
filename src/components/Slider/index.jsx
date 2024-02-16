@@ -4,20 +4,15 @@ import './style.css';
 
 
 
-const Slider = ({ viewPortWidth = 800, scrollBehavior = "smooth", children = null, gap }) => {
+const Slider = ({ viewPortWidth = 800,slideWidth=390,slideHeight=450, scrollBehavior = "smooth", children = null, gap }) => {
     const containerRef = useRef(null);
     const previousButton = useRef(null);
     const nextButton = useRef(null);
-    const [height, setHeight] = useState(0);
     const [currentScroll, setCurrentScroll] = useState(0);
 
 
 
-    function updateSlideDimensions() {
-        if (children === null) return;
-        const { height } = containerRef.current.querySelector("#slide").getBoundingClientRect()
-        setHeight(height);
-    }
+   
 
     useEffect(() => {
         containerRef.current.scrollTo(currentScroll, 0)
@@ -25,14 +20,6 @@ const Slider = ({ viewPortWidth = 800, scrollBehavior = "smooth", children = nul
     useEffect(() => {
         if (children === null) return;
         if (!containerRef.current) return;
-        updateSlideDimensions();
-        const resizeObserver = new ResizeObserver(() => {
-            updateSlideDimensions();
-        })
-        resizeObserver.observe(containerRef.current.querySelector("#slide"));
-        window.addEventListener("resize", () => {
-            updateSlideDimensions();
-        })
         previousButton.current.style.display = "none";
 
         containerRef.current.addEventListener("scroll", () => {
@@ -45,7 +32,7 @@ const Slider = ({ viewPortWidth = 800, scrollBehavior = "smooth", children = nul
     }, []);
 
     return (
-        <div className='slider' style={{ "--view-port-width": `${viewPortWidth}px`, "--slides-gap": `${gap}px`, "--scroll-behavior": `${scrollBehavior}`, "--slide-height": `${height}px` }} >
+        <div className='slider' style={{ "--view-port-width": `${viewPortWidth}px`, "--slides-gap": `${gap}px`, "--scroll-behavior": `${scrollBehavior}`, "--slide-height": `${slideHeight}px`,"--slide-width":`${slideWidth}px` }} >
             <div className={`slider__view`} >
                 <div id="slider-container" className={`slider__container`} ref={containerRef}>
                     {children}

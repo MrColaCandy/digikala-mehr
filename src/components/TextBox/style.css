@@ -16,8 +16,7 @@
     font-weight: 400;
     line-height: var(--space-24);
     word-wrap: break-word;
-    width: 80vw;
-    max-width: var(--text-width);
+    width: 100%;
     text-align: right;
     padding: var(--space-16);
 
@@ -36,6 +35,7 @@
     cursor: pointer;
     padding: 0 var(--space-16);
     width: 100%;
+    margin-bottom: auto;
 
 }
 .textBox__button--truncated {
@@ -63,7 +63,6 @@
     line-height: var(--space-24);
     word-wrap: break-word;
     width: 100%;
-    max-width: var(--text-width);
     text-align: right;
     height: auto;
     overflow: hidden;
@@ -71,9 +70,9 @@
 }
 
 .textBox__header--truncated {
-    margin-top: 128px;
+    margin-top: var(--space-32);
     color: var(--color-textDark);
-    font-size: var(--font-size-normal);
+    font-size: var(--font-size-small);
     font-weight: 700;
     line-height: var(--space-32);
     word-wrap: break-word;
@@ -86,7 +85,7 @@
 
 .textBox__header {
     color: var(--color-textDark);
-    font-size: var(--font-size-normal);
+    font-size: var(--font-size-small);
     font-weight: 700;
     line-height: var(--space-32);
     word-wrap: break-word;
@@ -99,24 +98,35 @@
 
 @media screen and (max-width: 390px) {
     .textBox__header {
-        font-size: var(--font-size-xsmall);
+        font-size: 4vw;
         padding: 0 var(--space-8);
+       
     }
     .textBox__text
     {
-        width: 75vw;
         padding: 0 var(--space-8);
     }
     .textBox__text--truncated
     {
-        width: 75vw;
         padding: 0 var(--space-8);
     }
     .textBox__header,.textBox__header--truncated
     {
+        font-size:  4vw;
+        padding: 0 var(--space-8);
+
+    }
+    .textBox__button
+    {
         font-size: var(--font-size-xsmall);
         padding: 0 var(--space-8);
     }
+    .textBox__button--truncated
+    {
+        font-size: var(--font-size-xsmall);
+        padding: 0 var(--space-8);
 
-
+    }
 }
+
+
