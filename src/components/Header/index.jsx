@@ -5,23 +5,39 @@ import "./style.css";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@components/AuthContext/context";
 import DropDown from "@components/DropDown";
+import Loader from "../Loader";
 
 function Header() {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, isLoading } = useAuth();
   const navigate = useNavigate();
   function handleSignInButtonClick() {
     navigate("/login");
   }
 
   function getLoginButton() {
-    return !isLoggedIn ? (
+    if (!isLoggedIn && !isLoading) {
+      return (
+        <button onClick={handleSignInButtonClick} className="signInProfileBtn">
+          <BsBoxArrowInLeft className="signInProfileBtn__signInIcon" />
+          <span className="signInProfileBtn__text">پروفایل I ثبت نام</span>
+        </button>
+      )
+    }
+    if(isLoading)
+    {
+      return (
       <button onClick={handleSignInButtonClick} className="signInProfileBtn">
-        <BsBoxArrowInLeft className="signInProfileBtn__signInIcon" />
-        <span className="signInProfileBtn__text">پروفایل I ثبت نام</span>
+         <Loader/>
       </button>
-    ) : (
-      <DropDown />
-    );
+      )
+    }
+
+    if( isLoggedIn && !isLoading)
+    {
+      return (
+        <DropDown/>
+      )
+    }
   }
   return (
     <nav className="header">
@@ -39,8 +55,10 @@ function Header() {
           alt="digiTitleName"
         />
       </div>
+      {
+        getLoginButton()
+      }
 
-      {getLoginButton()}
     </nav>
   );
 }

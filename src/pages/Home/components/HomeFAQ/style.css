@@ -1,4 +1,4 @@
-.FAQ {
+.homeFAQ {
     width: 99vw;
     max-width: 800px;
     display: flex;
@@ -9,7 +9,7 @@
     margin-top: 160px;
 }
 
-.FAQ__header {
+.homeFAQ__header {
     width: 99vw;
     max-width: 127px;
     background: var(--color-white);
@@ -20,7 +20,7 @@
     gap: var(--space-8);
 }
 
-.FAQ__iconWrapper{
+.homeFAQ__iconWrapper{
     width: 56px;
     height: 56px;
     background: #00B1890D;
@@ -30,25 +30,25 @@
     align-items: center;
 }
 
-.FAQ__icon {
+.homeFAQ__icon {
     color: var(--color-primary);
     font-size: var(--font-size-xlarge);
 }
 
-.FAQ__title {
+.homeFAQ__title {
     color: var(--color-textHeading);
     font-size: var(--font-size-xlarge);
     line-height: var(--lineHeight-32);
     font-weight: 400;
 }
 
-.FAQ__questionsWrapper {
+.homeFAQ__questionsWrapper {
     width: 99vw;
     max-width: 800px;
     height: auto;
 }
 
-.FAQ__questionItem {
+.homeFAQ__questionItem {
     width: 99vw;
     max-width: 800px;
     padding: var(--padding-8) var(--padding-12);
@@ -59,7 +59,7 @@
     align-items: center;
 }
 
-.FAQ__questionPart {
+.homeFAQ__questionPart {
     width: 95vw;
     max-width: 776px;
     padding: var(--padding-16) 0;
@@ -70,7 +70,7 @@
    
 }
 
-.FAQ__questionText {
+.homeFAQ__questionText {
     max-width: 744px;
     width: 99vw;
     color: var(--color-textHeading);
@@ -84,7 +84,7 @@
     align-items: flex-start;
 }
 
-.FAQ__questionIconDown {
+.homeFAQ__questionIconDown {
     color: var(--color-N700);
     font-size: var(--font-size-xtiny);
     cursor: pointer;
@@ -94,21 +94,21 @@
 }
 
 @media(max-width:390px){
-    .FAQ {
+    .homeFAQ {
         width: 100%;
     }
 
-    .FAQ__questionsWrapper {
+    .homeFAQ__questionsWrapper {
         width: 100%;
     }
 
-    .FAQ__questionItem {
+    .homeFAQ__questionItem {
         width: 100%;
     }
 
     
 
-    .FAQ__questionText {
+    .homeFAQ__questionText {
         width: 99vw;
         max-width: 294px;
         font-size: var(--font-size-small);

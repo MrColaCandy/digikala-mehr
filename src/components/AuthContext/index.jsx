@@ -17,10 +17,12 @@ function AuthContext({ children }) {
     const [user,setUser]=useState(null);
     const [isLoggedIn,setIsLoggedIn]=useState(false);
     const [token,setToken]=useState(parse(document.cookie).token || null)
+    const [isLoading,setIsLoading]=useState(false);
  
     useEffect(()=>{
       async function postToken()
       {
+        setIsLoading(true);
         try {
             const isValid=await validateToken(token);
             setIsLoggedIn(isValid);
@@ -36,11 +38,15 @@ function AuthContext({ children }) {
             logout();
             console.log("Token is not valid!");
         }
+        finally{
+            setIsLoading(false);
+        }
       }
       postToken();
     },[])
    
     async function sendOTPCode(phone) {
+        setIsLoading(true);
         try {
             const code = await getCode(phone);
             console.log("OTP code sended successfully. Code: " + code);
@@ -49,10 +55,14 @@ function AuthContext({ children }) {
             console.log("Failed to send OTP code!. Error: ", error.message)
             throw error;
         }
+        finally{
+            setIsLoading(false);
+        }
     }
 
 
     async function confirmOTPCode(phone, code) {
+        setIsLoading(true);
         try {
             const token= await validateCode(phone, code);
             console.log("This code is valid.");
@@ -65,6 +75,9 @@ function AuthContext({ children }) {
             console.log("Failed to validate code . Error", error.message)
             throw error;
         }
+        finally{
+            setIsLoading(false);
+        }
     }
     function logout()
     {
@@ -76,7 +89,7 @@ function AuthContext({ children }) {
     }
     // Provide the authentication context value to the components in the tree
     return (
-        <context.Provider value={{ user,setUser,token,setToken,isLoggedIn,setIsLoggedIn,logout, sendOTPCode, confirmOTPCode }}>
+        <context.Provider value={{ user,setUser,token,setToken,isLoggedIn,setIsLoggedIn,logout, sendOTPCode, confirmOTPCode,isLoading }}>
             {children}
         </context.Provider>
     );

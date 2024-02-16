@@ -1,4 +1,4 @@
-.aboutPartnership__wrapper {
+.homeAbout__wrapper {
     width:100%;
     height: auto;
     padding: var(--padding-12);
@@ -12,7 +12,7 @@
     gap: var(--space-40);
 }
 
-.aboutPartnership__item {
+.homeAbout__item {
     width: 99vw;
     max-width: 572px;
     height: 176px;
@@ -25,14 +25,14 @@
     gap: var(--space-12);
 }
 
-.aboutPartnership__title {
+.homeAbout__title {
     font-weight: 700;
     font-size: var(--font-size-xlarge);
     line-height: var(--lineHeight-32);
     letter-spacing: -0.5px;
 }
 
-.aboutPartnership__bodyText {
+.homeAbout__description {
     font-size: var(--font-size-xsmall);
     line-height: var(--lineHeight-24);
     font-weight: 400;
@@ -43,7 +43,7 @@
 @media(max-width:390px) {
    
 
-    .aboutPartnership__wrapper {
+    .homeAbout__wrapper {
         width: 99vw;
         height: auto;
         padding: var(--padding-16);
@@ -51,12 +51,12 @@
         gap: var(--space-24);
     }
 
-    .aboutPartnership__item {
+    .homeAbout__item {
         width: 100%;
         height: auto;
     }
 
-    .aboutPartnership__bodyText {
+    .homeAbout__bodyText {
         width: 100%;
         letter-spacing: 0;
     }

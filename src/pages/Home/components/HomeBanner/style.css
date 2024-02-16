@@ -1,4 +1,4 @@
-.banner {
+.homeBanner {
     width: 100%;
     height: 266px;
     margin-bottom: var(--space-48);
@@ -8,7 +8,7 @@
 
 
 @media(max-width:390px){
-    .banner {
+    .homeBanner {
         height: 293px;
         background: url('@assets/decorations/HomeHeaderMobile.svg');
     }

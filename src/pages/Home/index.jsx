@@ -1,23 +1,23 @@
-import Banner from "./components/Banner";
-import PartnershipData from "./components/PartnershipData";
-import PartnershipProjects from "./components/PartnershipProjects";
-import AboutPartnership from "./components/AboutPartnership";
-import FAQSection from "./components/FAQSection";
-import "./style.css"
+import HomeBanner from "./components/HomeBanner";
+import HomeAbout from "./components/HomeAbout";
 import Layout from "@components/Layout";
-import ProjectsPresentation from "./components/ProjectsPresentation";
+import HomeVideo from "./components/HomeVideo";
+import HomeInfo from "./components/HomeInfo";
+import HomeProjects from "./components/HomeProjects";
+import HomeFAQ from "./components/HomeFAQ";
+import "./style.css"
 
 function Home() {
   return (
     <Layout>
-      <Banner />
-      <ProjectsPresentation/>
-      <section className="partnerships">
-        <PartnershipData />
-        <PartnershipProjects />
-        <AboutPartnership />
+      <HomeBanner />
+      <HomeVideo/>
+      <section className="home__backgroundGreen">
+        <HomeInfo />
+        <HomeProjects />
+        <HomeAbout />
       </section>
-      <FAQSection />
+      <HomeFAQ />
     </Layout>
   );
 }
