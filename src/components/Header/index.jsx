@@ -27,7 +27,7 @@ function Header() {
     {
       return (
       <button onClick={handleSignInButtonClick} className="signInProfileBtn">
-         <Loader/>
+         <Loader scale={0.3}/>
       </button>
       )
     }

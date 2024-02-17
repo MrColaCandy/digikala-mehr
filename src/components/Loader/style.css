@@ -1,18 +1,18 @@
 .loader {
     width: 25px;
     aspect-ratio: 1;
-    transform: translate(-100%);
+    transform: translate(-50%) scale(var(--loader-scale));
     clip-path: inset(0);
     animation:
       l4-1 0.5s ease-in-out infinite alternate,
       l4-2 1s   ease-in-out infinite;
   }
   @keyframes l4-1 {
-    100% {transform: translateX(100%)}
+    100% {transform: translateX(50%) scale(var(--loader-scale))}
   }
   @keyframes l4-2 {
-     33% {clip-path: inset(0 0 0 -25px)}
+     33% {clip-path: inset(0 0 0 -50px)}
      50% {clip-path: inset(0 0 0 0)     }
-     83% {clip-path: inset(0 -25px 0 0)}
+     83% {clip-path: inset(0 -50px 0 0)}
   }
  

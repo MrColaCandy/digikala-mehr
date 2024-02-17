@@ -1,4 +1,5 @@
 .choosePrice__header {
+    margin-top: var(--space-32);
     width: 90vw;
     max-width: 442px;
     display: flex;

@@ -12,6 +12,7 @@ const DropDown = () => {
     const navigate=useNavigate();
     function handleLogoutClick(){
         logout();
+        navigate("/")
     }
     const [isDropdownOpen, setDropdownOpen] = useState(false);
     let menuRef = useRef()
