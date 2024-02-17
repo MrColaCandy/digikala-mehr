@@ -1,0 +1,39 @@
+.profileActiveProjects {
+    position: relative;
+    width: 100% ;
+    max-width: 1194px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: var(--space-20);
+}
+
+
+
+
+.profileActiveProjects__header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--space-8);
+}
+
+.profileActiveProjects__icon {
+    width: 4px;
+    height: 16px;
+    background: var(--color-primary);
+    border-radius: 2px 0px 0px 2px;
+}
+
+
+
+.profileActiveProjects__title {
+    color: var(--color-darkBlue);
+    font-size: var(--font-size-normal);
+    line-height: var(--space-24);
+    font-weight: 400;
+    width: 100%;
+}
+

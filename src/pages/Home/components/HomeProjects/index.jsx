@@ -13,7 +13,7 @@ function HomeProjects() {
     <section className="homeProjects">
       <section className="homeProjects__header">
         <h3 className="homeProjects__title">حالا چه پروژه‌هایی؟</h3>
-        <h4 className="homeProjects__bodyText">پروژه‌هایی که تو این فاز منتظر کمک شما هستن</h4>
+        <h4 className="homeProjects__description">پروژه‌هایی که تو این فاز منتظر کمک شما هستن</h4>
       </section>
       <Slider slideWidth={390} slideHeight={450} viewPortWidth={1250} gap={40}>
         {

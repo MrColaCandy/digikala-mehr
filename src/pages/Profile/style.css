@@ -1,49 +1,53 @@
-.container-profile {
+
+.profileMessage {
+    margin: var(--space-32) 0;
     width: 100%;
-    max-width: 1280px;
-    padding-bottom: var(--padding-48);
+    max-width: 1188px;
+    padding: var(--padding-16) var(--padding-24) var(--padding-20);
+    background: linear-gradient(216.85deg, rgba(0, 177, 18, 0.05) 30.34%, rgba(0, 113, 162, 0.05) 96.4%);
+    border-radius: var(--borderRadius-12);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
-    gap: var(--space-24);
+    align-items: flex-start;
+    gap: var(--space-16);
 }
+.profile__sliderTitle
+{
+  
+    color: var(--color-N700);
+    font-size: var(--font-size-xlarge);
+    line-height: var(--lineHeight-32);
+    font-weight: 400;
+    margin-bottom: var(--space-16);
 
-.main-profile {
+    
+}
+.profileMessage__title {
     width: 100%;
-    padding: var(--padding-10) var(--padding-20);
+    max-width: 566px;
+    color: var(--color-N700);
+    font-size: var(--font-size-xlarge);
+    line-height: var(--lineHeight-32);
+    font-weight: 400;
+
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    flex-direction: column;
-    gap: 0;
+    gap: var(--space-8);
 }
 
-.chooseProjectText {
-    width: 1194px;
-    margin: 24px 24px 24px 0;
+.profileMessage__message {
+    width: 100%;
+    max-width: 546px;
     color: var(--color-N700);
     font-size: var(--font-size-normal);
     line-height: var(--lineHeight-24);
-    font-weight: 700;
-    text-align: right;
+    font-weight: 400;
 }
 
-@media(max-width:320px){
-    .container-profile {
-        width: 100%;
-        max-width: 390px;
-        gap: var(--space-12);
-    }
-
-    .main-profile {
-        width: 100%;
-        height: auto;
-        padding: 0;
-    }
-
-    .chooseProjectText {
-        width: calc(100% - (2* var(--space-16)));
-        text-align: right;
-    }
+.profileMessage__messagePercentageOfPartnerShip,
+.profileMessage__messageAmountDonated {
+    color: var(--color-primary);
+    font-weight: 700;
 }

@@ -1,27 +1,25 @@
 import organLogo from '@assets/decorations/organLogo.svg'
 import "./style.css"
 
-function ProjectStatusExpired (){
+function ProfileProjectExpired (){
     return(
-        <section className="partnerStatusProject__expiredStatus">
-        <div className="expiredProjectWrapper">
-            <section className="expiredProject__projectData">
-                <section className="expiredProject__projectOrganData">
-                    <img src={organLogo} className="expiredProject__oraganLogoImage" alt="organLogoImg" />
-                    <section className="expiredProject__dataTexts">
-                        <span className="expiredProject__expiredProjectName">تهیه مخزن آب برای حیات وحش
+        <div className="profileProjectExpired">
+            <div className="profileProjectExpired__info">
+                
+                    <img src={organLogo} className="profileProjectExpired__infoLogo" alt="employer-logo" />
+                    <div className="profileProjectExpired__infoText">
+                        <span className="profileProjectExpired__infoTitle">تهیه مخزن آب برای حیات وحش
                             گناباد</span>
-                        <span className="expiredProject__expiredOraganName">انجمن نذر طبیعت</span>
-                    </section>
-                </section>
-                <p className="expiredProject__displayExpiredStatusBox">دوره به پایان رسید</p>
-            </section>
-            <button className="expiredStatusProject__continuationPartnerShipBtn">تمدید مشارکت</button>
-        </div>
-    </section>
+                        <span className="profileProjectExpired__infoEmployer">انجمن نذر طبیعت</span>
+                    </div>
+                
+                <p className="profileProjectExpired__box">دوره به پایان رسید</p>
+            </div>
+            <button className="profileProjectExpired__button">تمدید مشارکت</button>
+    </div>
     )
 }
 
 
-export default ProjectStatusExpired ;
+export default ProfileProjectExpired ;
 

@@ -1,0 +1,50 @@
+.profileUserAvatar {
+    margin-top: var(--space-32);
+    width: 100%;
+    max-width: 1194px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--space-20);
+}
+.profileUserAvatar__wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.profileUserAvatar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--space-12);
+}
+
+
+
+
+
+.profileUserAvatar__name {
+    color: var(--color-textDark);
+    font-size: var(--font-size-normal);
+    line-height: var(--lineHeight-24);
+    font-weight: 700;
+}
+
+.profileUserAvatar__mobileNumber {
+    color: var(--color-textLight);
+    font-size: var(--font-size-tiny);
+    line-height: var(--lineHeight-16);
+    font-weight: 400;
+}
+
+.profileUserAvatar__edit {
+    color: var(--color-primary);
+    font-size: var(--font-size-tiny);
+    line-height: var(--lineHeight-16);
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none;
+    display: none;
+}
+

@@ -6,7 +6,7 @@ import ChoosePlaneHeader from "./components/choosePlanHeader"
 import "./style.css"
 import Slider from "@components/Slider"
 import Card from "@components/Card"
-import projectsData from "./data/projects.json"
+import { projects } from "../../../api/data";
 import Button from "@components/Button"
 import { useAuth } from "@components/AuthContext/context"
 
@@ -20,7 +20,7 @@ const ChoosePlan = () => {
       <ChoosePlaneHeader />
       <Slider slideHeight={450} slideWidth={360}  viewPortWidth={360 * 2.5}  gap={40} >
         {
-          projectsData.map((project)=>{
+          projects.map((project)=>{
             return <Card
             width={360}
             height={448}
