@@ -5,7 +5,8 @@ export const projects=[
         employerName:"موسسه مردمی مهر گینی",
         description:"موسسه مردم‌نهاد مهرگیتی از سال 1384 با هدف تلاش برای ساختن ایرانی عاری از تبعیض و فقر فرهنگی شروع به مدرسه‌سازی و فعالیت آموزشی در مناطق کمتر برخوردار کرده است.عدم دسترسی به تجهیزات و امکانات آموزشی با کیفیت از جمله مشکلاتی است که در مناطق کم برخوردار وجود دارد. با اهدای کتاب و تجهیز کتابخانه های مناطق کم برخوردار  سهمی در ارتقای سطح فرهنگ، آگاهی، دانش و خلاقیت دانش‌آموزان و دانشجویان این مناطق داشته باشید.",
         employerLogo:"https://i.postimg.cc/9XDb5kG9/roshan-logo.png",
-        image:"https://i.postimg.cc/J0sBfSvz/Choose-plan-card-image.jpg"
+        image:"https://i.postimg.cc/J0sBfSvz/Choose-plan-card-image.jpg",
+        users:[]
     },
     {
         id:2,
@@ -13,7 +14,8 @@ export const projects=[
         employerName:"موسسه مردمی مهر گینی",
         description:"موسسه مردم‌نهاد مهرگیتی از سال 1384 با هدف تلاش برای ساختن ایرانی عاری از تبعیض و فقر فرهنگی شروع به مدرسه‌سازی و فعالیت آموزشی در مناطق کمتر برخوردار کرده است.عدم دسترسی به تجهیزات و امکانات آموزشی با کیفیت از جمله مشکلاتی است که در مناطق کم برخوردار وجود دارد. با اهدای کتاب و تجهیز کتابخانه های مناطق کم برخوردار  سهمی در ارتقای سطح فرهنگ، آگاهی، دانش و خلاقیت دانش‌آموزان و دانشجویان این مناطق داشته باشید.",
         employerLogo:"https://i.postimg.cc/9XDb5kG9/roshan-logo.png",
-        image:"https://i.postimg.cc/J0sBfSvz/Choose-plan-card-image.jpg"
+        image:"https://i.postimg.cc/J0sBfSvz/Choose-plan-card-image.jpg",
+        users:[]
     },
     {
         id:3,
@@ -21,7 +23,8 @@ export const projects=[
         employerName:"موسسه مردمی مهر گینی",
         description:"موسسه مردم‌نهاد مهرگیتی از سال 1384 با هدف تلاش برای ساختن ایرانی عاری از تبعیض و فقر فرهنگی شروع به مدرسه‌سازی و فعالیت آموزشی در مناطق کمتر برخوردار کرده است.عدم دسترسی به تجهیزات و امکانات آموزشی با کیفیت از جمله مشکلاتی است که در مناطق کم برخوردار وجود دارد. با اهدای کتاب و تجهیز کتابخانه های مناطق کم برخوردار  سهمی در ارتقای سطح فرهنگ، آگاهی، دانش و خلاقیت دانش‌آموزان و دانشجویان این مناطق داشته باشید.",
         employerLogo:"https://i.postimg.cc/9XDb5kG9/roshan-logo.png",
-        image:"https://i.postimg.cc/J0sBfSvz/Choose-plan-card-image.jpg"
+        image:"https://i.postimg.cc/J0sBfSvz/Choose-plan-card-image.jpg",
+        users:[]
     },
     {
         id:4,
@@ -29,7 +32,8 @@ export const projects=[
         employerName:"موسسه مردمی مهر گینی",
         description:"موسسه مردم‌نهاد مهرگیتی از سال 1384 با هدف تلاش برای ساختن ایرانی عاری از تبعیض و فقر فرهنگی شروع به مدرسه‌سازی و فعالیت آموزشی در مناطق کمتر برخوردار کرده است.عدم دسترسی به تجهیزات و امکانات آموزشی با کیفیت از جمله مشکلاتی است که در مناطق کم برخوردار وجود دارد. با اهدای کتاب و تجهیز کتابخانه های مناطق کم برخوردار  سهمی در ارتقای سطح فرهنگ، آگاهی، دانش و خلاقیت دانش‌آموزان و دانشجویان این مناطق داشته باشید.",
         employerLogo:"https://i.postimg.cc/9XDb5kG9/roshan-logo.png",
-        image:"https://i.postimg.cc/J0sBfSvz/Choose-plan-card-image.jpg"
+        image:"https://i.postimg.cc/J0sBfSvz/Choose-plan-card-image.jpg",
+        users:[]
     },
     {
         id:5,
@@ -37,14 +41,53 @@ export const projects=[
         employerName:"موسسه مردمی مهر گینی",
         description:"موسسه مردم‌نهاد مهرگیتی از سال 1384 با هدف تلاش برای ساختن ایرانی عاری از تبعیض و فقر فرهنگی شروع به مدرسه‌سازی و فعالیت آموزشی در مناطق کمتر برخوردار کرده است.عدم دسترسی به تجهیزات و امکانات آموزشی با کیفیت از جمله مشکلاتی است که در مناطق کم برخوردار وجود دارد. با اهدای کتاب و تجهیز کتابخانه های مناطق کم برخوردار  سهمی در ارتقای سطح فرهنگ، آگاهی، دانش و خلاقیت دانش‌آموزان و دانشجویان این مناطق داشته باشید.",
         employerLogo:"https://i.postimg.cc/9XDb5kG9/roshan-logo.png",
-        image:"https://i.postimg.cc/J0sBfSvz/Choose-plan-card-image.jpg"
+        image:"https://i.postimg.cc/J0sBfSvz/Choose-plan-card-image.jpg",
+        users:[]
     }
 ]
 
 export const users=[
-
+   {
+     id:1,
+     name:"محمود",
+     lastName:"خدادادی",
+     phone:"09930151706",
+     projects:[],
+     currentProject:null,
+     token:null
+     
+   },
+   {
+     id:1,
+     name:"محسن",
+     lastName:"خدادادی",
+     phone:"09930151707",
+     projects:[],
+     currentProject:null,
+     token:null
+   },
+   {
+     id:1,
+     name:"مجتبی",
+     lastName:"خدادادی",
+     phone:"09930151708",
+     projects:[],
+     currentProject:null,
+     token:null
+   },
 ]
 
 export const colleagues=[
-
+    {
+        id:1,
+        name:"محمود",
+        lastName:"خدادادی",
+        phone:"09930151706",
+        token:null
+    },
 ]
+
+export const stats={
+    totalContributin:65,
+    totalFund:95,
+}
