@@ -1,12 +1,12 @@
 import digikalaMehrLogo from '@assets/decorations/digikala-mehr-logo.png'
-import { useAuth } from '@components/AuthContext/context'
+import { useAuth } from '@components/hooks/useAuth';
 import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useCountdown from './useCountdown';
 import Button from '@components/Button';
+import "./style.css"
 
-
-function OTPCodeForm({ phone }) {
+function LoginOTPCodeForm({ phone }) {
     const { sendOTPCode } = useAuth();
     const { minutes, seconds, resetCountdown } = useCountdown(90, handleCountdownOverCallback);
     const { confirmOTPCode } = useAuth();
@@ -63,16 +63,13 @@ function OTPCodeForm({ phone }) {
 
     }
     return (
-        <form onSubmit={handleConfirmSubmit} className='login__form'>
+        <form onSubmit={handleConfirmSubmit} className='login__codeForm'>
             <img src={digikalaMehrLogo} className="login__image" />
           
-                <div className="login__header">
-                    <p className="paragraph greeting">دلارام عزیز سلام، برای شروع</p>
+                <div className={"login__header"}>
                     <h2 className="login__title">رمز یک‌بار‌مصرفی که برات ارسال شد را وارد کن</h2>
                     <p className="login__paragraph">کد تایید برای شماره {phone} ارسال شد.</p>
                 </div>
-                
-
                 <div className='login__input'>
                     <input autoFocus onBlur={(e) => validate(e.target.value)} ref={inputRef} value={code} onChange={handleCodeInputChange} name='OTPCode' type="text" className={`login__inputController${error?"--error":""}`} />
                     {error && <p className="login__error">{error}</p>}
@@ -83,4 +80,4 @@ function OTPCodeForm({ phone }) {
     );
 }
 
-export default OTPCodeForm
+export default LoginOTPCodeForm

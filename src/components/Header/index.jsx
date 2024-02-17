@@ -3,7 +3,7 @@ import FillInside_digiMehr_logo_i from "@assets/decorations/FillInside_digiMehr_
 import Digikala_Mehr_Branding from "@assets/decorations/Digikala_Mehr_Branding.svg";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "@components/AuthContext/context";
+import { useAuth } from "../hooks/useAuth";
 import DropDown from "@components/DropDown";
 import Loader from "../Loader";
 

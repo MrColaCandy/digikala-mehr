@@ -1,7 +1,7 @@
 import phoneNumberErrorCat from '@assets/decorations/phone-number-error-cat.png'
 import Button from '@components/Button';
-
-function Error({ phone, setRegistrationError, setHasCode }) {
+import "./style.css"
+function LoginError({ phone, setRegistrationError, setHasCode }) {
   function handleChangePhoneButtonClick() {
     setRegistrationError(false);
     setHasCode(false);
@@ -17,4 +17,4 @@ function Error({ phone, setRegistrationError, setHasCode }) {
   );
 }
 
-export default Error
+export default LoginError

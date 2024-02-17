@@ -13,7 +13,9 @@
     align-items: center;
     justify-content: center;
     gap: var(--space-10);
+    
 }
+
 
 .login__title {
     font-size: var(--font-size-large);
@@ -23,7 +25,7 @@
 }
 
 .login__inputController {
- 
+
     padding: 0 var(--space-16);
     width: 100%;
     max-width: 334px;
@@ -31,6 +33,7 @@
     border-radius: 8px;
     border: 1px solid var(--color-border);
 }
+
 .login__inputController--error {
     padding: 0 var(--space-16);
     width: 100%;
@@ -58,10 +61,8 @@
     justify-content: center;
     align-items: center;
 }
-.login__button:disabled
-{
-    background-color: #00b18857;
-}
+
+
 .login__paragraphBlue {
     color: var(--color-loginSignUp1);
     cursor: pointer;
@@ -81,40 +82,15 @@
     gap: var(--space-8);
 }
 
-.addPhoneNumber__information {
-    width: 100%;
-    max-width: 335px;
-    height: 290px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: var(--space-20);
-}
 
-.addPhoneNumber__details {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-24);
-}
 
-.addPhoneNumber__paragraph,
-.login__paragraph{
+
+.login__paragraph {
     font-size: var(--font-size-tiny);
     font-weight: 400;
     line-height: var(--space-24);
     color: var(--color-loginSignUpText);
-}
-
-.addPhoneNumber__paragraph {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-12);
-}
-
-.addPhoneNumber__entrance {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-32);
+    padding: 0 var(--space-10);
 }
 
 
@@ -128,22 +104,22 @@
     height: 16px;
     width: 100%;
     max-width: 332px
-  
-   
 }
-.login__header{
+
+.login__header {
     width: 100%;
     max-width: 332px;
     display: flex;
     flex-direction: column;
-    gap: var(--space-24);
+    justify-content: center;
+    gap: var(--space-8);
 }
 
 
 
 
 
-.login__input{
+.login__input {
     height: 70px;
     width: 100%;
     max-width: 332px;
@@ -155,41 +131,133 @@
 }
 
 
-.loginCatError {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.login {
     display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.login__image {
     width: 100%;
-    max-width: 321px;
+    max-width: 334px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-10);
+}
+
+.login__title {
+    font-size: var(--font-size-large);
+    font-weight: 700;
+    line-height: 32px;
+    color: var(--color-darkBlue);
+}
+
+.login__inputController {
+
+    padding: 0 var(--space-16);
+    width: 100%;
+    max-width: 334px;
+    height: 48px;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+}
+
+.login__inputController--error {
+    padding: 0 var(--space-16);
+    width: 100%;
+    max-width: 334px;
+    height: 48px;
+    border-radius: 8px;
+    border: 1px solid var(--color-red);
+}
+
+.login__button {
+    width: 100%;
+    max-width: 334px;
+    height: 48px;
+    cursor: pointer;
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    line-height: 24px;
+    border-radius: 8px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: 1px solid var(--color-primary);
+    text-align: center;
+    font-family: yekan;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login__button:disabled {
+    background-color: #00b18857;
+}
+
+.login__paragraphBlue {
+    color: var(--color-loginSignUp1);
+    cursor: pointer;
+}
+
+.login__form {
+    display: flex;
     direction: rtl;
+    width: 100%;
+    max-width: 400px;
+    height: 450px;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-16);
-    
-}
-.loginCatError__image
-{
-    width: 100%;
-    max-width: 192px;
+    justify-content: center;
+    border-radius: var(--borderRadius-8);
+    border: 1px solid var(--color-border);
+    gap: var(--space-8);
 }
 
 
 
-
-
-
-
-
-
-.login__countdown {
-    color: var(--color-loginSignUpText);
+.login__error {
     font-size: var(--font-size-tiny);
-    font-family: yekan;
     font-weight: 400;
-    line-height: var(--font-size-normal);
-    word-wrap: break-word
+    line-height: var(--lineHeight-16);
+    color: var(--color-red);
+    margin-top: var(--space-4);
+    height: 16px;
+    width: 100%;
+    max-width: 332px
 }
 
+.login__header {
+    width: 100%;
+    max-width: 332px;
+    display: flex;
+    flex-direction: column;
+   
+}
 
-
-
-
-
+.login__input {
+    height: 70px;
+    width: 100%;
+    max-width: 332px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: right;
+}

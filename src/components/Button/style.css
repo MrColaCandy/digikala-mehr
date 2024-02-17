@@ -42,7 +42,7 @@
 }
 .button--filled:disabled,.button--outlined:disabled
 {
-    background-color: #00b1883b;
+    background-color: transparent !important ;
 }
 @media screen and (max-width: 390px) {
     .button--outlined {

@@ -1,10 +1,10 @@
 import "./style.css";
 import { useState } from "react";
-import PhoneNumberForm from "./components/PhoneNumberForm";
-import OTPCodeForm from "./components/OTPCodeForm";
-import Error from "./components/Error";
+import LoginPhoneNumberForm from "./LoginPhoneNumberForm";
+import LoginOTPCodeForm from "./LoginOTPCodeForm";
+import LoginError from "./LoginError";
 
-function Login() {
+function LoginColleagues() {
   const [phone, setPhone] = useState("");
   const [hasCode, setHasCode] = useState(false);
   const [registrationError, setRegistrationError] = useState(false);
@@ -12,16 +12,18 @@ function Login() {
   return (
     <article className="login">
       {!hasCode && !registrationError && (
-        <PhoneNumberForm
+        <LoginPhoneNumberForm
+          title={"ورود همکاران"}
+          description={"سلام همکار عزیز، قراره با هم دیگه کارای بزرگی انجام بدیم برای شروع لطفا شماره موبایل خود را وارد کنید."}
           phone={phone}
           setPhone={setPhone}
           setHasCode={setHasCode}
           setRegistrationError={setRegistrationError}
         />
       )}
-      {hasCode && !registrationError && <OTPCodeForm phone={phone} />}
+      {hasCode && !registrationError && <LoginOTPCodeForm phone={phone} />}
       {registrationError && (
-        <Error
+        <LoginError
           phone={phone}
           setHasCode={setHasCode}
           setRegistrationError={setRegistrationError}
@@ -30,4 +32,4 @@ function Login() {
     </article>
   );
 }
-export default Login;
+export default LoginColleagues;

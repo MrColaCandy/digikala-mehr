@@ -3,7 +3,7 @@ import './style.css'
 
 import Slider from "@components/Slider";
 import Card from "@components/Card";
-import projectsData from "../../data/projects.json"
+import { projects } from "../../../../data/data";
 
 
 function HomeProjects() {
@@ -17,7 +17,7 @@ function HomeProjects() {
       </section>
       <Slider slideWidth={390} slideHeight={450} viewPortWidth={1250} gap={40}>
         {
-          projectsData.map((project)=>{
+          projects.map((project)=>{
             return <Card
             className={"home__card"}
             key={project.id} 

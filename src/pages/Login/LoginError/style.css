@@ -1,0 +1,33 @@
+
+.loginCatError {
+    display: flex;
+    width: 100%;
+    max-width: 321px;
+    direction: rtl;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-16);
+
+}
+
+.loginCatError__image {
+    width: 100%;
+    max-width: 192px;
+}
+
+
+
+
+
+
+
+
+
+.login__countdown {
+    color: var(--color-loginSignUpText);
+    font-size: var(--font-size-tiny);
+    font-family: yekan;
+    font-weight: 400;
+    line-height: var(--font-size-normal);
+    word-wrap: break-word
+}

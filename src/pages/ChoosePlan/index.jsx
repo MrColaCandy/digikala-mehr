@@ -6,9 +6,9 @@ import ChoosePlaneHeader from "./components/choosePlanHeader"
 import "./style.css"
 import Slider from "@components/Slider"
 import Card from "@components/Card"
-import { projects } from "../../../api/data";
+import { projects } from "../../data/data"
 import Button from "@components/Button"
-import { useAuth } from "@components/AuthContext/context"
+import { useAuth } from "@components/hooks/useAuth"
 
 const ChoosePlan = () => {
   const {user,setUser}=useAuth()

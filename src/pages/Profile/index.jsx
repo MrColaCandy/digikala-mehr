@@ -7,7 +7,7 @@ import ProfileUserAvatar from "./Components/ProfileUserAvatar";
 import HorizontalLine from "../../components/HorizontalLine";
 import ProfileHistory from "./Components/ProfileHistory";
 import Slider from "@components/Slider"
-import { projects } from "../../../api/data";
+import { projects } from "../../data/data";
 import Card from "@components/Card";
 import Button from "@components/Button";
 import "./style.css"

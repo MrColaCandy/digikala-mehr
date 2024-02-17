@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { parse,serialize } from "cookie";
-import { context } from "./context";
+import { authContext } from "../contexts/authContext";
 import { getCode,validateCode, validateToken } from "./request"
 
 // Define the AuthContext component, which will provide the authentication context
@@ -89,9 +89,9 @@ function AuthContext({ children }) {
     }
     // Provide the authentication context value to the components in the tree
     return (
-        <context.Provider value={{ user,setUser,token,setToken,isLoggedIn,setIsLoggedIn,logout, sendOTPCode, confirmOTPCode,isLoading }}>
+        <authContext.Provider value={{ user,setUser,token,setToken,isLoggedIn,setIsLoggedIn,logout, sendOTPCode, confirmOTPCode,isLoading }}>
             {children}
-        </context.Provider>
+        </authContext.Provider>
     );
 }
 

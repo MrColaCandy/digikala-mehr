@@ -1,8 +1,9 @@
 import { useState, useRef } from "react"
 import digikalaMehrLogo from '@assets/decorations/digikala-mehr-logo.png'
-import { useAuth } from "@components/AuthContext/context"
+import { useAuth } from "@components/hooks/useAuth"
 import Button from "@components/Button"
-function PhoneNumberForm({ phone, setPhone, setHasCode, setRegistrationError }) {
+import "./style.css"
+function LoginPhoneNumberForm({ phone, setPhone, setHasCode, setRegistrationError,title,description }) {
 
     const { sendOTPCode } = useAuth()
     const [error, setError] = useState(null)
@@ -27,14 +28,13 @@ function PhoneNumberForm({ phone, setPhone, setHasCode, setRegistrationError }) 
 
     }
 
-    async function handleLoginSubmit(e) {
+    async function handleLoginPhoneSubmit(e) {
         e.preventDefault()
         if (error || !phone) return;
         setIsLoading(true);
         try {
             await sendOTPCode(phone)
             setHasCode(true)
-            console.log("code: 123456");
             setError(null)
             setRegistrationError(false)
         } catch (error) {
@@ -47,19 +47,18 @@ function PhoneNumberForm({ phone, setPhone, setHasCode, setRegistrationError }) 
         }
     }
     return (
-        <form onSubmit={handleLoginSubmit} className="login__form">
-            <img src={digikalaMehrLogo} className="login__image" />
-            <div className="login__header">
-                <h2 className="login__title">ورود همکاران</h2>
-                <p className="login__paragraph">سلام همکار عزیز، قراره با هم دیگه کارای بزرگی انجام بدیم</p>
-                <p className="login__paragraph">برای شروع لطفا شماره موبایل خود را وارد کنید</p>
+        <form onSubmit={handleLoginPhoneSubmit} className={"login__form"}>
+            <img src={digikalaMehrLogo} className={"login__image"} />
+            <div className={"login__header"}>
+                <h2 className="login__title">{title}</h2>
+                <p className="login__paragraph">{description}</p>
             </div>
 
             <div className="login__input">
                 <input onBlur={(e) => validate(e.target.value)} autoFocus ref={inputRef} name="phone" value={phone} onChange={handlePhoneInputChange} type="tel" className={`login__inputController${error?"--error":""}`} />
                 {error && <p className="login__error">{error}</p>}
             </div>
-            <Button width={"332px"} isLoading={isLoading} text={"ورود"} variant={"filled"}/>
+            <Button color={"#00B189"}  width={"332px"} isLoading={isLoading} text={"ورود"} variant={"filled"}/>
             
 
 
@@ -70,4 +69,4 @@ function PhoneNumberForm({ phone, setPhone, setHasCode, setRegistrationError }) 
     )
 }
 
-export default PhoneNumberForm
+export default LoginPhoneNumberForm

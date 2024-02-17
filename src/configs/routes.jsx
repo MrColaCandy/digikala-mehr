@@ -6,6 +6,7 @@ import Profile from "@pages/Profile";
 import PaymentHistory from "@pages/PaymentHistory";
 import ChoosePrice from "../pages/ChoosePrice";
 
+
 export const routes = [
   {
     path: home,
@@ -15,6 +16,7 @@ export const routes = [
     path:login,
     element:<Login/>,
   },
+
   {
     path:choosePlan,
     element: <ChoosePlan/>

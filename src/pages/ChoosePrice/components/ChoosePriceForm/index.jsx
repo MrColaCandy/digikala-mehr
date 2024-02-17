@@ -5,7 +5,7 @@ import Button from "@components/Button"
 import ChoosePriceSuggestions from "../ChoosePriceSuggestions";
 import ChoosePriceFooter from "../ChoosePriceFooter"
 import usePersianNumberConverter from "../../hooks/usePersianNumberConverter";
-import {useAuth} from "@components/AuthContext/context"
+import { useAuth } from "@components/hooks/useAuth";
 import { postPrice } from "../../requests";
 const ChoosePriceForm = () => {
     const {user}=useAuth();
