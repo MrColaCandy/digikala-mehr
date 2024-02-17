@@ -120,3 +120,10 @@
     justify-content: center;
     align-items: center;
 }
+
+@media screen and (max-width: 566px) {
+    .homeInfo__dataBox::after {
+      display: none;
+    }
+    
+}

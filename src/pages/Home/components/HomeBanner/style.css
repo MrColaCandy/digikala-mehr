@@ -4,6 +4,7 @@
     margin-bottom: var(--space-48);
     background: url('@assets/decorations/HomeSlider.svg');
     background-repeat: no-repeat;
+    background-position: 70% 100%;
 }
 
 
@@ -11,5 +12,6 @@
     .homeBanner {
         height: 293px;
         background: url('@assets/decorations/HomeHeaderMobile.svg');
+        background-position: 80% 100%;
     }
 }

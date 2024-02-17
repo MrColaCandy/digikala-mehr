@@ -2,7 +2,7 @@ import './style.css'
 
 function HomeBanner (){
     return (
-        <header className="homeBanner"></header>
+        <div className="homeBanner"></div>
     )
 }
 
