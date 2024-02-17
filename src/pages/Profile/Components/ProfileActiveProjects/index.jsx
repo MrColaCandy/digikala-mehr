@@ -1,6 +1,6 @@
 import ProfileProject from "../ProfileProject"
 import ProfileProjectNew from "../ProfileProjectNew"
-import ProfileProjectExpired from "../"
+import ProfileProjectExpired from "../ProfileProjectExpired"
 import './style.css'
 import ProfileNoProject from "../ProfileNoProject"
 
