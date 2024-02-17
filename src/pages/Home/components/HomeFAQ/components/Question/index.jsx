@@ -12,11 +12,11 @@ const Question = ({ questionText,answerText }) => {
     return (
         <>
             <div className={`question--${showAnswer ? "answer" : "noAnswer"}`}>
-                    <div className="question__text">
+                    <div onClick={handleQuestionIconClick}  className="question__text">
                         {questionText}
-                        <FaChevronDown onClick={handleQuestionIconClick} className="question__icon" />
+                        <FaChevronDown  className="question__icon" />
                     </div>
-                    <div className={`question__answer--${showAnswer ? "show" : "hide"}`}>
+                    <div  className={`question__answer--${showAnswer ? "show" : "hide"}`}>
                        {answerText}
                     </div>
             </div>
