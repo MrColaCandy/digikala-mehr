@@ -2,22 +2,37 @@
     width: 100%;
     height: auto;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    gap: var(--space-10);
 
 }
 
 
-
+.profileProject__wrapper{
+    width: 550px;
+    border: 1px solid var(--color-border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    height: auto;
+    min-height: 88px;
+    flex-wrap: wrap;
+    gap: var(--space-16);
+    padding: 0 var(--space-10);
+}
 
 
 .profileProject__info {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    gap: var(--space-8);
-    width: 280px;
+    gap: var(--space-10);
+    width: 100%;
+    max-width: 300px;
+    font-size: var(--font-size-small);
 
 }
 
@@ -28,26 +43,21 @@
 }
 
 .profileProject__infoText {
-    height: 100%;
-    width: 100%;
+ 
     display: flex;
     flex-direction: column;
-    gap: var(--space-10);
-
-
+   
 }
 
 .profileProject__infoTitle {
     width: 100%;
-    height: 100%;
     color: var(--color-N700);
-    font-size: var(--font-size-normal);
+    font-size: var(--font-size-small);
     font-weight: 400;
     line-height: var(--lineHeight-24);
 }
 
 .profileProject__infoEmployer {
-    height: 100%;
     width: 100%;
     color: var(--color-textLight);
     font-size: var(--font-size-tiny);
@@ -56,12 +66,14 @@
 }
 
 .profileProject__edit {
-    width: 280px;
+    width: 100%;
+    max-width: 100px;
     height: 60px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    margin-top: var(--space-32);
 
 }
 
@@ -74,7 +86,6 @@
     justify-content: center;
     align-items: center;
     gap: 2px;
-    height: 100%;
     width: 100%;
 
 }
@@ -107,7 +118,8 @@
 
 
 .profileProject__finance {
-    width: 280px;
+    width: 100%;
+    max-width: 250px;
     height: 60px;
     display: flex;
     flex-direction: column;
@@ -116,38 +128,62 @@
     line-height: var(--lineHeight-20);
     font-size: var(--font-size-small);
     font-weight: 400;
-
-}
-
-.profileProject__financeDate,
-.profileProject__financeCost {
-    width: 100%;
-    font-size: var(--font-size-medium);
-    line-height: var(--lineHeight-24);
-    font-weight: 700;
     text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
 }
+
 
 .profileProject__financeText {
     color: var(--color-textLight);
     line-height: var(--lineHeight-20);
     font-size: var(--font-size-small);
     font-weight: 400;
+    width: 100%;
+    text-align: center;
+}
+.profileProject__financeTextBold {
+    color: var(--color-textDark);
+    line-height: var(--lineHeight-20);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    width: 100%;
+    text-align: center;
 }
 
-.profileProject__financeCurrency {
-    font-weight: 400;
-}
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1185px) {
     .profileProject {
+     
         justify-content: center;
-        gap: var(--space-16);
+        align-items: center;
+    
     }
-
 }
-
+@media screen and (max-width: 512px) {
+    .profileProject__info
+    {
+        flex-wrap: wrap;
+    }
+    .profileProject {
+       gap: 0;
+    
+    }
+    .profileProject__wrapper{
+        justify-content: start;
+        border-radius: 0;
+        gap: 5px;
+        
+    }
+    .profileProject__wrapper:nth-child(2n-1){
+       border-bottom: none;
+    }
+    .profileProject__wrapper:nth-child(2n)
+    {
+        border-top: none;
+    }
+    .profileProject__financeText,.profileProject__financeTextBold
+    {
+        text-align: right;
+    }
+    
+}

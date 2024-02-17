@@ -1,11 +1,11 @@
 import ProfileProject from "../ProfileProject"
 import ProfileProjectNew from "../ProfileProjectNew"
 import ProfileProjectExpired from "../ProfileProjectExpired"
-import './style.css'
 import ProfileNoProject from "../ProfileNoProject"
+import './style.css'
 
 
-function ProfileActiveProjects() {
+function ProfileActiveProjects({user}) {
     return (
 
 
@@ -14,10 +14,35 @@ function ProfileActiveProjects() {
                 <i className="profileActiveProjects__icon"></i>
                 <span className="profileActiveProjects__title">پروژه‌ی فعال شما</span>
             </section>
-            <ProfileProject />
-            <ProfileProjectNew />
-            <ProfileProjectExpired />
-            <ProfileNoProject />
+            {
+                user?.projects.length===0 &&
+                <ProfileNoProject/>
+            }
+            {
+                user?.projects.filter(project=>project.age===0)
+                .map(project=>
+                <ProfileProjectNew 
+                project={project}
+                 key={project.id}
+                />)
+            }
+            {
+                user?.projects.filter(project=>project.age!==0).sort((a,b)=>a.age-b.age)
+                .map(project=>
+                <ProfileProject
+                project={project}
+                 key={project.id}
+                />)
+            }
+            {
+                   user?.projects.filter(project=>project.state==="expired").sort((a,b)=>a.age-b.age)
+                   .map(project=>
+                   <ProfileProjectExpired
+                   project={project}
+                    key={project.id}
+                   />)
+            }
+           
         </section >
     )
 }

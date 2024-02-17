@@ -11,6 +11,7 @@ import { projects } from "../../data/data";
 import Card from "@components/Card";
 import Button from "@components/Button";
 import "./style.css"
+import { useAuth } from "@components/hooks/useAuth";
 const fakeUser={
   name:"سارا",
   currentProject:{
@@ -20,11 +21,12 @@ const fakeUser={
   }
 }
 function Profile() {
+  const {user}=useAuth()
   return (
     <Layout>
-       <ProfileUserAvatar/>
+       <ProfileUserAvatar user={user}/>
        <HorizontalLine space={16} width={1194}/>
-        <ProfileActiveProjects />
+        <ProfileActiveProjects user={user} />
          <ProfileContributionMessage user={fakeUser} total={{contribution:67,fund:94}}/>
          <ProfileNewProjectMessage user={fakeUser}/>
         <ProfileHistory />

@@ -21,9 +21,6 @@
 }
 
 
-
-
-
 .profileUserAvatar__name {
     color: var(--color-textDark);
     font-size: var(--font-size-normal);
@@ -48,3 +45,7 @@
     display: none;
 }
 
+.profileUserAvatar__image{
+    object-fit: cover;
+    border-radius: 50%;
+}

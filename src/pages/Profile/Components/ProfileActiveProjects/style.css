@@ -6,7 +6,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    gap: var(--space-20);
+    gap: var(--space-16);
 }
 
 
@@ -37,3 +37,11 @@
     width: 100%;
 }
 
+@media screen and (max-width: 1185px) {
+    .profileActiveProjects {
+     
+        justify-content: center;
+        align-items: center;
+    
+    }
+}

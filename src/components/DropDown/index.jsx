@@ -5,10 +5,11 @@ import {PiClipboardTextThin} from "react-icons/pi";
 import Toman from "@assets/icons/Toman.svg"
 import { useAuth } from '../hooks/useAuth';
 import './style.css';
-
+import {useNavigate} from "react-router-dom"
 
 const DropDown = () => {
     const {logout,user}=useAuth();
+    const navigate=useNavigate();
     function handleLogoutClick(){
         logout();
     }
@@ -30,7 +31,10 @@ const DropDown = () => {
     };
 
     let dropdownClassName = isDropdownOpen ? "dropdown-container open" : "dropdown-container";
-
+    function handleUsernameClick()
+    {
+        navigate("/profile")
+    }
     return (
         <>
             <div className="drop-container" ref={menuRef}>
@@ -43,7 +47,7 @@ const DropDown = () => {
                         <ul>
                             <li className="dropdown-li">
                                 <div className='img-user'><img src="" alt=""/></div>
-                                <div className="account-id"><a href="#"><span>{user?.name}</span></a><p>جمع نیکوکاری های
+                                <div onClick={handleUsernameClick} className="account-id"><a href="#"><span>{user?.name}</span></a><p>جمع نیکوکاری های
                                     شما</p><span>00 <img src={Toman} alt="تومان"/></span>
                                 </div>
                             </li>

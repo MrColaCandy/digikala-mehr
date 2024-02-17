@@ -4,14 +4,14 @@ import "./style.css"
 import Button from "@components/Button"
 import ChoosePriceSuggestions from "../ChoosePriceSuggestions";
 import ChoosePriceFooter from "../ChoosePriceFooter"
-import usePersianNumberConverter from "../../hooks/usePersianNumberConverter";
+import usePersianNumberConverter from "@components/hooks/usePersianNumberConverter";
 import { useAuth } from "@components/hooks/useAuth";
 import { postPrice } from "../../requests";
 const ChoosePriceForm = () => {
     const {user}=useAuth();
     const [isLoading,setIsLoading]=useState(false)
     const [value, setValue] = useState();
-    const {convertEnNumberToPersian,addCommas}=usePersianNumberConverter()
+    const {convert,addCommas}=usePersianNumberConverter()
     const [error,setError]=useState(null);
     const handleInputChange = (event) => {
         setValue(event.target.value);
@@ -58,7 +58,7 @@ const ChoosePriceForm = () => {
                 <p className="choosePrice__inputInfo">
                     {
                         value && !error &&
-                        <span>{convertEnNumberToPersian(addCommas(value))} تومان</span>
+                        <span>{convert(addCommas(value))} تومان</span>
                     }
                     {
                         error &&

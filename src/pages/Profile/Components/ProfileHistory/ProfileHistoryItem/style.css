@@ -77,24 +77,30 @@
         border: 1px solid var(--color-border);
         border-radius: 16px;
         margin: var(--space-4) 0;
+     
+
         
     }
     .profileHistory__itemDate
     {
         order: 1;
         font-weight: 700;
+        min-height: 35px;
 
     }
     .profileHistory__itemTitle
     {
         order: 2;
+        min-height: 35px;
     }
     .profileHistory__itemPrice
     {
         order: 4;
+        min-height: 35px;
     }
     .profileHistory__itemState{
         order: 3;
+        min-height: 35px;
     }
     
 }

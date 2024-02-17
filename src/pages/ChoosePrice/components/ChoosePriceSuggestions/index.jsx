@@ -1,11 +1,11 @@
 import { useEffect ,useState } from "react";
 import { fetchSuggestions } from "../../requests";
 import "./style.css"
-import usePersianNumberConverter from "../../hooks/usePersianNumberConverter";
+import usePersianNumberConverter from "@components/hooks/usePersianNumberConverter";
 
 const ChoosePriceSuggestions = ({value,setValue}) => {
     const [suggestions, setSuggestions] = useState([]);
-    const {convertEnNumberToPersian,addCommas}=usePersianNumberConverter()
+    const {convert,addCommas}=usePersianNumberConverter()
     const handleClick = (suggestion) => {
         setValue(suggestion);
     };
@@ -29,7 +29,7 @@ const ChoosePriceSuggestions = ({value,setValue}) => {
                     onClick={() => handleClick(suggestionValue)}
                     type="button"
                 >
-                    {convertEnNumberToPersian(addCommas(suggestionValue))}{" "}
+                    {convert(addCommas(suggestionValue))}{" "}
                     <span className="choosePrice__suggestionPrefix">تومان</span>
                 </button>
             );

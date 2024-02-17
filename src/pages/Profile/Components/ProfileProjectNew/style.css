@@ -1,89 +1,194 @@
-.profileProjectNew {
+.profileProject {
     width: 100%;
-    height:auto;
-    background: var(--color-white);
-    padding: var(--padding-16);
+    height: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    gap: var(--space-10);
+
 }
 
 
-
-.profileProjectNew__info{
+.profileProject__wrapper{
+    width: 100%;
+    max-width: 588px;
+    border: 1px solid var(--color-border);
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 16px;
+    height: auto;
+    min-height: 88px;
     flex-wrap: wrap;
-    width: 100%;
-    max-width: 280px;
+    gap: var(--space-16);
+    padding: 0 var(--space-10);
 }
-.profileProjectNew__infoLogo {
+
+
+.profileProject__info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--space-10);
+    width: 100%;
+    max-width: 300px;
+    font-size: var(--font-size-small);
+
+}
+
+.profileProject__infoLogo {
     width: 48px;
     height: 48px;
     border-radius: var(--borderRadius-10);
 }
 
-.profileProjectNew__infoText{
-    height: 100%;
+.profileProject__infoText {
+ 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
+   
+}
+
+.profileProject__infoTitle {
+    width: 100%;
     color: var(--color-N700);
-    font-size: var(--font-size-normal);
+    font-size: var(--font-size-small);
     font-weight: 400;
     line-height: var(--lineHeight-24);
 }
 
-
-
-.profileProjectNew__infoEmployer {
+.profileProject__infoEmployer {
+    width: 100%;
     color: var(--color-textLight);
     font-size: var(--font-size-tiny);
     font-weight: 400;
     line-height: var(--lineHeight-20);
 }
 
-.profileProjectNew__edit {
+.profileProject__edit {
     width: 100%;
-    max-width: 280px;
+    max-width: 100px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--space-32);
+
+}
+
+.profileProject__price {
+    font-size: var(--font-size-xtiny);
+    color: var(--color-textLight);
+    font-weight: 400;
+    line-height: var(--lineHeight-12);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    width: 100%;
+
+}
+
+
+
+.profileProject__editButtons {
     padding: var(--padding-12) var(--padding-16);
     display: flex;
     justify-content: center;
     align-items: center;
     gap: var(--space-10);
+    width: 100%;
+    max-width: 170px;
     color: var(--color-primary);
 }
 
 
-.profileProjectNew__editButton {
+.profileProject__editButton {
     color: var(--color-primary);
     font-size: var(--font-size-tiny);
     line-height: var(--lineHeight-12);
     font-weight: 700;
     text-decoration: none;
+    position: relative;
 }
 
-@media screen and (max-width: 768px) {
-    .profileProjectNew{
+
+
+
+
+.profileProject__finance {
+    width: 100%;
+    max-width: 250px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    line-height: var(--lineHeight-20);
+    font-size: var(--font-size-small);
+    font-weight: 400;
+    text-align: center;
+
+}
+
+
+.profileProject__financeText {
+    color: var(--color-textLight);
+    line-height: var(--lineHeight-20);
+    font-size: var(--font-size-small);
+    font-weight: 400;
+    width: 100%;
+    text-align: center;
+}
+.profileProject__financeTextBold {
+    color: var(--color-textDark);
+    line-height: var(--lineHeight-20);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    width: 100%;
+    text-align: center;
+}
+
+@media screen and (max-width: 1185px) {
+    .profileProject {
+     
         justify-content: center;
-        gap:var(--space-20)
-    }
+        align-items: center;
     
+    }
+    .profileProject__wrapper{
+        max-width: 100%;
+        
+    }
 }
 
-@media screen and (max-width: 390px) {
-    .profileProjectNew {
-        
-        border-radius: 16px;
-        border: 1px solid var(--color-border);
+@media screen and (max-width: 512px) {
+    .profileProject__info
+    {
+        flex-wrap: wrap;
+    }
+    .profileProject {
+       gap: 0;
+    
+    }
+    .profileProject__wrapper{
+        justify-content: start;
+        border-radius: 0;
+        gap: 5px;
         
     }
-    .profileProjectNew__info{
-        justify-content: start;
-       
+    .profileProject__wrapper:nth-child(2n-1){
+       border-bottom: none;
+    }
+    .profileProject__wrapper:nth-child(2n)
+    {
+        border-top: none;
+    }
+    .profileProject__financeText,.profileProject__financeTextBold
+    {
+        text-align: right;
     }
     
 }

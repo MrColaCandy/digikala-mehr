@@ -2,17 +2,12 @@ import { useEffect, useState } from "react"
 import { parse,serialize } from "cookie";
 import { authContext } from "../contexts/authContext";
 import { getCode,validateCode, validateToken } from "./request"
+import { fakeUser } from "../../data/data";
 
 // Define the AuthContext component, which will provide the authentication context
 
 
-// mocking user data from response
-const fakeUser={
-    name:"Mahmood",
-    lastName:"khodadady",
-    phone:"09930151706",
-    currentProject:null
-}
+
 function AuthContext({ children }) {
     const [user,setUser]=useState(null);
     const [isLoggedIn,setIsLoggedIn]=useState(false);
@@ -26,13 +21,7 @@ function AuthContext({ children }) {
         try {
             const isValid=await validateToken(token);
             setIsLoggedIn(isValid);
-            setUser({
-                name:"Mahmood",
-                lastName:"Khodadady",
-                email:"MahmoodKhodadady10@gmail.com",
-                token:token,
-                
-            })
+            setUser(fakeUser)
             setIsLoggedIn(true);
         } catch (error) {
             logout();
@@ -68,7 +57,10 @@ function AuthContext({ children }) {
             console.log("This code is valid.");
             setToken(token);
             document.cookie=serialize("token",token);
-            setUser(fakeUser)
+            setUser({
+                ...fakeUser,
+                token:token
+            })
             setIsLoggedIn(true);
             return token;
         } catch (error) {
