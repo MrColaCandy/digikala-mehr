@@ -4,12 +4,14 @@ import Card from "@components/Card";
 import './style.css'
 
 import { useAuth } from "../../../../components/hooks/useAuth";
+import { useState } from "react";
+import { projects } from "../../../../data/data";
 
 
 
 function HomeProjects({onStartButtonClick}) {
   const{availableProjects}=useAuth()
-
+  const [homeProjects]=useState( availableProjects || projects )
   return (
     <section className="homeProjects">
       <section className="homeProjects__header">
@@ -19,7 +21,7 @@ function HomeProjects({onStartButtonClick}) {
       <Slider slideWidth={390} slideHeight={450} viewPortWidth={1250} gap={40}>
         {
           
-          availableProjects?.map((project)=>{
+          homeProjects.map((project)=>{
             return <Card
             key={project.id} 
             id={project.id}
