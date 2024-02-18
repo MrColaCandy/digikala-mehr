@@ -35,26 +35,33 @@ const ChoosePriceForm = () => {
             newProjects.push(user.currentProject);
             const newHistory=user.history;
             newHistory.push({
+                id:Math.round(Math.random()*50000),
                 date:"مهر 1402",
                 state:"success",
                 name:user.currentProject.title,
                 cost:user.currentProject.cost,
             })
-            const newAvailableProjects=availableProjects;
-            newAvailableProjects.splice(newAvailableProjects.findIndex(p=>p.id==user?.currentProject.id),1);
-            setAvailableProjects(newAvailableProjects);
-            localStorage.setItem("availableProjects",JSON.stringify(newAvailableProjects));
+           
             setUser(
             {...user,
                 currentProject:{
                     ...user.currentProject,
-                    price:value
+                    cost:value
                 },
                 projects:newProjects,
                 history:newHistory,
             })
             localStorage.setItem("user",JSON.stringify(user));
+
+            const newAvailableProjects=availableProjects;
+            newAvailableProjects.splice(newAvailableProjects.findIndex(p=>p.id==user.currentProject.id),1);
+            setAvailableProjects(newAvailableProjects);
+            localStorage.setItem("availableProjects",JSON.stringify(newAvailableProjects));
+
             document.cookie=serialize("newProject",true);
+           
+
+           
             navigate("/profile")
         } catch (error) {
             setError(error.message)

@@ -3,7 +3,6 @@ import { parse,serialize } from "cookie";
 import { authContext } from "../contexts/authContext";
 import { getCode,validateCode, validateToken } from "./request"
 import { fakeUser, projects } from "../../data/data";
-// Define the AuthContext component, which will provide the authentication context
 
 
 
@@ -13,11 +12,13 @@ function AuthContext({ children }) {
     const [token,setToken]=useState(parse(document.cookie).token || null)
     const [isLoading,setIsLoading]=useState(false);
     const [destination,setDestination]=useState("/");
-    const [availableProjects,setAvailableProjects]=useState(JSON.parse(localStorage.getItem("availableProjects") || null) || null)
+    const [availableProjects,setAvailableProjects]=useState(JSON.parse(localStorage.getItem("availableProjects")||null)||null)
     function getAvailableProjects(){
+        
+        const ids=user?.projects.map(p=>p.id);
         for (let index = 0; index < projects.length; index++) {
             const p = projects[index];
-            if(user?.projects.includes(p))
+            if(ids.includes(p.id))
             {
                 projects.splice(index,1);
             }
@@ -39,7 +40,9 @@ function AuthContext({ children }) {
             setIsLoggedIn(isTokenValid);
             setUser(JSON.parse(localStorage.getItem("user")));
             localStorage.setItem("availableProjects",JSON.stringify(getAvailableProjects()));
-            setAvailableProjects(getAvailableProjects);
+            setAvailableProjects(getAvailableProjects());
+            console.log(user.projects);
+            console.log(availableProjects);
         } catch (error) {
             logout();
         }
@@ -79,8 +82,8 @@ function AuthContext({ children }) {
             })
             localStorage.setItem("user",JSON.stringify(fakeUser));
             setIsLoggedIn(true);
-            setAvailableProjects(getAvailableProjects());
-            localStorage.setItem("availableProjects",JSON.stringify(getAvailableProjects()));
+            setAvailableProjects(projects);
+            localStorage.setItem("availableProjects",JSON.stringify(projects));
             return token;
         } catch (error) {
             console.log("Failed to validate code . Error", error.message)
@@ -96,7 +99,7 @@ function AuthContext({ children }) {
         setToken(null);
         document.cookie = serialize("token", "", { expires: new Date(0) });
         setIsLoggedIn(false);
-        localStorage.setItem("user","");
+        localStorage.setItem("user",null);
         setDestination("/");
         setAvailableProjects(null);
         localStorage.setItem("availableProjects",null);

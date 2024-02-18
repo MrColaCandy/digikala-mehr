@@ -7,7 +7,6 @@ export const projects = [
         employerLogo: "https://i.postimg.cc/9XDb5kG9/roshan-logo.png",
         image: "https://i.postimg.cc/J0sBfSvz/Choose-plan-card-image.jpg",
         age: -1,
-        state: "available",
         span: 5,
         cost: 200000,
 
@@ -20,7 +19,6 @@ export const projects = [
         employerLogo: "https://i.postimg.cc/9XDb5kG9/roshan-logo.png",
         image: "https://i.postimg.cc/J0sBfSvz/Choose-plan-card-image.jpg",
         age: -1,
-        state: "available",
         span: 5,
         cost: 200000,
 
@@ -33,7 +31,6 @@ export const projects = [
         employerLogo: "https://i.postimg.cc/9XDb5kG9/roshan-logo.png",
         image: "https://i.postimg.cc/J0sBfSvz/Choose-plan-card-image.jpg",
         age: -1,
-        state: "available",
         span: 5,
         cost: 200000,
     },
@@ -45,7 +42,6 @@ export const projects = [
         employerLogo: "https://i.postimg.cc/9XDb5kG9/roshan-logo.png",
         image: "https://i.postimg.cc/J0sBfSvz/Choose-plan-card-image.jpg",
         age: -1,
-        state: "available",
         span: 5,
         cost: 200000,
 
@@ -58,7 +54,6 @@ export const projects = [
         employerLogo: "https://i.postimg.cc/9XDb5kG9/roshan-logo.png",
         image: "https://i.postimg.cc/J0sBfSvz/Choose-plan-card-image.jpg",
         age: -1,
-        state: "available",
         span: 5,
         cost: 200000,
 

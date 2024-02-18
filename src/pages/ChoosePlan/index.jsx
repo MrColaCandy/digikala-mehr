@@ -12,7 +12,7 @@ const ChoosePlan = () => {
   const navigate=useNavigate();
   function handleCardButtonClick(project){
     navigate("/choose-price")
-    setUser({...user,currentProject:{...project,age:0,state:"new"}});
+    setUser({...user,currentProject:project});
     localStorage.setItem("user",JSON.stringify(user));
     
   }

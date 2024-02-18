@@ -1,16 +1,15 @@
 import { FaChevronLeft } from "react-icons/fa6";
 import Slider from "@components/Slider";
 import Card from "@components/Card";
-import { projects } from "../../../../data/data";
 import './style.css'
-import { useState } from "react";
+
 import { useAuth } from "../../../../components/hooks/useAuth";
 
 
 
 function HomeProjects({onStartButtonClick}) {
   const{availableProjects}=useAuth()
-  const [homeProjects]=useState(availableProjects || projects)
+
   return (
     <section className="homeProjects">
       <section className="homeProjects__header">
@@ -20,7 +19,7 @@ function HomeProjects({onStartButtonClick}) {
       <Slider slideWidth={390} slideHeight={450} viewPortWidth={1250} gap={40}>
         {
           
-          homeProjects?.map((project)=>{
+          availableProjects?.map((project)=>{
             return <Card
             key={project.id} 
             id={project.id}
