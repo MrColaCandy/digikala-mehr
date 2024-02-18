@@ -20,22 +20,28 @@ const Slider = ({ viewPortWidth = 800,slideWidth=390,slideHeight=450, scrollBeha
     useEffect(() => {
         if (children === null) return;
         if (!containerRef.current) return;
-        previousButton.current.style.display = "none";
-
         containerRef.current.addEventListener("scroll", () => {
-            const atEnd = containerRef.current.scrollWidth <= Math.ceil(Math.abs(containerRef.current.scrollLeft - containerRef.current.offsetWidth - gap));
-            const atStart = containerRef.current.scrollLeft > -1;
-            nextButton.current.style.display = atEnd ? "none" : "flex"
-            previousButton.current.style.display = atStart ? "none" : "flex"
+            handleButtonsVisibility(containerRef, gap, nextButton, previousButton);
 
         })
     }, []);
+    useEffect(()=>{
+        if(!children)return;
+        if (!containerRef.current) return;
+        handleButtonsVisibility(containerRef, gap, nextButton, previousButton);
 
+    },[children])
     return (
         <div className='slider' style={{ "--view-port-width": `${viewPortWidth}px`, "--slides-gap": `${gap}px`, "--scroll-behavior": `${scrollBehavior}`, "--slide-height": `${slideHeight}px`,"--slide-width":`${slideWidth}px` }} >
             <div className={`slider__view`} >
                 <div id="slider-container" className={`slider__container`} ref={containerRef}>
-                    {children}
+                    {
+                        children?.length<=0 &&
+                        <div className='slider__noProject'>درحال حاضر پروژه ای برای انتخاب وجود ندارد.</div>
+                    }
+                    {
+                        children
+                    }
                 </div>
             </div>
             <button ref={nextButton} className={`slider__nextButton`} onClick={() => {
@@ -66,4 +72,11 @@ const Slider = ({ viewPortWidth = 800,slideWidth=390,slideHeight=450, scrollBeha
 export default Slider;
 
 
+
+function handleButtonsVisibility(containerRef, gap, nextButton, previousButton) {
+    const atEnd = containerRef.current.scrollWidth <= Math.ceil(Math.abs(containerRef.current.scrollLeft - containerRef.current.offsetWidth - gap));
+    const atStart = containerRef.current.scrollLeft > -1;
+    nextButton.current.style.display = atEnd ? "none" : "flex";
+    previousButton.current.style.display = atStart ? "none" : "flex";
+}
 

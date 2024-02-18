@@ -14,20 +14,21 @@ function AuthContext({ children }) {
     const [destination,setDestination]=useState("/");
     const [availableProjects,setAvailableProjects]=useState(JSON.parse(localStorage.getItem("availableProjects")||null)||null)
     function getAvailableProjects(){
+        const copy=projects;
         if(!user)
         {
-            return projects;
+            return copy;
         }
-        const ids=user?.projects.map(p=>p.id);
-        for (let index = 0; index < projects.length; index++) {
-            const p = projects[index];
+        const ids=user.copy.map(p=>p.id);
+        for (let index = 0; index < copy.length; index++) {
+            const p = copy[index];
             if(ids.includes(p.id))
             {
-                projects.splice(index,1);
+                copy.splice(index,1);
             }
             
         }
-        return projects;
+        return copy;
         
     }
     useEffect(()=>{
@@ -104,8 +105,8 @@ function AuthContext({ children }) {
         setIsLoggedIn(false);
         localStorage.setItem("user",null);
         setDestination("/");
-        setAvailableProjects(null);
-        localStorage.setItem("availableProjects",null);
+        setAvailableProjects(projects);
+        localStorage.setItem("availableProjects",JSON.stringify(projects))
 
     }
     // Provide the authentication context value to the components in the tree

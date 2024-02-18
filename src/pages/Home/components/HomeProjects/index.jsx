@@ -2,14 +2,15 @@ import { FaChevronLeft } from "react-icons/fa6";
 import Slider from "@components/Slider";
 import Card from "@components/Card";
 import './style.css'
+import { projects } from "../../../../data/data";
 
-import { useAuth } from "../../../../components/hooks/useAuth";
+
 
 
 
 
 function HomeProjects({onStartButtonClick}) {
-  const{availableProjects}=useAuth()
+
 
   return (
     <section className="homeProjects">
@@ -19,8 +20,7 @@ function HomeProjects({onStartButtonClick}) {
       </section>
       <Slider slideWidth={390} slideHeight={450} viewPortWidth={1250} gap={40}>
         {
-          
-          availableProjects.map((project)=>{
+          projects.map((project)=>{
             return <Card
             key={project.id} 
             id={project.id}
@@ -34,6 +34,7 @@ function HomeProjects({onStartButtonClick}) {
 
           })
         }
+    
       </Slider>
       <button onClick={onStartButtonClick}  className="homeProjects__button">
         <span>برای شروع کلیک کن</span>

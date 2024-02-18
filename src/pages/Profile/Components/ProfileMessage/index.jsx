@@ -23,13 +23,22 @@ const ProfileMessage = ({ user }) => {
         })
 
     }, [])
-
+    const noNewProjectMessage = <section className="profileMessage">
+        <h3 className="profileMessage__title">سلام {user?.name}، می‌دونستی...</h3>
+        <p className="profileMessage__text">
+            تا حالا <span className="profileMessage__textBold">{convert(stats.contribution)}%</span> بچه‌ها تو این طرح شرکت
+            کردن به لطف شما هر ماه <span className="profileMessage__textBold"> بیش از {convert(stats.totalFund)} میلیون تومان </span>
+            برای پروژه‌های مختلف کمک جمع
+            میشه.
+        </p>
+        <a className="profileMessage__textBold" href="#">بیشتر بدانید</a>
+    </section>
 
     const newProjectMessage = <section ref={messageRef} className="profileMessage">
         <h3 className="profileMessage__title">خیلی ازت ممنونیم {user?.name}</h3>
         <p className="profileMessage__text">
             تا حالا <span className="profileMessage__textBold">{convert(stats.contribution)}%</span> بچه‌ها تو این طرح شرکت
-            کردن به لطف شما هر ماه <span className="profileMessage__textBold"> بیش از {(convert(addCommas(stats.totalFund))) } میلیون تومان </span>
+            کردن به لطف شما هر ماه <span className="profileMessage__textBold"> بیش از {(convert(addCommas(stats.totalFund)))} میلیون تومان </span>
             برای پروژه‌های مختلف کمک جمع
             میشه.
         </p>
@@ -46,8 +55,8 @@ const ProfileMessage = ({ user }) => {
         </p>
 
         <p className="profileMessage__text">
-            از این پس به مدت <span className="profileMessage__textBold">{user? convert(user.currentProject.span):0}</span>، مبلغ <span
-                className="profileMessage__textBold">{user? convert(addCommas(user.currentProject.cost)):0}</span> تومان ماهانه از حقوق شما کسر و صرف کمک به این پروژه
+            از این پس به مدت <span className="profileMessage__textBold">{user ? convert(user.currentProject.span) : 0}</span>، مبلغ <span
+                className="profileMessage__textBold">{user ? convert(addCommas(user.currentProject.cost)) : 0}</span> تومان ماهانه از حقوق شما کسر و صرف کمک به این پروژه
             می‌شود.
         </p>
 
@@ -57,8 +66,11 @@ const ProfileMessage = ({ user }) => {
         </p>
 
     </section>
-    if(newProject==="false")
-    return null;
+    if (newProject === "false" && user?.projects.length===0)return null;
+    if(newProject==="false" && user?.projects.length>0)
+    {
+        return noNewProjectMessage;
+    }
     if (user?.projects.length === 1) {
         return firstProjectMessage;
     }
