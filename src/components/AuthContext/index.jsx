@@ -53,11 +53,7 @@ function AuthContext({ children }) {
             const token = await validateCode(phone, code);
             setToken(token);
             document.cookie = serialize("token", token);
-            setUser({
-                ...userData,
-                token: token
-            })
-            localStorage.setItem("user", JSON.stringify(userData));
+            setUser(JSON.parse(localStorage.getItem("user")) || userData)
             setIsLoggedIn(true);
             return token;
         } catch (error) {
@@ -70,7 +66,6 @@ function AuthContext({ children }) {
     }
     function logout() {
         if (!isLoggedIn) return;
-        setUser(null);
         setToken(null);
         setIsLoggedIn(false);
         setDestination("/");
