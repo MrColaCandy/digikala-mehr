@@ -14,7 +14,10 @@ function AuthContext({ children }) {
     const [destination,setDestination]=useState("/");
     const [availableProjects,setAvailableProjects]=useState(JSON.parse(localStorage.getItem("availableProjects")||null)||null)
     function getAvailableProjects(){
-        
+        if(!user)
+        {
+            return projects;
+        }
         const ids=user?.projects.map(p=>p.id);
         for (let index = 0; index < projects.length; index++) {
             const p = projects[index];
