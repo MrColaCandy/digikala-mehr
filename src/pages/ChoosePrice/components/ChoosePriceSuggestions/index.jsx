@@ -18,7 +18,7 @@ const ChoosePriceSuggestions = ({value,setValue}) => {
         return suggestions.map((suggestionValue) => {
             const isActive = suggestionValue === value;
             const className = isActive
-                ? `choosePrice__suggestion active-button`
+                ? `choosePrice__suggestion--active`
                 : `choosePrice__suggestion`;
 
             return (
@@ -30,7 +30,7 @@ const ChoosePriceSuggestions = ({value,setValue}) => {
                     type="button"
                 >
                     {convert(addCommas(suggestionValue))}{" "}
-                    <span className="choosePrice__suggestionPrefix">تومان</span>
+                    <span className="choosePrice__suggestionCurrency">تومان</span>
                 </button>
             );
         });

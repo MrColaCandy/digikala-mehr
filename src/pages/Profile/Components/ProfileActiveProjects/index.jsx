@@ -1,5 +1,4 @@
 import ProfileProject from "../ProfileProject"
-import ProfileProjectNew from "../ProfileProjectNew"
 import ProfileProjectExpired from "../ProfileProjectExpired"
 import ProfileNoProject from "../ProfileNoProject"
 import './style.css'
@@ -19,15 +18,7 @@ function ProfileActiveProjects({user}) {
                 <ProfileNoProject/>
             }
             {
-                user?.projects.filter(project=>project.age===0)
-                .map(project=>
-                <ProfileProjectNew 
-                project={project}
-                 key={project.id}
-                />)
-            }
-            {
-                user?.projects.filter(project=>project.age!==0).sort((a,b)=>a.age-b.age)
+                user?.projects.sort((a,b)=>a.age-b.age)
                 .map(project=>
                 <ProfileProject
                 project={project}
@@ -35,7 +26,7 @@ function ProfileActiveProjects({user}) {
                 />)
             }
             {
-                   user?.projects.filter(project=>project.state==="expired").sort((a,b)=>a.age-b.age)
+                   user?.projects.filter(project=>project.span===project.age).sort((a,b)=>a.age-b.age)
                    .map(project=>
                    <ProfileProjectExpired
                    project={project}

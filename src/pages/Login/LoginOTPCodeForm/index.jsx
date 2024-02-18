@@ -7,7 +7,7 @@ import Button from '@components/Button';
 import "./style.css"
 
 function LoginOTPCodeForm({ phone }) {
-    const { sendOTPCode } = useAuth();
+    const { sendOTPCode,destination } = useAuth();
     const { minutes, seconds, resetCountdown } = useCountdown(90, handleCountdownOverCallback);
     const { confirmOTPCode } = useAuth();
     const [code, setCode] = useState("");
@@ -52,7 +52,7 @@ function LoginOTPCodeForm({ phone }) {
         try {
             await confirmOTPCode(phone, code);
             setError(null);
-            navigate("/");
+            navigate(destination);
         } catch (error) {
             console.log("Something went wrong! error: " + error.message);
             setError(error.message);

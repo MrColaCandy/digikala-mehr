@@ -7,8 +7,11 @@ import ChoosePriceFooter from "../ChoosePriceFooter"
 import usePersianNumberConverter from "@components/hooks/usePersianNumberConverter";
 import { useAuth } from "@components/hooks/useAuth";
 import { postPrice } from "../../requests";
+import {useNavigate} from "react-router-dom"
+import { serialize } from "cookie";
 const ChoosePriceForm = () => {
-    const {user}=useAuth();
+    const {user,setUser,availableProjects,setAvailableProjects}=useAuth();
+    const navigate=useNavigate();
     const [isLoading,setIsLoading]=useState(false)
     const [value, setValue] = useState();
     const {convert,addCommas}=usePersianNumberConverter()
@@ -26,12 +29,33 @@ const ChoosePriceForm = () => {
             return;
         }
         setIsLoading(true)
-        const data={
-           ...user,
-           price:value,
-        }
         try {
-            await postPrice(data)
+            await postPrice(value)
+            const newProjects=user.projects;
+            newProjects.push(user.currentProject);
+            const newHistory=user.history;
+            newHistory.push({
+                date:"مهر 1402",
+                state:"success",
+                name:user.currentProject.title,
+                cost:user.currentProject.cost,
+            })
+            const newAvailableProjects=availableProjects;
+            newAvailableProjects.splice(newAvailableProjects.findIndex(p=>p.id==user?.currentProject.id),1);
+            setAvailableProjects(newAvailableProjects);
+            localStorage.setItem("availableProjects",JSON.stringify(newAvailableProjects));
+            setUser(
+            {...user,
+                currentProject:{
+                    ...user.currentProject,
+                    price:value
+                },
+                projects:newProjects,
+                history:newHistory,
+            })
+            localStorage.setItem("user",JSON.stringify(user));
+            document.cookie=serialize("newProject",true);
+            navigate("/profile")
         } catch (error) {
             setError(error.message)
         }
@@ -70,7 +94,7 @@ const ChoosePriceForm = () => {
            
              <ChoosePriceSuggestions value={value} setValue={setValue}/>
              <ChoosePriceFooter/>
-            <Button isLoading={isLoading} width={"100%"} margin={0} variant={"filled"} text={"تایید"}/>
+             <Button isLoading={isLoading} width={"100%"} margin={0} variant={"filled"} text={"تایید"}/>
 
         </form>
     )

@@ -13,7 +13,11 @@ function Header() {
   function handleSignInButtonClick() {
     navigate("/login");
   }
-
+   
+  function handleLogoClick()
+  {
+      navigate("/")
+  }
   function getLoginButton() {
     if (!isLoggedIn && !isLoading) {
       return (
@@ -43,7 +47,7 @@ function Header() {
     <nav className="header">
       <div className=" digiMehrLogoTitleWrapper">
         <div className="digiMehrLogoWrapper__wrapperLogo">
-          <img
+          <img onClick={handleLogoClick}
             className="digiMehrLogoWrapper__insideLogo"
             src={FillInside_digiMehr_logo_i}
             alt="digiLogo"

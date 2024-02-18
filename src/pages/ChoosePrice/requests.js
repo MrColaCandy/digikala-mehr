@@ -4,12 +4,13 @@ export function fetchSuggestions() {
     })
 }
 
-export function postPrice(data) {
+export function postPrice(price) {
     return new Promise((resolve,reject) => {
-        if(data)
+        if(price)
         {
             setTimeout(() => {
-                resolve("")
+
+                resolve(price)
             }, 1000);
         }
         else

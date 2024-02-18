@@ -27,17 +27,22 @@ function ProfileProject({ project }) {
                     </div>
                 </div>
             </div>
-            <div className="profileProject__wrapper">
-                <div className="profileProject__finance">
-                    <span className="profileProject__financeTextBold">{project ? convert(project.age) : 0}</span>
-                    <span className="profileProject__financeText">تعداد ماه‌هایی که فعال بودید</span>
-                </div>
+            {
+                project?.age >= 1 &&
+                <>
+                    <div className="profileProject__wrapper">
+                        <div className="profileProject__finance">
+                            <span className="profileProject__financeTextBold">{project ? convert(project.age) : 0}</span>
+                            <span className="profileProject__financeText">تعداد ماه‌هایی که فعال بودید</span>
+                        </div>
 
-                <div className="profileProject__finance">
-                    <span className="profileProject__financeTextBold">۲۳.۰۰۰.۰۰۰ ریال</span>
-                    <span className="profileProject__financeText">مبلغی که تاکنون شریک شدید</span>
-                </div>
-            </div>
+                        <div className="profileProject__finance">
+                            <span className="profileProject__financeTextBold">{project? convert(addCommas(project.cost)):0} ریال</span>
+                            <span className="profileProject__financeText">مبلغی که تاکنون شریک شدید</span>
+                        </div>
+                    </div>
+                </>
+            }
         </div>
 
     )

@@ -5,7 +5,7 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 import { FaChevronLeft } from "react-icons/fa6";
 import './style.css'
 
-function HomeVideo() {
+function HomeVideo({onStartButtonClick}) {
     return (
         <section className="homeVideo">
             <section className="homeVideo__video">
@@ -56,7 +56,7 @@ function HomeVideo() {
                 </div>
 
 
-                <button className="homeVideo__startPlanBtn">
+                <button onClick={onStartButtonClick} className="homeVideo__startPlanBtn">
                     <span>برای شروع کلیک کن</span>
                     <FaChevronLeft className="homeVideo__startPlanBtnIcon" />
                 </button>

@@ -3,7 +3,8 @@ import './style.css'
 
 
 
-function ProfileHistory() {
+function ProfileHistory({ user }) {
+ 
   return (
     <section className="profileHistory">
 
@@ -19,16 +20,11 @@ function ProfileHistory() {
       </div>
 
       <ul className="profileHistory__table">
-        <ProfileHistoryItem/>
-        <ProfileHistoryItem/>
-        <ProfileHistoryItem/>
-        <ProfileHistoryItem/>
-        <ProfileHistoryItem/>
-        <ProfileHistoryItem/>
-        <ProfileHistoryItem/>
-        <ProfileHistoryItem/>
-        
-
+        {
+            user?.history.map(history=>{
+              return <ProfileHistoryItem key={history.id} history={history}/>
+            })
+        }
       </ul>
 
 
