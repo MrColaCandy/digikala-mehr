@@ -10,7 +10,7 @@ import { postPrice } from "../../requests";
 import {useNavigate} from "react-router-dom"
 import { serialize } from "cookie";
 const ChoosePriceForm = () => {
-    const {user,setUser,availableProjects,setAvailableProjects}=useAuth();
+    const {user,setUser}=useAuth();
     const navigate=useNavigate();
     const [isLoading,setIsLoading]=useState(false)
     const [value, setValue] = useState();
@@ -41,7 +41,6 @@ const ChoosePriceForm = () => {
                 name:user.currentProject.title,
                 cost:user.currentProject.cost,
             })
-           
             setUser(
             {...user,
                 currentProject:{
@@ -52,16 +51,7 @@ const ChoosePriceForm = () => {
                 history:newHistory,
             })
             localStorage.setItem("user",JSON.stringify(user));
-
-            const newAvailableProjects=availableProjects;
-            newAvailableProjects.splice(newAvailableProjects.findIndex(p=>p.id==user.currentProject.id),1);
-            setAvailableProjects(newAvailableProjects);
-            localStorage.setItem("availableProjects",JSON.stringify(newAvailableProjects));
-
             document.cookie=serialize("newProject",true);
-           
-
-           
             navigate("/profile")
         } catch (error) {
             setError(error.message)

@@ -10,11 +10,33 @@ import Card from "@components/Card";
 import Button from "@components/Button";
 import ProfileMessage from "./Components/ProfileMessage";
 import "./style.css"
+import { useEffect, useState } from "react";
+import { getAvailableProjects } from "./request";
 
 
 function Profile() {
   const navigate = useNavigate();
-  const { user, setUser,availableProjects} = useAuth();
+  const { user, setUser} = useAuth();
+  const [projects,setProjects]=useState([]);
+  const [isLoading,setIsLoading]=useState(false);
+  useEffect(()=>{
+    if(!user)return;
+    setIsLoading(true);
+    async function getProjects()
+    {
+      try {
+        const available =await getAvailableProjects(user);
+        setProjects(available);
+      } catch (error) {
+        setProjects([]);
+      }
+      finally{
+        setIsLoading(false);
+      }
+    }
+    getProjects();
+
+  },[user])
   function handleChooseProjectClick(project) {
     navigate("/choose-price");
     setUser({ ...user, currentProject: project })
@@ -37,9 +59,9 @@ function Profile() {
       }
       
       <p className="profile__sliderTitle">اینجا می‌تونی از بین پروژه‌های مختلف یکیو برای شروع انتخاب کنی</p>
-      <Slider slideWidth={390} slideHeight={450} viewPortWidth={390 * 3.5} gap={40}>
+      <Slider isLoading={isLoading} slideWidth={390} slideHeight={450} viewPortWidth={390 * 3.5} gap={40}>
         {
-          availableProjects.map((project) => {
+         projects?.map((project) => {
             return <Card
               key={project.id}
               id={project.id}

@@ -6,10 +6,31 @@ import Card from "@components/Card"
 import Button from "@components/Button"
 import { useAuth } from "@components/hooks/useAuth"
 import {useNavigate} from "react-router-dom"
+import { useEffect, useState } from "react"
+import { getAvailableProjects } from "./request"
 
 const ChoosePlan = () => {
-  const {user,setUser,availableProjects}=useAuth()
+  const {user,setUser}=useAuth()
+  const [projects,setProjects]=useState([])
+  const [isLoading,setIsLoading]=useState(false);
   const navigate=useNavigate();
+
+  useEffect(()=>{
+    if(!user)return;
+    setIsLoading(true);
+    async function getProjects()
+    {
+      try {
+       const available= await getAvailableProjects(user)
+       setProjects(available);
+      } catch (error) {
+        setProjects([]);
+      }finally{
+        setIsLoading(false)
+      }
+    } 
+    getProjects()
+  },[user])
   function handleCardButtonClick(project){
     navigate("/choose-price")
     setUser({...user,currentProject:project});
@@ -19,9 +40,9 @@ const ChoosePlan = () => {
   return (
     <Layout>
       <ChoosePlaneHeader />
-      <Slider slideHeight={450} slideWidth={360}  viewPortWidth={360 * 2.5}  gap={40} >
+      <Slider isLoading={isLoading} slideHeight={450} slideWidth={360}  viewPortWidth={360 * 2.5}  gap={40} >
         {
-          availableProjects?.map((project)=>{
+          projects?.map((project)=>{
             return <Card
             width={360}
             height={448}

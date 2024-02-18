@@ -12,12 +12,12 @@ import { useAuth } from "@components/hooks/useAuth"
 
 function HomeProjects({ onStartButtonClick }) {
   const [projects, setProjects] = useState([]);
-  const { user } = useAuth()
+  const { user,isLoggedIn } = useAuth()
   const [isLoading,setIsLoading]=useState(false);
   useEffect(() => {
     async function getProjects() {
       setIsLoading(true);
-      if (user) {
+      if (user && isLoggedIn) {
         try {
           const available = await getAvailableProjects(user);
           setProjects(available);
@@ -41,7 +41,7 @@ function HomeProjects({ onStartButtonClick }) {
       }
     }
     getProjects();
-  }, [user])
+  }, [user,isLoggedIn])
 
   return (
     <section className="homeProjects">
