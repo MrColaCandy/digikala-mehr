@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import './style.css';
+import Loader from "@components/Loader"
 
 
-
-const Slider = ({ viewPortWidth = 800,slideWidth=390,slideHeight=450, scrollBehavior = "smooth", children = null, gap }) => {
+const Slider = ({ isLoading,viewPortWidth = 800,slideWidth=390,slideHeight=450, scrollBehavior = "smooth", children = null, gap }) => {
     const containerRef = useRef(null);
     const previousButton = useRef(null);
     const nextButton = useRef(null);
@@ -36,8 +36,15 @@ const Slider = ({ viewPortWidth = 800,slideWidth=390,slideHeight=450, scrollBeha
             <div className={`slider__view`} >
                 <div id="slider-container" className={`slider__container`} ref={containerRef}>
                     {
-                        children?.length<=0 &&
-                        <div className='slider__noProject'>درحال حاضر پروژه ای برای انتخاب وجود ندارد.</div>
+                        
+                        <div className={`slider__loading${children.length<=0 || isLoading ? "--active":""}`}>
+                            {
+                                isLoading && <Loader color="white" scale={2}/>
+                            }
+                            {
+                                children.length<=0 && !isLoading && <span>درحال حاضر پروژه ای برای انتخاب وجود ندارد</span>
+                            }
+                        </div>
                     }
                     {
                         children

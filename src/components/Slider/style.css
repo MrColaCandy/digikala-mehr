@@ -66,7 +66,23 @@
   left: 5vw;
 
 }
-.slider__noProject
+.slider__loading
+{
+  color: white;
+  font-size: x-large;
+  font-weight: 500;
+  text-align: center;
+  height: 450px;
+  width: 100%;
+  background-color:#00b188a5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  display: none;
+}
+.slider__loading--active
 {
   color: white;
   font-size: x-large;
@@ -82,7 +98,6 @@
   border-radius: 16px;
   
 }
-
 @media screen and (max-width: 390px) {
   .slider #slide{
     flex-shrink: 0;

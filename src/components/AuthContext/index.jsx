@@ -13,10 +13,9 @@ function AuthContext({ children }) {
     const [token, setToken] = useState(parse(document.cookie).token || null)
     const [isLoading, setIsLoading] = useState(false);
     const [destination, setDestination] = useState("/");
-    const [totalProjects]=useState(projectData);
-    const [availableProjects, setAvailableProjects] = useState(JSON.parse(localStorage.getItem("availableProjects") || null) || null)
+    const [availableProjects, setAvailableProjects] = useState(JSON.parse(localStorage.getItem("availableProjects")) || projectData)
     function getAvailableProjects() {
-        const copy = totalProjects;
+        const copy = projectData;
         if (!user) {
             return copy;
         }
@@ -31,18 +30,20 @@ function AuthContext({ children }) {
         return copy;
 
     }
-    useEffect(() => {
-        setAvailableProjects(getAvailableProjects() || totalProjects)
-    }, [isLoggedIn])
 
     useEffect(() => {
+        setAvailableProjects(getAvailableProjects())
+        setIsLoading(true);
         async function postToken() {
             try {
                   await validateToken(token);
                   setIsLoggedIn(true)
-                  
             } catch (error) {
                logout();
+            }
+            finally
+            {
+                setIsLoading(false);
             }
         }
         postToken();
@@ -77,8 +78,8 @@ function AuthContext({ children }) {
             })
             localStorage.setItem("user", JSON.stringify(userData));
             setIsLoggedIn(true);
-            setAvailableProjects(totalProjects);
-            localStorage.setItem("availableProjects", JSON.stringify(totalProjects));
+            setAvailableProjects(projectData);
+            localStorage.setItem("availableProjects", JSON.stringify(projectData));
             return token;
         } catch (error) {
             console.log("Failed to validate code . Error", error.message)
@@ -94,10 +95,7 @@ function AuthContext({ children }) {
         setToken(null);
         document.cookie = serialize("token", "", { expires: new Date(0) });
         setIsLoggedIn(false);
-        localStorage.setItem("user", null);
         setDestination("/");
-        setAvailableProjects(totalProjects);
-        localStorage.setItem("availableProjects", JSON.stringify(totalProjects))
         
         
 
