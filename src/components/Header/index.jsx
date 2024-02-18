@@ -17,6 +17,7 @@ function Header() {
   function handleLogoClick()
   {
       navigate("/")
+      
   }
   function getLoginButton() {
     if (!isLoggedIn && !isLoading) {

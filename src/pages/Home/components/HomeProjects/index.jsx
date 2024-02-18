@@ -2,14 +2,14 @@ import { FaChevronLeft } from "react-icons/fa6";
 import Slider from "@components/Slider";
 import Card from "@components/Card";
 import './style.css'
-import { projects } from "../../../../data/data";
+import projectsData from "@components/data/projects.json"
 
 
 
 
 
 
-function HomeProjects({onStartButtonClick}) {
+function HomeProjects({ onStartButtonClick }) {
 
 
   return (
@@ -20,23 +20,23 @@ function HomeProjects({onStartButtonClick}) {
       </section>
       <Slider slideWidth={390} slideHeight={450} viewPortWidth={1250} gap={40}>
         {
-          projects.map((project)=>{
+          projectsData.map((project) => {
             return <Card
-            key={project.id} 
-            id={project.id}
-            description={project.description}
-            title={project.title}
-            employerLogo={project.employerLogo}
-            employerName={project.employerName}
-            image={project.image}
-            textBoxVariant={1}
+              key={project.id}
+              id={project.id}
+              description={project.description}
+              title={project.title}
+              employerLogo={project.employerLogo}
+              employerName={project.employerName}
+              image={project.image}
+              textBoxVariant={1}
             />
 
           })
         }
-    
+
       </Slider>
-      <button onClick={onStartButtonClick}  className="homeProjects__button">
+      <button onClick={onStartButtonClick} className="homeProjects__button">
         <span>برای شروع کلیک کن</span>
         <FaChevronLeft className="homeProjects__icon" />
       </button>

@@ -17,7 +17,7 @@ export function validateCode(phone, code) {
     return new Promise((resolve, reject) => {
         if (phone && code) {
             setTimeout(() => {
-                const token="sdasds2as15d15sa2defsldmfsd"
+                const token="saddddddddddddddddddddddddddddddddddddddddsadsadsad"
                 resolve(token);
             }, 2000);
         }
@@ -30,7 +30,7 @@ export function validateCode(phone, code) {
 export function validateToken(token){
      // mocking response
      return new Promise((resolve, reject) => {
-        if (token!=null) {
+        if (token) {
             setTimeout(() => {
                 resolve(true);
             }, 500);

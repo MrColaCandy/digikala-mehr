@@ -3,7 +3,7 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 import { parse, serialize } from "cookie";
 import usePersianNumberConverter from "@components/hooks/usePersianNumberConverter"
 import "./style.css"
-import { stats } from "../../../../data/data";
+import statsData from "@components/data/stats.json";
 const ProfileMessage = ({ user }) => {
     const messageRef = useRef(null);
     const [newProject, setNewProject] = useState(parse(document.cookie).newProject || false);
@@ -26,8 +26,8 @@ const ProfileMessage = ({ user }) => {
     const noNewProjectMessage = <section className="profileMessage">
         <h3 className="profileMessage__title">سلام {user?.name}، می‌دونستی...</h3>
         <p className="profileMessage__text">
-            تا حالا <span className="profileMessage__textBold">{convert(stats.contribution)}%</span> بچه‌ها تو این طرح شرکت
-            کردن به لطف شما هر ماه <span className="profileMessage__textBold"> بیش از {convert(stats.totalFund)} میلیون تومان </span>
+            تا حالا <span className="profileMessage__textBold">{convert(statsData.contribution)}%</span> بچه‌ها تو این طرح شرکت
+            کردن به لطف شما هر ماه <span className="profileMessage__textBold"> بیش از {convert(statsData.totalFund)} میلیون تومان </span>
             برای پروژه‌های مختلف کمک جمع
             میشه.
         </p>
@@ -37,8 +37,8 @@ const ProfileMessage = ({ user }) => {
     const newProjectMessage = <section ref={messageRef} className="profileMessage">
         <h3 className="profileMessage__title">خیلی ازت ممنونیم {user?.name}</h3>
         <p className="profileMessage__text">
-            تا حالا <span className="profileMessage__textBold">{convert(stats.contribution)}%</span> بچه‌ها تو این طرح شرکت
-            کردن به لطف شما هر ماه <span className="profileMessage__textBold"> بیش از {(convert(addCommas(stats.totalFund)))} میلیون تومان </span>
+            تا حالا <span className="profileMessage__textBold">{convert(statsData.contribution)}%</span> بچه‌ها تو این طرح شرکت
+            کردن به لطف شما هر ماه <span className="profileMessage__textBold"> بیش از {(convert(addCommas(statsData.totalFund)))} میلیون تومان </span>
             برای پروژه‌های مختلف کمک جمع
             میشه.
         </p>
