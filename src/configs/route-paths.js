@@ -5,4 +5,5 @@ export const pricing = '/choose-price'
 export const profile="/profile";
 export const history="/history"
 export const editPlan="/edit-plan"
+export const editPrice="/edit-price"
 

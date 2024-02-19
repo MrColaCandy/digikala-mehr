@@ -4,10 +4,20 @@ import { parse, serialize } from "cookie";
 import usePersianNumberConverter from "@components/hooks/usePersianNumberConverter"
 import "./style.css"
 import statsData from "@components/data/stats.json";
+import {useAuth} from "@components/hooks/useAuth"
+import {useNavigate}  from "react-router-dom"
 const ProfileMessage = ({ user }) => {
+    const {setUser}=useAuth()
+    const navigate=useNavigate()
     const messageRef = useRef(null);
     const [newProject, setNewProject] = useState(parse(document.cookie).newProject || false);
     const { convert, addCommas } = usePersianNumberConverter();
+    function handleEditButtonClick()
+    {
+        setUser({...user,editing:user.currentProject})
+        localStorage.setItem("user",JSON.stringify(user));
+        navigate("/edit-plan")
+    }
     useEffect(() => {
         if (!messageRef.current) return;
         if (inView(messageRef.current)) {
@@ -50,18 +60,18 @@ const ProfileMessage = ({ user }) => {
         </h3>
 
         <p className="profileMessage__text">
-            شما با موفقیت به پروژه تهیه <span className="profileMessage__title">{user?.currentProject.tittle}</span>
+            شما با موفقیت به پروژه <span className="profileMessage__title">{" "+user?.currentProject?.title+" "} </span>
             اضافه شدید.
         </p>
 
         <p className="profileMessage__text">
             از این پس به مدت <span className="profileMessage__textBold">{user ? convert(user.currentProject.span) : 0}</span>، مبلغ <span
-                className="profileMessage__textBold">{user ? convert(addCommas(user.currentProject.cost)) : 0}</span> تومان ماهانه از حقوق شما کسر و صرف کمک به این پروژه
+                className="profileMessage__textBold">{user ? convert(addCommas(user.currentProject.price)) : 0}</span> تومان ماهانه از حقوق شما کسر و صرف کمک به این پروژه
             می‌شود.
         </p>
 
         <p className="profileMessage__text">
-            شما می‌توانید با مراجعه به بخش <span className="profileMessage__textBold">ویرایش</span>، پروژه‌ی خود را تغییر
+            شما می‌توانید با مراجعه به بخش <span onClick={handleEditButtonClick} className="profileMessage__link">ویرایش</span>، پروژه‌ی خود را تغییر
             دهید یا لغو کنید.
         </p>
 

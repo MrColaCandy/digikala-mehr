@@ -12,9 +12,9 @@ const HistoryItem = ({history}) => {
 
                 موفق
             </div>
-            <div className="profileHistory__itemTitle">{history?.name}</div>
+            <div className="profileHistory__itemTitle">{history?.title}</div>
             <div className="profileHistory__itemPrice">
-                <span className="profileHistory__itemPrice--dynamicNumberCost">{history? convert(addCommas(history.cost)):0}</span>
+                <span className="profileHistory__itemPrice--dynamicNumberCost">{history? convert(addCommas(history.price)):0}</span>
                 <span className="profileHistory__itemPrice--staticTomanText">تومان</span>
             </div>
         </li>

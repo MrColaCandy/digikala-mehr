@@ -41,7 +41,7 @@
 
 
 
-.editPlanProject__cost {
+.editPlanProject__price {
     height: 40px;
     border-radius: 8px;
     background-color: #f2fbf3;
@@ -58,7 +58,7 @@
 
 
 }
-.editPlanProject__cost--selected {
+.editPlanProject__price--selected {
     height: 40px;
     border-radius: 8px;
     background-color:white;
@@ -121,6 +121,7 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    line-height: 1.6;
 
 }
 

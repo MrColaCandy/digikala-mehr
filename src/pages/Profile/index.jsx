@@ -51,11 +51,12 @@ function Profile() {
       <HorizontalLine space={16} width={1194} />
       <ProfileActiveProjects user={user} />
       {
-        user?.projects.length > 0 &&
-        <>
-          <ProfileMessage user={user}/>
+        user?.projects.length > 0 && user?.currentProject &&
+        <ProfileMessage user={user}/>
+      }
+      {
+          user?.history?.length > 0 &&
           <ProfileHistory user={user} />
-        </>
       }
       
       <p className="profile__sliderTitle">اینجا می‌تونی از بین پروژه‌های مختلف یکیو برای شروع انتخاب کنی</p>

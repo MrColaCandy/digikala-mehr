@@ -1,0 +1,56 @@
+.editPrice__header {
+    margin-top: var(--space-32);
+    width: 95vw;
+    max-width: 460px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.editPrice__headerText {
+    font-weight: 700;
+    line-height: 20px;
+    text-align: center;
+    
+}
+
+.editPrice__currentPhase {
+    color: var(--color-textLight);
+    font-size: var(--font-size-tiny);
+    text-align: center;
+}
+.editPrice__phase {
+    width: 95vw;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.editPrice__headerTitle {
+    font-size: var(--font-size-huge);
+    font-weight: 600;
+    text-align: center;
+    margin: var(--space-16) 0;
+}
+
+.editPrice__headerTextGreen{
+    color: var(--color-primary);
+}
+
+.editPrice__headerSubtitle{
+    line-height: 20px;
+    font-size: var(--font-size-xsmall);
+    color: var(--color-textLight);
+    width: 100%;
+    text-align: center;
+   
+}
+
+.editPrice__headerLink {
+    font-weight: 700;
+    color: var(--color-primary);
+    cursor: pointer;
+}

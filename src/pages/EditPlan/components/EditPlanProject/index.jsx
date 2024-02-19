@@ -1,10 +1,18 @@
 import { FaChevronLeft } from "react-icons/fa6";
 import usePersianNumberConverter from "@components/hooks/usePersianNumberConverter";
-
+import {useAuth} from "@components/hooks/useAuth"
 import "./style.css"
 import { useEffect } from "react";
+import {useNavigate} from "react-router-dom"
 const EditPlanProject = ({ index,project,selected,setSelected }) => {
-    
+    const navigate =useNavigate()
+    const {user,setUser}=useAuth()
+    function handleEditPriceClick()
+    {
+         setUser({...user,editing:project})
+         localStorage.setItem("user",JSON.stringify(user));
+         navigate("/edit-price")
+    }
     const { convert, addCommas } = usePersianNumberConverter();
     useEffect(()=>{
         if(index===0)
@@ -26,10 +34,10 @@ const EditPlanProject = ({ index,project,selected,setSelected }) => {
                     <div className="editPlanProject__employerName">{project?.employerName}</div>
                     <div className="editPlanProject__projectTitle">{project?.title}</div>
                 </div>
-                <div className={`editPlanProject__cost${selected?.id===project?.id?"--selected":""}`}>
+                <div className={`editPlanProject__price${selected?.id===project?.id?"--selected":""}`}>
                     ماهیانه
                     مبلغ
-                    {project ? convert(addCommas(project.cost)) : 0}
+                    {" "+project ? convert(addCommas(project.price)) : 0+" "}
                     تومان
                 </div>
             </div>
@@ -39,9 +47,9 @@ const EditPlanProject = ({ index,project,selected,setSelected }) => {
                     project?.description
                 }
             </div>
-            <div className="editPlanProject__textGreen">
+            <div onClick={handleEditPriceClick} className="editPlanProject__textGreen">
                 <span>برای تغییر مبلغ پرداختی ماهیانه اینجا کلید کنید</span>
-                <FaChevronLeft />
+                <FaChevronLeft size={12} />
             </div>
             </div>
         </div>

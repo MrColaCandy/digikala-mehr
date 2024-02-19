@@ -6,12 +6,12 @@ import { useRef, useState } from "react";
 import HistoryItem from "../../../../components/HistoryItem";
 import usePersianNumberConverter from "../../../../components/hooks/usePersianNumberConverter";
 
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function HistoryList({ data, itemsPerPage }) {
-  const navigate=useNavigate()
+  const navigate = useNavigate()
   const [currentPage, setCurrentPage] = useState(1);
-  const {convert}=usePersianNumberConverter();
+  const { convert } = usePersianNumberConverter();
   const listRef = useRef(null);
   const totalPages = Math.ceil(data.length / itemsPerPage);
   const handlePageChange = (pageNumber) => {
@@ -24,15 +24,14 @@ function HistoryList({ data, itemsPerPage }) {
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
-   
+
   };
 
   const handlePrevPage = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
-   
+
   };
-  function handleBackButtonClick()
-  {
+  function handleBackButtonClick() {
     navigate("/profile")
   }
   return (
@@ -56,27 +55,30 @@ function HistoryList({ data, itemsPerPage }) {
 
         <ul ref={listRef} className="allPaymentsList">
           {currentItems.map((history) => (
-            <HistoryItem key={history.id} history={history}/>
+            <HistoryItem key={history.id} history={history} />
           ))}
         </ul>
 
 
       </section>
 
+      {
+        itemsPerPage < data.length &&
 
-      <section className="allPaymentsSlidePagination">
-        <button onClick={handlePrevPage} className="allPaymentsSlidePagination__perviousBtn"><TbChevronRight />قبلی</button>
+        <section className="allPaymentsSlidePagination">
+          <button onClick={handlePrevPage} className="allPaymentsSlidePagination__perviousBtn"><TbChevronRight />قبلی</button>
 
-        <section className="allPaymentsSlidePagination__pagesNumbers">
-          {Array.from({ length: totalPages }, (_, index) => (
-            <li style={{ backgroundColor: currentPage === index + 1 ? '#00B189' : 'inherit' }} className="allPaymentsSlidePagination__pagesNumbersItem" key={index} onClick={() => handlePageChange(index + 1)}>
-              {convert(index + 1)}
-            </li>
-          ))}
+          <section className="allPaymentsSlidePagination__pagesNumbers">
+            {Array.from({ length: totalPages }, (_, index) => (
+              <li style={{ backgroundColor: currentPage === index + 1 ? '#00B189' : 'inherit' }} className="allPaymentsSlidePagination__pagesNumbersItem" key={index} onClick={() => handlePageChange(index + 1)}>
+                {convert(index + 1)}
+              </li>
+            ))}
+          </section>
+
+          <button onClick={handleNextPage} className="allPaymentsSlidePagination__nextBtn">بعدی<TbChevronLeft /></button>
         </section>
-
-        <button onClick={handleNextPage}  className="allPaymentsSlidePagination__nextBtn">بعدی<TbChevronLeft /></button>
-      </section>
+      }
 
     </section>
   )

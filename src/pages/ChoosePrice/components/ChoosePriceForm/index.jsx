@@ -31,25 +31,9 @@ const ChoosePriceForm = () => {
         setIsLoading(true)
         try {
             await postPrice(value)
-            const newProjects=user.projects;
-            newProjects.push(user.currentProject);
-            const newHistory=user.history;
-            newHistory.push({
-                id:Math.round(Math.random()*50000),
-                date:"مهر 1402",
-                state:"success",
-                name:user.currentProject.title,
-                cost:user.currentProject.cost,
-            })
-            setUser(
-            {...user,
-                currentProject:{
-                    ...user.currentProject,
-                    cost:value
-                },
-                projects:newProjects,
-                history:newHistory,
-            })
+    
+            user.projects.push(user.currentProject)
+            setUser({...user});
             localStorage.setItem("user",JSON.stringify(user));
             document.cookie=serialize("newProject",true);
             navigate("/profile")

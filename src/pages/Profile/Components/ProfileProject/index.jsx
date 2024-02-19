@@ -21,7 +21,7 @@ function ProfileProject({ project }) {
                 <div className="profileProject__edit">
                     <p className="profileProject__price">ماهیانه
                         {
-                            project ? convert(addCommas(project.cost)) : 0
+                            project ? convert(addCommas(project.price)) : 0
                         }
                         تومان
                     </p>
@@ -42,7 +42,7 @@ function ProfileProject({ project }) {
                         </div>
 
                         <div className="profileProject__finance">
-                            <span className="profileProject__financeTextBold">{project? convert(addCommas(project.cost)):0} ریال</span>
+                            <span className="profileProject__financeTextBold">{project? convert(addCommas(project.price)):0} ریال</span>
                             <span className="profileProject__financeText">مبلغی که تاکنون شریک شدید</span>
                         </div>
                     </div>

@@ -1,7 +1,11 @@
 import "./style.css"
-
-const ChoosePriceHeader = () => {
-    
+import {useNavigate} from "react-router-dom"
+const ChoosePriceHeader = ({user}) => {
+  const{navigate}=useNavigate()
+  function handleBackButtonClick()
+  {
+    navigate("/choose-plan")
+  }
   return (
     <div className="choosePrice__header">
     <div className="choosePrice__phase">
@@ -11,9 +15,9 @@ const ChoosePriceHeader = () => {
         کن.
       </h1>
       <p className="choosePrice__headerSubtitle">
-        این مبلغ قراره ماهیانه از حقوقت کم و صرف کمک به تهیه مخزن آب برای
-        حیات وحش گناباد بشه.{" "}
-        <a className="choosePrice__headerLink">تغییر پروژه</a>
+        این مبلغ قراره ماهیانه از حقوقت کم و صرف کمک به 
+        {" "+user?.currentProject?.title+ " "}
+        <a  onClick={handleBackButtonClick}className="choosePrice__headerLink">تغییر پروژه</a>
       </p>
     </div>
   </div>
