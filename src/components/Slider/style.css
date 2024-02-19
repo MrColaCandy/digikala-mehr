@@ -66,7 +66,8 @@
   left: 5vw;
 
 }
-.slider__loading
+
+.slider__isLoading
 {
   color: white;
   font-size: x-large;
@@ -74,23 +75,7 @@
   text-align: center;
   height: 450px;
   width: 100%;
-  background-color:#00b188a5;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 16px;
-  display: none;
-}
-.slider__loading--active
-{
-  color: white;
-  font-size: x-large;
-  font-weight: 500;
-  text-align: center;
-  height: 450px;
-  width: 100%;
-  background-color:#00b188a5;
+  background-color:#00b18861;
   display: flex;
   flex-direction: column;
   justify-content: center;

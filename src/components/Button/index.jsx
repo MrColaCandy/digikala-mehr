@@ -5,7 +5,7 @@ const Button = ({color="#00B189", isLoading=false,width="100%",margin=0,text,onC
     
     
     return (
-        <button disabled={isLoading} style={{maxWidth:`${width}`,margin:`${margin}`,backgroundColor:`${variant==="outlined"?"white":color}`,borderColor:`${color}`}} onClick={onClick} className={`button--${variant} ${className}`}>
+        <button disabled={isLoading} style={{maxWidth:`${width}`,margin:`${margin}`,backgroundColor:`${variant==="outlined"?"white":color}`,borderColor:`${color}`,color:`${variant==="outlined"?color:"white"}`}} onClick={onClick} className={`button--${variant} ${className}`}>
             {
                 !isLoading &&
                 <div>{text}</div>

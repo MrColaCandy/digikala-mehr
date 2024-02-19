@@ -1,7 +1,7 @@
 import { FaRegCircleCheck } from "react-icons/fa6";
 import usePersianNumberConverter from "@components/hooks/usePersianNumberConverter";
 import "./style.css"
-const ProfileHistoryItem = ({history}) => {
+const HistoryItem = ({history}) => {
     const{convert,addCommas}= usePersianNumberConverter();
     return (
         <li className="profileHistory__item">
@@ -21,4 +21,4 @@ const ProfileHistoryItem = ({history}) => {
     )
 }
 
-export default ProfileHistoryItem
+export default HistoryItem

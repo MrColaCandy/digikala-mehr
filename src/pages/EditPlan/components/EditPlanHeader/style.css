@@ -1,0 +1,35 @@
+.editPlanHeader{
+    width: 92vw;
+    max-width: 1248px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--space-32);
+}
+.editPlanHeader__wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 92vw;
+    gap: 8px;
+   
+}
+.editPlanHeader__textGreen{
+    color: var(--color-primary);
+    font-weight: 400;
+    margin-left: var(--space-16);
+    cursor: pointer;
+}
+
+.editPlanHeader__textBold{
+    color: var(--color-textDark);
+    font-weight: 400;
+    font-size: var(--font-size-large);
+}
+.editPlanHeader__textRed{
+    color: var(--color-red);
+    font-weight: 400;
+    font-size: var(--font-size-small);
+    cursor: pointer;
+}

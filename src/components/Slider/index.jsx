@@ -36,18 +36,7 @@ const Slider = ({ isLoading,viewPortWidth = 800,slideWidth=390,slideHeight=450, 
             <div className={`slider__view`} >
                 <div id="slider-container" className={`slider__container`} ref={containerRef}>
                     {
-                        
-                        <div className={`slider__loading${children.length<=0 || isLoading ? "--active":""}`}>
-                            {
-                                isLoading && <Loader color="white" scale={2}/>
-                            }
-                            {
-                                children.length<=0 && !isLoading && <span>درحال حاضر پروژه ای برای انتخاب وجود ندارد</span>
-                            }
-                        </div>
-                    }
-                    {
-                        children
+                        isLoading ? <div className='slider__isLoading'><Loader color="white" scale={2}/></div>:children.length>0 && !isLoading ? children:<div className='slider__isLoading'>در حال حاضر پروژه ای برای انتخاب وجود ندارد.</div> 
                     }
                 </div>
             </div>

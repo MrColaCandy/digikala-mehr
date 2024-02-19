@@ -1,4 +1,4 @@
-.historyOfAllPayments {
+.historyList {
     width: 100%;
     width: 1248px;
     background: var(--color-white);
@@ -6,9 +6,12 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    margin-top: var(--space-32);
+    height: 500px;
+    
 }
 
-.historyOfAllPayments__header {
+.historyList__header {
     width: 100%;
     display: flex;
     justify-content: flex-start;
@@ -16,22 +19,23 @@
     gap: var(--space-10);
 }
 
-.historyOfAllPayments__headerGoBackLink {
+.historyList__headerGoBackLink {
     color: var(--color-primary);
     font-size: var(--font-size-small);
     line-height: var(--lineHeight-20);
     font-weight: 500;
     text-decoration: none;
+    cursor: pointer;
 }
 
-.historyOfAllPayments__headerTitleWrapper {
+.historyList__headerTitleWrapper {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     gap: var(--space-8);
 }
 
-.historyOfAllPayments__headerTitleIcon {
+.historyList__headerTitleIcon {
     width: 20px;
     height: 20px;
     display: flex;
@@ -39,14 +43,14 @@
     align-items: center;
 }
 
-.historyOfAllPayments__headerTitleText {
+.historyList__headerTitleText {
     color: var(--color-textDark);
     font-size: var(--font-size-xlarge);
     line-height: var(--lineHeight-32);
     font-weight: 400;
 }
 
-.historyOfAllPayments__headerDateSort {
+.historyList__headerDateSort {
     color: var(--color-textLight);
     font-size: var(--font-size-tiny);
     line-height: var(--lineHeight-24);
@@ -57,9 +61,10 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: flex-start;
     margin-top: 20px;
+    height: 100vh;
 }
 
 .allPaymentsHeader {
@@ -193,7 +198,7 @@
 .allPaymentsSlidePagination {
     width: 1232px;
     height: 57px;
-    border-top: 1px solid var(--color-border);
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -228,11 +233,12 @@
     justify-content: flex-start;
     align-items: center;
     gap: var(--space-4);
+    margin-top: var(--space-16);
 }
 
 .allPaymentsSlidePagination__pagesNumbersItem {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     color: var(--color-N700);
     font-size: var(--font-size-tiny);
     line-height: calc(var(--lineHeight-16) + var(--lineHeight-10));
@@ -253,14 +259,8 @@
     border: 1px solid var(--color-primary);
 }
 
-.allPaymentsSlidePagination__pagesNumbersItem:hover {
-    color: var(--color-primary);
-    border: 1px solid var(--color-primary);
-}
 
-.allPaymentsSlidePagination__pagesNumbersItem--selected:hover {
-    color: var(--color-white);
-}
+
 
 .allPaymentsSlidePagination__morePageItem {
     width: 20px;
@@ -276,7 +276,7 @@
 }
 
 @media(max-width:320px) {
-    .historyOfAllPayments {
+    .historyList {
         width: calc(100% - (2* var(--space-16)));
         padding: 0;
         border-radius: 0;
@@ -287,7 +287,7 @@
         display: none;
     }
 
-    .historyOfAllPayments__headerTitleIcon {
+    .historyList__headerTitleIcon {
         width: 20px;
         height: 20px;
         display: flex;
@@ -295,7 +295,7 @@
         align-items: center;
     }
 
-    .historyOfAllPayments__headerTitleText {
+    .historyList__headerTitleText {
         font-size: var(--font-size-normal);
     }
 

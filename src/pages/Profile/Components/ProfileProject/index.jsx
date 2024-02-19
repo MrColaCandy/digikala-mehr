@@ -1,8 +1,13 @@
 import usePersianNumberConverter from "@components/hooks/usePersianNumberConverter";
 import "./style.css"
-
+import {useNavigate} from "react-router-dom"
 function ProfileProject({ project }) {
     const { convert, addCommas } = usePersianNumberConverter()
+    const navigate =useNavigate();
+    function handleEditClick()
+    {
+        navigate("/edit-plan");
+    }
     return (
         <div className="profileProject">
             <div className="profileProject__wrapper">
@@ -20,10 +25,10 @@ function ProfileProject({ project }) {
                         }
                         تومان
                     </p>
-                    <div className="profileProject__editButtons">
-                        <a href="#" className="profileProject__editButton">ویرایش</a>
+                    <div onClick={handleEditClick} className="profileProject__editButtons">
+                        <div   className="profileProject__editButton">ویرایش</div>
                         <span>|</span>
-                        <a href="#" className="profileProject__editButton">لغو</a>
+                        <div  className="profileProject__editButton">لغو</div>
                     </div>
                 </div>
             </div>

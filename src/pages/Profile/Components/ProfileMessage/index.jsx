@@ -46,11 +46,11 @@ const ProfileMessage = ({ user }) => {
     const firstProjectMessage = <section ref={messageRef} className="profileMessage">
         <h3 className="profileMessage__title">
             <FaRegCircleCheck className="profileMessage__icon" />
-            <span>خیلی ممنونیم سارا</span>
+            <span>خیلی ممنونیم {user?.name}</span>
         </h3>
 
         <p className="profileMessage__text">
-            شما با موفقیت به پروژه تهیه <span className="profileMessage__title">مخزن آب برای حیات وحش گناباد</span>
+            شما با موفقیت به پروژه تهیه <span className="profileMessage__title">{user?.currentProject.tittle}</span>
             اضافه شدید.
         </p>
 

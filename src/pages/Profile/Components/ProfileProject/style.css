@@ -101,6 +101,7 @@
     width: 100%;
     max-width: 170px;
     color: var(--color-primary);
+    cursor: pointer;
 }
 
 

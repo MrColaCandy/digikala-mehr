@@ -1,10 +1,11 @@
-import { home, login, profile, paymentHistory, pricing,choosePlan } from "./route-paths";
+import { home, login, profile, history, pricing,choosePlan, editPlan } from "./route-paths";
 import Home from "@pages/Home";
 import Login from "@pages/Login";
 import ChoosePlan from "@pages/ChoosePlan";
 import Profile from "@pages/Profile";
-import PaymentHistory from "@pages/PaymentHistory";
+import History from "@pages/History";
 import ChoosePrice from "../pages/ChoosePrice";
+import EditPlan from "../pages/EditPlan";
 
 
 export const routes = [
@@ -26,12 +27,16 @@ export const routes = [
     element: <Profile />,
   },
   {
-    path: paymentHistory,
-    element: <PaymentHistory />,
+    path: history,
+    element: <History/>,
   },
   {
     path: pricing,
     element: <ChoosePrice />
+  },
+  {
+    path: editPlan,
+    element: <EditPlan />
   }
 ];
 

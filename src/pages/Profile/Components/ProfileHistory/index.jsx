@@ -1,10 +1,15 @@
-import ProfileHistoryItem from "./ProfileHistoryItem";
+import HistoryItem from "@components/HistoryItem";
+import {useNavigate} from "react-router-dom"
 import './style.css'
 
 
 
 function ProfileHistory({ user }) {
- 
+  const navigate=useNavigate();
+  function handleSeeAllHistoryClick()
+  {
+        navigate("/history")
+  }
   return (
     <section className="profileHistory">
 
@@ -22,14 +27,14 @@ function ProfileHistory({ user }) {
       <ul className="profileHistory__table">
         {
             user?.history.map(history=>{
-              return <ProfileHistoryItem key={history.id} history={history}/>
+              return <HistoryItem key={history.id} history={history}/>
             })
         }
       </ul>
 
 
 
-      <button className="profileHistory__button">مشاهده تمام پرداخت‌ها</button>
+      <button onClick={handleSeeAllHistoryClick} className="profileHistory__button">مشاهده تمام پرداخت‌ها</button>
     </section>
   )
 }

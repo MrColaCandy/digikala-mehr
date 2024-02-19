@@ -46,9 +46,9 @@ function Header() {
   }
   return (
     <nav className="header">
-      <div className=" digiMehrLogoTitleWrapper">
+      <div onClick={handleLogoClick} className=" digiMehrLogoTitleWrapper">
         <div className="digiMehrLogoWrapper__wrapperLogo">
-          <img onClick={handleLogoClick}
+          <img 
             className="digiMehrLogoWrapper__insideLogo"
             src={FillInside_digiMehr_logo_i}
             alt="digiLogo"

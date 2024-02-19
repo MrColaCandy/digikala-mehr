@@ -21,6 +21,7 @@
     gap: var(--space-10);
     width: 85vw;
     max-width: 173px;
+    cursor: pointer;
 }
 
 .digiMehrLogoWrapper__wrapperLogo {
