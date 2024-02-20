@@ -4,7 +4,9 @@ import ChoosePriceForm from "./components/ChoosePriceForm";
 import {useAuth} from "@components/hooks/useAuth"
 
 const ChoosePrice = () => {
+
   const {user}=useAuth();
+  
   return (
     <Layout>
       <ChoosePriceHeader user={user}/>

@@ -32,7 +32,7 @@ const ChoosePriceForm = () => {
         try {
             await postPrice(value)
     
-            user.projects.push(user.currentProject)
+            user.projects.push({...user.currentProject,price:value})
             setUser({...user});
             localStorage.setItem("user",JSON.stringify(user));
             document.cookie=serialize("newProject",true);

@@ -41,7 +41,6 @@ const ProfileMessage = ({ user }) => {
             برای پروژه‌های مختلف کمک جمع
             میشه.
         </p>
-        <a className="profileMessage__textBold" href="#">بیشتر بدانید</a>
     </section>
 
     const newProjectMessage = <section ref={messageRef} className="profileMessage">

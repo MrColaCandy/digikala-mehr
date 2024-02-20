@@ -22,7 +22,6 @@ function Home() {
       return;
      }
      navigate("/choose-plan")
-     document.cookie=serialize("nextPage","/")
   }
   return (
     <Layout>

@@ -14,7 +14,7 @@ const DropDown = () => {
     function handleLogoutClick(){
         logout();
         navigate("/")
-        location.reload();
+        window.location.reload();
     }
     const [isDropdownOpen, setDropdownOpen] = useState(false);
     let menuRef = useRef()
