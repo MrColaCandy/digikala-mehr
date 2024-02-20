@@ -16,7 +16,7 @@
 .editPlanModal__frame{
     background-color: white;
     height: auto;
-    min-height: 500px;
+    padding: var(--space-16);
     width: 100vw;
     max-width: 400px;
     display: flex;
