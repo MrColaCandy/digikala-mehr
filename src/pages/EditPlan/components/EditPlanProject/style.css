@@ -1,6 +1,6 @@
 .editPlanProject {
     width: 95vw;
-    max-width: 1248px;
+    max-width: 1212px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -10,6 +10,7 @@
     border-radius: 8px;
     transform: scale(0.99);
     margin-bottom: var(--space-10);
+    padding: var(--space-8);
     
 }
 .editPlanProject__editPrice
@@ -23,7 +24,7 @@
 }
 .editPlanProject--selected {
     width: 95vw;
-    max-width: 1248px;
+    max-width: 1212px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -34,12 +35,13 @@
     background-color: #f2fbf3;
     transform: scale(1);
     margin-bottom: var(--space-10);
+    padding: var(--space-8);
     
 
 }
 .editPlanProject__header {
-    width: 94vw;
-    max-width: 1248px;
+    width: 95vw;
+    max-width: 1212px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
