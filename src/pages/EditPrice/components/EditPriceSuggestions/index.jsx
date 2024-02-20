@@ -30,7 +30,7 @@ const EditPriceSuggestions = ({value,setValue}) => {
                     type="button"
                 >
                     {convert(addCommas(suggestionValue))}{" "}
-                    <span className="editPrice__suggestionCurrency">تومان</span>
+                    <span className={`editPrice__suggestionCurrency${isActive?"--active":""}`}>تومان</span>
                 </button>
             );
         });

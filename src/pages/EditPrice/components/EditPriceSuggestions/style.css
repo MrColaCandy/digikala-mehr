@@ -68,7 +68,14 @@
     font-weight: 400;
     color: var(--color-primary);
 }
-
+.editPrice__suggestionCurrency--active {
+   
+    top: var(--space-12);
+    font-size: var(--space-10);
+    line-height: var(--space-16);
+    font-weight: 400;
+    color: white;
+}
 
 
 @media screen and (max-width: 390px) {
