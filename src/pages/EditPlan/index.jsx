@@ -1,10 +1,10 @@
 import Layout from "@components/Layout";
 import Slider from "@components/Slider"
-import EditPlanHeader from "./components/EditPlanHeader";
-import EditPlanProjects from "./components/EditPlanProjects";
+import EditHeader from "@components/EditHeader";
+import EditPlanProjects from "./components/EditPlanProjects"
+import EditPlanProject from "./components/EditPlanProject"
 import { useAuth } from "@components/hooks/useAuth"
 import Button from "@components/Button"
-import EditPlanProject from "./components/EditPlanProject";
 import { useState, useEffect } from "react";
 import { getAvailableProjects } from "./request";
 import Card from "@components/Card"
@@ -53,7 +53,7 @@ const EditPlan = () => {
             }
            
             <Layout>
-                <EditPlanHeader selected={selected} setModal={setModal} />
+                <EditHeader selected={selected} setModal={setModal} />
                 <EditPlanProjects>
                     {
                         user?.projects.map((project,index) => {

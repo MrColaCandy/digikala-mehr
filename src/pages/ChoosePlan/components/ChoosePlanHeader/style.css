@@ -1,7 +1,8 @@
 .choosePlan__header {
     width: 90vw;
     max-width: 445px;
-    height: 145px;
+    min-height: 145px;
+    height: auto;
     margin-top: var(--space-32);
     margin-bottom: var(--space-12);
     display: flex;

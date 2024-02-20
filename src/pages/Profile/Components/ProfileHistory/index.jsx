@@ -1,14 +1,16 @@
 import HistoryItem from "@components/HistoryItem";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import { serialize } from "cookie";
 import './style.css'
 
 
 
 function ProfileHistory({ user }) {
-  const navigate=useNavigate();
-  function handleSeeAllHistoryClick()
-  {
-        navigate("/history")
+  const navigate = useNavigate();
+  function handleSeeAllHistoryClick() {
+    const address = window.location.href.split("/");
+    document.cookie = serialize("previousPage", `/${address[address.length - 1]}`);
+    navigate("/history")
   }
   return (
     <section className="profileHistory">
@@ -26,9 +28,9 @@ function ProfileHistory({ user }) {
 
       <ul className="profileHistory__table">
         {
-            user?.history.slice(0,5).map(history=>{
-              return <HistoryItem key={history.id} history={history}/>
-            })
+          user?.history.slice(0, 5).map(history => {
+            return <HistoryItem key={history.id} history={history} />
+          })
         }
       </ul>
 

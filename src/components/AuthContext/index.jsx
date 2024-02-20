@@ -11,7 +11,6 @@ function AuthContext({ children }) {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [token, setToken] = useState(parse(document.cookie).token || null)
     const [isLoading, setIsLoading] = useState(false);
-    const [destination, setDestination] = useState("/");
 
 
     useEffect(() => {
@@ -68,7 +67,6 @@ function AuthContext({ children }) {
         if (!isLoggedIn) return;
         setToken(null);
         setIsLoggedIn(false);
-        setDestination("/");
         document.cookie = serialize("token", "", { expires: new Date(0) });
     }
     // Provide the authentication context value to the components in the tree
@@ -85,8 +83,6 @@ function AuthContext({ children }) {
                 sendOTPCode,
                 confirmOTPCode,
                 isLoading,
-                destination,
-                setDestination
             }}>
             {children}
         </authContext.Provider>

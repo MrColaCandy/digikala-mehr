@@ -5,9 +5,10 @@ import { useNavigate } from 'react-router-dom';
 import useCountdown from './useCountdown';
 import Button from '@components/Button';
 import "./style.css"
+import { parse } from 'cookie';
 
 function LoginOTPCodeForm({ phone }) {
-    const { sendOTPCode,destination } = useAuth();
+    const { sendOTPCode } = useAuth();
     const { minutes, seconds, resetCountdown } = useCountdown(90, handleCountdownOverCallback);
     const { confirmOTPCode } = useAuth();
     const [code, setCode] = useState("");
@@ -52,7 +53,7 @@ function LoginOTPCodeForm({ phone }) {
         try {
             await confirmOTPCode(phone, code);
             setError(null);
-            navigate(destination);
+            navigate(parse(document.cookie).nextPage || "/");
         } catch (error) {
             console.log("Something went wrong! error: " + error.message);
             setError(error.message);

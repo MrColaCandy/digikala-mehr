@@ -16,7 +16,7 @@ const ChoosePriceHeader = ({user}) => {
       </h1>
       <p className="choosePrice__headerSubtitle">
         این مبلغ قراره ماهیانه از حقوقت کم و صرف کمک به 
-        {" "+user?.currentProject?.title+ " "}
+        <span>{" "+user?.currentProject?.title+ " "}</span>
         <a  onClick={handleBackButtonClick}className="choosePrice__headerLink">تغییر پروژه</a>
       </p>
     </div>

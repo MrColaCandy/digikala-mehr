@@ -1,32 +1,36 @@
-.editPlanHeader{
+.editHeader{
     width: 92vw;
     max-width: 1248px;
-    height: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    height: auto;
+    gap: var(--space-16);
     margin-top: var(--space-32);
 }
-.editPlanHeader__wrapper{
+.editHeader__wrapper{
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 8px;
+    flex-wrap: wrap;
+    height: auto;
    
 }
-.editPlanHeader__textGreen{
+.editHeader__textGreen{
     color: var(--color-primary);
     font-weight: 400;
     margin-left: var(--space-16);
     cursor: pointer;
 }
 
-.editPlanHeader__textBold{
+.editHeader__textBold{
     color: var(--color-textDark);
     font-weight: 400;
     font-size: var(--font-size-large);
 }
-.editPlanHeader__textRed{
+.editHeader__textRed{
     color: var(--color-red);
     font-weight: 400;
     font-size: var(--font-size-small);

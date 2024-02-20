@@ -7,6 +7,7 @@ import HistoryItem from "../../../../components/HistoryItem";
 import usePersianNumberConverter from "../../../../components/hooks/usePersianNumberConverter";
 
 import { useNavigate } from "react-router-dom";
+import { parse } from "cookie";
 
 function HistoryList({ data, itemsPerPage }) {
   const navigate = useNavigate()
@@ -32,7 +33,12 @@ function HistoryList({ data, itemsPerPage }) {
 
   };
   function handleBackButtonClick() {
-    navigate("/profile")
+    const previousPage=parse(document.cookie).previousPage;
+    if(previousPage)
+    {
+      navigate(previousPage);
+    }
+    
   }
   return (
     <section className="historyList">

@@ -9,6 +9,7 @@ import {useNavigate} from "react-router-dom"
 import { useEffect, useState } from "react"
 import { getAvailableProjects } from "./request"
 
+
 const ChoosePlan = () => {
   const {user,setUser}=useAuth()
   const [projects,setProjects]=useState([])
@@ -32,6 +33,7 @@ const ChoosePlan = () => {
     getProjects()
   },[user])
   function handleCardButtonClick(project){
+  
     navigate("/choose-price")
     setUser({...user,currentProject:project});
     localStorage.setItem("user",JSON.stringify(user));

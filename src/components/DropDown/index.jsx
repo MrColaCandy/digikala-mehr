@@ -6,7 +6,8 @@ import Toman from "@assets/icons/Toman.svg"
 import { useAuth } from '../hooks/useAuth';
 import './style.css';
 import {useNavigate} from "react-router-dom"
-
+import avatarPlaceHolder from "@assets/decorations/user-image-placeHolder.png"
+import { serialize } from 'cookie';
 const DropDown = () => {
     const {logout,user}=useAuth();
     const navigate=useNavigate();
@@ -37,6 +38,13 @@ const DropDown = () => {
     {
         navigate("/profile")
     }
+    function handleHistoryClick()
+    {
+        const address=window.location.href.split("/");
+        document.cookie=serialize("previousPage",`/${address[address.length-1]}`);
+        navigate("/history");
+        
+    }
     return (
         <>
             <div className="drop-container" ref={menuRef}>
@@ -48,7 +56,7 @@ const DropDown = () => {
                     <div className="main-dropdown">
                         <ul>
                             <li className="dropdown-li">
-                                <div className='img-user'><img src="" alt=""/></div>
+                               <img className='img-user' width={40} height={40} src={ user?.image ||avatarPlaceHolder} alt="avatar"/>
                                 <div onClick={handleUsernameClick} className="account-id"><a href="#"><span>{user?.name}</span></a><p>جمع نیکوکاری های
                                     شما</p><span>00 <img src={Toman} alt="تومان"/></span>
                                 </div>
@@ -57,7 +65,7 @@ const DropDown = () => {
                                 <div>
                                     <PiClipboardTextThin className="dropdown-icons"/>
                                 </div>
-                                <div className="last-donate-description">
+                                <div onClick={handleHistoryClick} className="last-donate-description">
                                     <li className="dropdown-li">
                                         <div><a href="#">کمک های پیشین من</a></div>
                                     </li>

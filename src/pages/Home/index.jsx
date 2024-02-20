@@ -8,19 +8,21 @@ import HomeFAQ from "./components/HomeFAQ";
 import {useNavigate} from "react-router-dom"
 import {useAuth} from "@components/hooks/useAuth"
 import "./style.css"
+import { serialize } from "cookie";
 
 function Home() {
-  const {isLoggedIn,setDestination}=useAuth()
+  const {isLoggedIn}=useAuth()
   const navigate=useNavigate();
   function handleStartButtonClick()
   {
      if(!isLoggedIn)
      {
       navigate("/login");
-      setDestination("/choose-plan")
+      document.cookie=serialize("nextPage","/choose-plan")
       return;
      }
      navigate("/choose-plan")
+     document.cookie=serialize("nextPage","/")
   }
   return (
     <Layout>
