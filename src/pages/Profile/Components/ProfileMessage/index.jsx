@@ -4,18 +4,17 @@ import { parse, serialize } from "cookie";
 import usePersianNumberConverter from "@components/hooks/usePersianNumberConverter"
 import "./style.css"
 import statsData from "@components/data/stats.json";
-import {useAuth} from "@components/hooks/useAuth"
-import {useNavigate}  from "react-router-dom"
+import { useAuth } from "@components/hooks/useAuth"
+import { useNavigate } from "react-router-dom"
 const ProfileMessage = ({ user }) => {
-    const {setUser}=useAuth()
-    const navigate=useNavigate()
+    const { setUser } = useAuth()
+    const navigate = useNavigate()
     const messageRef = useRef(null);
-    const [newProject, setNewProject] = useState(parse(document.cookie).newProject || false);
+    const [newProject, setNewProject] = useState(parse(document.cookie).newProject || "false");
     const { convert, addCommas } = usePersianNumberConverter();
-    function handleEditButtonClick()
-    {
-        setUser({...user,editing:user.currentProject})
-        localStorage.setItem("user",JSON.stringify(user));
+    function handleEditButtonClick() {
+        setUser({ ...user, editing: user.currentProject })
+        localStorage.setItem("user", JSON.stringify(user));
         navigate("/edit-plan")
     }
     useEffect(() => {
@@ -59,7 +58,7 @@ const ProfileMessage = ({ user }) => {
         </h3>
 
         <p className="profileMessage__text">
-            شما با موفقیت به پروژه <span className="profileMessage__title">{" "+user?.currentProject?.title+" "} </span>
+            شما با موفقیت به پروژه <span className="profileMessage__title">{" " + user?.currentProject?.title + " "} </span>
             اضافه شدید.
         </p>
 
@@ -75,17 +74,22 @@ const ProfileMessage = ({ user }) => {
         </p>
 
     </section>
-    if (newProject === "false" && user?.projects.length===0)return null;
-    if(newProject==="false" && user?.projects.length>0)
-    {
-        return noNewProjectMessage;
+    if (newProject !="false") {
+        if (user?.projects.length === 1) {
+            return firstProjectMessage;
+        }
+        if (user?.projects.length > 1) {
+            return newProjectMessage;
+        }
     }
-    if (user?.projects.length === 1) {
-        return firstProjectMessage;
+    else {
+        if (user?.projects.length === 0) return null;
+        if (user?.projects.length > 0) {
+            return noNewProjectMessage;
+        }
     }
-    if (user?.projects.length > 1) {
-        return newProjectMessage;
-    }
+
+
 }
 function inView(el) {
     if (!el) return false;
