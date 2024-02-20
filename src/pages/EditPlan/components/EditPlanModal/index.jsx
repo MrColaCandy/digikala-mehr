@@ -43,6 +43,7 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
             } finally {
                 setIsLoading(false);
                 setModal(null);
+                document.body.style.overflow="auto"
             }
         }
     }
