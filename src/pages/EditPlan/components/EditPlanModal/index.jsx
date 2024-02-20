@@ -12,6 +12,7 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
         if (isLoading) return;
         setSubstitute(null)
         setModal(null);
+        document.body.style.overflow="auto"
     }
     async function handleChangeClick() {
         if (!user) return;
@@ -27,6 +28,7 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
             } finally {
                 setIsLoading(false);
                 setModal(null);
+                document.body.style.overflow="auto"
             }
         }
         else {

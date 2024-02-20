@@ -8,6 +8,7 @@ const EditHeader = ({ setModal,selected}) => {
     }
     function handleCancelClick() {
         setModal("remove");
+        document.body.style.overflow="hidden"
     }
     return (
         <div className="editHeader">

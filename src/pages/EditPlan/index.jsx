@@ -19,6 +19,7 @@ const EditPlan = () => {
     const [modal,setModal]=useState(false);
     function handleCardButtonClick(project) {
         setModal("change");
+        document.body.style.overflow="hidden"
         setSubstitute(project);
     }
     useEffect(() => {
@@ -36,16 +37,6 @@ const EditPlan = () => {
         }
         getProjects()
     }, [user,selected])
-    useEffect(()=>{
-        if(modal)
-        {
-            document.body.style.overflow="hidden"
-        }
-        else
-        {
-            document.body.style.overflow="auto"
-        }
-    },[modal])
     return (
         <>
             {
