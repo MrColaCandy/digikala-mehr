@@ -1,13 +1,13 @@
 .editHeader{
     width:81vw;
-    max-width: 1248px;
+    max-width: 1212px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     height: auto;
     gap: var(--space-16);
-    margin-top: var(--space-32);
+    margin: var(--space-24) 0;
 }
 .editHeader__wrapper{
     display: flex;
@@ -35,4 +35,13 @@
     font-weight: 400;
     font-size: var(--font-size-small);
     cursor: pointer;
+}
+
+@media screen and (max-width: 450px) {
+
+    .editHeader__wrapper .editHeader__title
+    {
+        display: none;
+    }
+
 }

@@ -14,7 +14,7 @@ const EditHeader = ({ setModal,selected}) => {
         <div className="editHeader">
             <div className="editHeader__wrapper">
                 <div onClick={handleBackButtonClick} className="editHeader__textGreen">بازگشت</div>
-                <div className="editHeader__wrapper">
+                <div className="editHeader__wrapper editHeader__title">
                     <FiEdit />
                     <div className="editHeader__textBold">ویرایش پروژه انتخابی</div>
                 </div>
