@@ -5,7 +5,7 @@ function HomeAbout (){
         <section className="homeAbout__wrapper">
         <section className="homeAbout__item">
           <h3 className="homeAbout__title">چجوری قراره مشارکت کنم؟</h3>
-          <p>شما می توانید به صورت ماهانه به حوزه ای که به آن علاقه مند
+          <p className="homeAbout__description">شما می توانید به صورت ماهانه به حوزه ای که به آن علاقه مند
             هستید مبلغ مشخصی را اهدا کنید. این مبلغ هر ماه پس از کسر از حقوق صرف امور نیکوکاری خواهد شد. </p>
         </section>
 

@@ -1,9 +1,37 @@
 @font-face {
   font-family: yekan;
 
-  src: url("@assets/fonts/Yekan.woff2") format("woff2"),
+  src: 
+    url("@assets/fonts/Yekan.woff2") format("woff2"),
     url("@assets/fonts/Yekan.woff") format("woff"),
-    url("@assets/fonts/Yekan.ttf") format("truetype");
+    url("@assets/fonts/Yekan.ttf") format("truetype"),
+    url("../fonts/IRANYekanWebBlack.woff2") format("woff2"),
+    url("../fonts/IRANYekanWebBlack.woff") format("woff"),
+    url("../fonts/IRANYekanWebBlack.ttf") format("truetype"),
+    url("../fonts/IRANYekanWebBold.woff2") format("woff2"),
+    url("../fonts/IRANYekanWebBold.woff") format("woff"),
+    url("../fonts/IRANYekanWebBold.ttf") format("truetype"),
+    url("../fonts/IRANYekanWebExtraBlack.woff2") format("woff2"),
+    url("../fonts/IRANYekanWebExtraBlack.woff") format("woff"),
+    url("../fonts/IRANYekanWebExtraBlack.ttf") format("truetype"),
+    url("../fonts/IRANYekanWebExtraBold.woff2") format("woff2"),
+    url("../fonts/IRANYekanWebExtraBold.woff") format("woff"),
+    url("../fonts/IRANYekanWebExtraBold.ttf") format("truetype"),
+    url("../fonts/IRANYekanWebThin.woff2") format("woff2"),
+    url("../fonts/IRANYekanWebThin.woff") format("woff"),
+    url("../fonts/IRANYekanWebThin.ttf") format("truetype"),
+    url("../fonts/IRANYekanWebLight.woff2") format("woff2"),
+    url("../fonts/IRANYekanWebLight.woff") format("woff"),
+    url("../fonts/IRANYekanWebLight.ttf") format("truetype"),
+    url("../fonts/IRANYekanWebMedium.woff2") format("woff2"),
+    url("../fonts/IRANYekanWebMedium.woff") format("woff"),
+    url("../fonts/IRANYekanWebMedium.ttf") format("truetype"),
+    url("../fonts/IRANYekanWebRegular.woff2") format("woff2"),
+    url("../fonts/IRANYekanWebRegular.woff") format("woff"),
+    url("../fonts/IRANYekanWebRegular.ttf") format("truetype"),
+    url("../fonts/IRANYekanWebRegular.woff2") format("woff2"),
+    url("../fonts/IRANYekanWebRegular.woff") format("woff"),
+    url("../fonts/IRANYekanWebRegular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   text-rendering: optimizeLegibility;
