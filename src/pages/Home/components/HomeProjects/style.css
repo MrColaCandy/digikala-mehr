@@ -134,9 +134,10 @@
         line-height: var(--lineHeight-32);
     }
     
-    .homeProjectsDescription {
+    .homeProjects__description {
         font-size: var(--font-size-small);
         line-height: var(--lineHeight-20);
+        
     }
 }
 

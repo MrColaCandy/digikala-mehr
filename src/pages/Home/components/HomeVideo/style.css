@@ -190,5 +190,12 @@
     {
         gap: var(--space-12);
     }
+    .homeVideo__header,
+    .homeVideo__title,
+    .homeVideo__text{
+        font-size: var(--font-size-large);
+    }
+    
+   
     
 }

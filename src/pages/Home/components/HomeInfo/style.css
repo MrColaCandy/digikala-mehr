@@ -58,7 +58,6 @@
     width: 99vw;
     max-width: 236px;
     height: 92px;
-    padding: var(--padding-12);
     color: var(--color-white);
     font-size: var(--font-size-xhuge);
     text-align: right;
@@ -69,7 +68,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    gap: var(--space-12);
+    gap: var(--space-24);
 }
 
 .homeInfo__staticMembersDescription--smallFont {
@@ -84,7 +83,7 @@
     width: 100vw;
     max-width: 236px;
     height: 112px;
-    padding: var(--padding-12);
+
     color: var(--color-white);
     border-radius: var(--borderRadius-12);
     display: flex;
@@ -113,7 +112,7 @@
 
 .homeInfo__lastMembersWrapper {
     display: flex;
-    gap: var(--space-8);
+    gap: var(--space-4);
 }
 
 .homeInfo__lastMembersIcon {
@@ -136,5 +135,19 @@
     .homeInfo__dataBox::after {
       display: none;
     }
+    .homeInfo__dataBox
+    {
+        padding: 0;
+        gap: var(--space-12);
+    }
+    
+}
+@media screen and (max-width: 390px) {
+  
+    .homeInfo__title{
+        font-size: var(--font-size-huge);
+        text-align: right;
+    }
+    
     
 }

@@ -86,15 +86,15 @@
 @media screen and (max-width: 390px) {
   .slider #slide{
     flex-shrink: 0;
-    max-width: 80% !important;
+    max-width: 85% !important;
     width: var(--slide-width) !important;
     height: auto !important;
   }
   .slider__view
   {
     height: auto !important;
-    width: 100vw;
- 
+    width: 95vw;
   }
+  
 
 }
