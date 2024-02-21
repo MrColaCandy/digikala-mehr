@@ -1,18 +1,17 @@
 import { FaChevronLeft } from "react-icons/fa6";
-import usePersianNumberConverter from "@components/hooks/usePersianNumberConverter";
-import { useAuth } from "@components/hooks/useAuth"
+import usePersian from "@components/hooks/usePersian";
 import "./style.css"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"
+import { serialize } from "cookie";
+import roshanLogo from "@assets/decorations/roshan-logo.png"
 const EditPlanProject = ({ index, project, selected, setSelected }) => {
     const navigate = useNavigate()
-    const { user, setUser } = useAuth()
     function handleEditPriceClick() {
-        setUser({ ...user, editing: project })
-        localStorage.setItem("user", JSON.stringify(user));
+        document.cookie=serialize("project-editing",project.id)
         navigate("/edit-price")
     }
-    const { convert, addCommas } = usePersianNumberConverter();
+    const { convert, addCommas } = usePersian();
     useEffect(() => {
         if (index === 0) {
             setSelected(project)
@@ -22,19 +21,28 @@ const EditPlanProject = ({ index, project, selected, setSelected }) => {
 
         setSelected(project);
     }
+    const topics=[
+        "کتابخانه",
+        "ورزشگاه",
+        "استخر شنای بانوان",
+        "آزمایشگاه زبان",
+        "مجموعه تفریحی",
+    ]
+    
+   
     return (
-        <div onClick={handleProjectClick} className={`editPlanProject${selected?.id === project?.id ? "--selected" : ""}`}>
+        <div onClick={handleProjectClick} className={`editPlanProject${selected?.id == project?.id ? "--selected" : ""}`}>
             <div className="editPlanProject__header">
 
-                <img src={project?.employerLogo} className="editPlanProject__employerLogo" />
+                <img src={project?.institute?.logo || roshanLogo } className="editPlanProject__employerLogo" />
                 <div className="editPlanProject__col">
-                    <div className="editPlanProject__employerName">{project?.employerName}</div>
-                    <div className="editPlanProject__projectTitle">{project?.title}</div>
+                    <div className="editPlanProject__employerName">{project?.institute?.name || "موسسه صبح روشن"}</div>
+                    <div className="editPlanProject__projectTitle">{project?.topic || topics[project.id%topics.length] }</div>
                 </div>
                 <div className={`editPlanProject__price${selected?.id === project?.id ? "--selected" : ""}`}>
                     ماهیانه
                     مبلغ
-                    {" " + project ? convert(addCommas(project.price)) : 0 + " "}
+                    {" " + project ? convert(addCommas(project?.price)) : 0 + " "}
                     تومان
                 </div>
             </div>

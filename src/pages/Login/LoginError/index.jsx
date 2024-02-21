@@ -1,11 +1,10 @@
 import phoneNumberErrorCat from '@assets/decorations/phone-number-error-cat.png'
 import Button from '@components/Button';
 import "./style.css"
-function LoginError({ phone, setRegistrationError, setHasCode }) {
+function LoginError({ phone, setRegistrationError, setCode }) {
   function handleChangePhoneButtonClick() {
     setRegistrationError(false);
-    setHasCode(false);
-  }
+    setCode(null) }
   return (
     <section className="loginCatError">
       <h2 className="login__title">شماره‌ی موبایل ثبت نشده!</h2>

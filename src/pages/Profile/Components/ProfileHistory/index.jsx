@@ -28,7 +28,7 @@ function ProfileHistory({ user }) {
 
       <ul className="profileHistory__table">
         {
-          user?.history.slice(0, 5).map(history => {
+          user?.help_history?.slice(0, 5).map(history => {
             return <HistoryItem key={history.id} history={history} />
           })
         }

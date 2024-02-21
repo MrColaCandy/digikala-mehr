@@ -1,44 +1,61 @@
 import { useEffect, useState } from "react"
 import { parse, serialize } from "cookie";
 import { authContext } from "../contexts/authContext";
-import { getCode, validateCode, validateToken } from "./request"
-import userData from "@components/data/user.json"
+import { requestCode, requestCodeValidation, requestUser } from "./requests"
+
+
 
 
 
 function AuthContext({ children }) {
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user") || null));
+    const [userData, setUserData] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [token, setToken] = useState(parse(document.cookie).token || null)
     const [isLoading, setIsLoading] = useState(false);
 
 
+
     useEffect(() => {
         setIsLoading(true);
-        async function postToken() {
+        async function getUserOnRefresh() {
             try {
-                await validateToken(token);
-                setIsLoggedIn(true)
+                await getUserData(token);
             } catch (error) {
-                logout();
-            }
-            finally {
+                logout()
+                throw new Error(error.message);
+            } finally {
                 setIsLoading(false);
             }
         }
-        postToken();
+
+        getUserOnRefresh();
+
     }, [])
 
 
-    async function sendOTPCode(phone) {
+    async function updateUserData(token) {
         setIsLoading(true);
         try {
-            const code = await getCode(phone);
-            console.log("OTP code sended successfully. Code: " + code);
-            return code;
+             await getUserData(token);
         } catch (error) {
-            console.log("Failed to send OTP code!. Error: ", error.message)
-            throw error;
+            throw new Error(error.message);
+        } finally {
+            setIsLoading(false);
+        }
+    }
+    async function getOTPCode(phone) {
+        setIsLoading(true);
+        try {
+            const { data } = await requestCode(phone);
+            console.log(data);
+            if (data === "No user") {
+                throw new Error("404")
+            }
+            console.log("OTP code sended successfully. Code:" + data.otp);
+            return data.otp
+        } catch (error) {
+            
+            throw new Error(error.message);
         }
         finally {
             setIsLoading(false);
@@ -46,18 +63,38 @@ function AuthContext({ children }) {
     }
 
 
-    async function confirmOTPCode(phone, code) {
+    async function validateOTPCode(code) {
         setIsLoading(true);
         try {
-            const token = await validateCode(phone, code);
-            setToken(token);
-            document.cookie = serialize("token", token);
-            setUser(JSON.parse(localStorage.getItem("user")) || userData)
-            setIsLoggedIn(true);
-            return token;
+            const { data } = await requestCodeValidation(code);
+            if (data === "incorrect Otp") {
+                throw new Error("کد معتبر نیست!")
+            }
+            
+            document.cookie = serialize("token", data.token);
+            setToken(data.token);
+            getUserData(data.token);
+
         } catch (error) {
-            console.log("Failed to validate code . Error", error.message)
-            throw error;
+            
+            throw new Error(error.message);
+        }
+        finally {
+            setIsLoading(false);
+        }
+    }
+    async function getUserData(token) {
+        setIsLoading(true);
+        try {
+            const { data } = await requestUser(token);
+            if (data?.detail === "اطلاعات برای اعتبارسنجی ارسال نشده است." || data?.detail === "توکن داده شده برای هیچ نوع توکنی معتبر نمی‌باشد") {
+                throw new Error("توکن معتبر نیست!")
+            }
+            setUserData(data);
+            setIsLoggedIn(true);
+        } catch (error) {
+            logout()
+            throw new Error(error.message);
         }
         finally {
             setIsLoading(false);
@@ -67,22 +104,25 @@ function AuthContext({ children }) {
         if (!isLoggedIn) return;
         setToken(null);
         setIsLoggedIn(false);
+        setUserData(null);
         document.cookie = serialize("token", "", { expires: new Date(0) });
     }
     // Provide the authentication context value to the components in the tree
     return (
         <authContext.Provider value=
             {{
-                user,
-                setUser,
+                userData,
+                setUserData,
+                getUserData,
                 token,
                 setToken,
                 isLoggedIn,
                 setIsLoggedIn,
                 logout,
-                sendOTPCode,
-                confirmOTPCode,
+                getOTPCode,
+                validateOTPCode,
                 isLoading,
+                updateUserData
             }}>
             {children}
         </authContext.Provider>

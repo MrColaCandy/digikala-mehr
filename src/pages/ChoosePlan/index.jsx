@@ -4,63 +4,57 @@ import "./style.css"
 import Slider from "@components/Slider"
 import Card from "@components/Card"
 import Button from "@components/Button"
-import { useAuth } from "@components/hooks/useAuth"
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { getAvailableProjects } from "./request"
+import { requestAllProjects } from "./requests"
+import { serialize } from "cookie"
 
 
 const ChoosePlan = () => {
-  const {user,setUser}=useAuth()
-  const [projects,setProjects]=useState([])
-  const [isLoading,setIsLoading]=useState(false);
-  const navigate=useNavigate();
- 
-  useEffect(()=>{
-    if(!user)return;
-    setIsLoading(true);
-    async function getProjects()
-    {
+
+  const [projects, setProjects] = useState([])
+  const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    async function getProjects() {
+      setIsLoading(true);
+
       try {
-       const available= await getAvailableProjects(user)
-       setProjects(available);
+        const { data } = await requestAllProjects();
+        console.log(data);
+        setProjects([...data]);
       } catch (error) {
-        setProjects([]);
-      }finally{
-        setIsLoading(false)
+        setProjects(null);
       }
-    } 
-    getProjects()
-  },[user])
-  function handleCardButtonClick(project){
-  
-    navigate("/choose-price")
-    setUser({...user,currentProject:project});
-    localStorage.setItem("user",JSON.stringify(user));
-    
+      finally {
+        setIsLoading(false);
+      }
+
+    }
+    getProjects();
+  }, [])
+  async function handleCardButtonClick(project) {
+    document.cookie = serialize("project", JSON.stringify(project.id));
+    navigate("/choose-price");
+
   }
   return (
     <Layout>
       <ChoosePlaneHeader />
-      <Slider isLoading={isLoading} slideHeight={450} slideWidth={360}  viewPortWidth={360 * 2.5}  gap={40} >
+      <Slider isLoading={isLoading} slideHeight={450} slideWidth={360} viewPortWidth={360 * 2.5} gap={40} >
         {
-          projects?.map((project)=>{
+          projects?.map((project) => {
             return <Card
-            width={360}
-            height={448}
-            key={project.id}
-            id={project.id}
-            title={project.title}
-            description={project.description}
-            employerName={project.employerName}
-            image={project.image}
-            employerLogo={project.employerLogo}
-            cardButton={
-              <Button text={"انتخاب کنید"} onClick={()=>{
-                handleCardButtonClick(project)
-              }}/>
-            }
-             />
+              key={project.id}
+              project={project}
+              cardButton={
+                <Button isLoading={isLoading} text={"انتخاب کنید"} onClick={() => {
+                  handleCardButtonClick(project)
+                }} />
+              }
+            />
           })
         }
       </Slider>

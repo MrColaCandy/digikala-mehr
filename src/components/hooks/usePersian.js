@@ -1,8 +1,8 @@
 
 
-const usePersianNumberConverter = () => {
+const usePersian = () => {
     const convert = (number) => {
-        if(!number)return null;
+        if(!number)return;
         const persian = {
             0: "۰",
             1: "۱",
@@ -26,4 +26,4 @@ const usePersianNumberConverter = () => {
     return {  convert, addCommas };
 };
 
-export default usePersianNumberConverter;
+export default usePersian;

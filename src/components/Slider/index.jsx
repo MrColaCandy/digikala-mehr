@@ -4,7 +4,7 @@ import './style.css';
 import Loader from "@components/Loader"
 
 
-const Slider = ({ isLoading,viewPortWidth = 800,slideWidth=390,slideHeight=450, scrollBehavior = "smooth", children = null, gap }) => {
+const Slider = ({ isLoading=false, viewPortWidth = 800, slideWidth = 390, slideHeight = 450, scrollBehavior = "smooth", children = null, gap }) => {
     const containerRef = useRef(null);
     const previousButton = useRef(null);
     const nextButton = useRef(null);
@@ -12,7 +12,7 @@ const Slider = ({ isLoading,viewPortWidth = 800,slideWidth=390,slideHeight=450, 
 
 
 
-   
+
 
     useEffect(() => {
         containerRef.current.scrollTo(currentScroll, 0)
@@ -25,19 +25,19 @@ const Slider = ({ isLoading,viewPortWidth = 800,slideWidth=390,slideHeight=450, 
 
         })
     }, []);
-    useEffect(()=>{
-        if(!children)return;
+    useEffect(() => {
+        if (!children) return;
         if (!containerRef.current) return;
         handleButtonsVisibility(containerRef, gap, nextButton, previousButton);
 
-    },[children])
+    }, [children])
     return (
-        <div className='slider' style={{ "--view-port-width": `${viewPortWidth}px`, "--slides-gap": `${gap}px`, "--scroll-behavior": `${scrollBehavior}`, "--slide-height": `${slideHeight}px`,"--slide-width":`${slideWidth}px` }} >
+        <div className='slider' style={{ "--view-port-width": `${viewPortWidth}px`, "--slides-gap": `${gap}px`, "--scroll-behavior": `${scrollBehavior}`, "--slide-height": `${slideHeight}px`, "--slide-width": `${slideWidth}px` }} >
             <div className={`slider__view`} >
                 <div id="slider-container" className={`slider__container`} ref={containerRef}>
-                    {
-                        isLoading ? <div className='slider__isLoading'><Loader color="white" scale={2}/></div>:children.length>0 && !isLoading ? children:<div className='slider__isLoading'>در حال حاضر پروژه ای برای انتخاب وجود ندارد.</div> 
-                    }
+                   {
+                      isLoading?<div className='slider__isLoading'><Loader color="white" scale={2} /></div>:children || children?.length >0?children:<div className='slider__isLoading'>درحال حاضر پروژه ای برای انتخاب وجود ندارد.</div>
+                   }
                 </div>
             </div>
             <button ref={nextButton} className={`slider__nextButton`} onClick={() => {

@@ -3,45 +3,32 @@ import Slider from "@components/Slider";
 import Card from "@components/Card";
 import './style.css'
 import { useEffect, useState } from "react";
-import { getAvailableProjects, getAllProjects } from "./request";
+import {  requestAllProjects } from "./requests";
 
-import { useAuth } from "@components/hooks/useAuth"
 
 
 
 
 function HomeProjects({ onStartButtonClick }) {
   const [projects, setProjects] = useState([]);
-  const { user,isLoggedIn } = useAuth()
   const [isLoading,setIsLoading]=useState(false);
   useEffect(() => {
     async function getProjects() {
       setIsLoading(true);
-      if (user && isLoggedIn) {
+     
         try {
-          const available = await getAvailableProjects(user);
-          setProjects(available);
-        } catch (error) {
-          setProjects(null)
-        }
-        finally{
-          setIsLoading(false);
-        }
-      }
-      else {
-        try {
-          const all = await getAllProjects();
-          setProjects(all);
+          const {data} = await requestAllProjects();
+          setProjects([...data]);
         } catch (error) {
           setProjects(null);
         }
         finally{
           setIsLoading(false);
         }
-      }
+      
     }
     getProjects();
-  }, [user,isLoggedIn])
+  }, [])
 
   return (
     <section className="homeProjects">
@@ -54,12 +41,7 @@ function HomeProjects({ onStartButtonClick }) {
           projects?.map((project) => {
             return <Card
               key={project.id}
-              id={project.id}
-              description={project.description}
-              title={project.title}
-              employerLogo={project.employerLogo}
-              employerName={project.employerName}
-              image={project.image}
+              project={project}
               textBoxVariant={1}
             />
 

@@ -5,8 +5,9 @@ import './style.css'
 
 
 
+
 function ProfileActiveProjects({user}) {
-   
+    
     return (
 
 
@@ -16,20 +17,20 @@ function ProfileActiveProjects({user}) {
                 <span className="profileActiveProjects__title">پروژه‌ی فعال شما</span>
             </section>
             {
-                user?.projects.length===0 &&
+                user?.help_history?.length===0 &&
                 <ProfileNoProject/>
             }
             {
-                user?.projects.sort((a,b)=>a.age-b.age)
-                .map(project=>
+                user?.help_history
+                ?.map(project=>
                 <ProfileProject
                 project={project}
                  key={project.id}
                 />)
             }
             {
-                   user?.projects.filter(project=>project.span===project.age).sort((a,b)=>a.age-b.age)
-                   .map(project=>
+                   user?.help_history?.filter(project=>project.Expiration===project.total_months)
+                   ?.map(project=>
                    <ProfileProjectExpired
                    project={project}
                     key={project.id}

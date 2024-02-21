@@ -1,35 +1,25 @@
-import projectsData from "@components/data/projects.json"
-export function getAvailableProjects(user) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            const ids = user.projects.map(p => p.id);
-            const available = projectsData.filter(p => !ids.includes(p.id));
-            resolve(available);
-        }, 1000);
+import AxiosHttp from "@services/http"
 
+
+export function requestUpdateProject({ token, oldProject, newProject,price }) {
+    return AxiosHttp.put("/updateHelp/", { helpId: parseInt(oldProject.id), projectId: parseInt(newProject.id),price:parseInt(price) }, {
+        headers: {
+            "Authorization": token
+        }
     })
 }
 
-export function updateProject(user,oldProject,newProject) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-           const index= user.projects.findIndex(p=>p.id===oldProject.id);
-           user.projects[index]=newProject;
-           localStorage.setItem("user",JSON.stringify(user));
-           resolve(user);
-        }, 1000);
-
+export function requestCancelProject({project,token}) {
+    return AxiosHttp.delete(`/deleteHelp/${project.id}`, {
+        headers: {
+            "Authorization": token
+        }
     })
 }
 
-export function cancelProject(user,project) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-           const index= user.projects.findIndex(p=>p.id===project.id);
-           user.projects.splice(index,1);
-           localStorage.setItem("user",JSON.stringify(user));
-           resolve(user);
-        }, 1000);
 
-    })
+
+
+export function requestAllProjects() {
+    return AxiosHttp("/allProjects/");
 }

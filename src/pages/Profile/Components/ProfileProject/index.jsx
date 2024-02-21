@@ -1,8 +1,8 @@
-import usePersianNumberConverter from "@components/hooks/usePersianNumberConverter";
+import usePersian from "@components/hooks/usePersian";
 import "./style.css"
 import {useNavigate} from "react-router-dom"
 function ProfileProject({ project }) {
-    const { convert, addCommas } = usePersianNumberConverter()
+    const { convert, addCommas } = usePersian()
     const navigate =useNavigate();
     function handleEditClick()
     {
@@ -12,10 +12,10 @@ function ProfileProject({ project }) {
         <div className="profileProject">
             <div className="profileProject__wrapper">
                 <div className="profileProject__info">
-                    <img src={project?.employerLogo} className="profileProject__infoLogo" alt="employer-logo" />
+                    <img src={project?.institute?.logo} className="profileProject__infoLogo" alt="employer-logo" />
                     <div className="profileProject__infoText">
-                        <span className="profileProject__infoTitle">{project?.title}</span>
-                        <span className="profileProject__infoEmployer">{project?.employerName}</span>
+                        <span className="profileProject__infoTitle">{project?.name}</span>
+                        <span className="profileProject__infoEmployer">{project?.institute?.name}</span>
                     </div>
                 </div>
                 <div className="profileProject__edit">
@@ -33,16 +33,16 @@ function ProfileProject({ project }) {
                 </div>
             </div>
             {
-                project?.age >= 1 &&
+                project?.total_months >= 1 &&
                 <>
                     <div className="profileProject__wrapper">
                         <div className="profileProject__finance">
-                            <span className="profileProject__financeTextBold">{project ? convert(project.age) : 0}</span>
+                            <span className="profileProject__financeTextBold">{3}</span>
                             <span className="profileProject__financeText">تعداد ماه‌هایی که فعال بودید</span>
                         </div>
 
                         <div className="profileProject__finance">
-                            <span className="profileProject__financeTextBold">{project? convert(addCommas(project.price)):0} ریال</span>
+                            <span className="profileProject__financeTextBold">{project? convert(addCommas(project.price * 3)):0} ریال</span>
                             <span className="profileProject__financeText">مبلغی که تاکنون شریک شدید</span>
                         </div>
                     </div>

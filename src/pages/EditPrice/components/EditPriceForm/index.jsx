@@ -3,7 +3,7 @@ import "./style.css"
 import Button from "@components/Button"
 import EditPriceSuggestions from "../EditPriceSuggestions";
 import EditPriceFooter from "../EditPriceFooter"
-import usePersianNumberConverter from "@components/hooks/usePersianNumberConverter";
+import usePersian from "@components/hooks/usePersian";
 import { useAuth } from "@components/hooks/useAuth";
 import { postPrice } from "../../requests"
 import { useNavigate } from "react-router-dom"
@@ -13,7 +13,7 @@ const EditPriceForm = () => {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false)
     const [value, setValue] = useState();
-    const { convert, addCommas } = usePersianNumberConverter()
+    const { convert, addCommas } = usePersian()
     const [error, setError] = useState(null);
     const handleInputChange = (event) => {
         setValue(event.target.value);

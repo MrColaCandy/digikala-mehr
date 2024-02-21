@@ -1,21 +1,6 @@
-export function fetchSuggestions() {
-    return new Promise((resolve) => {
-        resolve([100000, 200000, 500000, 1000000])
-    })
-}
-
-export function postPrice(price) {
-    return new Promise((resolve,reject) => {
-        if(price)
-        {
-            setTimeout(() => {
-
-                resolve(price)
-            }, 1000);
-        }
-        else
-        {
-            reject(new Error("خطایی در برقراری ارتباط رخ داده است!"))
-        }
-    })
+import AxiosHttp from "@services/http"
+export function requestAddProject({projectId,price},token)
+{
+ 
+   return AxiosHttp.post("/addHelp/",{projectId:projectId,price:Number(price)},{headers:{"Authorization":token}})
 }

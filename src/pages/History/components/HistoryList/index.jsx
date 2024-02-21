@@ -3,8 +3,8 @@ import { TbChevronRight } from "react-icons/tb";
 import { TbChevronLeft } from "react-icons/tb";
 import './style.css';
 import { useRef, useState } from "react";
-import HistoryItem from "../../../../components/HistoryItem";
-import usePersianNumberConverter from "../../../../components/hooks/usePersianNumberConverter";
+import HistoryItem from "@components/HistoryItem";
+import usePersian from "@components/hooks/usePersian";
 
 import { useNavigate } from "react-router-dom";
 import { parse } from "cookie";
@@ -12,7 +12,7 @@ import { parse } from "cookie";
 function HistoryList({ data, itemsPerPage }) {
   const navigate = useNavigate()
   const [currentPage, setCurrentPage] = useState(1);
-  const { convert } = usePersianNumberConverter();
+  const { convert } = usePersian();
   const listRef = useRef(null);
   const totalPages = Math.ceil(data.length / itemsPerPage);
   const handlePageChange = (pageNumber) => {

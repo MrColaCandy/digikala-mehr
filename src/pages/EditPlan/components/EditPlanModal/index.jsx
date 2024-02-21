@@ -1,26 +1,29 @@
 import Button from "@components/Button"
 import "./style.css"
 import { CgArrowsExchangeV } from "react-icons/cg";
-import { cancelProject, updateProject } from "../../request";
+import { requestCancelProject, requestUpdateProject } from "../../request";
 import { useState } from "react";
 import {useNavigate} from "react-router-dom"
-
-const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstitute, user, setUser, title, variant = "change" }) => {
+import { useAuth } from "@components/hooks/useAuth";
+import roshanLogo from "@assets/decorations/roshan-logo.png"
+const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstitute, title, variant = "change" }) => {
     const [isLoading, setIsLoading] = useState(false);
     const navigate=useNavigate();
+    const {token,updateUser}=useAuth()
+    
     function handleCancelClick() {
         if (isLoading) return;
         setSubstitute(null)
         setModal(null);
         document.body.style.overflow="auto"
     }
-    async function handleChangeClick() {
-        if (!user) return;
+    async function handleActionClick() {
+        console.log(selected,substitute);
         setIsLoading(true);
         if (variant === "change") {
             try {
-                const newUser = await updateProject(user, selected, substitute);
-                setUser(newUser);
+                await requestUpdateProject({token:token,newProject:substitute,oldProject:selected,price:200000});
+                await updateUser(token);
                 setSelected(substitute);
                 setSubstitute(null);
             } catch (error) {
@@ -33,8 +36,7 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
         }
         else {
             try {
-                const newUser = await cancelProject(user, selected);
-                setUser(newUser);
+                await requestCancelProject({token:token,project:selected});
                 setSubstitute(null);
                 setSelected(null);
                 navigate("/profile");
@@ -47,6 +49,13 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
             }
         }
     }
+    const topics=[
+        "کتابخانه",
+        "ورزشگاه",
+        "استخر شنای بانوان",
+        "آزمایشگاه زبان",
+        "مجموعه تفریحی",
+    ]
     return (
         <div className="editPlanModal">
             <div className="editPlanModal__frame">
@@ -58,10 +67,10 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
                 <div className="editPlanModal__wrapper">
                     <div className="editPlanModal__textGreen">پروژه فعلی</div>
                     <div className="editPlanModal__row">
-                        <img src={selected?.employerLogo} className="editPlanModal__Logo" />
+                        <img src={/*selected?.institute?.logo*/  roshanLogo} className="editPlanModal__Logo" />
                         <div className="editPlanModal__col">
-                            <div className="editPlanModal__ProjectTitle">{selected?.title}</div>
-                            <div className="editPlanModal__ProjectEmployer">{selected?.employerName}</div>
+                            <div className="editPlanModal__ProjectTitle">{selected?.topic || topics[selected?.id%topics.length]}</div>
+                            <div className="editPlanModal__ProjectEmployer">{selected?.institute?.name || "موسسه صبح روشن"}</div>
                         </div>
                     </div>
                 </div>
@@ -70,10 +79,10 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
                     <div className="editPlanModal__wrapper">
                         <div className="editPlanModal__textGreen">پروژه جایگزین</div>
                         <div className="editPlanModal__row">
-                            <img src={substitute?.employerLogo} className="editPlanModal__Logo" />
+                            <img src={/*substitute?.institute?.logo*/  roshanLogo} className="editPlanModal__Logo" />
                             <div className="editPlanModal__col">
-                                <div className="editPlanModal__ProjectTitle">{substitute?.title}</div>
-                                <div className="editPlanModal__ProjectEmployer">{substitute?.employerName}</div>
+                                <div className="editPlanModal__ProjectTitle">{substitute?.topic || topics[substitute?.id%topics.length]}</div>
+                                <div className="editPlanModal__ProjectEmployer">{substitute?.institute?.name || "موسسه صبح روشن"}</div>
                             </div>
                         </div>
 
@@ -83,7 +92,7 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
                     <Button isLoading={isLoading}
                         variant={"outlined"}
                         text={variant === "remove" ? "می‌خواهم پروژه را حذف کنم" : "می‌خواهم پروژه را تغییر دهم"}
-                        onClick={handleChangeClick}
+                        onClick={handleActionClick}
                         width="380px"
                         color={variant === "remove" ? "#E84242" : "#00B189"}
                     />

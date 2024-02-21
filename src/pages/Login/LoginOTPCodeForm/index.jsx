@@ -7,11 +7,9 @@ import Button from '@components/Button';
 import "./style.css"
 import { parse } from 'cookie';
 
-function LoginOTPCodeForm({ phone }) {
-    const { sendOTPCode } = useAuth();
+function LoginOTPCodeForm({ phone,code,setCode }) {
+    const { getOTPCod,validateOTPCode } = useAuth();
     const { minutes, seconds, resetCountdown } = useCountdown(90, handleCountdownOverCallback);
-    const { confirmOTPCode } = useAuth();
-    const [code, setCode] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const inputRef = useRef(null);
@@ -39,7 +37,8 @@ function LoginOTPCodeForm({ phone }) {
 
     async function handleCountdownOverCallback() {
         try {
-            await sendOTPCode(phone);
+            const {data}= await getOTPCod(phone);
+            setCode(data.otp);
             resetCountdown();
         } catch (error) {
             setError(error.message);
@@ -51,9 +50,9 @@ function LoginOTPCodeForm({ phone }) {
 
         setIsLoading(true);
         try {
-            await confirmOTPCode(phone, code);
-            setError(null);
+            await validateOTPCode({otp:code});
             navigate(parse(document.cookie).nextPage || "/");
+            setError(null);
         } catch (error) {
             console.log("Something went wrong! error: " + error.message);
             setError(error.message);

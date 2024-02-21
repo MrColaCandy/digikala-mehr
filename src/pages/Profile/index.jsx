@@ -11,67 +11,61 @@ import Button from "@components/Button";
 import ProfileMessage from "./Components/ProfileMessage";
 import "./style.css"
 import { useEffect, useState } from "react";
-import { getAvailableProjects } from "./request";
+import { serialize } from "cookie";
+import { requestAllProjects } from "./requests";
 
 
 function Profile() {
   const navigate = useNavigate();
-  const { user, setUser} = useAuth();
-  const [projects,setProjects]=useState([]);
-  const [isLoading,setIsLoading]=useState(false);
-  useEffect(()=>{
-    if(!user)return;
-    setIsLoading(true);
-    async function getProjects()
-    {
-      try {
-        const available =await getAvailableProjects(user);
-        setProjects(available);
-      } catch (error) {
-        setProjects([]);
-      }
-      finally{
-        setIsLoading(false);
-      }
-    }
-    getProjects();
-
-  },[user])
+  const { userData } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
+  const [projects, setProjects] = useState([]);
   function handleChooseProjectClick(project) {
+    document.cookie = serialize("project", project.id);
     navigate("/choose-price");
-    setUser({ ...user, currentProject: project })
-    localStorage.setItem("user",JSON.stringify(user));
 
   }
- 
+
+  useEffect(() => {
+    async function getProjects() {
+      setIsLoading(true);
+
+      try {
+        const { data } = await requestAllProjects();
+        console.log(data);
+        setProjects([...data]);
+      } catch (error) {
+        setProjects(null);
+      }
+      finally {
+        setIsLoading(false);
+      }
+
+    }
+    getProjects();
+  }, [])
 
   return (
     <Layout>
-      <ProfileUserAvatar user={user} />
+      <ProfileUserAvatar user={userData} />
       <HorizontalLine space={16} width={1194} />
-      <ProfileActiveProjects user={user} />
+      <ProfileActiveProjects user={userData} />
       {
-        user?.projects.length > 0 && user?.currentProject &&
-        <ProfileMessage user={user}/>
+        userData?.help_history?.length > 0 &&
+        <ProfileMessage user={userData} />
       }
       {
-          user?.history?.length > 0 &&
-          <ProfileHistory user={user} />
+        userData?.help_history?.length > 0 &&
+        <ProfileHistory user={userData} />
       }
-      
+
       <p className="profile__sliderTitle">اینجا می‌تونی از بین پروژه‌های مختلف یکیو برای شروع انتخاب کنی</p>
       <Slider isLoading={isLoading} slideWidth={390} slideHeight={450} viewPortWidth={390 * 3.5} gap={40}>
         {
-         projects?.map((project) => {
+          projects?.map((project) => {
             return <Card
               key={project.id}
-              id={project.id}
-              description={project.description}
-              title={project.title}
-              employerLogo={project.employerLogo}
-              employerName={project.employerName}
-              image={project.image}
-              textBoxVariant={0}
+              project={project}
               cardButton={
                 <Button onClick={() => { handleChooseProjectClick(project) }} variant="outlined" text={"انتخاب کنید"} />
               }

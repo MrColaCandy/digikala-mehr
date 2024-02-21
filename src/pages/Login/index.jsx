@@ -6,26 +6,32 @@ import LoginError from "./LoginError";
 
 function LoginColleagues() {
   const [phone, setPhone] = useState("");
-  const [hasCode, setHasCode] = useState(false);
+  const [code, setCode] = useState(null);
   const [registrationError, setRegistrationError] = useState(false);
 
   return (
     <article className="login">
-      {!hasCode && !registrationError && (
+      {!code && !registrationError && (
         <LoginPhoneNumberForm
           title={"ورود همکاران"}
           description={"سلام همکار عزیز، قراره با هم دیگه کارای بزرگی انجام بدیم برای شروع لطفا شماره موبایل خود را وارد کنید."}
           phone={phone}
           setPhone={setPhone}
-          setHasCode={setHasCode}
+          setCode={setCode}
           setRegistrationError={setRegistrationError}
         />
       )}
-      {hasCode && !registrationError && <LoginOTPCodeForm phone={phone} />}
+      {code && !registrationError && 
+      <LoginOTPCodeForm 
+      phone={phone}
+      code={code}
+      setCode={setCode}
+       />
+       }
       {registrationError && (
         <LoginError
           phone={phone}
-          setHasCode={setHasCode}
+          setCode={setCode}
           setRegistrationError={setRegistrationError}
         />
       )}

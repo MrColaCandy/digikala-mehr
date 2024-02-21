@@ -8,8 +8,13 @@ import './style.css';
 import {useNavigate} from "react-router-dom"
 import avatarPlaceHolder from "@assets/decorations/user-image-placeHolder.png"
 import { serialize } from 'cookie';
+import usePersian from "@components/hooks/usePersian"
 const DropDown = () => {
-    const {logout,user}=useAuth();
+    const {convert,addCommas}=usePersian()
+    const {logout, userData}=useAuth();
+    useEffect(()=>{
+        console.log(userData);
+    },[])
     const navigate=useNavigate();
     function handleLogoutClick(){
         logout();
@@ -45,6 +50,11 @@ const DropDown = () => {
         navigate("/history");
         
     }
+    function getHelpsSum()
+    {
+       if(!userData || !userData?.help_history || userData?.help_history<=0)return convert(0)
+       return convert(addCommas(userData?.help_history.reduce(function (acc, obj) { return acc + obj.price}, 0)));
+    }
     return (
         <>
             <div className="drop-container" ref={menuRef}>
@@ -56,9 +66,9 @@ const DropDown = () => {
                     <div className="main-dropdown">
                         <ul>
                             <li className="dropdown-li">
-                               <img className='img-user' width={40} height={40} src={ user?.image ||avatarPlaceHolder} alt="avatar"/>
-                                <div onClick={handleUsernameClick} className="account-id"><a href="#"><span>{user?.name}</span></a><p>جمع نیکوکاری های
-                                    شما</p><span>00 <img src={Toman} alt="تومان"/></span>
+                               <img className='img-user' width={40} height={40} src={ userData?.user?.profilePhoto || avatarPlaceHolder} alt="avatar"/>
+                                <div onClick={handleUsernameClick} className="account-id"><a href="#"><span>{userData?.user?.firstName}</span></a><p>جمع نیکوکاری های
+                                    شما</p><span>{getHelpsSum()}<img src={Toman} alt="تومان"/></span>
                                 </div>
                             </li>
                             <div className="last-donate">

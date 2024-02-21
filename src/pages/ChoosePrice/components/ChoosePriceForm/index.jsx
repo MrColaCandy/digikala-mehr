@@ -1,20 +1,19 @@
 import { useState } from "react";
-
 import "./style.css"
 import Button from "@components/Button"
 import ChoosePriceSuggestions from "../ChoosePriceSuggestions";
 import ChoosePriceFooter from "../ChoosePriceFooter"
-import usePersianNumberConverter from "@components/hooks/usePersianNumberConverter";
+import usePersian from "@components/hooks/usePersian";
 import { useAuth } from "@components/hooks/useAuth";
-import { postPrice } from "../../requests";
+import { requestAddProject } from "../../requests";
 import {useNavigate} from "react-router-dom"
-import { serialize } from "cookie";
+import { parse, serialize } from "cookie";
 const ChoosePriceForm = () => {
-    const {user,setUser}=useAuth();
+    const {token,updateUserData}=useAuth();
     const navigate=useNavigate();
     const [isLoading,setIsLoading]=useState(false)
     const [value, setValue] = useState();
-    const {convert,addCommas}=usePersianNumberConverter()
+    const {convert,addCommas}=usePersian()
     const [error,setError]=useState(null);
     const handleInputChange = (event) => {
         setValue(event.target.value);
@@ -29,12 +28,11 @@ const ChoosePriceForm = () => {
             return;
         }
         setIsLoading(true)
+       
         try {
-            await postPrice(value)
-    
-            user.projects.push({...user.currentProject,price:value})
-            setUser({...user});
-            localStorage.setItem("user",JSON.stringify(user));
+            const projectId=parseInt(parse(document.cookie).project)
+            await requestAddProject({projectId:projectId,price:parseInt(value)},token)
+            await updateUserData(token);
             document.cookie=serialize("newProject",true);
             navigate("/profile")
         } catch (error) {

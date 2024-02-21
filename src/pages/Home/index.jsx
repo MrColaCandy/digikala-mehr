@@ -9,10 +9,30 @@ import {useNavigate} from "react-router-dom"
 import {useAuth} from "@components/hooks/useAuth"
 import "./style.css"
 import { serialize } from "cookie";
+import { useEffect, useState } from "react";
+import { requestInfo } from "./requests";
 
 function Home() {
-  const {isLoggedIn}=useAuth()
+  const [info,setInfo]=useState(null);
+  const {isLoggedIn }=useAuth()
   const navigate=useNavigate();
+
+  
+  useEffect(()=>{
+    async function getInfo()
+    {
+      try {
+        const {data}= await requestInfo();
+        setInfo({...data});
+      } catch (error) {
+        setInfo(null)
+        console.log(error);
+      }
+    }
+
+    getInfo();
+   
+  },[])
   function handleStartButtonClick()
   {
      if(!isLoggedIn)
@@ -28,7 +48,7 @@ function Home() {
       <HomeBanner />
       <HomeVideo onStartButtonClick={handleStartButtonClick}/>
       <section className="home__backgroundGreen">
-        <HomeInfo />
+        <HomeInfo info={info} />
         <HomeProjects onStartButtonClick={handleStartButtonClick} />
         <HomeAbout />
       </section>

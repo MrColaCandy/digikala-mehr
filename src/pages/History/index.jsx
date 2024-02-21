@@ -4,10 +4,10 @@ import {useAuth} from "@components/hooks/useAuth";
 
 
 const History = () => {
-  const {user}=useAuth();
+  const {userData}=useAuth();
   return (
     <Layout>
-      <HistoryList data={user.history || []} itemsPerPage={4}/>
+      <HistoryList data={userData?.help_history || []} itemsPerPage={4}/>
     </Layout>
   )
 }

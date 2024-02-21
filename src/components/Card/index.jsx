@@ -2,26 +2,26 @@ import { useState } from 'react';
 import TextBox from '@components/TextBox';
 
 import "./style.css"
-function Card({  id, title, description, image, employerLogo, employerName, textBoxVariant=0, className = "", cardButton }) {
+function Card({  project, textBoxVariant=0, className = "", cardButton }) {
     const [showFullText, setShowFullText] = useState(false);
-    const imageURL=new URL(image,import.meta.url);
+    const imageURL=new URL(project?.image,import.meta.url);
     return (
-        <section id='slide' data-project={id} className={`card ${className}`}>
+        <section id='slide' data-project={project?.id} className={`card ${className}`}>
             {
                 !showFullText &&
                 <div className='card__image' style={{"--card-image":`url('${imageURL}')`}}>
                     <div className="card__logo">
-                        <img src={employerLogo} className="card__employerLogo" />
-                        <div className="card__logoTitle">{employerName}</div>
+                        <img src={project?.employerLogo} className="card__employerLogo" />
+                        <div className="card__logoTitle">{project?.employerLogo}</div>
                     </div>
                 </div>
 
             }
             <TextBox
-                title={title}
+                title={project?.topic}
                 setShowFullText={setShowFullText}
                 showFullText={showFullText}
-                text={description}
+                text={project.description}
                 variant={textBoxVariant}
             />
             {

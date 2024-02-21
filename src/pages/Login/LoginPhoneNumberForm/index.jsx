@@ -3,12 +3,13 @@ import digikalaMehrLogo from '@assets/decorations/digikala-mehr-logo.png'
 import { useAuth } from "@components/hooks/useAuth"
 import Button from "@components/Button"
 import "./style.css"
-function LoginPhoneNumberForm({ phone, setPhone, setHasCode, setRegistrationError,title,description }) {
+function LoginPhoneNumberForm({ phone, setPhone,  setCode, setRegistrationError,title,description }) {
 
-    const { sendOTPCode } = useAuth()
+    const { getOTPCode } = useAuth()
     const [error, setError] = useState(null)
     const inputRef = useRef(null)
     const [isLoading, setIsLoading] = useState(false);
+
     function validate(value) {
         const regex = /^([0|+[0-9]{1,5})?([7-9][0-9]{9})$/;
         if (value === "" || !value) {
@@ -33,17 +34,21 @@ function LoginPhoneNumberForm({ phone, setPhone, setHasCode, setRegistrationErro
         if (error || !phone) return;
         setIsLoading(true);
         try {
-            await sendOTPCode(phone)
-            setHasCode(true)
+            const code=  await getOTPCode(phone)
+            setCode(code)
             setError(null)
             setRegistrationError(false)
         } catch (error) {
             console.log("Something went wrong! error: " + error.message)
-            setRegistrationError(true)
-            setHasCode(false);
+            setError(error.message);
+            if(error.message==="404")
+            {
+                setRegistrationError(true);
+            }
+            setCode(false);
         }
         finally {
-            setIsLoading(false);
+           setIsLoading(false)
         }
     }
     return (

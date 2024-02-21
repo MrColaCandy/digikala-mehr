@@ -1,18 +1,13 @@
-import { useEffect ,useState } from "react";
-import { fetchSuggestions } from "../../requests";
+import { useState } from "react";
 import "./style.css"
-import usePersianNumberConverter from "@components/hooks/usePersianNumberConverter";
+import usePersian from "@components/hooks/usePersian";
 
 const ChoosePriceSuggestions = ({value,setValue}) => {
-    const [suggestions, setSuggestions] = useState([]);
-    const {convert,addCommas}=usePersianNumberConverter()
+    const [suggestions] = useState([100000,200000,300000,500000]);
+    const {convert,addCommas}=usePersian()
     const handleClick = (suggestion) => {
         setValue(suggestion);
     };
-
-    useEffect(() => {
-        fetchSuggestions().then(setSuggestions);
-    }, []);
 
     const renderSuggestions = () => {
         return suggestions.map((suggestionValue) => {
