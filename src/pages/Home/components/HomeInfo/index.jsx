@@ -18,7 +18,8 @@ function HomeInfo({ info }) {
       return <>
         <div className="homeInfo__lastMembersWrapper">
           <p className="homeInfo__lastMembersName homeInfo__lastMembersName--noContribution">
-            تا حالا فردی مشارکت نکرده است
+            <div>تا حالا فردی مشارکت نکرده است</div>
+            <div>. . .</div>
           </p>
         </div>
       </>
@@ -41,9 +42,9 @@ function HomeInfo({ info }) {
   }
   function getTotalHelpers() {
    if(!info)
-   return ". . ."
+   return convert("0")
    
-   return convert(info.totalHelpers)
+   return convert(info.totalHelpers.toString())
   }
 
   return (

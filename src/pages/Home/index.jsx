@@ -23,7 +23,7 @@ function Home() {
     {
       try {
         const {data}= await requestInfo();
-        setInfo({...data});
+        setInfo(data);
       } catch (error) {
         setInfo(null)
         console.log(error);

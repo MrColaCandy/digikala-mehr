@@ -37,6 +37,9 @@
     margin-top: var(--space-28);
     justify-content: center;
     align-items: center;
+    margin-right: var(--space-10);
+    height: 50px;
+    
 }
 
 .card__logoTitle {
@@ -46,12 +49,15 @@
     font-weight: 400;
     line-height: var(--space-28);
     word-wrap: break-word;
+    height: 20px;
+    
 
 }
 
 .card__logoImage {
     width: 40px;
     height: 40px;
+    object-fit: cover;
 }
 
 

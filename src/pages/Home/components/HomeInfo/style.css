@@ -18,7 +18,14 @@
 }
 .homeInfo__lastMembersName--noContribution
 {
-    height: 63px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-4);
+   
+    
 }
 
 .homeInfo__dataBox {
