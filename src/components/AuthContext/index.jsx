@@ -27,7 +27,15 @@ function AuthContext({ children }) {
             console.log(error.message);
         }
     }
-
+    async function getProject(projectId)
+    {
+        try {
+             const {data}=await requestAllProjects();
+             return data.find(p=>p.id==projectId);
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
     useEffect(()=>{
         async function getUserProjects() {
             setIsLoading(true);
@@ -211,7 +219,8 @@ function AuthContext({ children }) {
                 updateUserData,
                 projects,
                 userProjects,
-                getHistory
+                getHistory,
+                getProject
                 
             }}>
             {children}

@@ -1,7 +1,7 @@
 import Button from "@components/Button"
 import "./style.css"
 import { CgArrowsExchangeV } from "react-icons/cg";
-import { requestCancelProject, requestUpdateProject } from "@components/requests";
+import { requestCancelProject, requestUpdateProject,requestCancelProjectConfirm } from "@components/requests";
 import { useState } from "react";
 import {useNavigate} from "react-router-dom"
 import { useAuth } from "@components/hooks/useAuth";
@@ -31,6 +31,7 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
             try {
               const history= await getHistoryByProjectId();
                 await requestUpdateProject({token:token,newProject:substitute.id,oldProject:history.id,price:history.price});
+                await requestCancelProjectConfirm({token:token,newProject:substitute.id,oldProject:history.id,price:history.price})
                 await updateUserData(token);
                 setSelected(substitute);
                 setSubstitute(null);
@@ -44,7 +45,9 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
         }
         else {
             try {
-                await requestCancelProject({token:token,project:selected});
+                const {data}= await requestCancelProject({token:token,project:selected});
+                console.log({"delete":data});
+                await updateUserData(token)
                 setSubstitute(null);
                 setSelected(null);
                 navigate("/profile");
@@ -94,14 +97,14 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
                         variant={"outlined"}
                         text={variant === "remove" ? "می‌خواهم پروژه را حذف کنم" : "می‌خواهم پروژه را تغییر دهم"}
                         onClick={handleActionClick}
-                        width="380px"
+                        width={380}
                         color={variant === "remove" ? "#E84242" : "#00B189"}
                     />
                     <Button
                         variant={"filled"}
                         text="لغو"
                         onClick={handleCancelClick}
-                        width="380px"
+                        width={380}
 
                     />
                 </div>

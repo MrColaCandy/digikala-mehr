@@ -50,9 +50,10 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 85vw;
+    width: 100%;
     max-width: 200px;
     cursor: pointer;
+    gap: var(--space-8);
 }
 
 .digiMehrLogoWrapper__wrapperLogo {
@@ -103,7 +104,10 @@
 
 @media(max-width:390px) {
 
-
+     .header{
+        justify-content: space-between;
+        padding: var(--space-4);
+     }
     .digiMehrLogoTitleWrapper {
         position: relative;
     }

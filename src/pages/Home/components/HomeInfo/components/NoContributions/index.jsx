@@ -5,8 +5,8 @@ const NoContributions = () => {
         <>
             <div className="homeInfo__lastMembersWrapper">
                 <p className="homeInfo__lastMembersName homeInfo__lastMembersName--noContribution">
-                    <div>تا حالا فردی مشارکت نکرده است</div>
-                    <div>. . .</div>
+                    <span>تا حالا فردی مشارکت نکرده است</span>
+                    <span>. . .</span>
                 </p>
             </div>
         </>

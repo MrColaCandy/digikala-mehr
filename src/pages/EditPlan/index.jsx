@@ -20,7 +20,7 @@ const EditPlan = () => {
         setSubstitute(project);
     }
 
-  
+    
     return (
         <>
             {
@@ -53,7 +53,7 @@ const EditPlan = () => {
                             <h3 className="editPlan__sliderTitle">دیگر پروژه‌های موجود</h3>
                             <div className="editPlan__sliderSubtitle"  >شما می‌توانید پروژه فعال‌تان را اینجا تغییر دهید.</div>
                         </div>
-                        <Slider isLoading={isLoading} slideWidth={390} slideHeight={450} viewPortWidth={1250} gap={40}>
+                        <Slider isLoading={isLoading} slideWidth={390} slideHeight={450} viewPortWidth={1280} gap={40}>
                             {
                                 projects?.map((project) => {
                                     return <Card

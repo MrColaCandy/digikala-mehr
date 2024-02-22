@@ -133,3 +133,11 @@ a {
     line-height: var(--lineHeight-22);
     padding: var(--padding-8) 0 var(--padding-8)  0;
 }
+
+@media screen and (max-width:390px) {
+    .dropdown-container 
+    {
+        display: none;
+    }
+    
+}

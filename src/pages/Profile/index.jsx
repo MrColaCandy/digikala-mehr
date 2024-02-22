@@ -10,40 +10,22 @@ import Card from "@components/Card";
 import Button from "@components/Button";
 import ProfileMessage from "./Components/ProfileMessage";
 import "./style.css"
-import { useEffect, useState } from "react";
 import { serialize } from "cookie";
-import { requestAllProjects } from "@components/requests";
+
 
 
 function Profile() {
+
   const navigate = useNavigate();
-  const { userData,userProjects } = useAuth();
-  const [isLoading, setIsLoading] = useState(false);
-  const [projects, setProjects] = useState([]);
+  const { userData,userProjects,projects,isLoading } = useAuth();
+
   function handleChooseProjectClick(project) {
-    document.cookie = serialize("project", project.id);
+    document.cookie = serialize("projectId", project.id);
     navigate("/choose-price");
 
   }
 
-  useEffect(() => {
-    async function getProjects() {
-      setIsLoading(true);
-
-      try {
-        const { data } = await requestAllProjects();
-        console.log(data);
-        setProjects([...data]);
-      } catch (error) {
-        setProjects(null);
-      }
-      finally {
-        setIsLoading(false);
-      }
-
-    }
-    getProjects();
-  }, [])
+  
 
   return (
     <Layout>

@@ -1,6 +1,6 @@
 .editPlanProject {
     width: 95vw;
-    max-width: 1212px;
+    max-width: 1280px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,7 +8,6 @@
     height: auto;
     border: 1px solid var(--color-border);
     border-radius: 8px;
-    transform: scale(0.99);
     margin-bottom: var(--space-10);
     padding: var(--space-8);
     
@@ -24,7 +23,7 @@
 }
 .editPlanProject--selected {
     width: 95vw;
-    max-width: 1212px;
+    max-width: 1280px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -33,7 +32,6 @@
     border: 1px solid var(--color-border);
     border-radius: 8px;
     background-color: #f2fbf3;
-    transform: scale(1);
     margin-bottom: var(--space-10);
     padding: var(--space-8);
     
@@ -41,7 +39,7 @@
 }
 .editPlanProject__header {
     width: 95vw;
-    max-width: 1212px;
+    max-width: 1280px;
     display: flex;
     justify-content: flex-start;
     align-items: center;

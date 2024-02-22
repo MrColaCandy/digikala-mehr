@@ -34,6 +34,7 @@
     font-weight: 600;
     text-align: center;
     margin: var(--space-16) 0;
+   
 }
 
 .choosePrice__headerTextGreen{
@@ -47,11 +48,21 @@
     width: 100%;
 
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
    
 }
-
+.choosePrice__headerSubtitleBold
+{
+    font-weight: 700;
+}
 .choosePrice__headerLink {
     font-weight: 700;
     color: var(--color-primary);
-    cursor: pointer;
+    cursor: pointer; 
+    padding: 0 var(--space-8);
+  
+   
 }

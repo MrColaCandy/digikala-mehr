@@ -49,7 +49,7 @@ const Slider = ({ isLoading = false, viewPortWidth = 800, slideWidth = 390, slid
             <button ref={nextButton} className={`slider__nextButton`} onClick={() => {
                 if (!children) return;
                 const slide = containerRef.current.querySelector("#slide");
-                setCurrentScroll(prev => prev - slide.getBoundingClientRect().width - space);
+                setCurrentScroll(prev => prev - slide.getBoundingClientRect().width );
 
 
             }}>
@@ -58,7 +58,7 @@ const Slider = ({ isLoading = false, viewPortWidth = 800, slideWidth = 390, slid
             <button ref={previousButton} className={`slider__previousButton`} onClick={() => {
                 if (!children) return;
                 const slide = containerRef.current.querySelector("#slide");
-                setCurrentScroll(prev => prev + slide.getBoundingClientRect().width + space);
+                setCurrentScroll(prev => prev + slide.getBoundingClientRect().width );
 
 
             }}>

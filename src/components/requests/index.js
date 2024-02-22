@@ -39,10 +39,16 @@ export function requestUpdateProject({ token, oldProject, newProject,price }) {
 }
 
 export function requestCancelProject({project,token}) {
-    return AxiosHttp.delete(`/deleteHelp/${project.id}`, {
+    return AxiosHttp.get(`/deleteHelp/${project.history_id}/`,{
         headers: {
             "Authorization": token
         }
     })
 }
-
+export function requestCancelProjectConfirm({project,token}) {
+    return AxiosHttp.delete(`/deleteHelp/${project.history_id}/`,{
+        headers: {
+            "Authorization": token
+        }
+    })
+}
