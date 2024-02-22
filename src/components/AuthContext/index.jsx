@@ -41,7 +41,9 @@ function AuthContext({ children }) {
                         {
                             return {
                                 ...project,
-                                ...histories.find(h=>h.project_id==project.id)
+                                expiration:histories.find(h=>h.project_id==project.id).expiration,
+                                total_months:histories.find(h=>h.project_id==project.id).total_months,
+                                history_id:histories.find(h=>h.project_id==project.id).id,
                             }
                         })
                     setUserProjects(taken);
