@@ -12,16 +12,16 @@ function ProfileProject({ project }) {
         <div className="profileProject">
             <div className="profileProject__wrapper">
                 <div className="profileProject__info">
-                    <img src={project?.institute?.logo} className="profileProject__infoLogo" alt="employer-logo" />
+                    <img src={`http://127.0.0.1:8000/${project?.institute?.logo}`} className="profileProject__infoLogo" alt="employer-logo" />
                     <div className="profileProject__infoText">
-                        <span className="profileProject__infoTitle">{project?.name}</span>
+                        <span className="profileProject__infoTitle">{project?.topic}</span>
                         <span className="profileProject__infoEmployer">{project?.institute?.name}</span>
                     </div>
                 </div>
                 <div className="profileProject__edit">
                     <p className="profileProject__price">ماهیانه
                         {
-                            project ? convert(addCommas(project.price)) : 0
+                            project ? convert(addCommas(project?.price)) : 0
                         }
                         تومان
                     </p>

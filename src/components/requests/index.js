@@ -24,14 +24,14 @@ export function requestInfo()
 export function requestAllProjects() {
     return AxiosHttp("/allProjects/");
 }
-export function requestAddProject(project,token)
+export function requestAddProject({projectId,price,token})
 {
  
-   return AxiosHttp.post("/addHelp/",{projectId:project.id},{headers:{"Authorization":token}})
+   return AxiosHttp.post("/addHelp/",{projectId:parseInt(projectId),price:price},{headers:{"Authorization":token}})
 }
 
-export function requestUpdateProject({ token, oldProject, newProject }) {
-    return AxiosHttp.put("/updateHelp/", { helpId: parseInt(oldProject.id), projectId: parseInt(newProject.id),price:parseInt(newProject.price) }, {
+export function requestUpdateProject({ token, oldProject, newProject,price }) {
+    return AxiosHttp.put("/updateHelp/", { helpId: parseInt(oldProject), projectId: parseInt(newProject),price:parseInt(price) }, {
         headers: {
             "Authorization": token
         }

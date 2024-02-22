@@ -2,12 +2,12 @@ import ProfileProject from "../ProfileProject"
 import ProfileProjectExpired from "../ProfileProjectExpired"
 import ProfileNoProject from "../ProfileNoProject"
 import './style.css'
+import {useAuth} from "@components/hooks/useAuth"
 
 
 
-
-function ProfileActiveProjects({user}) {
-    
+function ProfileActiveProjects() {
+    const {userProjects}=useAuth();
     return (
 
 
@@ -17,11 +17,11 @@ function ProfileActiveProjects({user}) {
                 <span className="profileActiveProjects__title">پروژه‌ی فعال شما</span>
             </section>
             {
-                user?.help_history?.length===0 &&
+                userProjects?.length===0 &&
                 <ProfileNoProject/>
             }
             {
-                user?.help_history
+                userProjects
                 ?.map(project=>
                 <ProfileProject
                 project={project}
@@ -29,7 +29,7 @@ function ProfileActiveProjects({user}) {
                 />)
             }
             {
-                   user?.help_history?.filter(project=>project.Expiration===project.total_months)
+                   userProjects?.filter(project=>project.Expiration===project.total_months)
                    ?.map(project=>
                    <ProfileProjectExpired
                    project={project}

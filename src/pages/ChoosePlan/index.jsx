@@ -5,38 +5,19 @@ import Slider from "@components/Slider"
 import Card from "@components/Card"
 import Button from "@components/Button"
 import { useNavigate } from "react-router-dom"
-import { useEffect, useState } from "react"
-import { requestAllProjects } from "@components/requests"
 import { serialize } from "cookie"
+import { useAuth } from "@components/hooks/useAuth"
 
 
 const ChoosePlan = () => {
 
-  const [projects, setProjects] = useState([])
-  const [isLoading, setIsLoading] = useState(false);
 
+  const{projects,isLoading}=useAuth();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    async function getProjects() {
-      setIsLoading(true);
-
-      try {
-        const { data } = await requestAllProjects();
-        console.log(data);
-        setProjects([...data]);
-      } catch (error) {
-        setProjects(null);
-      }
-      finally {
-        setIsLoading(false);
-      }
-
-    }
-    getProjects();
-  }, [])
+ 
   async function handleCardButtonClick(project) {
-    document.cookie = serialize("project", JSON.stringify(project.id));
+    document.cookie = serialize("projectId", JSON.stringify(project.id));
     navigate("/choose-price");
 
   }

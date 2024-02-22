@@ -5,7 +5,7 @@ import './style.css'
 
 
 
-function ProfileHistory({ user }) {
+function ProfileHistory({  data }) {
   const navigate = useNavigate();
   function handleSeeAllHistoryClick() {
     const address = window.location.href.split("/");
@@ -28,7 +28,7 @@ function ProfileHistory({ user }) {
 
       <ul className="profileHistory__table">
         {
-          user?.help_history?.slice(0, 5).map(history => {
+          data?.help_history?.slice(0, 5).map(history => {
             return <HistoryItem key={history.id} history={history} />
           })
         }

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { parse, serialize } from "cookie";
 import { authContext } from "../contexts/authContext";
 import { requestCode, requestCodeValidation, requestUser } from "@components/requests"
+import { requestAllProjects } from "../requests";
 
 
 
@@ -12,9 +13,79 @@ function AuthContext({ children }) {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [token, setToken] = useState(parse(document.cookie).token || null)
     const [isLoading, setIsLoading] = useState(false);
+    const [projects, setProject] = useState([])
+    const [userProjects,setUserProjects]=useState([]);
+    
+    async function getHistory(projectId)
+    {
+        try {
+             const user=await requestUser(token);
+             const histories=user.data.help_history;
+             const history=histories.find(h=>h.project_id==projectId);
+             return history;
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
+    useEffect(()=>{
+        async function getUserProjects() {
+            setIsLoading(true);
+            if (token) {
+                try {
+                    const all = await requestAllProjects();
+                    const user = await requestUser(token);
+                    const ids = user.data.help_history.map(history => history.project_id)
+                    const taken = all.data.filter(project => ids.includes(project.id))
+                    setUserProjects(taken);
+
+                } catch (error) {
+                    console.log(error.message);
+                } finally {
+                    setIsLoading(false)
+                }
 
 
+            }
+            else {
+                setUserProjects([])
+            }
+        }
+        getUserProjects();
+    },[useState])
+    useEffect(() => {
+        async function getProjects() {
+            setIsLoading(true);
+            if (token) {
+                try {
+                    const all = await requestAllProjects();
+                    const user = await requestUser(token);
+                    const ids = user.data.help_history.map(history => history.project_id)
+                    const available = all.data.filter(project => !ids.includes(project.id))
+                    setProject(available);
 
+                } catch (error) {
+                    console.log(error.message);
+                } finally {
+                    setIsLoading(false)
+                }
+
+
+            }
+            else {
+                try {
+                    const all = await requestAllProjects();
+                    setProject(all.data);
+
+                } catch (error) {
+                    console.log(error.message);
+                } finally {
+                    setIsLoading(false)
+                }
+            }
+        }
+        getProjects();
+    }, [userData])
     useEffect(() => {
         setIsLoading(true);
         async function getUserOnRefresh() {
@@ -36,7 +107,7 @@ function AuthContext({ children }) {
     async function updateUserData(token) {
         setIsLoading(true);
         try {
-             await getUserData(token);
+            await getUserData(token);
         } catch (error) {
             throw new Error(error.message);
         } finally {
@@ -54,7 +125,7 @@ function AuthContext({ children }) {
             console.log("OTP code sended successfully. Code:" + data.otp);
             return data.otp
         } catch (error) {
-            
+
             throw new Error(error.message);
         }
         finally {
@@ -70,13 +141,13 @@ function AuthContext({ children }) {
             if (data === "incorrect Otp") {
                 throw new Error("کد معتبر نیست!")
             }
-            
+
             document.cookie = serialize("token", data.token);
             setToken(data.token);
             getUserData(data.token);
 
         } catch (error) {
-            
+
             throw new Error(error.message);
         }
         finally {
@@ -122,7 +193,11 @@ function AuthContext({ children }) {
                 getOTPCode,
                 validateOTPCode,
                 isLoading,
-                updateUserData
+                updateUserData,
+                projects,
+                userProjects,
+                getHistory
+                
             }}>
             {children}
         </authContext.Provider>

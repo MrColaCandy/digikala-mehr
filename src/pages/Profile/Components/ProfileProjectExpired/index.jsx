@@ -13,9 +13,9 @@ function ProfileProjectExpired (project){
                     <img src={organLogo} className="profileProjectExpired__infoLogo" alt="employer-logo" />
                     <div className="profileProjectExpired__infoText">
                         <span className="profileProjectExpired__infoTitle">
-                            {project?.name}
+                            {project?.topic}
                         </span>
-                        <span className="profileProjectExpired__infoEmployer">{project?.institute.name}</span>
+                        <span className="profileProjectExpired__infoEmployer">{project?.institute?.name}</span>
                     </div>
                 
                 <p className="profileProjectExpired__box">دوره به پایان رسید</p>

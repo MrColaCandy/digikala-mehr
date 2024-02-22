@@ -4,8 +4,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     flex-grow: 1;
+    padding: var(--space-8);
 
 }
 
@@ -17,6 +18,7 @@
     word-wrap: break-word;
     width: 100%;
     text-align: right;
+    margin: auto 0;
 
 }
 
@@ -33,7 +35,7 @@
     cursor: pointer;
  
     width: 100%;
-    margin-bottom: auto;
+    margin-top: auto;
 
 }
 .textBox__button--truncated {
@@ -64,11 +66,11 @@
     text-align: right;
     height: auto;
     overflow: hidden;
+    padding: var(--space-16) 0;
 
 }
 
 .textBox__header--truncated {
-    margin-top: var(--space-32);
     color: var(--color-textDark);
     font-size: var(--font-size-small);
     font-weight: 700;
@@ -87,7 +89,7 @@
     font-weight: 700;
     line-height: var(--space-32);
     word-wrap: break-word;
-    margin-top: var(--space-16);
+
     text-align: right;
     width: 100%;
  

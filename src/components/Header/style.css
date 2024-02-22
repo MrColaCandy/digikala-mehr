@@ -15,12 +15,14 @@
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    transition: max-width 500ms;
+    transition: max-width 200ms;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 
 .header.stick {
-
     border-bottom: 1px solid var(--color-primary);
     max-width: 1280px;
     margin-bottom: 0;
@@ -29,6 +31,8 @@
     transform: translateX(-50%);
     box-shadow: none;
     background-color: rgba(255, 255, 255, 0.70);
+    height: 50px;
+    transition: max-width,height 200ms;
 }
 
 .header__content {
@@ -38,6 +42,8 @@
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
+    position: relative;
+    height: 65px;
 }
 
 .digiMehrLogoTitleWrapper {

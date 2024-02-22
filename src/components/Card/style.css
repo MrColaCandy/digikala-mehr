@@ -3,7 +3,6 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    padding: var(--space-4);
     background-color: white;
     border-radius: 16px;
     border-bottom-left-radius: 0;

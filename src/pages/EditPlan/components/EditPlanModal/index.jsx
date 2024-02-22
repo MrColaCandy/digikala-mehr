@@ -5,12 +5,20 @@ import { requestCancelProject, requestUpdateProject } from "@components/requests
 import { useState } from "react";
 import {useNavigate} from "react-router-dom"
 import { useAuth } from "@components/hooks/useAuth";
-import roshanLogo from "@assets/decorations/roshan-logo.png"
 const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstitute, title, variant = "change" }) => {
     const [isLoading, setIsLoading] = useState(false);
     const navigate=useNavigate();
-    const {token,updateUserData}=useAuth()
-    
+    const {token,updateUserData,getHistory}=useAuth()
+    async function getHistoryByProjectId()
+    {
+        try {
+            const history=await getHistory(selected.id);
+           return history;
+        } catch (error) {
+             console.log(error.message);  
+        }
+    }
+ 
     function handleCancelClick() {
         if (isLoading) return;
         setSubstitute(null)
@@ -18,11 +26,11 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
         document.body.style.overflow="auto"
     }
     async function handleActionClick() {
-        console.log(selected,substitute);
         setIsLoading(true);
         if (variant === "change") {
             try {
-                await requestUpdateProject({token:token,newProject:substitute,oldProject:selected});
+              const history= await getHistoryByProjectId();
+                await requestUpdateProject({token:token,newProject:substitute.id,oldProject:history.id,price:history.price});
                 await updateUserData(token);
                 setSelected(substitute);
                 setSubstitute(null);
@@ -49,13 +57,6 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
             }
         }
     }
-    const topics=[
-        "کتابخانه",
-        "ورزشگاه",
-        "استخر شنای بانوان",
-        "آزمایشگاه زبان",
-        "مجموعه تفریحی",
-    ]
     return (
         <div className="editPlanModal">
             <div className="editPlanModal__frame">
@@ -67,10 +68,10 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
                 <div className="editPlanModal__wrapper">
                     <div className="editPlanModal__textGreen">پروژه فعلی</div>
                     <div className="editPlanModal__row">
-                        <img src={/*selected?.institute?.logo*/  roshanLogo} className="editPlanModal__Logo" />
+                        <img src={`http://127.0.0.1:8000/${selected?.institute?.logo}`} className="editPlanModal__Logo" />
                         <div className="editPlanModal__col">
-                            <div className="editPlanModal__ProjectTitle">{selected?.topic || topics[selected?.id%topics.length]}</div>
-                            <div className="editPlanModal__ProjectEmployer">{selected?.institute?.name || "موسسه صبح روشن"}</div>
+                            <div className="editPlanModal__ProjectTitle">{selected?.topic }</div>
+                            <div className="editPlanModal__ProjectEmployer">{selected?.institute?.name}</div>
                         </div>
                     </div>
                 </div>
@@ -79,10 +80,10 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
                     <div className="editPlanModal__wrapper">
                         <div className="editPlanModal__textGreen">پروژه جایگزین</div>
                         <div className="editPlanModal__row">
-                            <img src={/*substitute?.institute?.logo*/  roshanLogo} className="editPlanModal__Logo" />
+                            <img src={`http://127.0.0.1:8000/${substitute?.institute?.logo}`} className="editPlanModal__Logo" />
                             <div className="editPlanModal__col">
-                                <div className="editPlanModal__ProjectTitle">{substitute?.topic || topics[substitute?.id%topics.length]}</div>
-                                <div className="editPlanModal__ProjectEmployer">{substitute?.institute?.name || "موسسه صبح روشن"}</div>
+                                <div className="editPlanModal__ProjectTitle">{substitute?.topic}</div>
+                                <div className="editPlanModal__ProjectEmployer">{substitute?.institute?.name }</div>
                             </div>
                         </div>
 

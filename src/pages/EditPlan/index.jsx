@@ -1,19 +1,16 @@
 import Layout from "@components/Layout";
 import Slider from "@components/Slider"
 import EditHeader from "@components/EditHeader";
-import EditPlanProjects from "./components/EditPlanProjects"
-import EditPlanProject from "./components/EditPlanProject"
+import EditPlanUserProjects from "./components/EditPlanUserProjects"
+import EditPlanUserProject from "./components/EditPlanUserProject"
 import { useAuth } from "@components/hooks/useAuth"
 import Button from "@components/Button"
-import { useState,useEffect } from "react";
-import { requestAllProjects } from "@components/requests";
+import { useState } from "react";
 import Card from "@components/Card"
 import "./style.css"
 import EditPlanModal from "./components/EditPlanModal";
 const EditPlan = () => {
-    const { userData ,setUserData } = useAuth()
-    const [projects, setProjects] = useState([])
-    const [isLoading, setIsLoading] = useState(false);
+    const { userData ,setUserData,projects,isLoading,userProjects } = useAuth()
     const [selected, setSelected] = useState(null);
     const [substitute, setSubstitute] = useState(null);
     const [modal,setModal]=useState(false);
@@ -23,24 +20,7 @@ const EditPlan = () => {
         setSubstitute(project);
     }
 
-    useEffect(() => {
-        async function getProjects() {
-          setIsLoading(true);
-         
-            try {
-              const {data} = await requestAllProjects();
-              setProjects([...data]);
-            } catch (error) {
-              setProjects(null);
-            }
-            finally{
-              setIsLoading(false);
-            }
-          
-        }
-        getProjects();
-      }, [])
-   
+  
     return (
         <>
             {
@@ -59,14 +39,14 @@ const EditPlan = () => {
            
             <Layout>
                 <EditHeader selected={selected} setModal={setModal} />
-                <EditPlanProjects>
+                <EditPlanUserProjects>
                     {
-                        userData?.help_history?.map((project,index) => {
+                        userProjects?.map((project,index) => {
                 
-                            return <EditPlanProject index={index} selected={selected} setSelected={setSelected} key={project.id} project={project} />
+                            return <EditPlanUserProject index={index} selected={selected} setSelected={setSelected} key={project.id} project={project} />
                         })
                     }
-                </EditPlanProjects>
+                </EditPlanUserProjects>
                 {selected &&
                     <>
                         <div className="editPlan__sliderHeader">

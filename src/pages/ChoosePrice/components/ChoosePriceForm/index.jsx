@@ -30,8 +30,8 @@ const ChoosePriceForm = () => {
         setIsLoading(true)
        
         try {
-            const projectId=parseInt(parse(document.cookie).project)
-            await requestAddProject({projectId:projectId,price:parseInt(value)},token)
+        
+            await requestAddProject({projectId:parse(document.cookie).projectId,price:value,token:token})
             await updateUserData(token);
             document.cookie=serialize("newProject",true);
             navigate("/profile")

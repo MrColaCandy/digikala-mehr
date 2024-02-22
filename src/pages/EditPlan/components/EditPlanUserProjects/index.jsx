@@ -1,6 +1,6 @@
 import "./style.css"
 
-const EditPlanProjects = ({ children }) => {
+const EditPlanUserProjects = ({ children }) => {
   return (
     <div className="editPlanProjects">
       {
@@ -10,4 +10,4 @@ const EditPlanProjects = ({ children }) => {
   )
 }
 
-export default EditPlanProjects
+export default EditPlanUserProjects

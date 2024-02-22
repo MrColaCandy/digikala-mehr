@@ -10,14 +10,13 @@ import {useAuth} from "@components/hooks/useAuth"
 import "./style.css"
 import { serialize } from "cookie";
 import { useEffect, useState } from "react";
-import { requestInfo,requestAllProjects } from "@components/requests";
+import { requestInfo } from "@components/requests";
 
 function Home() {
   const [info,setInfo]=useState(null);
-  const {isLoggedIn }=useAuth()
+  const {isLoggedIn,projects,isLoading }=useAuth()
   const navigate=useNavigate();
-  const [projects, setProjects] = useState([]);
-  const [isLoading,setIsLoading]=useState(false);
+
   
   useEffect(()=>{
     async function getInfo()
@@ -30,22 +29,7 @@ function Home() {
         console.log(error);
       }
     }
-    async function getProjects() {
-      setIsLoading(true);
-     
-        try {
-          const {data} = await requestAllProjects();
-          setProjects([...data]);
-        } catch (error) {
-          setProjects(null);
-        }
-        finally{
-          setIsLoading(false);
-        }
-      
-    }
-
-    getProjects();
+  
     getInfo();
    
   },[])

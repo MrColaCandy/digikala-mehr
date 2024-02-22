@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import DropDown from "@components/DropDown";
 import Loader from "../Loader";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 function Header() {
   const { isLoggedIn, isLoading } = useAuth();
@@ -19,14 +19,11 @@ function Header() {
     navigate("/")
 
   }
-  const headerRef = useRef(null);
-  const [stick,setStick]=useState(true);
+  const [stick,setStick]=useState(false);
   useEffect(() => {
-  console.log(headerRef.current);
-  if(!headerRef)return;
   window.addEventListener("scroll",()=>{
-    console.log(headerRef.current.clientHeight,window.scrollY);
-    if(headerRef.current.clientHeight <=window.scrollY)
+ 
+    if(70 <window.scrollY)
     {
       setStick(true);
     }
@@ -35,7 +32,7 @@ function Header() {
       setStick(false)
     }
   })
-  }, [headerRef])
+  }, [])
   function getLoginButton() {
     if (!isLoggedIn && !isLoading) {
       return (
@@ -60,7 +57,7 @@ function Header() {
     }
   }
   return (
-    <header ref={headerRef} className={`${stick?"header stick":"header"}`}>
+    <header  className={`${stick?"header stick":"header"}`}>
     <section className="header__content">
     <div onClick={handleLogoClick} className=" digiMehrLogoTitleWrapper">
         <div className="digiMehrLogoWrapper__wrapperLogo">

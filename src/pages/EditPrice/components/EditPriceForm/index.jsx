@@ -5,11 +5,12 @@ import EditPriceSuggestions from "../EditPriceSuggestions";
 import EditPriceFooter from "../EditPriceFooter"
 import usePersian from "@components/hooks/usePersian";
 import { useAuth } from "@components/hooks/useAuth";
-import { postPrice } from "../../requests"
+import { requestUpdateProject } from "@components/requests"
 import { useNavigate } from "react-router-dom"
-import { serialize } from "cookie";
+import { parse, serialize } from "cookie";
+
 const EditPriceForm = () => {
-    const { user, setUser } = useAuth();
+    const {updateUserData,token}=useAuth()
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false)
     const [value, setValue] = useState();
@@ -27,17 +28,16 @@ const EditPriceForm = () => {
         }
         setIsLoading(true)
         try {
-            await postPrice(value)
-            const index = user.projects.findIndex(p => p.id === user.editing.id);
-            user.projects[index]={...user.editing,price:value}
-            setUser(user);
-            localStorage.setItem("user", JSON.stringify(user));
-            document.cookie = serialize("editProject", true);
+            const editing=JSON.parse(parse(document.cookie).project_editing)
+            
+            await requestUpdateProject({oldProject:editing.historyId,newProject:editing.projectId,price:value,token:token})
+            await updateUserData(token);
+            document.cookie=serialize("newProject",true);
             navigate("/profile")
         } catch (error) {
             setError(error.message)
         }
-        finally {
+        finally{
             setIsLoading(false)
         }
     }

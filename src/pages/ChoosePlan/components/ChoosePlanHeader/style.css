@@ -3,7 +3,7 @@
     max-width: 445px;
     min-height: 145px;
     height: auto;
-    margin-top: var(--space-32);
+    margin-top: var(--space-8);
     margin-bottom: var(--space-12);
     display: flex;
     flex-direction: column;

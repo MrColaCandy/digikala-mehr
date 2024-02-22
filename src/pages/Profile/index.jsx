@@ -47,16 +47,16 @@ function Profile() {
 
   return (
     <Layout>
-      <ProfileUserAvatar user={userData} />
+      <ProfileUserAvatar data={userData} />
       <HorizontalLine space={16} width={1194} />
-      <ProfileActiveProjects user={userData} />
+      <ProfileActiveProjects data={userData} />
       {
         userData?.help_history?.length > 0 &&
-        <ProfileMessage user={userData} />
+        <ProfileMessage data={userData} />
       }
       {
         userData?.help_history?.length > 0 &&
-        <ProfileHistory user={userData} />
+        <ProfileHistory data={userData} />
       }
 
       <p className="profile__sliderTitle">اینجا می‌تونی از بین پروژه‌های مختلف یکیو برای شروع انتخاب کنی</p>
