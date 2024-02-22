@@ -46,7 +46,7 @@ function AuthContext({ children }) {
                                 history_id:histories.find(h=>h.project_id==project.id).id,
                                 state:histories.find(h=>h.project_id==project.id).state,
                                 price:histories.find(h=>h.project_id==project.id).price,
-                                data:histories.find(h=>h.project_id==project.id).data,
+                                date:histories.find(h=>h.project_id==project.id).date,
                                 user_id:histories.find(h=>h.project_id==project.id).user_id,
                                 
                               
