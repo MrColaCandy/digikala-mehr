@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import DropDown from "@components/DropDown";
 import Loader from "../Loader";
+import { useEffect, useRef, useState } from "react";
 
 function Header() {
   const { isLoggedIn, isLoading } = useAuth();
@@ -13,12 +14,28 @@ function Header() {
   function handleSignInButtonClick() {
     navigate("/login");
   }
-   
-  function handleLogoClick()
-  {
-      navigate("/")
-      
+
+  function handleLogoClick() {
+    navigate("/")
+
   }
+  const headerRef = useRef(null);
+  const [stick,setStick]=useState(true);
+  useEffect(() => {
+  console.log(headerRef.current);
+  if(!headerRef)return;
+  window.addEventListener("scroll",()=>{
+    console.log(headerRef.current.clientHeight,window.scrollY);
+    if(headerRef.current.clientHeight <=window.scrollY)
+    {
+      setStick(true);
+    }
+    else
+    {
+      setStick(false)
+    }
+  })
+  }, [headerRef])
   function getLoginButton() {
     if (!isLoggedIn && !isLoading) {
       return (
@@ -28,27 +45,26 @@ function Header() {
         </button>
       )
     }
-    if(isLoading)
-    {
+    if (isLoading) {
       return (
-      <button onClick={handleSignInButtonClick} className="signInProfileBtn">
-         <Loader scale={0.3}/>
-      </button>
+        <button onClick={handleSignInButtonClick} className="signInProfileBtn">
+          <Loader scale={0.3} />
+        </button>
       )
     }
 
-    if( isLoggedIn && !isLoading)
-    {
+    if (isLoggedIn && !isLoading) {
       return (
-        <DropDown/>
+        <DropDown />
       )
     }
   }
   return (
-    <nav className="header">
-      <div onClick={handleLogoClick} className=" digiMehrLogoTitleWrapper">
+    <header ref={headerRef} className={`${stick?"header stick":"header"}`}>
+    <section className="header__content">
+    <div onClick={handleLogoClick} className=" digiMehrLogoTitleWrapper">
         <div className="digiMehrLogoWrapper__wrapperLogo">
-          <img 
+          <img
             className="digiMehrLogoWrapper__insideLogo"
             src={FillInside_digiMehr_logo_i}
             alt="digiLogo"
@@ -64,8 +80,11 @@ function Header() {
         getLoginButton()
       }
 
-    </nav>
+    </section>
+    </header>
   );
 }
 
 export default Header;
+
+
