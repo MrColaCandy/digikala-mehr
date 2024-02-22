@@ -17,7 +17,7 @@ import { requestAllProjects } from "@components/requests";
 
 function Profile() {
   const navigate = useNavigate();
-  const { userData } = useAuth();
+  const { userData,userProjects } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [projects, setProjects] = useState([]);
   function handleChooseProjectClick(project) {
@@ -49,13 +49,13 @@ function Profile() {
     <Layout>
       <ProfileUserAvatar data={userData} />
       <HorizontalLine space={16} width={1194} />
-      <ProfileActiveProjects data={userData} />
+      <ProfileActiveProjects  />
       {
-        userData?.help_history?.length > 0 &&
+        userProjects?.length > 0 &&
         <ProfileMessage data={userData} />
       }
       {
-        userData?.help_history?.length > 0 &&
+        userProjects?.length > 0 &&
         <ProfileHistory data={userData} />
       }
 

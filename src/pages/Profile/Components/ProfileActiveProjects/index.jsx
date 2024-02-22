@@ -29,7 +29,7 @@ function ProfileActiveProjects() {
                 />)
             }
             {
-                   userProjects?.filter(project=>project.Expiration===project.total_months)
+                   userProjects?.filter(project=>project.expiration>=project.total_months)
                    ?.map(project=>
                    <ProfileProjectExpired
                    project={project}

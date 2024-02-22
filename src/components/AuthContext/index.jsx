@@ -35,8 +35,15 @@ function AuthContext({ children }) {
                 try {
                     const all = await requestAllProjects();
                     const user = await requestUser(token);
-                    const ids = user.data.help_history.map(history => history.project_id)
-                    const taken = all.data.filter(project => ids.includes(project.id))
+                    const histories=user.data.help_history;
+                    const ids = histories.map(history => history.project_id)
+                    const taken = all.data.filter(project => ids.includes(project.id)).map(project=>
+                        {
+                            return {
+                                ...project,
+                                ...histories.find(h=>h.project_id==project.id)
+                            }
+                        })
                     setUserProjects(taken);
 
                 } catch (error) {
