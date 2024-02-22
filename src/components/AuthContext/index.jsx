@@ -67,7 +67,7 @@ function AuthContext({ children }) {
             }
         }
         getUserProjects();
-    },[useState])
+    },[userData])
     useEffect(() => {
         async function getProjects() {
             setIsLoading(true);
@@ -108,7 +108,7 @@ function AuthContext({ children }) {
                 await getUserData(token);
             } catch (error) {
                 logout()
-                throw new Error(error.message);
+                console.log(error.message);
             } finally {
                 setIsLoading(false);
             }

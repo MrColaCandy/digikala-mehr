@@ -4,7 +4,7 @@ import "./style.css"
 function ProfileProjectExpired (project){
     function handleExpandContributionClick()
     {
-
+          
     }
     return(
         <div className="profileProjectExpired">
