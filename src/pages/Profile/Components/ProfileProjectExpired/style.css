@@ -1,5 +1,6 @@
 .profileProjectExpired {
     width: 100%;
+    max-width: 1280px;
     height: auto;
     padding: var(--padding-16);
     border: 1px solid var(--color-red);

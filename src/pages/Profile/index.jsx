@@ -42,7 +42,7 @@ function Profile() {
       }
 
       <p className="profile__sliderTitle">اینجا می‌تونی از بین پروژه‌های مختلف یکیو برای شروع انتخاب کنی</p>
-      <Slider isLoading={isLoading} slideWidth={390} slideHeight={450} viewPortWidth={390 * 3.5} gap={40}>
+      <Slider isLoading={isLoading} slideWidth={390} slideHeight={450} viewPortWidth={1280} gap={40}>
         {
           projects?.map((project) => {
             return <Card

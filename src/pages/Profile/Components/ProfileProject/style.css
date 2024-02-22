@@ -1,5 +1,6 @@
 .profileProject {
     width: 100%;
+    max-width: 1280px;
     height: auto;
     display: flex;
     justify-content: space-between;
@@ -11,7 +12,8 @@
 
 
 .profileProject__wrapper{
-    width: 550px;
+    width: 100%;
+    max-width: 550px;
     border: 1px solid var(--color-border);
     display: flex;
     justify-content: center;
@@ -159,6 +161,9 @@
         justify-content: center;
         align-items: center;
     
+    }
+    .profileProject__wrapper{
+        max-width: 1280px;
     }
 }
 @media screen and (max-width: 512px) {
