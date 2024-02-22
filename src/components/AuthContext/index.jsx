@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { parse, serialize } from "cookie";
 import { authContext } from "../contexts/authContext";
-import { requestCode, requestCodeValidation, requestUser } from "./requests"
+import { requestCode, requestCodeValidation, requestUser } from "@components/requests"
 
 
 

@@ -12,7 +12,7 @@ import ProfileMessage from "./Components/ProfileMessage";
 import "./style.css"
 import { useEffect, useState } from "react";
 import { serialize } from "cookie";
-import { requestAllProjects } from "./requests";
+import { requestAllProjects } from "@components/requests";
 
 
 function Profile() {

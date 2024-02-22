@@ -1,7 +1,7 @@
 import { FaChevronLeft } from "react-icons/fa6";
 import usePersian from "@components/hooks/usePersian";
 import "./style.css"
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 import { serialize } from "cookie";
 import roshanLogo from "@assets/decorations/roshan-logo.png"

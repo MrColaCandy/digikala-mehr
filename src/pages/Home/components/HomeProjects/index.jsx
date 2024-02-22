@@ -2,33 +2,9 @@ import { FaChevronLeft } from "react-icons/fa6";
 import Slider from "@components/Slider";
 import Card from "@components/Card";
 import './style.css'
-import { useEffect, useState } from "react";
-import {  requestAllProjects } from "./requests";
 
 
-
-
-
-function HomeProjects({ onStartButtonClick }) {
-  const [projects, setProjects] = useState([]);
-  const [isLoading,setIsLoading]=useState(false);
-  useEffect(() => {
-    async function getProjects() {
-      setIsLoading(true);
-     
-        try {
-          const {data} = await requestAllProjects();
-          setProjects([...data]);
-        } catch (error) {
-          setProjects(null);
-        }
-        finally{
-          setIsLoading(false);
-        }
-      
-    }
-    getProjects();
-  }, [])
+function HomeProjects({ onStartButtonClick,projects,isLoading }) {
 
   return (
     <section className="homeProjects">

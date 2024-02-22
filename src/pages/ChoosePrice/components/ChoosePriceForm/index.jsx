@@ -5,7 +5,7 @@ import ChoosePriceSuggestions from "../ChoosePriceSuggestions";
 import ChoosePriceFooter from "../ChoosePriceFooter"
 import usePersian from "@components/hooks/usePersian";
 import { useAuth } from "@components/hooks/useAuth";
-import { requestAddProject } from "../../requests";
+import { requestAddProject } from "@components/requests";
 import {useNavigate} from "react-router-dom"
 import { parse, serialize } from "cookie";
 const ChoosePriceForm = () => {

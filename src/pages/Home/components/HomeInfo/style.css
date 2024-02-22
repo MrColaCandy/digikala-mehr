@@ -77,6 +77,7 @@
     line-height: var(--lineHeight-24);
     font-weight: 400;
     text-align: right;
+    height: 19px;
 }
 
 .homeInfo__lastMembers {

@@ -1,7 +1,7 @@
 import Button from "@components/Button"
 import "./style.css"
 import { CgArrowsExchangeV } from "react-icons/cg";
-import { requestCancelProject, requestUpdateProject } from "../../request";
+import { requestCancelProject, requestUpdateProject } from "@components/requests";
 import { useState } from "react";
 import {useNavigate} from "react-router-dom"
 import { useAuth } from "@components/hooks/useAuth";
@@ -9,7 +9,7 @@ import roshanLogo from "@assets/decorations/roshan-logo.png"
 const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstitute, title, variant = "change" }) => {
     const [isLoading, setIsLoading] = useState(false);
     const navigate=useNavigate();
-    const {token,updateUser}=useAuth()
+    const {token,updateUserData}=useAuth()
     
     function handleCancelClick() {
         if (isLoading) return;
@@ -22,8 +22,8 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
         setIsLoading(true);
         if (variant === "change") {
             try {
-                await requestUpdateProject({token:token,newProject:substitute,oldProject:selected,price:200000});
-                await updateUser(token);
+                await requestUpdateProject({token:token,newProject:substitute,oldProject:selected});
+                await updateUserData(token);
                 setSelected(substitute);
                 setSubstitute(null);
             } catch (error) {

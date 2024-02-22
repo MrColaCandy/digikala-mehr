@@ -52,7 +52,7 @@ const DropDown = () => {
     }
     function getHelpsSum()
     {
-       if(!userData || !userData?.help_history || userData?.help_history<=0)return convert(0)
+       if(!userData || !userData?.help_history || userData?.help_history<=0)return convert("0")
        return convert(addCommas(userData?.help_history.reduce(function (acc, obj) { return acc + obj.price}, 0)));
     }
     return (
@@ -66,7 +66,7 @@ const DropDown = () => {
                     <div className="main-dropdown">
                         <ul>
                             <li className="dropdown-li">
-                               <img className='img-user' width={40} height={40} src={ userData?.user?.profilePhoto || avatarPlaceHolder} alt="avatar"/>
+                               <img className='img-user' width={40} height={40} src={ `http://127.0.0.1:8000${userData?.user?.profilePhoto}` || avatarPlaceHolder} alt="avatar"/>
                                 <div onClick={handleUsernameClick} className="account-id"><a href="#"><span>{userData?.user?.firstName}</span></a><p>جمع نیکوکاری های
                                     شما</p><span>{getHelpsSum()}<img src={Toman} alt="تومان"/></span>
                                 </div>

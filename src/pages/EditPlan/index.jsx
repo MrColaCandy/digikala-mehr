@@ -6,7 +6,7 @@ import EditPlanProject from "./components/EditPlanProject"
 import { useAuth } from "@components/hooks/useAuth"
 import Button from "@components/Button"
 import { useState,useEffect } from "react";
-import { requestAllProjects } from "../requests";
+import { requestAllProjects } from "@components/requests";
 import Card from "@components/Card"
 import "./style.css"
 import EditPlanModal from "./components/EditPlanModal";

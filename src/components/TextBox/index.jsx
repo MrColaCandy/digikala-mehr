@@ -32,9 +32,9 @@ function TextBox({ className="",title, text = null, maxLines = 3, lineLength = 1
 
     return (
         <>
-            <div className={`textBox__header${!showFullText?"":"--truncated"} ${className}`}>{title}</div>
+            
             <div className="textBox" >
-
+            <div className={`textBox__header${!showFullText?"":"--truncated"} ${className}`}>{title}</div>
                 <div className={showFullText ? `textBox__text` : `textBox__text--truncated`}>
                     {showFullText ? text : getTruncatedText()}
                 </div>

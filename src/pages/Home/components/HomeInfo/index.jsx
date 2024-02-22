@@ -33,7 +33,7 @@ function HomeInfo({ info }) {
           </p>
           <section className="homeInfo__lastTwinMembers">
             {
-              info?.recent?.map(person => {
+              info?.recent?.slice(0,2).map(person => {
                 return <>
                   <div className="homeInfo__lastMembersWrapper">
                     <div className="homeInfo__lastMembersIcon"><BsPersonHeart/></div>

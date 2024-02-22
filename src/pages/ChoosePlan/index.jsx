@@ -6,7 +6,7 @@ import Card from "@components/Card"
 import Button from "@components/Button"
 import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { requestAllProjects } from "./requests"
+import { requestAllProjects } from "@components/requests"
 import { serialize } from "cookie"
 
 
