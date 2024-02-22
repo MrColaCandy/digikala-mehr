@@ -44,6 +44,12 @@ function AuthContext({ children }) {
                                 expiration:histories.find(h=>h.project_id==project.id).expiration,
                                 total_months:histories.find(h=>h.project_id==project.id).total_months,
                                 history_id:histories.find(h=>h.project_id==project.id).id,
+                                state:histories.find(h=>h.project_id==project.id).state,
+                                price:histories.find(h=>h.project_id==project.id).price,
+                                data:histories.find(h=>h.project_id==project.id).data,
+                                user_id:histories.find(h=>h.project_id==project.id).user_id,
+                                
+                              
                             }
                         })
                     setUserProjects(taken);
