@@ -61,7 +61,7 @@ const EditPlan = () => {
                                         key={project.id}
                                         project={project}
                                         cardButton={
-                                            <Button width={300} text={"تعویض کنید"} onClick={() => {
+                                            <Button width={380} text={"تعویض کنید"} onClick={() => {
                                                 handleCardButtonClick(project)
                                             }} />
                                         }

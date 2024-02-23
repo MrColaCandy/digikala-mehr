@@ -21,7 +21,7 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
         setIsLoading(true);
         if (variant === "change") {
             try {
-                await requestUpdateProject({token:token,newProject:substitute.id,oldProject:selected.id,price:selected.price});
+                await requestUpdateProject({token:token,newProject:substitute.id,oldProject:selected.history_id,price:selected.price});
                 await updateUserData(token);
                 setSelected(substitute);
                 setSubstitute(null);
@@ -87,14 +87,14 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
                         variant={"outlined"}
                         text={variant === "remove" ? "می‌خواهم پروژه را حذف کنم" : "می‌خواهم پروژه را تغییر دهم"}
                         onClick={handleActionClick}
-                        width={380}
+                        width={370}
                         color={variant === "remove" ? "#E84242" : "#00B189"}
                     />
                     <Button
                         variant={"filled"}
                         text="لغو"
                         onClick={handleCancelClick}
-                        width={380}
+                        width={370}
 
                     />
                 </div>

@@ -11,12 +11,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .editPlanModal__frame{
     background-color: white;
     height: auto;
-    padding: var(--space-16);
+    padding: var(--space-10);
     width: 100vw;
     max-width: 400px;
     display: flex;
@@ -25,6 +26,7 @@
     align-items: center;
     box-shadow: 0px 0px 20px 9px rgba(219,219,219,1);
     position: relative;
+    gap: var(--space-10);
 }
 
 .editPlanModal__title--change{
@@ -101,13 +103,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: var(--space-16);
-    margin: var(--space-16);
+    gap: var(--space-10);
+    margin: var(--space-10);
 }
 .editPlanModal__icon{
     position: absolute;
     transform: translate(-50%,-50%);
-    top: 40%;
+    top: 42%;
     left: 50%;
     width: 40px;
     height: 40px;

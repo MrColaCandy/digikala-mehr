@@ -5,7 +5,7 @@
     font-weight: 700;
     line-height: var(--space-16);
     word-wrap: break-word;
-    width: 100%;
+    width: 95vw;
     height: var(--space-48);
     text-align: center;
     padding: var(--space-16) var(--space-24);
@@ -25,7 +25,7 @@
     font-weight: 700;
     line-height: var(--space-16);
     word-wrap: break-word;
-    width: 100%;
+    width: 95vw;
     height: var(--space-48);
     text-align: center;
     padding: var(--space-16) var(--space-24);

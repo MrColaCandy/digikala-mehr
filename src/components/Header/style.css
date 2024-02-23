@@ -21,7 +21,15 @@
     align-items: center;
 
 }
-
+.header__button
+{
+    width: 100%;
+    max-width: 200px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+}
 .header.stick {
     border-bottom: 1px solid var(--color-primary);
     max-width: 1280px;

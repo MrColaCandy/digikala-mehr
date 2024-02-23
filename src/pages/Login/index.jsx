@@ -7,6 +7,7 @@ import { useAuth } from "@components/hooks/useAuth"
 import useCountdown from './useCountdown';
 import { parse } from 'cookie';
 import {useNavigate} from "react-router-dom"
+import { requestUser } from "../../components/requests";
 function LoginColleagues() {
   const [phone, setPhone] = useState("");
   const [code, setCode] = useState(null);
@@ -80,8 +81,18 @@ function LoginColleagues() {
 
     setIsLoading(true);
     try {
-      await validateOTPCode({ otp: code });
-      navigate(parse(document.cookie).nextPage || "/");
+      const token= await validateOTPCode({ otp: code });
+      const user=await requestUser(token);
+      const hasProject=user?.data?.help_history.filter(h=>h.state!=="cancel")?.length >0;
+      if(hasProject)
+      {
+        navigate("/profile");
+      }
+      else
+      {
+        navigate(parse(document.cookie).nextPage || "/");
+      }
+      
       setError(null);
     } catch (error) {
       console.log("Something went wrong! error: " + error.message);

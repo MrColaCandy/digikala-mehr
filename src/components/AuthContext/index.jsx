@@ -163,7 +163,7 @@ function AuthContext({ children }) {
             document.cookie = serialize("token", data.token);
             setToken(data.token);
             getUserData(data.token);
-
+            return data.token;
         } catch (error) {
 
             throw new Error(error.message);

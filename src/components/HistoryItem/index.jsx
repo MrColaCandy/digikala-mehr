@@ -5,13 +5,22 @@ const HistoryItem = ({ history }) => {
     const { convert, addCommas } = usePersian();
     return (
         <li className="profileHistory__item">
-            <div className="profileHistory__itemDate">{history?getDate(new Date(2009, 10, 10)):0}</div>
-            <div className="profileHistory__itemState profileHistory__successState">
+            <div className="profileHistory__itemDate">{history ? getDate(new Date(history.date)) : 0}</div>
+            {
+                history?.state === "next" &&
+                <div className="profileHistory__itemState profileHistory__nextState">
+                    پرداخت بعدی
+                </div>
+            }
+            {
+                history?.state ==="success" &&
+                <div className="profileHistory__itemState profileHistory__successState">
                 <i className="fi fi-rs-check-circle "></i>
                 <FaRegCircleCheck className="profileHistory__icon" />
 
                 موفق
-            </div>
+               </div>
+            }
             <div className="profileHistory__itemTitle">{history?.topic}</div>
             <div className="profileHistory__itemPrice">
                 <span className="profileHistory__itemPrice--dynamicNumberCost">{history ? convert(addCommas(history?.price)) : 0}</span>
@@ -24,7 +33,7 @@ const HistoryItem = ({ history }) => {
 export default HistoryItem
 
 function getDate(date) {
-    
-    let options = { month: 'long', day: 'numeric' };
-    return date.toLocaleDateString('fa-IR', options);
+
+    let options = { month: 'long',year:"numeric" };
+    return date.toLocaleDateString('fa-IR', options).split(" ").reverse().join(" ");
 }

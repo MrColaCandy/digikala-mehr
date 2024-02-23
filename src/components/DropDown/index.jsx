@@ -12,21 +12,18 @@ import usePersian from "@components/hooks/usePersian"
 const DropDown = () => {
     const {convert,addCommas}=usePersian()
     const {logout, userData}=useAuth();
-    useEffect(()=>{
-        console.log(userData);
-    },[])
     const navigate=useNavigate();
     function handleLogoutClick(){
         logout();
         navigate("/")
         window.location.reload();
     }
-    const [isDropdownOpen, setDropdownOpen] = useState(false);
+    const [open, setOpen] = useState(false);
     let menuRef = useRef()
     useEffect(() => {
         let handler = (e) => {
             if (!menuRef.current.contains(e.target)) {
-                setDropdownOpen(false)
+                setOpen(false)
             }
         }
         document.addEventListener("mousedown", handler);
@@ -35,10 +32,10 @@ const DropDown = () => {
         }
     }, []);
     const toggleDropdown = () => {
-        setDropdownOpen(!isDropdownOpen);
+        setOpen(!open);
     };
 
-    let dropdownClassName = isDropdownOpen ? "dropdown-container open" : "dropdown-container";
+    let dropdownClassName = open ? "dropdown-container open" : "dropdown-container";
     function handleUsernameClick()
     {
         navigate("/profile")
@@ -58,7 +55,7 @@ const DropDown = () => {
     return (
         <>
             <div className="drop-container" ref={menuRef}>
-                <div className="user-icon" onClick={toggleDropdown}>
+                <div className={`${open?"user-icon--open":"user-icon"}`} onClick={toggleDropdown}>
                     <FaRegUser size="20" className="FaRegUserStyle"/>
                     <FaSortDown  size="16" className="FaSortDownStyle"/>
                 </div>
