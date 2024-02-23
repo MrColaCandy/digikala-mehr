@@ -39,13 +39,13 @@ function AuthContext({ children }) {
                             const his=histories.find(h=>h.project_id==project.id);
                             return {
                                 ...project,
-                                expiration:his.expiration,
-                                total_months:his.total_months,
-                                history_id:his.id,
-                                state:his.state,
-                                price:his.price,
-                                date:his.date,
-                                user_id:his.user_id,
+                                expiration:his?.expiration,
+                                total_months:his?.total_months,
+                                history_id:his?.id,
+                                state:his?.state,
+                                price:his?.price,
+                                date:his?.date,
+                                user_id:his?.user_id,
                                 
                               
                             }

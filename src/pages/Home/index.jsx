@@ -11,7 +11,6 @@ import "./style.css"
 import { serialize } from "cookie";
 import { useEffect, useState } from "react";
 import { requestInfo } from "@components/requests";
-
 function Home() {
   const [info,setInfo]=useState(null);
   const {isLoggedIn,projects,isLoading }=useAuth()

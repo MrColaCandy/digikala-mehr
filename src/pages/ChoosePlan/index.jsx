@@ -7,15 +7,22 @@ import Button from "@components/Button"
 import { useNavigate } from "react-router-dom"
 import { serialize } from "cookie"
 import { useAuth } from "@components/hooks/useAuth"
+import { useEffect } from "react"
 
 
 const ChoosePlan = () => {
 
 
-  const{projects,isLoading}=useAuth();
+  const{projects,isLoading,userProjects}=useAuth();
   const navigate = useNavigate();
 
- 
+ useEffect(()=>{
+  if(!userProjects)return;
+  if(userProjects.length>0)
+  {
+    navigate("/");
+  }
+ },[userProjects])
   async function handleCardButtonClick(project) {
     document.cookie = serialize("projectId", JSON.stringify(project.id));
     navigate("/choose-price");

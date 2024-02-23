@@ -73,7 +73,7 @@ const ChoosePriceForm = () => {
            
              <ChoosePriceSuggestions value={value} setValue={setValue}/>
              <ChoosePriceFooter/>
-             <Button isLoading={isLoading} width={"100%"} margin={0} variant={"filled"} text={"تایید"}/>
+             <Button isLoading={isLoading} width={440} margin={0} variant={"filled"} text={"تایید"}/>
 
         </form>
     )

@@ -57,8 +57,17 @@ function Header() {
           {
             !isLoggedIn &&
             <button onClick={handleSignInButtonClick} className="signInProfileBtn">
-              <BsBoxArrowInLeft className="signInProfileBtn__signInIcon" />
-              <span className="signInProfileBtn__text">پروفایل I ثبت نام</span>
+              {
+                isLoading &&
+                <Loader scale={0.3}/>
+              }
+              {
+                !isLoading &&
+                <>
+                  <BsBoxArrowInLeft className="signInProfileBtn__signInIcon" />
+                  <span className="signInProfileBtn__text">پروفایل I ثبت نام</span>
+                </>
+              }
             </button>
           }
         </div>

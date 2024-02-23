@@ -1,8 +1,12 @@
 import { FaRegCircleCheck } from "react-icons/fa6";
 import usePersian from "@components/hooks/usePersian";
 import "./style.css"
+import { useEffect } from "react";
 const HistoryItem = ({ history }) => {
     const { convert, addCommas } = usePersian();
+    useEffect(()=>{
+      console.log({"his":history});
+    },[])
     return (
         <li className="profileHistory__item">
             <div className="profileHistory__itemDate">{history ? getDate(new Date(history.date)) : 0}</div>
@@ -17,7 +21,6 @@ const HistoryItem = ({ history }) => {
                 <div className="profileHistory__itemState profileHistory__successState">
                 <i className="fi fi-rs-check-circle "></i>
                 <FaRegCircleCheck className="profileHistory__icon" />
-
                 موفق
                </div>
             }

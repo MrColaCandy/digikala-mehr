@@ -17,7 +17,7 @@ import { serialize } from "cookie";
 function Profile() {
 
   const navigate = useNavigate();
-  const { userData,userProjects,projects,isLoading } = useAuth();
+  const { userData, userProjects, projects, isLoading } = useAuth();
 
   function handleChooseProjectClick(project) {
     document.cookie = serialize("projectId", project.id);
@@ -25,13 +25,13 @@ function Profile() {
 
   }
 
-  
+
 
   return (
     <Layout>
       <ProfileUserAvatar data={userData} />
       <HorizontalLine space={16} width={1194} />
-      <ProfileActiveProjects  />
+      <ProfileActiveProjects />
       {
         userProjects?.length > 0 &&
         <ProfileMessage data={userData} />
@@ -41,21 +41,26 @@ function Profile() {
         <ProfileHistory data={userData} />
       }
 
-      <p className="profile__sliderTitle">اینجا می‌تونی از بین پروژه‌های مختلف یکیو برای شروع انتخاب کنی</p>
-      <Slider isLoading={isLoading} slideWidth={390} slideHeight={450} viewPortWidth={1280} gap={40}>
-        {
-          projects?.filter(p=>!p.taken)?.map((project) => {
-            return <Card
-              key={project.id}
-              project={project}
-              cardButton={
-                <Button onClick={() => { handleChooseProjectClick(project) }} variant="outlined" text={"انتخاب کنید"} />
-              }
-            />
+      {
+        userProjects?.length === 0 &&
+        <>
+          <p className="profile__sliderTitle">اینجا می‌تونی از بین پروژه‌های مختلف یکیو برای شروع انتخاب کنی</p>
+          <Slider isLoading={isLoading} slideWidth={390} slideHeight={450} viewPortWidth={1280} gap={40}>
+            {
+              projects?.filter(p => !p.taken)?.map((project) => {
+                return <Card
+                  key={project.id}
+                  project={project}
+                  cardButton={
+                    <Button onClick={() => { handleChooseProjectClick(project) }} variant="outlined" text={"انتخاب کنید"} />
+                  }
+                />
 
-          })
-        }
-      </Slider>
+              })
+            }
+          </Slider>
+        </>
+      }
     </Layout>
 
   );

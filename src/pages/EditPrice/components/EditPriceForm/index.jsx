@@ -72,7 +72,7 @@ const EditPriceForm = () => {
 
             <EditPriceSuggestions value={value} setValue={setValue} />
             <EditPriceFooter />
-            <Button isLoading={isLoading} width={"100%"} margin={0} variant={"filled"} text={"تایید"} />
+            <Button isLoading={isLoading} width={440} margin={0} variant={"filled"} text={"تایید"} />
 
         </form>
     )
