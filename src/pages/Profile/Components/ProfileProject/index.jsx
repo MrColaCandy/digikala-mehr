@@ -2,8 +2,10 @@ import usePersian from "@components/hooks/usePersian";
 import "./style.css"
 import {useNavigate} from "react-router-dom"
 import { useEffect, useState } from "react";
+import {useAuth} from "@components/hooks/useAuth"
 function ProfileProject({ project }) {
     
+    const {userProjects}=useAuth();
     const { convert, addCommas } = usePersian()
     const navigate =useNavigate();
     function handleEditClick()
@@ -11,13 +13,14 @@ function ProfileProject({ project }) {
         navigate("/edit-plan");
     }
 
-    const [age,setAge]=useState(0);
+    const [payments,setPayments]=useState(0);
     useEffect(()=>{
-     if(!project)return;
-     const diff= monthDiff(new Date(project.date),new Date(Date.now()));
-     setAge(diff);
+     if(!project|| !userProjects)return;
+     
+       const payments=userProjects.filter(p=>p.id==project.id).filter(p=>p.state==="success").length;
+       setPayments(payments)
 
-    },[project])
+    },[project,userProjects])
  
     return (
         <div className="profileProject">
@@ -42,16 +45,16 @@ function ProfileProject({ project }) {
                 </div>
             </div>
             {
-                age >= 1 &&
+                payments >= 1 &&
                 <>
                     <div className="profileProject__wrapper">
                         <div className="profileProject__finance">
-                            <span className="profileProject__financeTextBold">{age}</span>
+                            <span className="profileProject__financeTextBold">{payments}</span>
                             <span className="profileProject__financeText">تعداد ماه‌هایی که فعال بودید</span>
                         </div>
-
+                        {payments}
                         <div className="profileProject__finance">
-                            <span className="profileProject__financeTextBold">{project? convert(addCommas(project.price * age)):"0"} ریال</span>
+                            <span className="profileProject__financeTextBold">{project? convert(addCommas(project.price * payments)):convert("0")} ریال</span>
                             <span className="profileProject__financeText">مبلغی که تاکنون شریک شدید</span>
                         </div>
                     </div>
@@ -65,10 +68,3 @@ function ProfileProject({ project }) {
 
 export default ProfileProject;
 
-function monthDiff(d1, d2) {
-    let months;
-    months = (d2.getFullYear() - d1.getFullYear()) * 12;
-    months -= d1.getMonth();
-    months += d2.getMonth();
-    return months <= 0 ? 0 : months;
-}
