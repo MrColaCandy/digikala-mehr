@@ -55,7 +55,7 @@ const EditPlan = () => {
                         </div>
                         <Slider isLoading={isLoading} slideWidth={390} slideHeight={450} viewPortWidth={1280} gap={40}>
                             {
-                                projects?.map((project) => {
+                                projects.filter(p=>!p.taken)?.map((project) => {
                                     return <Card
                                       
                                         key={project.id}

@@ -8,16 +8,8 @@ import { useAuth } from "@components/hooks/useAuth";
 const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstitute, title, variant = "change" }) => {
     const [isLoading, setIsLoading] = useState(false);
     const navigate=useNavigate();
-    const {token,updateUserData,getHistory}=useAuth()
-    async function getHistoryByProjectId()
-    {
-        try {
-            const history=await getHistory(selected.id);
-           return history;
-        } catch (error) {
-             console.log(error.message);  
-        }
-    }
+    const {token,updateUserData}=useAuth()
+    
  
     function handleCancelClick() {
         if (isLoading) return;
@@ -29,9 +21,7 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
         setIsLoading(true);
         if (variant === "change") {
             try {
-              const history= await getHistoryByProjectId();
-                await requestUpdateProject({token:token,newProject:substitute.id,oldProject:history.id,price:history.price});
-                await requestCancelProjectConfirm({token:token,newProject:substitute.id,oldProject:history.id,price:history.price})
+                await requestUpdateProject({token:token,newProject:substitute.id,oldProject:selected.id,price:selected.price});
                 await updateUserData(token);
                 setSelected(substitute);
                 setSubstitute(null);
@@ -45,8 +35,8 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
         }
         else {
             try {
-                const {data}= await requestCancelProject({token:token,project:selected});
-                console.log({"delete":data});
+                await requestCancelProject({token:token,project:selected});
+                await requestCancelProjectConfirm({token:token,project:selected});
                 await updateUserData(token)
                 setSubstitute(null);
                 setSelected(null);

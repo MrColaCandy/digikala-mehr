@@ -5,8 +5,7 @@
     font-weight: 700;
     line-height: var(--space-16);
     word-wrap: break-word;
-    width: 95vw;
-    max-width: 360px;
+    width: 100%;
     height: var(--space-48);
     text-align: center;
     padding: var(--space-16) var(--space-24);
@@ -26,8 +25,7 @@
     font-weight: 700;
     line-height: var(--space-16);
     word-wrap: break-word;
-    width: 95vw;
-    max-width: 360px;
+    width: 100%;
     height: var(--space-48);
     text-align: center;
     padding: var(--space-16) var(--space-24);
@@ -43,12 +41,4 @@
 .button--filled:disabled,.button--outlined:disabled
 {
     background-color: transparent !important ;
-}
-@media screen and (max-width: 390px) {
-    .button--outlined {
-        max-width: 285px;
-    }
-    .button--filled {
-        max-width: 285px;
-    }
 }

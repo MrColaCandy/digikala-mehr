@@ -43,12 +43,16 @@ function LoginColleagues() {
       setError(null)
       setRegistrationError(false)
     } catch (error) {
-      console.log("Something went wrong! error: " + error.message)
-      setError(error.message);
+      setCode(false);
       if (error.message === "404") {
         setRegistrationError(true);
       }
-      setCode(false);
+      if(error.message=="Network Error")
+      {
+        setError("لطفا اتصال به شبکه را برسی کنید.")
+        return;
+      }
+      setError(error.message);
     }
     finally {
       setIsLoading(false)

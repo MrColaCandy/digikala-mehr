@@ -37,9 +37,13 @@ const Slider = ({ isLoading = false, viewPortWidth = 800, slideWidth = 390, slid
         if (!containerRef.current) return;
         handleButtonsVisibility(containerRef, space, nextButton, previousButton);
         setSlides([...containerRef.current.querySelectorAll("#slide")].length)
-        if(containerRef.current.clientWidth <= viewPortWidth)
+        if(children.length<=3)
         {
             containerRef.current.style.justifyContent="center"
+        }
+        else
+        {
+            containerRef.current.style.justifyContent="flex-start"
         }
     }, [children])
     return (
