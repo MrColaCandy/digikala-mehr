@@ -16,17 +16,6 @@ function AuthContext({ children }) {
     const [projects, setProject] = useState([])
     const [userProjects,setUserProjects]=useState([]);
     
-    async function getHistory(projectId)
-    {
-        try {
-             const user=await requestUser(token);
-             const histories=user.data.help_history;
-             const history=histories.find(h=>h.project_id==projectId);
-             return history;
-        } catch (error) {
-            console.log(error.message);
-        }
-    }
     async function getProject(projectId)
     {
         try {
@@ -47,15 +36,16 @@ function AuthContext({ children }) {
                     const ids = histories.map(history => history.project_id)
                     const taken = all.data.filter(project => ids.includes(project.id)).map(project=>
                         {
+                            const his=histories.find(h=>h.project_id==project.id);
                             return {
                                 ...project,
-                                expiration:histories.find(h=>h.project_id==project.id).expiration,
-                                total_months:histories.find(h=>h.project_id==project.id).total_months,
-                                history_id:histories.find(h=>h.project_id==project.id).id,
-                                state:histories.find(h=>h.project_id==project.id).state,
-                                price:histories.find(h=>h.project_id==project.id).price,
-                                date:histories.find(h=>h.project_id==project.id).date,
-                                user_id:histories.find(h=>h.project_id==project.id).user_id,
+                                expiration:his.expiration,
+                                total_months:his.total_months,
+                                history_id:his.id,
+                                state:his.state,
+                                price:his.price,
+                                date:his.date,
+                                user_id:his.user_id,
                                 
                               
                             }
@@ -84,7 +74,12 @@ function AuthContext({ children }) {
                     const all = await requestAllProjects();
                     const user = await requestUser(token);
                     const ids = user.data.help_history.map(history => history.project_id)
-                    const available = all.data.filter(project => !ids.includes(project.id))
+                    const available = all.data.map(project =>{
+                        return {
+                            ...project,
+                            taken:ids.includes(project.id)
+                        }
+                    })
                     setProject(available);
 
                 } catch (error) {
@@ -219,7 +214,6 @@ function AuthContext({ children }) {
                 updateUserData,
                 projects,
                 userProjects,
-                getHistory,
                 getProject
                 
             }}>

@@ -26,7 +26,7 @@ const ChoosePlan = () => {
       <ChoosePlaneHeader />
       <Slider isLoading={isLoading} slideHeight={450} slideWidth={360} viewPortWidth={360 * 2.5} gap={40} >
         {
-          projects?.map((project) => {
+          projects?.filter(p=>!p.taken)?.map((project) => {
             return <Card
               key={project.id}
               project={project}

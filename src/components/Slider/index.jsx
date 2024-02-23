@@ -10,8 +10,9 @@ const Slider = ({ isLoading = false, viewPortWidth = 800, slideWidth = 390, slid
     const nextButton = useRef(null);
     const [currentScroll, setCurrentScroll] = useState(0);
     const [space, setSpace] = useState(gap);
-
+    const [slides,setSlides]=useState([]);
     useEffect(() => {
+        if(!containerRef)return;
         containerRef.current.scrollTo(currentScroll, 0)
     }, [currentScroll])
     useEffect(() => {
@@ -35,21 +36,30 @@ const Slider = ({ isLoading = false, viewPortWidth = 800, slideWidth = 390, slid
         if (!children) return;
         if (!containerRef.current) return;
         handleButtonsVisibility(containerRef, space, nextButton, previousButton);
-
+        setSlides([...containerRef.current.querySelectorAll("#slide")].length)
     }, [children])
     return (
         <div className='slider' style={{ "--view-port-width": `${viewPortWidth}px`, "--slides-gap": `${space}px`, "--scroll-behavior": `${scrollBehavior}`, "--slide-height": `${slideHeight}px`, "--slide-width": `${slideWidth}px` }} >
             <div className={`slider__view`} >
                 <div id="slider-container" className={`slider__container`} ref={containerRef}>
                     {
-                        isLoading ? <div className='slider__isLoading'><Loader color="white" scale={2} /></div> : children || children?.length > 0 ? children : <div className='slider__isLoading'>درحال حاضر پروژه ای برای انتخاب وجود ندارد.</div>
+                        isLoading &&
+                        <div className='slider__isLoading'><Loader color="white" scale={2} /></div>
+                    }
+                    {
+                        children && children?.length>=0 && !isLoading &&
+                        children
+                    }
+                    {
+                        slides<=0 && !isLoading && !children && children?.length<=0 &&
+                        <div className='slider__isLoading'>در حال حاضر پروژه ای برای انتخاب  وجود ندارد.</div>
                     }
                 </div>
             </div>
             <button ref={nextButton} className={`slider__nextButton`} onClick={() => {
                 if (!children) return;
                 const slide = containerRef.current.querySelector("#slide");
-                setCurrentScroll(prev => prev - slide.getBoundingClientRect().width );
+                setCurrentScroll(prev => prev - slide.getBoundingClientRect().width);
 
 
             }}>
@@ -58,7 +68,7 @@ const Slider = ({ isLoading = false, viewPortWidth = 800, slideWidth = 390, slid
             <button ref={previousButton} className={`slider__previousButton`} onClick={() => {
                 if (!children) return;
                 const slide = containerRef.current.querySelector("#slide");
-                setCurrentScroll(prev => prev + slide.getBoundingClientRect().width );
+                setCurrentScroll(prev => prev + slide.getBoundingClientRect().width);
 
 
             }}>

@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
     useEffect(()=>{
      if(!token)
      {
-       navigate("/login");
+       navigate("/");
      }
     },[token])
     return (

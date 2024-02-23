@@ -49,7 +49,7 @@ function Home() {
       <HomeVideo onStartButtonClick={handleStartButtonClick}/>
       <section className="home__backgroundGreen">
         <HomeInfo info={info} />
-        <HomeProjects isLoading={isLoading} projects={projects} onStartButtonClick={handleStartButtonClick} />
+        <HomeProjects isLoading={isLoading} projects={projects.filter(p=>!p.taken)} onStartButtonClick={handleStartButtonClick} />
         <HomeAbout />
       </section>
       <HomeFAQ />

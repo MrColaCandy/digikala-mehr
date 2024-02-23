@@ -2,35 +2,23 @@ import usePersian from "@components/hooks/usePersian";
 import "./style.css"
 import {useNavigate} from "react-router-dom"
 import { useEffect, useState } from "react";
-import {useAuth} from "@components/hooks/useAuth"
 function ProfileProject({ project }) {
-    const{ getHistory}=useAuth()
+    
     const { convert, addCommas } = usePersian()
     const navigate =useNavigate();
     function handleEditClick()
     {
         navigate("/edit-plan");
     }
-    const [history,setHistory]=useState(null);
+
     const [age,setAge]=useState(0);
     useEffect(()=>{
-     if(!history)return;
-     const diff= monthDiff(new Date(history.date),new Date(Date.now()));
+     if(!project)return;
+     const diff= monthDiff(new Date(project.date),new Date(Date.now()));
      setAge(diff);
 
-    },[history])
-    useEffect(()=>{
-        async function getHistoryByProjectId()
-        {
-             try {
-                const his=await getHistory(project.id);
-                setHistory(his)
-             } catch (error) {
-                console.log(error.message);
-             }
-        } 
-        getHistoryByProjectId()
-    },[])
+    },[project])
+ 
     return (
         <div className="profileProject">
             <div className="profileProject__wrapper">
@@ -43,7 +31,7 @@ function ProfileProject({ project }) {
                 </div>
                 <div className="profileProject__edit">
                     <p className="profileProject__price" >ماهیانه
-                        <span>{history ? convert(addCommas(history?.price)) : 0}</span>
+                        <span>{project ? convert(addCommas(project?.price)) : 0}</span>
                         تومان
                     </p>
                     <div onClick={handleEditClick} className="profileProject__editButtons">
@@ -63,7 +51,7 @@ function ProfileProject({ project }) {
                         </div>
 
                         <div className="profileProject__finance">
-                            <span className="profileProject__financeTextBold">{history? convert(addCommas(history.price * age)):"0"} ریال</span>
+                            <span className="profileProject__financeTextBold">{project? convert(addCommas(project.price * age)):"0"} ریال</span>
                             <span className="profileProject__financeText">مبلغی که تاکنون شریک شدید</span>
                         </div>
                     </div>

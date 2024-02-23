@@ -44,7 +44,7 @@ function Profile() {
       <p className="profile__sliderTitle">اینجا می‌تونی از بین پروژه‌های مختلف یکیو برای شروع انتخاب کنی</p>
       <Slider isLoading={isLoading} slideWidth={390} slideHeight={450} viewPortWidth={1280} gap={40}>
         {
-          projects?.map((project) => {
+          projects?.filter(p=>!p.taken)?.map((project) => {
             return <Card
               key={project.id}
               project={project}
