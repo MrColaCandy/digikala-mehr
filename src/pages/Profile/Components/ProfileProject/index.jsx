@@ -3,6 +3,7 @@ import "./style.css"
 import {useNavigate} from "react-router-dom"
 import { useEffect, useState } from "react";
 import {useAuth} from "@components/hooks/useAuth"
+import { BASE_URL } from "../../../../configs/BASE_URL";
 function ProfileProject({ project }) {
     
     const {userProjects}=useAuth();
@@ -26,7 +27,7 @@ function ProfileProject({ project }) {
         <div className="profileProject">
             <div className="profileProject__wrapper">
                 <div className="profileProject__info">
-                    <img src={`http://127.0.0.1:8000/${project?.institute?.logo}`} className="profileProject__infoLogo" alt="employer-logo" />
+                    <img src={`${BASE_URL}${project?.institute?.logo}`} className="profileProject__infoLogo" alt="employer-logo" />
                     <div className="profileProject__infoText">
                         <span className="profileProject__infoTitle">{project?.topic}</span>
                         <span className="profileProject__infoEmployer">{project?.institute?.name}</span>

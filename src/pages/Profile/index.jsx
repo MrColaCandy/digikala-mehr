@@ -33,16 +33,15 @@ function Profile() {
       <HorizontalLine space={16} width={1194} />
       <ProfileActiveProjects />
       {
-        userProjects?.length > 0 &&
+        userProjects?.filter(p=>p.state==="next").length > 0 &&
         <ProfileMessage data={userData} />
       }
       {
         userProjects?.length > 0 &&
         <ProfileHistory data={userData} />
       }
-
       {
-        userProjects?.length === 0 &&
+        userProjects?.filter(p=>p.state==="next")?.length === 0 &&
         <>
           <p className="profile__sliderTitle">اینجا می‌تونی از بین پروژه‌های مختلف یکیو برای شروع انتخاب کنی</p>
           <Slider isLoading={isLoading} slideWidth={390} slideHeight={450} viewPortWidth={1280} gap={40}>

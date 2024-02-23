@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 import { serialize } from "cookie";
 import roshanLogo from "@assets/decorations/roshan-logo.png"
+import { BASE_URL } from "../../../../configs/BASE_URL";
 const EditPlanUserProject = ({ index, project, selected, setSelected }) => {
     const { convert, addCommas } = usePersian();
 
@@ -25,7 +26,7 @@ const EditPlanUserProject = ({ index, project, selected, setSelected }) => {
         <div data-history={project?.history_id} onClick={handleProjectClick} className={`editPlanProject${selected?.id == project?.id ? "--selected" : ""}`}>
             <div className="editPlanProject__header">
 
-                <img src={`http://127.0.0.1:8000/${project?.institute?.logo}` || roshanLogo } className="editPlanProject__employerLogo" />
+                <img src={`${BASE_URL}${project?.institute?.logo}` || roshanLogo } className="editPlanProject__employerLogo" />
                 <div className="editPlanProject__col">
                     <div className="editPlanProject__employerName">{project?.institute?.name || ". . ."}</div>
                     <div className="editPlanProject__projectTitle">{project?.topic}</div>

@@ -10,7 +10,6 @@ const Slider = ({ isLoading = false, viewPortWidth = 800, slideWidth = 390, slid
     const nextButton = useRef(null);
     const [currentScroll, setCurrentScroll] = useState(0);
     const [space, setSpace] = useState(gap);
-    const [slides,setSlides]=useState([]);
     useEffect(() => {
         if(!containerRef)return;
         containerRef.current.scrollTo(currentScroll, 0)
@@ -31,12 +30,10 @@ const Slider = ({ isLoading = false, viewPortWidth = 800, slideWidth = 390, slid
             }
         })
         observer.observe(document.body);
-    }, []);
-    useEffect(() => {
-        if (!children) return;
-        if (!containerRef.current) return;
-        handleButtonsVisibility(containerRef, space, nextButton, previousButton);
-        setSlides([...containerRef.current.querySelectorAll("#slide")].length)
+
+        containerRef.current.addEventListener("wheel",()=>{
+            return false
+        })
         if(children.length<=3)
         {
             containerRef.current.style.justifyContent="center"
@@ -45,6 +42,11 @@ const Slider = ({ isLoading = false, viewPortWidth = 800, slideWidth = 390, slid
         {
             containerRef.current.style.justifyContent="flex-start"
         }
+    }, []);
+    useEffect(() => {
+        if (!children) return;
+        if (!containerRef.current) return;
+        handleButtonsVisibility(containerRef, space, nextButton, previousButton);
     }, [children])
     return (
         <div className='slider' style={{ "--view-port-width": `${viewPortWidth}px`, "--slides-gap": `${space}px`, "--scroll-behavior": `${scrollBehavior}`, "--slide-height": `${slideHeight}px`, "--slide-width": `${slideWidth}px` }} >
@@ -59,7 +61,7 @@ const Slider = ({ isLoading = false, viewPortWidth = 800, slideWidth = 390, slid
                         children
                     }
                     {
-                        slides<=0 && !isLoading && !children && children?.length<=0 &&
+                        !isLoading && !children && children?.length<=0 &&
                         <div className='slider__isLoading'>در حال حاضر پروژه ای برای انتخاب  وجود ندارد.</div>
                     }
                 </div>

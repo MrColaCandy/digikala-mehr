@@ -21,7 +21,7 @@
    justify-content: flex-start;
    align-items: center;
 }
-.editPlanProject--selected {
+.editPlanProject:hover {
     width: 95vw;
     max-width: 1280px;
     display: flex;
@@ -68,7 +68,7 @@
 
 
 }
-.editPlanProject__price--selected {
+.editPlanProject__price:hover {
     height: 40px;
     border-radius: 8px;
     background-color:white;

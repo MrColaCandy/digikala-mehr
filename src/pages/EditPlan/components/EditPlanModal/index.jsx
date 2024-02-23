@@ -5,6 +5,7 @@ import { requestCancelProject, requestUpdateProject,requestCancelProjectConfirm 
 import { useState } from "react";
 import {useNavigate} from "react-router-dom"
 import { useAuth } from "@components/hooks/useAuth";
+import { BASE_URL } from "../../../../configs/BASE_URL";
 const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstitute, title, variant = "change" }) => {
     const [isLoading, setIsLoading] = useState(false);
     const navigate=useNavigate();
@@ -61,7 +62,7 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
                 <div className="editPlanModal__wrapper">
                     <div className="editPlanModal__textGreen">پروژه فعلی</div>
                     <div className="editPlanModal__row">
-                        <img src={`http://127.0.0.1:8000/${selected?.institute?.logo}`} className="editPlanModal__Logo" />
+                        <img src={`${BASE_URL}${selected?.institute?.logo}`} className="editPlanModal__Logo" />
                         <div className="editPlanModal__col">
                             <div className="editPlanModal__ProjectTitle">{selected?.topic }</div>
                             <div className="editPlanModal__ProjectEmployer">{selected?.institute?.name}</div>
@@ -73,7 +74,7 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
                     <div className="editPlanModal__wrapper">
                         <div className="editPlanModal__textGreen">پروژه جایگزین</div>
                         <div className="editPlanModal__row">
-                            <img src={`http://127.0.0.1:8000/${substitute?.institute?.logo}`} className="editPlanModal__Logo" />
+                            <img src={`${BASE_URL}${substitute?.institute?.logo}`} className="editPlanModal__Logo" />
                             <div className="editPlanModal__col">
                                 <div className="editPlanModal__ProjectTitle">{substitute?.topic}</div>
                                 <div className="editPlanModal__ProjectEmployer">{substitute?.institute?.name }</div>

@@ -1,6 +1,7 @@
 import axios from "axios";
+import { BASE_URL } from "@configs/BASE_URL";
 const AxiosHttp = axios.create({
-    baseURL: 'http://127.0.0.1:8000',
+    baseURL: BASE_URL,
     timeout: 5000,
     timeoutErrorMessage:"لطفا اتصال اینترنت خود را برسی کنید."
 });
