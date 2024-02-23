@@ -4,7 +4,7 @@ import "./style.css"
 const Question = ({ questionText,answerText }) => {
     const [showAnswer, setShowAnswer] = useState(false);
 
-    function handleQuestionIconClick() {
+    function handleCloseClick() {
         setShowAnswer(!showAnswer);
 
     }
@@ -12,11 +12,11 @@ const Question = ({ questionText,answerText }) => {
     return (
         <>
             <div className={`question--${showAnswer ? "answer" : "noAnswer"}`}>
-                    <div onClick={handleQuestionIconClick}  className="question__text">
+                    <div onClick={handleCloseClick}  className="question__text">
                         {questionText}
                         <FaChevronDown  className="question__icon" />
                     </div>
-                    <div  className={`question__answer--${showAnswer ? "show" : "hide"}`}>
+                    <div onClick={handleCloseClick}  className={`question__answer--${showAnswer ? "show" : "hide"}`}>
                        {answerText}
                     </div>
             </div>

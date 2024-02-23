@@ -37,6 +37,10 @@ const Slider = ({ isLoading = false, viewPortWidth = 800, slideWidth = 390, slid
         if (!containerRef.current) return;
         handleButtonsVisibility(containerRef, space, nextButton, previousButton);
         setSlides([...containerRef.current.querySelectorAll("#slide")].length)
+        if(containerRef.current.clientWidth <= viewPortWidth)
+        {
+            containerRef.current.style.justifyContent="center"
+        }
     }, [children])
     return (
         <div className='slider' style={{ "--view-port-width": `${viewPortWidth}px`, "--slides-gap": `${space}px`, "--scroll-behavior": `${scrollBehavior}`, "--slide-height": `${slideHeight}px`, "--slide-width": `${slideWidth}px` }} >
