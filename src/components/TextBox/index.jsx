@@ -46,7 +46,7 @@ function TextBox({ className = "", title, text = null, maxLines = 3, lineLength 
                 }
                 {
                     variant === 1 &&
-                    <Button className="textBox_button" text={showFullText ? "بستن" : "بیشتر بدانید"} onClick={() => setShowFullText(!showFullText)} />
+                    <Button width={375} className="textBox_button" text={showFullText ? "بستن" : "بیشتر بدانید"} onClick={() => setShowFullText(!showFullText)} />
                 }
             </div>
         </>
