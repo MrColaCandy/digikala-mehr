@@ -111,6 +111,6 @@
     .homeFAQ__questionText {
         width: 99vw;
         max-width: 294px;
-        font-size: var(--font-size-small);
+       
     }
 }

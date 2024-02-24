@@ -17,12 +17,11 @@ function LoginPhoneNumberForm({ onSubmit, validate, phone, onChange, error, isLo
                 }} type="tel" className={`login__inputController${error ? "--error" : ""}`} />
                 {error && <p className="login__error">{error}</p>}
             </div>
-            <p className='login__paragraph'></p>
             <Button color={"#00B189"} width={332} isLoading={isLoading} text={"ورود"} variant={"filled"} />
 
 
 
-            <p className="login__paragraph">ورود شما به معنای پذیرش <span className="login__paragraphBlue">
+            <p className="login__paragraphTextCenter">ورود شما به معنای پذیرش <span className="login__paragraphBlue">
                 شرایط دیجی‌کالا</span>و <span className="login__paragraphBlue">قوانین حریم خصوصی</span> است</p>
 
         </form>

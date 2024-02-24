@@ -12,10 +12,11 @@
 }
 
 .login__title {
-    font-size: var(--font-size-large);
+    font-size: var(--font-size-normal);
     font-weight: 700;
     line-height: 50px;
-    height:50px;
+    height: auto;
+    min-height:50px;
     color: var(--color-darkBlue);
     padding: 0 var(--space-4);
 }
@@ -67,7 +68,7 @@
 .login__form {
     display: flex;
     direction: rtl;
-    width: 100%;
+    width: 96%;
     max-width: 400px;
     height: 430px;
     flex-direction: column;
@@ -75,17 +76,27 @@
     justify-content: center;
     border-radius: var(--borderRadius-8);
     border: 1px solid var(--color-border);
-    gap: var(--space-8);
+    gap: var(--space-10);
+    padding: 0 var(--space-8);
 }
 
 .login__paragraph {
     font-size: var(--font-size-tiny);
     font-weight: 400;
-    padding: 0 var(--space-4);
     color: var(--color-loginSignUpText);
     margin:  var(--space-8) 0;
     width: 100%;
-    max-width: 332px;
+    max-width: 329px;
+    text-align: right;
+  
+}
+.login__paragraphTextCenter {
+    font-size: var(--font-size-tiny);
+    font-weight: 400;
+    color: var(--color-loginSignUpText);
+    margin:  var(--space-8) 0;
+    width: 100%;
+    text-align: center;
   
 }
 .login__error{
@@ -104,7 +115,10 @@
     max-width: 332px;
     display: flex;
     flex-direction: column;
-    height: 123px;
+    justify-content: flex-end;
+    align-items: flex-start;
+    height: auto;
+    min-height: 123px;
 }
 
 .login__input {

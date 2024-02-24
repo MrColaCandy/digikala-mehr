@@ -1,6 +1,6 @@
 .historyList {
     width: 100%;
-    width: 1248px;
+    max-width: 1280px;
     background: var(--color-white);
     display: flex;
     flex-direction: column;
@@ -92,7 +92,7 @@
 
 .allPaymentsHeader__dateTitle,
 .allPaymentsHeader__statusTitle {
-    width: 132px;
+    max-width: 132px;
 }
 
 .allPaymentsHeader__projectTitle {

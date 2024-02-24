@@ -4,20 +4,22 @@ import LoginPhoneNumberForm from "./LoginPhoneNumberForm";
 import LoginOTPCodeForm from "./LoginOTPCodeForm";
 import LoginError from "./LoginError";
 import { useAuth } from "@components/hooks/useAuth"
+import { useProject } from "@components/hooks/useProject"
 import useCountdown from './useCountdown';
 import { parse } from 'cookie';
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { requestUser } from "../../components/requests";
 function LoginColleagues() {
   const [phone, setPhone] = useState("");
   const [code, setCode] = useState(null);
   const [registrationError, setRegistrationError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { getOTPCode,validateOTPCode } = useAuth()
+  const { getOTPCode, validateOTPCode } = useAuth()
+  const { updateUserData } = useProject();
   const [error, setError] = useState(null)
   const { minutes, seconds, resetCountdown } = useCountdown(90, handleCountdownOverCallback);
-  const navigate =useNavigate()
-  function validate(value,regex) {
+  const navigate = useNavigate()
+  function validate(value, regex) {
 
     if (value === "" || !value) {
       setError("لطفا این قسمت را خالی نگذارید.")
@@ -48,8 +50,7 @@ function LoginColleagues() {
       if (error.message === "404") {
         setRegistrationError(true);
       }
-      if(error.message=="Network Error")
-      {
+      if (error.message == "Network Error") {
         setError("لطفا اتصال به شبکه را برسی کنید.")
         return;
       }
@@ -69,7 +70,7 @@ function LoginColleagues() {
   async function handleCountdownOverCallback() {
     try {
       resetCountdown();
-      const  otp  = await getOTPCode(phone);
+      const otp = await getOTPCode(phone);
       setCode(otp);
     } catch (error) {
       setError(error.message);
@@ -81,18 +82,18 @@ function LoginColleagues() {
 
     setIsLoading(true);
     try {
-      const token= await validateOTPCode({ otp: code });
-      const user=await requestUser(token);
-      const hasProject=user?.data?.help_history.filter(h=>h.state!=="cancel")?.length >0;
-      if(hasProject)
-      {
+      const token = await validateOTPCode({ otp: code });
+      await updateUserData(token);
+      const user = await requestUser(token);
+      const hasProject = user?.data?.help_history.filter(h => h.state !== "cancel")?.length > 0;
+
+      if (hasProject) {
         navigate("/profile");
       }
-      else
-      {
+      else {
         navigate(parse(document.cookie).nextPage || "/");
       }
-      
+
       setError(null);
     } catch (error) {
       console.log("Something went wrong! error: " + error.message);
@@ -105,39 +106,39 @@ function LoginColleagues() {
   }
   return (
     <article className="login">
-      {!code && !registrationError && (
-        <LoginPhoneNumberForm
-          onSubmit={handleLoginPhoneSubmit}
-          validate={validate}
-          regex={/^([0|+[0-9]{1,5})?([7-9][0-9]{9})$/}
-          phone={phone}
-          onChange={handlePhoneInputChange}
-          error={error}
-          isLoading={isLoading}
-        />
-      )}
-      {code && !registrationError &&
-        <LoginOTPCodeForm
-          phone={phone}
-          code={code}
-          onChange={handleCodeInputChange}
-          onSubmit={handleConfirmSubmit}
-          error={error}
-          seconds={seconds}
-          minutes={minutes}
-          isLoading={isLoading}
-          regex={/^[0-9]*$/}
-          validate={validate}
+        {!code && !registrationError && (
+          <LoginPhoneNumberForm
+            onSubmit={handleLoginPhoneSubmit}
+            validate={validate}
+            regex={/^([0|+[0-9]{1,5})?([7-9][0-9]{9})$/}
+            phone={phone}
+            onChange={handlePhoneInputChange}
+            error={error}
+            isLoading={isLoading}
+          />
+        )}
+        {code && !registrationError &&
+          <LoginOTPCodeForm
+            phone={phone}
+            code={code}
+            onChange={handleCodeInputChange}
+            onSubmit={handleConfirmSubmit}
+            error={error}
+            seconds={seconds}
+            minutes={minutes}
+            isLoading={isLoading}
+            regex={/^[0-9]*$/}
+            validate={validate}
 
-        />
-      }
-      {registrationError && (
-        <LoginError
-          phone={phone}
-          setCode={setCode}
-          setRegistrationError={setRegistrationError}
-        />
-      )}
+          />
+        }
+        {registrationError && (
+          <LoginError
+            phone={phone}
+            setCode={setCode}
+            setRegistrationError={setRegistrationError}
+          />
+        )}
     </article>
   );
 }

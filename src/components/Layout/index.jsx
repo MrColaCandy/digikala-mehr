@@ -1,17 +1,26 @@
 import Header from "@components/Header"
 import Container from "@components/Container"
-import {useNavigate} from "react-router-dom"
-import { useAuth } from "@components/hooks/useAuth"
 import { useEffect } from "react"
+import { useProject } from "../hooks/useProject"
+import { useAuth } from "../hooks/useAuth"
+import { useNavigate } from "react-router-dom"
 const Layout = ({ children }) => {
-    const {token}=useAuth();
-    const navigate=useNavigate();
-    useEffect(()=>{
-     if(!token)
-     {
-       navigate("/");
-     }
-    },[token])
+    const { updateUserData } = useProject()
+    const { token, logout, setIsLoggedIn } = useAuth();
+    const navigate = useNavigate()
+    useEffect(() => {
+        async function getUser() {
+            try {
+                await updateUserData(token);
+                setIsLoggedIn(true)
+            } catch (error) {
+                logout();
+                navigate("/");
+            }
+        }
+        getUser();
+    }, [])
+  
     return (
         <>
             <Header />

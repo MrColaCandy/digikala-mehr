@@ -123,10 +123,11 @@
  
     height: 24px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: var(--space-12);
-    min-width: 100px;
+    max-width: 141px;
+    width: 100%;
 }
 
 
@@ -187,15 +188,21 @@
 
 @media screen and (max-width: 390px) {
     .homeVideo__startPlanItems
-    {
-        gap: var(--space-12);
+    {   
+        justify-content: flex-start;
+        gap: var(--space-16);
+        padding-right: var(--space-32);
     }
     .homeVideo__header,
     .homeVideo__title,
     .homeVideo__text{
-        font-size: var(--font-size-large);
+        font-size: var(--font-size-normal);
+        text-align: right;
     }
-    
    
+   .homeProjects__description
+   {
+    font-size: var(--font-size-normal);
+   }
     
 }

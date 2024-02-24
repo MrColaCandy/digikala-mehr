@@ -22,7 +22,6 @@ function LoginOTPCodeForm({ onSubmit, phone, error, validate, code, seconds, min
             </div>
             <p className='login__paragraph login__countDown'>{convert(minutes)}{minutes===0?"":":"}{convert(seconds)} مانده تا دریافت مجدد کد</p>
             <Button variant='filled' width={332} text={"تایید"} isLoading={isLoading} />
-            <p className='login__paragraph'></p>
         </form>
     );
 }

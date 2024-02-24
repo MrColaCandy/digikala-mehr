@@ -2,7 +2,7 @@ import "./style.css"
 
 const EditPlanUserProjects = ({ children }) => {
   return (
-    <div className="editPlanProjects">
+    <div className="editPlanUserProjects">
       {
         children
       }

@@ -3,13 +3,12 @@ import FillInside_digiMehr_logo_i from "@assets/decorations/FillInside_digiMehr_
 import Digikala_Mehr_Branding from "@assets/decorations/Digikala_Mehr_Branding.svg";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../hooks/useAuth";
+import { useAuth } from "@components/hooks/useAuth";
 import DropDown from "@components/DropDown";
-import Loader from "../Loader";
 import { useEffect, useState } from "react";
 
 function Header() {
-  const { isLoggedIn, isLoading } = useAuth();
+  const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
   function handleSignInButtonClick() {
     navigate("/login");
@@ -17,7 +16,6 @@ function Header() {
 
   function handleLogoClick() {
     navigate("/")
-
   }
   const [stick, setStick] = useState(false);
   useEffect(() => {
@@ -57,17 +55,8 @@ function Header() {
           {
             !isLoggedIn &&
             <button onClick={handleSignInButtonClick} className="signInProfileBtn">
-              {
-                isLoading &&
-                <Loader scale={0.3}/>
-              }
-              {
-                !isLoading &&
-                <>
-                  <BsBoxArrowInLeft className="signInProfileBtn__signInIcon" />
-                  <span className="signInProfileBtn__text">پروفایل I ثبت نام</span>
-                </>
-              }
+              <BsBoxArrowInLeft className="signInProfileBtn__signInIcon" />
+              <span className="signInProfileBtn__text">پروفایل I ثبت نام</span>
             </button>
           }
         </div>

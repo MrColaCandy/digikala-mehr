@@ -1,4 +1,4 @@
-.editPlanProject {
+.editPlanUserProject {
     width: 95vw;
     max-width: 1280px;
     display: flex;
@@ -12,7 +12,7 @@
     padding: var(--space-8);
     
 }
-.editPlanProject__editPrice
+.editPlanUserProject__editPrice
 {
    max-width: 300px;
    font-size: var(--font-size-small);
@@ -21,7 +21,7 @@
    justify-content: flex-start;
    align-items: center;
 }
-.editPlanProject:hover {
+.editPlanUserProject {
     width: 95vw;
     max-width: 1280px;
     display: flex;
@@ -31,13 +31,12 @@
     height: auto;
     border: 1px solid var(--color-border);
     border-radius: 8px;
-    background-color: #f2fbf3;
     margin-bottom: var(--space-10);
     padding: var(--space-8);
     
 
 }
-.editPlanProject__header {
+.editPlanUserProject__header {
     width: 95vw;
     max-width: 1280px;
     display: flex;
@@ -45,54 +44,36 @@
     align-items: center;
     height: auto;
     flex-wrap: wrap;
+    gap: var(--space-10);
 
 
 }
 
 
 
-.editPlanProject__price {
+.editPlanUserProject__price {
     height: 40px;
-    border-radius: 8px;
-    background-color: #f2fbf3;
+    border-radius: var(--space-8);
+    background-color:#F3FBF3;
     text-align: right;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    padding: var(--space-8) var(--space-16);
-    font-size: var(--font-size-small);
-    color: var(--color-textLight);
-    margin: var(--space-8);
-    margin-bottom: var(--space-16);
-    
-
-
-}
-.editPlanProject__price:hover {
-    height: 40px;
-    border-radius: 8px;
-    background-color:white;
-    text-align: right;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
     padding: var(--space-8) var(--space-16);
     font-size: var(--font-size-small);
     color: var(--color-textDark);
     margin: var(--space-8);
     margin-bottom: var(--space-16);
-    
-
 }
 
-.editPlanProject__employerLogo {
+.editPlanUserProject__employerLogo {
     width: 80px;
     height: 80px;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 50%;
 }
 
-.editPlanProject__row {
+.editPlanUserProject__row {
     display: flex;
     gap: var(--space-8);
     flex-wrap: wrap;
@@ -100,7 +81,7 @@
     height: auto;
 }
 
-.editPlanProject__col {
+.editPlanUserProject__col {
     display: flex;
     gap: var(--space-8);
     flex-direction: column;
@@ -109,19 +90,19 @@
     flex-grow: 1;
 }
 
-.editPlanProject__employerName {
+.editPlanUserProject__employerName {
     color: var(--color-textLight);
     font-weight: 400;
     font-size: var(--font-size-small);
 }
 
-.editPlanProject__projectTitle {
+.editPlanUserProject__projectTitle {
     color: var(--color-textDark);
     font-weight: 500;
     font-size: var(--font-size-normal);
 }
 
-.editPlanProject__text {
+.editPlanUserProject__text {
     color: var(--color-textLight);
     font-weight: 400;
     font-size: var(--font-size-small);
@@ -132,21 +113,22 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     line-height: 1.6;
+    line-height: 32px;
 
 }
 
-.editPlanProject__description {
+.editPlanUserProject__description {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
+    align-items: flex-start;
     max-width: 1100px;
     text-align: right;
    
 
 }
 
-.editPlanProject__textGreen {
+.editPlanUserProject__textGreen {
     color: var(--color-primary);
     font-weight: 500;
     font-size: var(--font-size-normal);

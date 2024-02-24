@@ -4,12 +4,13 @@ import Button from "@components/Button"
 import ChoosePriceSuggestions from "../ChoosePriceSuggestions";
 import ChoosePriceFooter from "../ChoosePriceFooter"
 import usePersian from "@components/hooks/usePersian";
+import { useProject } from "@components/hooks/useProject";
 import { useAuth } from "@components/hooks/useAuth";
-import { requestAddProject } from "@components/requests";
 import {useNavigate} from "react-router-dom"
 import { parse, serialize } from "cookie";
 const ChoosePriceForm = () => {
-    const {token,updateUserData}=useAuth();
+    const {updateUserData,addProject}=useProject();
+    const {token}=useAuth();
     const navigate=useNavigate();
     const [isLoading,setIsLoading]=useState(false)
     const [value, setValue] = useState();
@@ -28,15 +29,19 @@ const ChoosePriceForm = () => {
             return;
         }
         setIsLoading(true)
-       
+        const id=parse(document.cookie).projectId;
+        if(!id || id=="")
+        {
+           navigate("/")
+           return;
+        }
         try {
-        
-            await requestAddProject({projectId:parse(document.cookie).projectId,price:value,token:token})
+            await addProject({id:id,price:value})
             await updateUserData(token);
-            document.cookie=serialize("newProject",true);
+            document.cookie=serialize("newProject","create");
             navigate("/profile")
         } catch (error) {
-            setError(error.message)
+            setError("Failed to add project. com:ChoosePriceForm. id: "+id+". error: "+error.message)
         }
         finally{
             setIsLoading(false)

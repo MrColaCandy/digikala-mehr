@@ -46,16 +46,15 @@ function ProfileProject({ project }) {
                 </div>
             </div>
             {
-                payments >= 1 &&
+                payments > 0 &&
                 <>
                     <div className="profileProject__wrapper">
                         <div className="profileProject__finance">
-                            <span className="profileProject__financeTextBold">{payments}</span>
+                            <span className="profileProject__financeTextBold">{convert(payments)}</span>
                             <span className="profileProject__financeText">تعداد ماه‌هایی که فعال بودید</span>
                         </div>
-                        {payments}
                         <div className="profileProject__finance">
-                            <span className="profileProject__financeTextBold">{project? convert(addCommas(project.price * payments)):convert("0")} ریال</span>
+                            <span className="profileProject__financeTextBold">{project? convert(addCommas(project?.price * payments)):convert("0")} ریال</span>
                             <span className="profileProject__financeText">مبلغی که تاکنون شریک شدید</span>
                         </div>
                     </div>

@@ -6,6 +6,7 @@
     justify-content: flex-start;
     align-items: center;
     gap: var(--space-20);
+    
 }
 .profileUserAvatar__wrapper{
     display: flex;
@@ -48,4 +49,12 @@
 .profileUserAvatar__image{
     object-fit: cover;
     border-radius: 50%;
+}
+
+@media screen and (max-width: 1280px) {
+    .profileUserAvatar
+    {
+        padding: 0 var(--space-8);
+    }
+    
 }

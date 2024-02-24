@@ -3,6 +3,7 @@ import {FaRegUser, FaSortDown} from 'react-icons/fa';
 import {IoExitOutline} from "react-icons/io5";
 import {PiClipboardTextThin} from "react-icons/pi";
 import Toman from "@assets/icons/Toman.svg"
+import { useProject } from '../hooks/useProject';
 import { useAuth } from '../hooks/useAuth';
 import './style.css';
 import {useNavigate} from "react-router-dom"
@@ -12,7 +13,8 @@ import usePersian from "@components/hooks/usePersian"
 import { BASE_URL } from '../../configs/BASE_URL';
 const DropDown = () => {
     const {convert,addCommas}=usePersian()
-    const {logout, userData}=useAuth();
+    const  {userData}=useProject();
+    const  {logout}=useAuth();
     const navigate=useNavigate();
     function handleLogoutClick(){
         logout();
@@ -31,6 +33,7 @@ const DropDown = () => {
         return () => {
             document.removeEventListener("mousedown", handler)
         }
+
     }, []);
     const toggleDropdown = () => {
         setOpen(!open);
@@ -51,7 +54,7 @@ const DropDown = () => {
     function getHelpsSum()
     {
        if(!userData || !userData?.help_history || userData?.help_history<=0)return convert("0")
-       return convert(addCommas(userData?.help_history.reduce(function (acc, obj) { return acc + obj.price}, 0)));
+       return convert(addCommas(userData?.help_history.filter(h=>h.state==="success").reduce(function (acc, obj) { return acc + obj.price}, 0)));
     }
     return (
         <>

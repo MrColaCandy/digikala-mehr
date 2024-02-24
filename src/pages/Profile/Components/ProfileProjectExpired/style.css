@@ -2,7 +2,7 @@
     width: 100%;
     max-width: 1280px;
     height: auto;
-    padding: var(--padding-16);
+    padding: var(--padding-8);
     border: 1px solid var(--color-red);
     border-radius: 16px;
     background: var(--color-white);
@@ -11,6 +11,8 @@
     justify-content: space-between;
     align-items: center;
     gap: var(--space-10);
+    margin: 0 var(--space-8);
+
 }
 
 
@@ -81,34 +83,45 @@
     text-align: center;
     font-weight: 700;
     cursor: pointer;
+    border-radius: var(--space-10);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width:1280px) {
 
     .profileProjectExpired {
-        justify-content: center;
-        gap: var(--space-20);
+        justify-content: space-between;
+        column-gap: var(--space-8);
+        max-width: 99%;
+        margin: 0 var(--space-8);
     }
 
     .profileProjectExpired__info {
-        justify-content: center;
+        justify-content: flex-start;
     }
 
 }
-
 
 
 
 @media screen and (max-width: 390px) {
-
+    .profileProjectExpired__infoLogo {
+      display: none;
+    }
     .profileProjectExpired {
         border-radius: 16px;
-        border: 1px solid var(--color-border);
         justify-content: flex-start;
+        max-width: 99%;
+        margin: 0 var(--space-8);
+        
     }
 
     .profileProjectExpired__info {
         justify-content: flex-start;
+        width: 100%;
+    }
+    .profileProjectExpired__infoText {
+        justify-content: flex-start;
+        width: 100%;
     }
 
     .profileProjectExpired__box {

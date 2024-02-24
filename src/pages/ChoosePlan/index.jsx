@@ -6,23 +6,20 @@ import Card from "@components/Card"
 import Button from "@components/Button"
 import { useNavigate } from "react-router-dom"
 import { serialize } from "cookie"
-import { useAuth } from "@components/hooks/useAuth"
 import { useEffect } from "react"
-
+import { useProject } from "@components/hooks/useProject"
 
 const ChoosePlan = () => {
-
-
-  const{projects,isLoading,userProjects}=useAuth();
+  const { projects, userProjects } = useProject();
   const navigate = useNavigate();
 
- useEffect(()=>{
-  if(!userProjects)return;
-  if(userProjects.length>0)
-  {
-    navigate("/");
-  }
- },[userProjects])
+  useEffect(() => {
+    if (!userProjects) return;
+    if (userProjects.length > 0) {
+      navigate("/");
+    }
+  }, [userProjects])
+
   async function handleCardButtonClick(project) {
     document.cookie = serialize("projectId", JSON.stringify(project.id));
     navigate("/choose-price");
@@ -31,14 +28,14 @@ const ChoosePlan = () => {
   return (
     <Layout>
       <ChoosePlaneHeader />
-      <Slider isLoading={isLoading} slideHeight={450} slideWidth={360} viewPortWidth={360 * 2.5} gap={40} >
+      <Slider  slideHeight={420} slideWidth={360} viewPortWidth={390 * 2.5} gap={40} >
         {
-          projects?.filter(p=>!p.taken)?.map((project) => {
+          projects?.filter(p => !p.taken)?.map((project) => {
             return <Card
               key={project.id}
               project={project}
               cardButton={
-                <Button isLoading={isLoading} text={"انتخاب کنید"} onClick={() => {
+                <Button width={350}  text={"انتخاب کنید"} onClick={() => {
                   handleCardButtonClick(project)
                 }} />
               }

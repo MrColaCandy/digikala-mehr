@@ -171,7 +171,9 @@ html,body,#root
   width: 100%;
 }
 
-
+span{
+  padding: 0 4px;
+}
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 

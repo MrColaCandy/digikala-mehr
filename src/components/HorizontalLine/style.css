@@ -1,6 +1,0 @@
-.horizontalLine {
-    width: 100%;
-    height: 1px;
-    background: var(--color-border);
-    margin: var(--space-20);
-}

@@ -1,9 +1,8 @@
-import { useState } from "react";
 import "./style.css"
 import usePersian from "@components/hooks/usePersian";
 
 const ChoosePriceSuggestions = ({value,setValue}) => {
-    const [suggestions] = useState([100000,200000,300000,500000]);
+    const suggestions=[100000,200000,300000,500000];
     const {convert,addCommas}=usePersian()
     const handleClick = (suggestion) => {
         setValue(suggestion);
@@ -11,21 +10,17 @@ const ChoosePriceSuggestions = ({value,setValue}) => {
 
     const renderSuggestions = () => {
         return suggestions.map((suggestionValue) => {
-            const isActive = suggestionValue === value;
-            const className = isActive
-                ? `choosePrice__suggestion--active`
-                : `choosePrice__suggestion`;
 
             return (
                 <button
                     value={suggestionValue}
                     key={suggestionValue}
-                    className={className}
+                    className={suggestionValue===value?"choosePrice__suggestion--active":"choosePrice__suggestion"}
                     onClick={() => handleClick(suggestionValue)}
                     type="button"
                 >
                     {convert(addCommas(suggestionValue))}{" "}
-                    <span className={`choosePrice__suggestionCurrency${isActive?"--active":""}`}>تومان</span>
+                    <span className={`choosePrice__suggestionCurrency${suggestionValue === value?"--active":""}`}>تومان</span>
                 </button>
             );
         });

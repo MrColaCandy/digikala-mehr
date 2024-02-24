@@ -2,12 +2,12 @@ import ProfileProject from "../ProfileProject"
 import ProfileProjectExpired from "../ProfileProjectExpired"
 import ProfileNoProject from "../ProfileNoProject"
 import './style.css'
-import {useAuth} from "@components/hooks/useAuth"
+import {useProject} from "@components/hooks/useProject"
 
 
 
 function ProfileActiveProjects() {
-    const {userProjects}=useAuth();
+    const {userProjects}=useProject();
     return (
 
 
@@ -29,7 +29,7 @@ function ProfileActiveProjects() {
                 />)
             }
             {
-                   userProjects?.filter(project=>project.expiration<=project.total_months)
+                   userProjects?.filter(project=>project.expiration>=project.totalMonth)
                    ?.map(project=>
                    <ProfileProjectExpired
                    project={project}

@@ -1,25 +1,18 @@
 import { useState, useRef, useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import './style.css';
-import Loader from "@components/Loader"
 
 
-const Slider = ({ isLoading = false, viewPortWidth = 800, slideWidth = 390, slideHeight = 450, scrollBehavior = "smooth", children = null, gap }) => {
+const Slider = ({ viewPortWidth = 800, slideWidth = 390, slideHeight = 450, scrollBehavior = "smooth", children = null, gap }) => {
     const containerRef = useRef(null);
     const previousButton = useRef(null);
     const nextButton = useRef(null);
-    const [currentScroll, setCurrentScroll] = useState(0);
     const [space, setSpace] = useState(gap);
-    useEffect(() => {
-        if(!containerRef)return;
-        containerRef.current.scrollTo(currentScroll, 0)
-    }, [currentScroll])
     useEffect(() => {
         if (children === null) return;
         if (!containerRef.current) return;
         containerRef.current.addEventListener("scroll", () => {
             handleButtonsVisibility(containerRef, space, nextButton, previousButton);
-
         })
         const observer = new ResizeObserver(() => {
             if (document.body.clientWidth <= 390) {
@@ -34,14 +27,6 @@ const Slider = ({ isLoading = false, viewPortWidth = 800, slideWidth = 390, slid
         containerRef.current.addEventListener("wheel",()=>{
             return false
         })
-        if(children.length<=3)
-        {
-            containerRef.current.style.justifyContent="center"
-        }
-        else
-        {
-            containerRef.current.style.justifyContent="flex-start"
-        }
     }, []);
     useEffect(() => {
         if (!children) return;
@@ -52,25 +37,16 @@ const Slider = ({ isLoading = false, viewPortWidth = 800, slideWidth = 390, slid
         <div className='slider' style={{ "--view-port-width": `${viewPortWidth}px`, "--slides-gap": `${space}px`, "--scroll-behavior": `${scrollBehavior}`, "--slide-height": `${slideHeight}px`, "--slide-width": `${slideWidth}px` }} >
             <div className={`slider__view`} >
                 <div id="slider-container" className={`slider__container`} ref={containerRef}>
-                    {
-                        isLoading &&
-                        <div className='slider__isLoading'><Loader color="white" scale={2} /></div>
-                    }
-                    {
-                        children && children?.length>=0 && !isLoading &&
-                        children
-                    }
-                    {
-                        !isLoading && !children && children?.length<=0 &&
-                        <div className='slider__isLoading'>در حال حاضر پروژه ای برای انتخاب  وجود ندارد.</div>
-                    }
+                  {
+                    children
+                  }
                 </div>
             </div>
             <button ref={nextButton} className={`slider__nextButton`} onClick={() => {
                 if (!children) return;
                 const slide = containerRef.current.querySelector("#slide");
-                setCurrentScroll(prev => prev - slide.getBoundingClientRect().width);
-
+                //setCurrentScroll(containerRef.current.scrollLeft - slide.getBoundingClientRect().width);
+                  containerRef.current.scrollTo(containerRef.current.scrollLeft-slide.getBoundingClientRect().width,0)
 
             }}>
                 <FaChevronLeft size={"20px"} />
@@ -78,7 +54,7 @@ const Slider = ({ isLoading = false, viewPortWidth = 800, slideWidth = 390, slid
             <button ref={previousButton} className={`slider__previousButton`} onClick={() => {
                 if (!children) return;
                 const slide = containerRef.current.querySelector("#slide");
-                setCurrentScroll(prev => prev + slide.getBoundingClientRect().width);
+                containerRef.current.scrollTo(containerRef.current.scrollLeft+slide.getBoundingClientRect().width,0)
 
 
             }}>

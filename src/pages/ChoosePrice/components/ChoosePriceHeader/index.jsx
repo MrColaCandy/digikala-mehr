@@ -1,10 +1,10 @@
 import "./style.css"
 import { useNavigate } from "react-router-dom"
-import { useAuth } from "@components/hooks/useAuth";
+import { useProject } from "@components/hooks/useProject";
 import { useEffect, useState } from "react";
 import { parse } from "cookie";
 const ChoosePriceHeader = () => {
-  const { getProject } = useAuth();
+  const { getProject } = useProject();
 
   const [title, setTitle] = useState("");
   const { navigate } = useNavigate()

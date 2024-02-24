@@ -1,5 +1,5 @@
 .question--noAnswer {
-    width: 99vw;
+    width: 100%;
     max-width: 800px;
     border-bottom: 1px solid;
     border-image: linear-gradient(to right, transparent, #4FAE8B, transparent) 50;
@@ -17,7 +17,7 @@
 
 }
 .question--answer {
-    width: 99vw;
+    width: 100%;
     max-width: 800px;
     border-bottom: 1px solid;
     border-image: linear-gradient(to right, transparent, #4FAE8B, transparent) 50;
@@ -81,6 +81,6 @@
     transform: translateY(0) scale(1) ;
     position: relative;
     padding: var(--space-16) 0;
-    
+    line-height: 32px;
 }
 

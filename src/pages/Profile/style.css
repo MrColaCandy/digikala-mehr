@@ -18,3 +18,9 @@
     margin-top: var(--space-32);
     margin-bottom: var(--space-16);
 }
+.profile__hr
+{
+    color: var(--color-border);
+    margin:var(--space-16) 0;
+    width: 100%;
+}

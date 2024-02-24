@@ -1,9 +1,8 @@
 import Layout from "@components/Layout";
-import { useAuth } from "@components/hooks/useAuth";
+import { useProject } from "@components/hooks/useProject";
 import Slider from "@components/Slider"
 import ProfileActiveProjects from "./Components/ProfileActiveProjects";
 import ProfileUserAvatar from "./Components/ProfileUserAvatar";
-import HorizontalLine from "../../components/HorizontalLine";
 import ProfileHistory from "./Components/ProfileHistory";
 import { useNavigate } from "react-router-dom"
 import Card from "@components/Card";
@@ -17,7 +16,8 @@ import { serialize } from "cookie";
 function Profile() {
 
   const navigate = useNavigate();
-  const { userData, userProjects, projects, isLoading } = useAuth();
+  const { userData, userProjects, projects } = useProject();
+
 
   function handleChooseProjectClick(project) {
     document.cookie = serialize("projectId", project.id);
@@ -30,12 +30,9 @@ function Profile() {
   return (
     <Layout>
       <ProfileUserAvatar data={userData} />
-      <HorizontalLine space={16} width={1194} />
+      <hr className="profile__hr"/>
       <ProfileActiveProjects />
-      {
-        userProjects?.filter(p=>p.state==="next").length > 0 &&
-        <ProfileMessage data={userData} />
-      }
+      <ProfileMessage data={userData} />
       {
         userProjects?.length > 0 &&
         <ProfileHistory data={userData} />
@@ -44,7 +41,7 @@ function Profile() {
         userProjects?.filter(p=>p.state==="next")?.length === 0 &&
         <>
           <p className="profile__sliderTitle">اینجا می‌تونی از بین پروژه‌های مختلف یکیو برای شروع انتخاب کنی</p>
-          <Slider isLoading={isLoading} slideWidth={390} slideHeight={450} viewPortWidth={1280} gap={40}>
+          <Slider slideWidth={390} slideHeight={450} viewPortWidth={1280} gap={40}>
             {
               projects?.filter(p => !p.taken)?.map((project) => {
                 return <Card

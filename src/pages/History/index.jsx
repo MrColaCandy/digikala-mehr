@@ -1,13 +1,13 @@
 import Layout from "@components/Layout";
 import HistoryList from "./components/HistoryList"
-import {useAuth} from "@components/hooks/useAuth";
+import {useProject} from "@components/hooks/useProject";
 
 
 const History = () => {
-  const {userProjects}=useAuth();
+  const {userProjects}=useProject();
   return (
     <Layout>
-      <HistoryList data={userProjects || []} itemsPerPage={4}/>
+      <HistoryList data={userProjects} itemsPerPage={5}/>
     </Layout>
   )
 }

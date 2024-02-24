@@ -1,46 +1,36 @@
-import { useEffect ,useState } from "react";
-import { fetchSuggestions } from "../../requests";
 import "./style.css"
 import usePersian from "@components/hooks/usePersian";
 
 const EditPriceSuggestions = ({value,setValue}) => {
-    const [suggestions, setSuggestions] = useState([]);
+    const suggestions=[100000,200000,300000,500000];
     const {convert,addCommas}=usePersian()
     const handleClick = (suggestion) => {
         setValue(suggestion);
     };
 
-    useEffect(() => {
-        fetchSuggestions().then(setSuggestions);
-    }, []);
-
     const renderSuggestions = () => {
         return suggestions.map((suggestionValue) => {
-            const isActive = suggestionValue === value;
-            const className = isActive
-                ? `editPrice__suggestion--active`
-                : `editPrice__suggestion`;
 
             return (
                 <button
                     value={suggestionValue}
                     key={suggestionValue}
-                    className={className}
+                    className={suggestionValue===value?"choosePrice__suggestion--active":"choosePrice__suggestion"}
                     onClick={() => handleClick(suggestionValue)}
                     type="button"
                 >
                     {convert(addCommas(suggestionValue))}{" "}
-                    <span className={`editPrice__suggestionCurrency${isActive?"--active":""}`}>تومان</span>
+                    <span className={`choosePrice__suggestionCurrency${suggestionValue === value?"--active":""}`}>تومان</span>
                 </button>
             );
         });
     };
     return (
-        <div className="editPrice__suggestionsText">
+        <div className="choosePrice__suggestionsText">
 
             یا از پیشنهاد‌های ما انتخاب کنید (بر اساس محبوب‌ترین‌ها)
 
-            <div className="editPrice__suggestions">
+            <div className="choosePrice__suggestions">
                 {renderSuggestions()}
             </div>
         </div>

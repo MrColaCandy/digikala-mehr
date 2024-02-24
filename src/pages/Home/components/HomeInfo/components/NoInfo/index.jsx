@@ -5,8 +5,8 @@ const NoInfo = () => {
     <>
       <div className="homeInfo__lastMembersWrapper">
         <p className="homeInfo__lastMembersName homeInfo__lastMembersName--noContribution">
-          <div>. . .</div>
-          <div>. . .</div>
+          <span>. . .</span>
+          <span>. . .</span>
         </p>
       </div>
     </>

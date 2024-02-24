@@ -1,7 +1,7 @@
 import Loader from "@components/Loader"
 import "./style.css"
 
-const Button = ({color="#00B189", isLoading=false,width=390,margin=0,text,onClick=()=>{},variant="outlined",className=""}) => {
+const Button = ({color="#00B189", isLoading=false,width=355,margin=0,text,onClick=()=>{},variant="outlined",className=""}) => {
     
     
     return (

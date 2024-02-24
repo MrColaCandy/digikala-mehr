@@ -6,31 +6,22 @@ import HomeInfo from "./components/HomeInfo";
 import HomeProjects from "./components/HomeProjects";
 import HomeFAQ from "./components/HomeFAQ";
 import { useNavigate } from "react-router-dom"
-import { useAuth } from "@components/hooks/useAuth"
-import "./style.css"
+import { useProject } from "@components/hooks/useProject"
 import { serialize } from "cookie";
-import { useEffect, useState } from "react";
-import { requestInfo } from "@components/requests";
+import { useAuth } from "@components/hooks/useAuth";
+
+import "./style.css"
+import { useEffect } from "react";
 function Home() {
-  const [info, setInfo] = useState(null);
-  const { isLoggedIn, projects, isLoading, userProjects } = useAuth()
+
+  const { projects, userProjects,stats } = useProject()
+  const {isLoggedIn}=useAuth();
   const navigate = useNavigate();
 
-
-  useEffect(() => {
-    async function getInfo() {
-      try {
-        const { data } = await requestInfo();
-        setInfo(data);
-      } catch (error) {
-        setInfo(null)
-        console.log(error);
-      }
-    }
-
-    getInfo();
-
-  }, [])
+useEffect(()=>{
+  console.log({stats});
+},[])
+ 
   function handleStartButtonClick() {
     const payments = userProjects?.filter(p => p.state === "next").length;
 
@@ -56,8 +47,8 @@ function Home() {
       <HomeBanner />
       <HomeVideo onStartButtonClick={handleStartButtonClick} />
       <section className="home__backgroundGreen">
-        <HomeInfo info={info} />
-        <HomeProjects isLoading={isLoading} projects={projects.filter(p => !p.taken)} onStartButtonClick={handleStartButtonClick} />
+        <HomeInfo info={stats} />
+        <HomeProjects projects={projects?.filter(p => !p.taken)} onStartButtonClick={handleStartButtonClick} />
         <HomeAbout />
       </section>
       <HomeFAQ />

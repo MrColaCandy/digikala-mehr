@@ -4,13 +4,15 @@ import Button from "@components/Button"
 import EditPriceSuggestions from "../EditPriceSuggestions";
 import EditPriceFooter from "../EditPriceFooter"
 import usePersian from "@components/hooks/usePersian";
+import { useProject } from "@components/hooks/useProject";
 import { useAuth } from "@components/hooks/useAuth";
 import { requestUpdateProject } from "@components/requests"
 import { useNavigate } from "react-router-dom"
 import { parse, serialize } from "cookie";
 
 const EditPriceForm = () => {
-    const {updateUserData,token}=useAuth()
+    const {updateUserData}=useProject()
+    const {token}=useAuth()
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false)
     const [value, setValue] = useState();
@@ -27,15 +29,15 @@ const EditPriceForm = () => {
             return;
         }
         setIsLoading(true)
+        const editing=JSON.parse(parse(document.cookie).project_editing)
         try {
-            const editing=JSON.parse(parse(document.cookie).project_editing)
             
             await requestUpdateProject({oldProject:editing.historyId,newProject:editing.projectId,price:value,token:token})
             await updateUserData(token);
-            document.cookie=serialize("newProject",true);
+            document.cookie=serialize("newProject","edit");
             navigate("/profile")
         } catch (error) {
-            setError(error.message)
+            setError("Failed to update project " +editing.historyId+ ". com:EditPriceForm. error: "+error.message)
         }
         finally{
             setIsLoading(false)

@@ -1,15 +1,18 @@
 import Button from "@components/Button"
-import "./style.css"
 import { CgArrowsExchangeV } from "react-icons/cg";
-import { requestCancelProject, requestUpdateProject,requestCancelProjectConfirm } from "@components/requests";
+import { requestUpdateProject } from "@components/requests";
 import { useState } from "react";
 import {useNavigate} from "react-router-dom"
+import { useProject } from "@components/hooks/useProject";
 import { useAuth } from "@components/hooks/useAuth";
-import { BASE_URL } from "../../../../configs/BASE_URL";
+import { BASE_URL } from "@configs/BASE_URL";
+import "./style.css"
+import { serialize } from "cookie";
 const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstitute, title, variant = "change" }) => {
     const [isLoading, setIsLoading] = useState(false);
     const navigate=useNavigate();
-    const {token,updateUserData}=useAuth()
+    const {updateUserData,cancelProject}=useProject()
+    const {token}=useAuth()
     
  
     function handleCancelClick() {
@@ -26,8 +29,10 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
                 await updateUserData(token);
                 setSelected(substitute);
                 setSubstitute(null);
+                document.cookie=serialize("newProject","edit");
+                navigate("/profile")
             } catch (error) {
-                console.log(error);
+                console.log("Failed to exchange projects. com:EditPlanModal. error: "+error.message);
             } finally {
                 setIsLoading(false);
                 setModal(null);
@@ -36,14 +41,14 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
         }
         else {
             try {
-                await requestCancelProject({token:token,project:selected});
-                await requestCancelProjectConfirm({token:token,project:selected});
+                await cancelProject(selected);
                 await updateUserData(token)
                 setSubstitute(null);
                 setSelected(null);
+                document.cookie=serialize("newProject","delete");
                 navigate("/profile");
             } catch (error) {
-                console.log(error);
+                console.log("error failed to cancel project. com:EditPlanModal. error: "+error.message);
             } finally {
                 setIsLoading(false);
                 setModal(null);

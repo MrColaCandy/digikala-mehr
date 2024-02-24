@@ -1,12 +1,12 @@
 import { createContext } from "react";
 export const authContext = createContext({
-    user: null,
+    userData: null,
     isLoggedIn:false,
     token:"",
     setIsLoggedIn:()=>{},
-    setUser: () => {},
+    setUserData: () => {},
     logout:()=>{},
-    sendOTPCode: () => {},
+    getOTPCode: () => {},
     confirmOTPCode: () => {},
   });
 
