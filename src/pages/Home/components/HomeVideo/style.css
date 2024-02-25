@@ -1,6 +1,6 @@
 .homeVideo {
     width: 99vw;
-    max-width: 1031px;
+    max-width: 1280px;
     background: var(--color-white);
     display: flex;
     flex-direction: column;
@@ -13,7 +13,7 @@
 
 .homeVideo__video {
     width: 99vw;
-    max-width: 696px;
+    max-width: 720px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -23,7 +23,7 @@
 
 .homeVideo__header {
     width: 99vw;
-    max-width: 620px;
+    max-width: 720px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -108,7 +108,7 @@
 
 .homeVideo__startPlanItems {
     width: 99vw;
-    max-width: 656px;
+    max-width: 720px;
     height: auto;
     flex-wrap: wrap;
     display: flex;
@@ -190,7 +190,7 @@
     .homeVideo__startPlanItems
     {   
         justify-content: flex-start;
-        gap: var(--space-16);
+        column-gap: var(--space-32);
         padding-right: var(--space-32);
     }
     .homeVideo__header,

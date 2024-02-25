@@ -2,9 +2,10 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: flex-end;
     align-items: center;
     gap: var(--space-48);
+
 }
 
 .homeInfo__title {
@@ -57,7 +58,7 @@
 .homeInfo__membersNumber {
     width: 99vw;
     max-width: 236px;
-    height: 92px;
+    height: auto;
     color: var(--color-white);
     font-size: var(--font-size-xhuge);
     text-align: right;
@@ -69,6 +70,7 @@
     justify-content: center;
     align-items: flex-start;
     gap: var(--space-24);
+    padding: var(--space-24) 0;
 }
 
 .homeInfo__staticMembersDescription--smallFont {
@@ -141,13 +143,22 @@
         padding: 0;
         gap: var(--space-12);
     }
-    
+    .homeInfo__membersNumber
+    {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding-bottom: var(--space-32);
+        border-bottom: 1px solid var(--color-primaryLight);
+        border-radius: 0;
+
+    }
 }
 @media screen and (max-width: 390px) {
   
     .homeInfo__title{
         font-size: var(--font-size-huge);
-        text-align: right;
+        text-align: center;
     }
     
     

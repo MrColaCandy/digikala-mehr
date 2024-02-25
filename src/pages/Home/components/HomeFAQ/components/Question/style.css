@@ -67,7 +67,6 @@
 {  
     transform: translateY(100%) scale(0.8);
     position: absolute;
-    padding: var(--space-16) 0;
 }
 .question__answer--show
 {
@@ -80,7 +79,9 @@
     transition: transform 200ms;
     transform: translateY(0) scale(1) ;
     position: relative;
-    padding: var(--space-16) 0;
+    padding:  var(--space-16) 0 ;
     line-height: 32px;
 }
+
+
 

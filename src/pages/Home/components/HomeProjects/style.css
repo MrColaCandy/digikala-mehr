@@ -140,12 +140,14 @@
         line-height: var(--lineHeight-20);
         
     }
-}
-
-@media(max-width:360px){
     .homeProjects__startProjectBtn{
         min-height: 48px;
         height: auto;
         flex-wrap: wrap;
+    }
+    .homeProjects__button
+    {
+        width: 100%;
+        max-width: 100%;
     }
 }

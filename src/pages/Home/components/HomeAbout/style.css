@@ -6,23 +6,23 @@
     background: var(--color-primaryDark);
     border-radius: var(--borderRadius-12);
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
-    gap: var(--space-40);
+
 }
 
 .homeAbout__item {
-    width: 99vw;
+    width: 100%;
     max-width: 572px;
-    height: 176px;
+    height: auto;
     padding: var(--padding-12);
     border-radius: var(--borderRadius-12);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    gap: var(--space-12);
+  
 }
 
 .homeAbout__title {
@@ -44,11 +44,10 @@
    
 
     .homeAbout__wrapper {
-        width: 99vw;
+        width: 100%;
         height: auto;
         padding: var(--padding-16);
         flex-direction: column;
-        gap: var(--space-24);
     }
 
     .homeAbout__item {
