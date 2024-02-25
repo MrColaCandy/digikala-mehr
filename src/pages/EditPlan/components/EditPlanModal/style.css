@@ -1,5 +1,4 @@
-.editPlanModal
-{
+.editPlanModal {
     position: fixed;
     top: 0;
     left: 0;
@@ -14,91 +13,146 @@
     width: 100%;
 }
 
-.editPlanModal__frame{
-    background-color: white;
-    height: auto;
-    padding: var(--space-10);
-    width: 100vw;
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0px 0px 20px 9px rgba(219,219,219,1);
+.editPlanModal__projects {
     position: relative;
-    gap: var(--space-10);
+    height: 260px;
 }
 
-.editPlanModal__title--change{
+.editPlanModal__menu {
+    background-color: white;
+    height: 450px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0px 0px 20px 9px rgba(219, 219, 219, 1);
+    position: relative;
+    border-radius: 12px;
+}
+
+.editPlanModal__title--changeProject {
     color: var(--color-textDark);
     font-weight: 500;
     font-size: var(--font-size-large);
     text-align: right;
     width: 100%;
-    padding: var(--space-16) var(--space-8);
+    padding: var(--space-16) var(--space-10);
 }
-.editPlanModal__title--remove{
+
+.editPlanModal__title--removeProject {
     color: var(--color-red);
     font-weight: 500;
     font-size: var(--font-size-large);
     text-align: right;
     width: 100%;
-    padding: var(--space-16) var(--space-8);
+    padding: var(--space-16) var(--space-10);
 }
 
 
-.editPlanModal__wrapper
-{
+.editPlanModal__project {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    width: 100%;
-    height: auto;
+    width: 95%;
     border: 1px solid var(--color-border);
     padding: var(--space-16) var(--space-8);
+    position: absolute;
+    transition: transform 200ms ease-in-out;
+    left: 50%;
+    transform: translate(-50%, calc(var(--order) * 110%));
+    height: 120px;
+
 }
-.editPlanModal__row
+.editPlanModal__project--removeProject {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 95%;
+    border: 1px solid var(--color-border);
+    padding: var(--space-16) var(--space-8);
+    position: absolute;
+    transition: opacity 800ms ease-in-out;
+    left: 50%;
+    transform:translate(-50%, calc(var(--order) * 110%)) ;
+    height: 120px;
+    opacity:calc(var(--opacity)*100%)
+
+}
+.editPlanModal__message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 95%;
+    border-radius: 12px;
+    padding: var(--space-16) var(--space-8);
+    position: absolute;
+    transition: transform 200ms ease-in-out;
+    left: 50%;
+    transform: translate(-50%, calc(1 * 150%));
+  
+    height: 100px;
+    background-color: #F2F9F6;
+
+}
+.editPlanModal__messageIcon
 {
+    width: 30px;
+    height: 30px;
+    transform: translateY(-50%);
+    color: var(--color-N700);
+
+}
+.editPlanModal__messageText{
+    text-align: right;
+    line-height: 30px;
+    width: 75%;
+    color: var(--color-N700);
+
+}
+.editPlanModal__row {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
     height: auto;
+    gap: var(--space-8);
     margin: var(--space-16) 0;
 
 }
-.editPlanModal__Logo
-{
+
+.editPlanModal__Logo {
     height: 60px;
     width: 60px;
     border-radius: 50%;
     object-fit: cover;
 }
-.editPlanModal__textGreen
-{
+
+.editPlanModal__textGreen {
     color: var(--color-primary);
     font-size: var(--font-size-small);
     margin-right: var(--space-10);
 }
-.editPlanModal__ProjectTitle
-{
+
+.editPlanModal__ProjectTitle {
     font-size: var(--font-size-normal);
     font-weight: 500;
     color: var(--color-textDark);
 }
-.editPlanModal__ProjectEmployer{
+
+.editPlanModal__ProjectEmployer {
     font-size: var(--font-size-small);
     font-weight: 400;
     color: var(--color-textLight);
 }
-.editPlanModal__col
-{
+
+.editPlanModal__col {
     display: flex;
     flex-direction: column;
     gap: var(--space-10);
 }
-.editPlanModal__buttons{
+
+.editPlanModal__buttons {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -106,11 +160,15 @@
     gap: var(--space-10);
     margin: var(--space-10);
     width: 100%;
+    margin: 0 auto;
+    margin-top: var(--space-16);
+    margin-bottom: var(--space-10);
 }
-.editPlanModal__icon{
+
+.editPlanModal__icon {
     position: absolute;
-    transform: translate(-50%,-50%);
-    top: 42%;
+    transform: translate(-50%, -50%) rotateZ(0deg);
+    top: 39%;
     left: 50%;
     width: 40px;
     height: 40px;
@@ -118,4 +176,21 @@
     border: 1px solid var(--color-border);
     border-radius: 50%;
     color: var(--color-textDark);
+    z-index: 300;
+    transition: transform 500ms ease-in-out;
+}
+
+.editPlanModal__icon--rotate {
+
+    position: absolute;
+    transform: translate(-50%, -50%) rotateZ(360deg);
+    top: 39%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    color: var(--color-textDark);
+    z-index: 300;
 }

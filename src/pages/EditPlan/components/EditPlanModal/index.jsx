@@ -2,92 +2,93 @@ import Button from "@components/Button"
 import { CgArrowsExchangeV } from "react-icons/cg";
 import { requestUpdateProject } from "@components/requests";
 import { useState } from "react";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useProject } from "@components/hooks/useProject";
 import { useAuth } from "@components/hooks/useAuth";
 import { BASE_URL } from "@configs/BASE_URL";
+import { IoMdInformationCircleOutline } from "react-icons/io";
+
 import "./style.css"
 import { serialize } from "cookie";
 const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstitute, title, variant = "change" }) => {
     const [isLoading, setIsLoading] = useState(false);
-    const navigate=useNavigate();
-    const {updateUserData,cancelProject}=useProject()
-    const {token}=useAuth()
-    
- 
+    const navigate = useNavigate();
+    const { updateUserData, cancelProject } = useProject()
+    const { token } = useAuth()
+    const [animation, setAnimation] = useState(false);
+
     function handleCancelClick() {
         if (isLoading) return;
         setSubstitute(null)
         setModal(null);
-        document.body.style.overflow="auto"
+        document.body.style.overflow = "auto"
     }
     async function handleActionClick() {
         setIsLoading(true);
+        setAnimation(true);
         if (variant === "change") {
-            try {
-                await requestUpdateProject({token:token,newProject:substitute.id,oldProject:selected.history_id,price:selected.price});
-                await updateUserData(token);
-                setSelected(substitute);
-                setSubstitute(null);
-                document.cookie=serialize("newProject","edit");
-                navigate("/profile")
-            } catch (error) {
-                console.log("Failed to exchange projects. com:EditPlanModal. error: "+error.message);
-            } finally {
-                setIsLoading(false);
-                setModal(null);
-                document.body.style.overflow="auto"
-            }
+            setTimeout(async () => {
+                await changeProjects();
+                setAnimation(false);
+            }, 800);
         }
         else {
-            try {
-                await cancelProject(selected);
-                await updateUserData(token)
-                setSubstitute(null);
-                setSelected(null);
-                document.cookie=serialize("newProject","delete");
-                navigate("/profile");
-            } catch (error) {
-                console.log("error failed to cancel project. com:EditPlanModal. error: "+error.message);
-            } finally {
-                setIsLoading(false);
-                setModal(null);
-                document.body.style.overflow="auto"
-            }
+            setTimeout(async () => {
+                await removeProject();
+                setAnimation(false);
+            }, 800);
         }
     }
     return (
-        <div className="editPlanModal">
-            <div className="editPlanModal__frame">
+        <div className="editPlanModal" >
+            <div className="editPlanModal__menu">
                 {
                     substitute &&
-                    <CgArrowsExchangeV className="editPlanModal__icon" />
+
+                    <CgArrowsExchangeV className={animation ? "editPlanModal__icon" : "editPlanModal__icon--rotate"} />
+
                 }
-                <div className={"editPlanModal__title" + "--" + variant}>{title}</div>
-                <div className="editPlanModal__wrapper">
-                    <div className="editPlanModal__textGreen">پروژه فعلی</div>
-                    <div className="editPlanModal__row">
-                        <img src={`${BASE_URL}${selected?.institute?.logo}`} className="editPlanModal__Logo" />
-                        <div className="editPlanModal__col">
-                            <div className="editPlanModal__ProjectTitle">{selected?.topic }</div>
-                            <div className="editPlanModal__ProjectEmployer">{selected?.institute?.name}</div>
-                        </div>
-                    </div>
-                </div>
-                {
-                    substitute &&
-                    <div className="editPlanModal__wrapper">
-                        <div className="editPlanModal__textGreen">پروژه جایگزین</div>
+                <div className={"editPlanModal__title" + "--" + variant + "Project"}>{title}</div>
+                <div className="editPlanModal__projects">
+                    <div className={variant==="remove"?"editPlanModal__project--removeProject":"editPlanModal__project"} style={{ "--order": animation && substitute ? 1 : 0,"--opacity":animation?0:1 }}>
+                        <div className="editPlanModal__textGreen">پروژه فعلی</div>
                         <div className="editPlanModal__row">
-                            <img src={`${BASE_URL}${substitute?.institute?.logo}`} className="editPlanModal__Logo" />
+                            <img src={`${BASE_URL}${selected?.institute?.logo}`} className="editPlanModal__Logo" />
                             <div className="editPlanModal__col">
-                                <div className="editPlanModal__ProjectTitle">{substitute?.topic}</div>
-                                <div className="editPlanModal__ProjectEmployer">{substitute?.institute?.name }</div>
+                                <div className="editPlanModal__ProjectTitle">{selected?.topic}</div>
+                                <div className="editPlanModal__ProjectEmployer">{selected?.institute?.name}</div>
                             </div>
                         </div>
-
                     </div>
-                }
+                    {
+                        substitute &&
+
+                        <div className="editPlanModal__project" style={{ "--order": animation && substitute ? 0 : 1 }}>
+                            <div className="editPlanModal__textGreen">پروژه جایگزین</div>
+                            <div className="editPlanModal__row">
+                                <img src={`${BASE_URL}${substitute?.institute?.logo}`} className="editPlanModal__Logo" />
+                                <div className="editPlanModal__col">
+                                    <div className="editPlanModal__ProjectTitle">{substitute?.topic}</div>
+                                    <div className="editPlanModal__ProjectEmployer">{substitute?.institute?.name}</div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    }
+                    {
+                        !substitute &&
+                        <div className="editPlanModal__message" style={{ "--order": 1 }}>
+                            <div className="editPlanModal__row">
+                                <IoMdInformationCircleOutline className="editPlanModal__messageIcon" />
+                                <p className="editPlanModal__messageText">
+                                    با لغو اشتراک دیگر مبلغ ماهیانه از حقوق شما کسر نمی‌شود.
+                                </p>
+                            </div>
+
+                        </div>
+                    }
+                </div>
                 <div className="editPlanModal__buttons">
                     <Button isLoading={isLoading}
                         variant={"outlined"}
@@ -107,6 +108,40 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
             </div>
         </div>
     )
+
+    async function removeProject() {
+        try {
+            await cancelProject(selected);
+            await updateUserData(token);
+            setSubstitute(null);
+            setSelected(null);
+            document.cookie = serialize("newProject", "delete");
+            navigate("/profile");
+        } catch (error) {
+            console.log("error failed to cancel project. com:EditPlanModal. error: " + error.message);
+        } finally {
+            setIsLoading(false);
+            setModal(null);
+            document.body.style.overflow = "auto";
+        }
+    }
+
+    async function changeProjects() {
+        try {
+            await requestUpdateProject({ token: token, newProject: substitute.id, oldProject: selected.history_id, price: selected.price });
+            await updateUserData(token);
+            setSelected(substitute);
+            setSubstitute(null);
+            document.cookie = serialize("newProject", "edit");
+            navigate("/profile");
+        } catch (error) {
+            console.log("Failed to exchange projects. com:EditPlanModal. error: " + error.message);
+        } finally {
+            setIsLoading(false);
+            setModal(null);
+            document.body.style.overflow = "auto";
+        }
+    }
 }
 
 export default EditPlanModal
