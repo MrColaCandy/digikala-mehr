@@ -1,5 +1,5 @@
 .profileProject {
-    width: 100%;
+    width: 99%;
     max-width: 1280px;
     display: flex;
     justify-content: space-between;
@@ -7,7 +7,7 @@
     flex-wrap: wrap;
     gap: var(--space-4);
     height: auto;
-    padding: var(--space-10);
+    padding: var(--space-4);
 
 }
 
