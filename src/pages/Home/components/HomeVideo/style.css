@@ -189,15 +189,13 @@
 @media screen and (max-width: 390px) {
     .homeVideo__startPlanItems
     {   
-        justify-content: flex-start;
-        column-gap: var(--space-32);
-        padding-right: var(--space-32);
+        justify-content: center;
     }
     .homeVideo__header,
     .homeVideo__title,
     .homeVideo__text{
         font-size: var(--font-size-normal);
-        text-align: right;
+        text-align: center;
     }
    
    .homeProjects__description

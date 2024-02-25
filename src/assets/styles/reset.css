@@ -169,6 +169,7 @@ select {
 html,body,#root
 {
   width: 100%;
+  scroll-behavior: smooth;
 }
 
 span{

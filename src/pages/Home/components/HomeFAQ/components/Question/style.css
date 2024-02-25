@@ -1,3 +1,13 @@
+.question{
+    position: relative;
+}
+.question__ref{
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 .question--noAnswer {
     width: 100%;
     max-width: 800px;
@@ -13,9 +23,11 @@
     position: relative;
     overflow-y: hidden;
     cursor: pointer;
+
     
 
 }
+
 .question--answer {
     width: 100%;
     max-width: 800px;
@@ -32,7 +44,7 @@
     position: relative;
     background-color: white;
     overflow-y: hidden;
-   
+
    
     
 
