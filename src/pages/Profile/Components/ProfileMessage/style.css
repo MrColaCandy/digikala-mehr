@@ -14,16 +14,15 @@
 }
 
 .profileMessage__title {
-    width: 96%;
-    max-width: 566px;
     color: var(--color-N700);
     font-size: var(--font-size-large);
     line-height: var(--lineHeight-32);
     font-weight: 400;
+    gap: var(--space-8);
+    height: 80px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: var(--space-8);
 }
 
 .profileMessage__text {
@@ -35,7 +34,13 @@
     font-weight: 400;
     line-height: 32px;
 }
-
+.profileMessage__icon
+{
+    color: var(--color-primary);
+    width: 30px;
+    height: 30px;
+    font-weight: lighter;
+}
 .profileMessage__textBold{
     color: var(--color-primary);
     font-weight: 700;

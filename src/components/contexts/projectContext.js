@@ -1,12 +1,15 @@
 import { createContext } from "react";
 export const projectContext = createContext({
-  userData:null,
+  getPayments:()=>{},
   updateUserData:()=>{},
-  projects:[],
-  userProjects:[],
   getProject:()=>{},
   cancelProject:()=>{},
-  stats:null
+  projects:[],
+  userProjects:[],
+  isExpired:false,
+  activeProject:null,
+  stats:null,
+  userData:null,
   });
 
 

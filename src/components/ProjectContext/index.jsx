@@ -8,6 +8,7 @@ import {
     requestCancelProjectConfirm,
     requestStats,
     requestProjectExtend,
+    requestProjectLifeSpan,
 } from "../requests";
 import { useAuth } from "@components/hooks/useAuth"
 
@@ -18,6 +19,7 @@ function ProjectContext({ children }) {
     const [userData, setUserData] = useState(null);
     const [projects, setProject] = useState([])
     const [userProjects, setUserProjects] = useState([]);
+    const [activeProject, setActiveProject] = useState(null);
     const [stats, setStats] = useState(null);
 
 
@@ -33,17 +35,36 @@ function ProjectContext({ children }) {
         try {
             await requestAddProject({ token: token, price: parseInt(price), projectId: parseInt(id) });
         } catch (error) {
-            console.log("Failed to add project. id:"+id+". com:RequestContext. error: " + error.message);
+            console.log("Failed to add project. id:" + id + ". com:RequestContext. error: " + error.message);
         }
     }
-    async function extendProject({id}) {
+    async function extendProject({ id }) {
         try {
             await requestProjectExtend({ token: token, id: parseInt(id) });
         } catch (error) {
-            console.log("Failed to extend project. id:"+id+". com:RequestContext. error: " + error.message);
+            console.log("Failed to extend project. id:" + id + ". com:RequestContext. error: " + error.message);
         }
     }
-  
+
+    async function isProjectExpired() {
+        try {
+            const { data } = await requestProjectLifeSpan(token);
+            console.log(data);
+            return data.totalMonths >= data.expiration;
+        } catch (error) {
+            console.log("Failed to get Project life span. com:ProjectContext. error: " + error.message);
+        }
+    }
+
+    async function getPayments() {
+        try {
+            const { data } = await requestProjectLifeSpan(token);
+            console.log(data);
+            return data.totalMonths;
+        } catch (error) {
+            console.log("Failed to get Project life span. com:ProjectContext. error: " + error.message);
+        }
+    }
 
     useEffect(() => {
         async function getUserProjects() {
@@ -58,8 +79,6 @@ function ProjectContext({ children }) {
                         const his = histories.find(h => h.project_id == project.id);
                         return {
                             ...project,
-                            expiration: his?.expiration,
-                            total_months: his?.total_months,
                             history_id: his?.id,
                             state: his?.state,
                             price: his?.price,
@@ -68,6 +87,7 @@ function ProjectContext({ children }) {
 
                         }
                     })
+
                     setUserProjects(taken);
 
                 } catch (error) {
@@ -82,6 +102,32 @@ function ProjectContext({ children }) {
         }
         getUserProjects();
     }, [userData])
+
+    useEffect(() => {
+
+        async function getActiveProject() {
+            if (!userProjects || userProjects?.length <= 0)
+            {
+                setActiveProject(null)
+                return;
+            }
+            try {
+                const { data } = await requestProjectLifeSpan(token);
+                setActiveProject(
+                    {
+                        ...userProjects[0],
+                        ...data
+                    }
+                )
+            } catch (error) {
+            
+                setActiveProject(null);
+                console.log("Failed to get Active project. com:ProjectContext. error: " + error.message);
+            }
+        }
+        getActiveProject();
+    }, [userProjects])
+
     useEffect(() => {
         async function getProjects() {
 
@@ -169,6 +215,9 @@ function ProjectContext({ children }) {
                 stats,
                 addProject,
                 extendProject,
+                isProjectExpired,
+                getPayments,
+                activeProject
             }}>
             {children}
         </projectContext.Provider>

@@ -4,7 +4,7 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 const EditProjectMessage = ({ messageRef, }) => {
 
     const { convert, addCommas } = usePersian()
-    const { userProjects } = useProject()
+    const { activeProject } = useProject()
 
     return (
         <section ref={messageRef} className="profileMessage">
@@ -14,8 +14,7 @@ const EditProjectMessage = ({ messageRef, }) => {
             </h3>
 
             <p className="profileMessage__text">
-                از این پس به مدت <span className="profileMessage__textBold">{userProjects?.length > 0 ? convert(userProjects[0].expiration) + " ماه" : 0}</span>، مبلغ <span
-                    className="profileMessage__textBold">{userProjects?.length > 0 ? convert(addCommas(userProjects[0].price)) : 0}</span> تومان ماهانه از حقوق شما کسر و صرف کمک به  <span className="profileMessage__textBold">{userProjects.length > 0 ? " " + userProjects[0]?.topic + " " : ""}</span>
+                از این پس به مدت <span className="profileMessage__textBold">{activeProject ? convert(activeProject.expiration) + "ماه" : convert("0")}</span>، مبلغ<span className="profileMessage__textBold">{activeProject ? convert(addCommas(activeProject.price)) : convert("0")}</span> تومان ماهانه از حقوق شما کسر و صرف کمک به <span className="profileMessage__textBold">{" " + activeProject?.topic + " "}</span>
                 می‌شود.
             </p>
         </section>

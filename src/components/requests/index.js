@@ -55,7 +55,7 @@ export function requestCancelProjectConfirm({project,token}) {
 }
 export function requestProjectLifeSpan(token)
 {
-    return AxiosHttp.delete(`getTotalMonthsExpiration/`,{
+    return AxiosHttp(`getTotalMonthsExpiration/`,{
         headers: {
             "Authorization": token
         }
@@ -77,6 +77,14 @@ export function requestStats(token)
     ])
 }
 export function requestProjectExtend({token,id})
+{
+    return AxiosHttp.post(`extendHelp/`,{helpId:id},{
+        headers: {
+            "Authorization": token
+        }
+    });
+}
+export function requestActiveProject({token,id})
 {
     return AxiosHttp.post(`extendHelp/`,{helpId:id},{
         headers: {

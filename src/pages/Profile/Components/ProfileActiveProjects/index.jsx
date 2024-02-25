@@ -2,12 +2,16 @@ import ProfileProject from "../ProfileProject"
 import ProfileProjectExpired from "../ProfileProjectExpired"
 import ProfileNoProject from "../ProfileNoProject"
 import './style.css'
-import {useProject} from "@components/hooks/useProject"
+import { useProject } from "@components/hooks/useProject"
+
 
 
 
 function ProfileActiveProjects() {
-    const {userProjects}=useProject();
+    const { activeProject } = useProject();
+  
+    
+   
     return (
 
 
@@ -17,26 +21,21 @@ function ProfileActiveProjects() {
                 <span className="profileActiveProjects__title">پروژه‌ی فعال شما</span>
             </section>
             {
-                userProjects?.length===0 &&
-                <ProfileNoProject/>
+                !activeProject &&
+                <ProfileNoProject />
             }
             {
-                userProjects
-                ?.map(project=>
-                <ProfileProject
-                project={project}
-                 key={project.id}
-                />)
+                activeProject?.expiration <=activeProject?.totalMonth &&
+                <ProfileProjectExpired
+                    project={activeProject}
+                />
             }
+          
             {
-                   userProjects?.filter(project=>project.expiration>=project.totalMonth)
-                   ?.map(project=>
-                   <ProfileProjectExpired
-                   project={project}
-                    key={project.id}
-                   />)
+               activeProject &&
+               <ProfileProject project={activeProject} />
             }
-           
+
         </section >
     )
 }

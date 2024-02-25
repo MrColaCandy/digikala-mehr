@@ -16,13 +16,12 @@
   width: 100vw;
   max-width: var(--view-port-width);
   position: relative;
-  overflow: hidden;
-  height: var(--slide-height);
+  overflow-x: hidden;
 }
 
 .slider__container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-items: center;
   flex-wrap: nowrap;
   overflow-x: scroll;
@@ -32,7 +31,7 @@
   scroll-snap-type: x mandatory;
   width: 100%;
   position: relative;
-
+  height: 500px;
   
 
 }
@@ -101,4 +100,14 @@
   }
   
 
+}
+
+
+.slider__container::-webkit-scrollbar {
+  display: none;
+}
+
+.slider__container {
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
 }

@@ -48,11 +48,15 @@ function LoginColleagues() {
     } catch (error) {
       setCode(false);
      
-      if (error.message == "Network Error") {
+      if (error.message.toLowerCase() == "network error") {
         setError("لطفا اتصال به شبکه را برسی کنید.")
         return;
       }
-      setRegistrationError(true);
+      if (error.message.toLowerCase() == "no user") {
+        setRegistrationError(true);
+        return;
+      }
+      
       setError(error.message);
     }
     finally {

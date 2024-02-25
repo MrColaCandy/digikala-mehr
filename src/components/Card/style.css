@@ -5,7 +5,9 @@
     align-items: center;
     background-color: white;
     border-radius: var(--space-8);
-    box-shadow: 2px 3px 10px 0px rgba(0,0,0,0.1);
+    box-shadow: 6px 17px 14px -5px rgba(0,0,0,0.15);
+    
+    
 }
 
 .card__hr
@@ -72,7 +74,7 @@
 @media screen and (max-width: 390px) {
     .card__image
     {
-        height: 150px;
+        height: 200px;
     }
     
 }

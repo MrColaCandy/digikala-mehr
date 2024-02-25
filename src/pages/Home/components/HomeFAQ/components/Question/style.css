@@ -1,5 +1,6 @@
 .question{
     position: relative;
+    width: 95%;
 }
 .question__ref{
     position: absolute;
@@ -23,7 +24,7 @@
     position: relative;
     overflow-y: hidden;
     cursor: pointer;
-
+    
     
 
 }
@@ -44,6 +45,7 @@
     position: relative;
     background-color: white;
     overflow-y: hidden;
+    
 
    
     
@@ -56,7 +58,7 @@
     font-size: var(--font-size-normal);
     line-height: var(--lineHeight-24);
     font-weight: 400;
-    text-align: right;
+    text-align: justify;
     display: flex;
     justify-content: space-between;
     align-items: center;
