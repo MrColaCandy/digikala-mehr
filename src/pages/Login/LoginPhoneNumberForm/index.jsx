@@ -1,6 +1,7 @@
 import digikalaMehrLogo from '@assets/decorations/digikala-mehr-logo.png'
 import Button from "@components/Button"
 function LoginPhoneNumberForm({ onSubmit, validate, phone, onChange, error, isLoading,regex }) {
+
     return (
         <form onSubmit={onSubmit} className={"login__form"}>
             <img src={digikalaMehrLogo} className={"login__image"} />

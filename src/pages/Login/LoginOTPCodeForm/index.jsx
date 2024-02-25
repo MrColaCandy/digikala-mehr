@@ -11,7 +11,7 @@ function LoginOTPCodeForm({ onSubmit, phone, error, validate, code, seconds, min
             <div className={"login__header"}>
                 <p className="login__paragraph">سلام!  برای شروع</p>
                 <h2 className="login__title">رمز یک‌بار‌مصرفی که برات ارسال شد را وارد کن</h2>
-                <p className="login__paragraph">کد تایید برای شماره {phone} ارسال شد.</p>
+                <p className="login__paragraph">کد تایید برای شماره {convert(phone)} ارسال شد.</p>
             </div>
             <div className='login__input'>
                 <input autoFocus onBlur={(e) => validate(e.target.value, regex)} value={code} onChange={(e) => {

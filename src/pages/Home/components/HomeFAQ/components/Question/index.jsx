@@ -4,12 +4,12 @@ import "./style.css"
 import ScrollingText from "@components/ScrollingText";
 const Question = ({ questionText, answerText }) => {
     const [showAnswer, setShowAnswer] = useState(false);
-    const answerRef = useRef(null);
+    const questionRef = useRef(null);
 
     function handleCloseClick() {
         setShowAnswer(!showAnswer);
         setTimeout(() => {
-            const y = answerRef.current.getBoundingClientRect().top + window.scrollY - 200;
+            const y = questionRef.current.getBoundingClientRect().top + window.scrollY -200 ;
             window.scroll({
                 top: y,
                 behavior: 'smooth'
@@ -27,9 +27,9 @@ const Question = ({ questionText, answerText }) => {
     }, [document.body.clientWidth])
     return (
         <>
-            <div ref={el => answerRef.current = el} className={`question--${showAnswer ? "answer" : "noAnswer"}`}>
+            <div ref={el => questionRef.current = el} className={`question--${showAnswer ? "answer" : "noAnswer"}`}>
                 <div onClick={handleCloseClick} className="question__text">
-                    <ScrollingText start={showAnswer && textScroll} text={questionText} />
+                    <ScrollingText start={ showAnswer&&textScroll} text={questionText} />
                     <FaChevronDown className="question__icon" />
                 </div>
                 <div onClick={handleCloseClick} className={`question__answer--${showAnswer ? "show" : "hide"}`}>

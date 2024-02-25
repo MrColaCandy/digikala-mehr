@@ -47,13 +47,12 @@ function LoginColleagues() {
       setRegistrationError(false)
     } catch (error) {
       setCode(false);
-      if (error.message === "404") {
-        setRegistrationError(true);
-      }
+     
       if (error.message == "Network Error") {
         setError("لطفا اتصال به شبکه را برسی کنید.")
         return;
       }
+      setRegistrationError(true);
       setError(error.message);
     }
     finally {

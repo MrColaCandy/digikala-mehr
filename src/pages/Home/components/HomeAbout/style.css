@@ -6,7 +6,7 @@
     background: var(--color-primaryDark);
     border-radius: var(--borderRadius-12);
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-wrap: wrap;
     align-items: center;
 
@@ -16,6 +16,7 @@
     width: 100%;
     max-width: 572px;
     height: auto;
+    min-height: 130px;
     padding: var(--padding-12);
     border-radius: var(--borderRadius-12);
     display: flex;
