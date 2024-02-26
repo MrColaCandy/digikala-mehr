@@ -1,10 +1,11 @@
 import "./style.css"
 import usePersian from "@components/hooks/usePersian";
 
-const ChoosePriceSuggestions = ({value,setValue}) => {
+const PriceSuggestions = ({value,setValue,validate}) => {
     const suggestions=[100000,200000,300000,500000];
     const {convert,addCommas}=usePersian()
     const handleClick = (suggestion) => {
+        validate(suggestion);
         setValue(suggestion);
     };
 
@@ -15,26 +16,26 @@ const ChoosePriceSuggestions = ({value,setValue}) => {
                 <button
                     value={suggestionValue}
                     key={suggestionValue}
-                    className={suggestionValue===value?"choosePrice__suggestion--active":"choosePrice__suggestion"}
+                    className={suggestionValue===value?"priceForm__suggestion--active":"priceForm__suggestion"}
                     onClick={() => handleClick(suggestionValue)}
                     type="button"
                 >
                     {convert(addCommas(suggestionValue))}{" "}
-                    <span className={`choosePrice__suggestionCurrency${suggestionValue === value?"--active":""}`}>تومان</span>
+                    <span className={`priceForm__suggestionCurrency${suggestionValue === value?"--active":""}`}>تومان</span>
                 </button>
             );
         });
     };
     return (
-        <div className="choosePrice__suggestionsText">
+        <div className="priceForm__suggestionsText">
 
             یا از پیشنهاد‌های ما انتخاب کنید (بر اساس محبوب‌ترین‌ها)
 
-            <div className="choosePrice__suggestions">
+            <div className="priceForm__suggestions">
                 {renderSuggestions()}
             </div>
         </div>
     )
 }
 
-export default ChoosePriceSuggestions
+export default PriceSuggestions

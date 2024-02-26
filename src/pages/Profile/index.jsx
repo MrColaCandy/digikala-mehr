@@ -10,40 +10,76 @@ import Button from "@components/Button";
 import ProfileMessage from "./Components/ProfileMessage";
 import "./style.css"
 import { serialize } from "cookie";
+import { useEffect, useState } from "react";
 
 
 
 function Profile() {
 
   const navigate = useNavigate();
-  const { userData, userProjects, projects } = useProject();
+  const { getUser, getAllProjects, getHistories } = useProject();
 
-
+  const [userData, setUserData] = useState(null);
+  const [projects, setProjects] = useState([])
+  const [histories, setHistories] = useState([])
   function handleChooseProjectClick(project) {
     document.cookie = serialize("projectId", project.id);
     navigate("/choose-price");
 
   }
+  async function getHistoriesOnLoad() {
+    try {
+      const histories = await getHistories();
+      setHistories(histories)
+    } catch (error) {
+      setHistories([])
+      console.log(error);
 
+    }
+  }
+  async function getAllProjectsOnLoad() {
+    try {
+      const projects = await getAllProjects();
+      setProjects(projects)
+    } catch (error) {
+      setProjects([])
+      console.log(error);
+
+    }
+  }
+  async function getUserOnLoad() {
+    try {
+      const user = await getUser();
+      setUserData(user);
+    } catch (error) {
+      console.log(error);
+
+    }
+  }
+  useEffect(() => {
+    getHistoriesOnLoad()
+    getUserOnLoad()
+    getAllProjectsOnLoad()
+  }, [])
 
 
   return (
     <Layout>
-      <ProfileUserAvatar data={userData} />
-      <hr className="profile__hr"/>
+      <ProfileUserAvatar userData={userData} />
+      <hr className="profile__hr" />
       <ProfileActiveProjects />
-      <ProfileMessage data={userData} />
+      <ProfileMessage userData={userData} />
       {
-        userProjects?.length > 0 &&
-        <ProfileHistory data={userData} />
+        histories?.length > 0 &&
+        <ProfileHistory histories={histories} />
       }
       {
-        userProjects?.filter(p=>p.state==="next")?.length === 0 &&
+        histories?.length === 0 &&
         <>
           <p className="profile__sliderTitle">اینجا می‌تونی از بین پروژه‌های مختلف یکیو برای شروع انتخاب کنی</p>
           <Slider slideWidth={390} slideHeight={450} viewPortWidth={1280} gap={40}>
             {
-              projects?.filter(p => !p.taken)?.map((project) => {
+              projects?.map((project) => {
                 return <Card
                   key={project.id}
                   project={project}

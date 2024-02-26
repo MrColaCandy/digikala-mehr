@@ -13,7 +13,7 @@
 }
 
 .slider__view {
-  width: 100vw;
+  width:96vw;
   max-width: var(--view-port-width);
   position: relative;
   overflow-x: hidden;
@@ -92,13 +92,6 @@
     width: var(--slide-width) !important;
 
   }
-  .slider__view
-  {
- 
-  
-    width: 95vw;
-  }
-  
 
 }
 

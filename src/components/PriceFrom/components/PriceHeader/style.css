@@ -1,4 +1,4 @@
-.choosePrice__header {
+.priceForm__header {
     margin-top: var(--space-32);
     width: 90vw;
     max-width: 442px;
@@ -7,19 +7,19 @@
     align-items: center;
 }
 
-.choosePrice__headerText {
+.priceForm__headerText {
     font-weight: 700;
     line-height: 20px;
     text-align: center;
     
 }
 
-.choosePrice__currentPhase {
+.priceForm__currentPhase {
     color: var(--color-textLight);
     font-size: var(--font-size-tiny);
     text-align: center;
 }
-.choosePrice__phase {
+.priceForm__phase {
     width: 90vw;
     text-align: center;
     display: flex;
@@ -29,7 +29,7 @@
 
 }
 
-.choosePrice__headerTitle {
+.priceForm__headerTitle {
     font-size: var(--font-size-huge);
     font-weight: 600;
     text-align: center;
@@ -37,11 +37,11 @@
    
 }
 
-.choosePrice__headerTextGreen{
+.priceForm__headerTextGreen{
     color: var(--color-primary);
 }
 
-.choosePrice__headerSubtitle{
+.priceForm__headerSubtitle{
     line-height: 20px;
     font-size: var(--font-size-xsmall);
     color: var(--color-textLight);
@@ -54,11 +54,11 @@
     align-items: center;
    
 }
-.choosePrice__headerSubtitleBold
+.priceForm__headerSubtitleBold
 {
     font-weight: 700;
 }
-.choosePrice__headerLink {
+.priceForm__headerLink {
     font-weight: 700;
     color: var(--color-primary);
     cursor: pointer; 

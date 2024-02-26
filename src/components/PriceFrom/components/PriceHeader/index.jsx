@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { useProject } from "@components/hooks/useProject";
 import { useEffect, useState } from "react";
 import { parse } from "cookie";
-const ChoosePriceHeader = () => {
+const PriceHeader = () => {
   const { getProject } = useProject();
 
   const [title, setTitle] = useState("");
@@ -24,24 +24,24 @@ const ChoosePriceHeader = () => {
     navigate("/choose-plan")
   }
   return (
-    <div className="choosePrice__header">
-      <div className="choosePrice__phase">
-        <p className="choosePrice__currentPhase">مرحله 3 از 3</p>
-        <h1 className="choosePrice__headerTitle">
-          مبلغ <span className="choosePrice__headerTextGreen">کمک ات </span>رو انتخاب
+    <div className="priceForm__header">
+      <div className="priceForm__phase">
+        <p className="priceForm__currentPhase">مرحله 3 از 3</p>
+        <h1 className="priceForm__headerTitle">
+          مبلغ <span className="priceForm__headerTextGreen">کمک ات </span>رو انتخاب
           کن.
         </h1>
-        <p className="choosePrice__headerSubtitle">
+        <div className="priceForm__headerSubtitle">
           این مبلغ قراره ماهیانه از حقوقت کم و صرف کمک به
           <div>
-            <span className="choosePrice__headerSubtitleBold" > {" "+title+" "} </span>
+            <span className="priceForm__headerSubtitleBold" > {" "+title+" "} </span>
               بشه.     
-            <a onClick={handleBackButtonClick} className="choosePrice__headerLink">تغییر پروژه </a>
+            <a onClick={handleBackButtonClick} className="priceForm__headerLink">تغییر پروژه </a>
           </div>
-        </p>
+        </div>
       </div>
     </div>
   )
 }
 
-export default ChoosePriceHeader
+export default PriceHeader

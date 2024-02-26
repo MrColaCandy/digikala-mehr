@@ -2,7 +2,7 @@
 .loginCatError {
     display: flex;
     width: 100%;
-    max-width: 350px;
+    max-width: 400px;
     padding: 0 var(--space-24);
     direction: rtl;
     flex-direction: column;
@@ -16,11 +16,15 @@
     max-width: 192px;
 }
 
-
+.loginCatError__title{
+    font-size: var(--font-size-xlarge);
+    font-weight: 600;
+}
 
 .loginCatError__text{
     text-align: center;
     margin: var(--space-4) 0;
-
+    line-height: 24px;
     font-weight: 200;
+    font-size: var(--font-size-small);
 }

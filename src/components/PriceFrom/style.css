@@ -1,5 +1,5 @@
 
-.choosePrice__form {
+.priceForm__form {
     display: flex;
     flex-direction: column;
     gap: var(--space-16);
@@ -9,8 +9,13 @@
     width: 90vw;
     
 }
+.priceForm__formError{
+    text-align: center;
+    font-size: var(--font-size-small);
+    color: var(--color-red);
+}
 
-.choosePrice__formLabel {
+.priceForm__formLabel {
     font-size: var(--font-size-normal);
     font-weight: 700;
     margin-top: var(--space-32);
@@ -22,7 +27,7 @@
 
 
 
-.choosePrice__inputController{
+.priceForm__inputController{
     border: 1px solid var(--color-input);
     border-radius: var(--space-8);
     font-weight: 700;
@@ -35,7 +40,7 @@
 
 
 
-.choosePrice__inputPrefix {
+.priceForm__inputPrefix {
     position: absolute;
     left: 15px;
     top: var(--space-16);
@@ -44,7 +49,7 @@
     color: var(--color-primary);
 }
 
-.choosePrice__input {
+.priceForm__input {
     position: relative;
     display: grid;
     gap: var(--space-4);
@@ -52,7 +57,7 @@
     padding: 0 var(--space-8);
 }
 
-.choosePrice__inputInfo {
+.priceForm__inputInfo {
     font-weight: 400;
     font-size: var(--font-size-tiny);
     line-height: var(--space-16);
@@ -62,7 +67,7 @@
 
 
 
-.choosePrice__inputError{
+.priceForm__inputError{
     color: var(--color-red);
     font-size: var(--font-size-xsmall);
 }
@@ -70,20 +75,6 @@
 
 
 
-.confirm-price-button {
-    width: 100%;
-    text-align: center;
-    padding: var(--space-12) 155.33px var(--space-12) 154.67px;
-    max-height: 48px;
-    border-radius: var(--space-8);
-    background-color: var(--color-primary);
-    font-weight: 700;
-    font-size: var(--font-size-small);
-    line-height: var(--space-24);
-    color: var(--color-white);
-    cursor: pointer;
-    transition: all 0.3s;
-}
 
 
 

@@ -17,6 +17,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    pointer-events: all;
 }
 .button--filled {
     color: white;
@@ -37,8 +38,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    pointer-events: all;
 }
 .button--filled:disabled,.button--outlined:disabled
 {
-    background-color: transparent !important ;
+    opacity: 0.9;
+    color: var(--color-border);
+    pointer-events: none;
 }

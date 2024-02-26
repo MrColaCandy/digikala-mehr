@@ -1,7 +1,7 @@
 
 
 .home__backgroundGreen {
-    width: 100%;
+    width: 99%;
     padding: var(--padding-64) var(--padding-16) var(--padding-20) var(--padding-16);
     background-color: var(--color-primary);
     border-radius: var(--borderRadius-12);

@@ -45,7 +45,7 @@ const Slider = ({ viewPortWidth = 800, slideWidth = 390, slideHeight = 450, scro
             <button ref={nextButton} className={`slider__nextButton`} onClick={() => {
                 if (!children) return;
                 const slide = containerRef.current.querySelector("#slide");
-                //setCurrentScroll(containerRef.current.scrollLeft - slide.getBoundingClientRect().width);
+
                   containerRef.current.scrollTo(containerRef.current.scrollLeft-slide.getBoundingClientRect().width,0)
 
             }}>

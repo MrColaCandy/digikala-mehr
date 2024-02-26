@@ -1,19 +1,19 @@
 
 import "./style.css"
-const ChoosePriceFooter = () => {
+const PriceFooter = () => {
   return (
-    <div className="choosePrice__footer">
-    <p className="choosePrice__footerItem">
+    <div className="priceForm__footer">
+    <p className="priceForm__footerItem">
         هر موقع خواستید می‌‌تونید پرداخت رو لغو کنید.
     </p>
-    <p className="choosePrice__footerItem">
+    <p className="priceForm__footerItem">
         هر موقع خواستید می‌‌تونید قیمت رو تغییر بدید.
     </p>
-    <p className="choosePrice__footerItem">
+    <p className="priceForm__footerItem">
         در صورت لغو نکردن، اشتراک به مدت ۶ ماه اعتبار دارد.
     </p>
 </div>
   )
 }
 
-export default ChoosePriceFooter
+export default PriceFooter

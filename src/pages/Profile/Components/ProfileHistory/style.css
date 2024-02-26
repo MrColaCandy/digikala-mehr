@@ -53,17 +53,19 @@
 .profileHistory__tableHeaderPrice
 {
     width: 100px;
-    padding: 0 var(--space-8);
+   
 }
 .profileHistory__tableHeaderDate,
 .profileHistory__tableHeaderState{
     width: 132px;
-    padding: 0 var(--space-8);
+   
 }
 
 .profileHistory__tableHeaderTitle {
     flex: 1;
-    padding: 0 var(--space-8);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 

@@ -5,48 +5,66 @@ import EditPlanUserProjects from "./components/EditPlanUserProjects"
 import EditPlanUserProject from "./components/EditPlanUserProject"
 import { useProject } from "@components/hooks/useProject"
 import Button from "@components/Button"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "@components/Card"
 import "./style.css"
+import { useNavigate } from "react-router-dom"
 import EditPlanModal from "./components/EditPlanModal";
 const EditPlan = () => {
-    const { userData ,projects,userProjects } = useProject()
-    const [selected, setSelected] = useState(null);
+    const [projects, setProjects] = useState([])
+    const [activeProject, setActiveProject] = useState(null)
+    const { getAllProjects, getActiveProject } = useProject()
+    const navigate = useNavigate();
     const [substitute, setSubstitute] = useState(null);
-    const [modal,setModal]=useState(null);
+    const [modal, setModal] = useState(null);
     function handleCardButtonClick(project) {
         setModal("change");
-        document.body.style.overflow="hidden"
+        document.body.style.overflow = "hidden"
         setSubstitute(project);
     }
 
-    
+    async function getActiveProjectOnLoad() {
+        try {
+            const activeProject = await getActiveProject();
+            setActiveProject(activeProject)
+        } catch (error) {
+            setActiveProject(null);
+            navigate("/");
+        }
+    }
+    async function getAllProjectsOnLoad() {
+        try {
+            const projects = await getAllProjects();
+            setProjects(projects)
+        } catch (error) {
+            setProjects(null);
+            navigate("/");
+        }
+    }
+    useEffect(() => {
+        getActiveProjectOnLoad()
+        getAllProjectsOnLoad();
+    }, [])
     return (
         <>
             {
                 modal &&
                 <EditPlanModal
-                setModal={setModal}
-                variant={modal} 
-                title={modal==="remove"?"آیا مایل به حذف پروژه‌تان هستید؟":"آیا مایل به تغییر پروژه‌تان هستید؟"}
-                user={userData} 
-                setSelected={setSelected} 
-                setSubstitute={setSubstitute} 
-                selected={selected} substitute={substitute} />
+                    setModal={setModal}
+                    variant={modal}
+                    title={modal === "remove" ? "آیا مایل به حذف پروژه‌تان هستید؟" : "آیا مایل به تغییر پروژه‌تان هستید؟"}
+                    selected={activeProject}
+                    setSubstitute={setSubstitute}
+                    substitute={substitute} />
 
             }
-           
+
             <Layout>
-                <EditHeader selected={selected} setModal={setModal} />
+                <EditHeader activeProject={activeProject} setModal={setModal} />
                 <EditPlanUserProjects>
-                    {
-                        userProjects?.map((project,index) => {
-                
-                            return <EditPlanUserProject index={index} selected={selected} setSelected={setSelected} key={project.id} project={project} />
-                        })
-                    }
+                    <EditPlanUserProject activeProject={activeProject} />
                 </EditPlanUserProjects>
-                {selected &&
+                {activeProject &&
                     <>
                         <div className="editPlan__sliderHeader">
                             <h3 className="editPlan__sliderTitle">دیگر پروژه‌های موجود</h3>
@@ -54,9 +72,9 @@ const EditPlan = () => {
                         </div>
                         <Slider slideWidth={390} slideHeight={450} viewPortWidth={1280} gap={40}>
                             {
-                                projects.filter(p=>!p.taken)?.map((project) => {
+                                projects?.filter(p => !p.taken)?.map((project) => {
                                     return <Card
-                                      
+
                                         key={project.id}
                                         project={project}
                                         cardButton={

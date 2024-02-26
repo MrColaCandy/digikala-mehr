@@ -1,7 +1,7 @@
 import "./style.css"
 import { useNavigate } from "react-router-dom"
 import { FiEdit } from "react-icons/fi";
-const EditHeader = ({ setModal,selected}) => {
+const EditHeader = ({ setModal, activeProject}) => {
     const navigate = useNavigate()
     function handleBackButtonClick() {
         navigate("/profile")
@@ -20,7 +20,7 @@ const EditHeader = ({ setModal,selected}) => {
                 </div>
             </div>
             {
-                selected &&
+              activeProject &&
                 <div onClick={handleCancelClick} className="editHeader__textRed">لغو عضویت در پروژه</div>
             }
         </div>

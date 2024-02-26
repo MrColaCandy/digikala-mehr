@@ -2,16 +2,17 @@ import organLogo from '@assets/decorations/organLogo.svg'
 import { useProject } from '@components/hooks/useProject';
 import {useNavigate} from "react-router-dom"
 import "./style.css"
-function ProfileProjectExpired ({project}){
+function ProfileProjectExpired ({activeProject}){
     const navigate=useNavigate()
     const {extendProject}=useProject();
     async function handleExtendContributionClick()
     {
          try {
-            await extendProject({id:project.history_id})
+            await extendProject({id:activeProject?.id})
             navigate("/profile")
          } catch (error) {
-            console.log("Failed to extend project. id: "+project.history_id+". com:ProfileProjectExpired. error: "+error.message);
+            navigate("/")
+            console.log("Failed to extend activeProject. id: "+activeProject?.id+". com:ProfileProjectExpired. error: "+error.message);
          } 
     }
     return(
@@ -21,9 +22,9 @@ function ProfileProjectExpired ({project}){
                     <img src={organLogo} className="profileProjectExpired__infoLogo" alt="employer-logo" />
                     <div className="profileProjectExpired__infoText">
                         <span className="profileProjectExpired__infoTitle">
-                            {project?.topic}
+                            {activeProject?.project?.topic}
                         </span>
-                        <span className="profileProjectExpired__infoEmployer">{project?.institute?.name}</span>
+                        <span className="profileProjectExpired__infoEmployer">{activeProject?.project?.institute?.name}</span>
                     </div>
                 
                 <p className="profileProjectExpired__box">دوره به پایان رسید</p>

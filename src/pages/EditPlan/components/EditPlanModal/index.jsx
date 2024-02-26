@@ -1,22 +1,28 @@
 import Button from "@components/Button"
 import { CgArrowsExchangeV } from "react-icons/cg";
-import { requestUpdateProject } from "@components/requests";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import { useProject } from "@components/hooks/useProject";
 import { useAuth } from "@components/hooks/useAuth";
 import { BASE_URL } from "@configs/BASE_URL";
 import { IoMdInformationCircleOutline } from "react-icons/io";
-
-import "./style.css"
 import { serialize } from "cookie";
-const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstitute, title, variant = "change" }) => {
+import "./style.css"
+const EditPlanModal = ({ setModal, substitute, setSubstitute, title, variant = "change" }) => {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
-    const { updateUserData, cancelProject } = useProject()
+    const { cancelProject,updateProject,activeProject,setActiveProject,getActiveProject } = useProject()
     const { token } = useAuth()
     const [animation, setAnimation] = useState(false);
-
+     async function getActiveProjectAfterUpdate()
+     {
+        try {
+            const active=await getActiveProject();
+            setActiveProject(active);
+        } catch (error) {
+            setActiveProject(null);
+        }
+     }
     function handleCancelClick() {
         if (isLoading) return;
         setSubstitute(null)
@@ -29,12 +35,17 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
         if (variant === "change") {
             setTimeout(async () => {
                 await changeProjects();
+                await getActiveProjectAfterUpdate()
+                setSubstitute(null);
                 setAnimation(false);
             }, 800);
         }
         else {
             setTimeout(async () => {
                 await removeProject();
+                serialize("projectId",null);
+                serialize("editing",null);
+                setActiveProject(null);
                 setAnimation(false);
             }, 800);
         }
@@ -53,10 +64,10 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
                     <div className={variant==="remove"?"editPlanModal__project--removeProject":"editPlanModal__project"} style={{ "--order": animation && substitute ? 1 : 0,"--opacity":animation?0:1 }}>
                         <div className="editPlanModal__textGreen">پروژه فعلی</div>
                         <div className="editPlanModal__row">
-                            <img src={`${BASE_URL}${selected?.institute?.logo}`} className="editPlanModal__Logo" />
+                            <img src={`${BASE_URL}${activeProject?.project?.institute?.logo}`} className="editPlanModal__Logo" />
                             <div className="editPlanModal__col">
-                                <div className="editPlanModal__ProjectTitle">{selected?.topic}</div>
-                                <div className="editPlanModal__ProjectEmployer">{selected?.institute?.name}</div>
+                                <div className="editPlanModal__ProjectTitle">{activeProject?.project?.topic}</div>
+                                <div className="editPlanModal__ProjectEmployer">{activeProject?.project?.institute?.name}</div>
                             </div>
                         </div>
                     </div>
@@ -111,10 +122,9 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
 
     async function removeProject() {
         try {
-            await cancelProject(selected);
-            await updateUserData(token);
+            
+            await cancelProject(activeProject?.id);
             setSubstitute(null);
-            setSelected(null);
             document.cookie = serialize("newProject", "delete");
             navigate("/profile");
         } catch (error) {
@@ -128,10 +138,12 @@ const EditPlanModal = ({ setModal, selected, setSelected, substitute, setSubstit
 
     async function changeProjects() {
         try {
-            await requestUpdateProject({ token: token, newProject: substitute.id, oldProject: selected.history_id, price: selected.price });
-            await updateUserData(token);
-            setSelected(substitute);
+          
+          const project=  await updateProject({ token: token, newProject: substitute.id, oldProject:activeProject?.id, price:activeProject?.price });
+            console.log( "up",project);
+        
             setSubstitute(null);
+            
             document.cookie = serialize("newProject", "edit");
             navigate("/profile");
         } catch (error) {

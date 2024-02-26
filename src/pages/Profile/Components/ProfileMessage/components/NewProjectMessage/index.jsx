@@ -1,11 +1,9 @@
 import usePersian from "@components/hooks/usePersian"
-import { useProject } from "@components/hooks/useProject"
 import { useNavigate } from "react-router-dom"
 import { FaRegCircleCheck } from "react-icons/fa6";
-const NewProjectMessage = ({ messageRef }) => {
+const NewProjectMessage = ({ messageRef ,userData,activeProject }) => {
     const navigate = useNavigate();
     const { convert, addCommas } = usePersian()
-    const { activeProject, userData } = useProject()
     function handleEditButtonClick() {
         navigate("/edit-plan")
     }
@@ -17,7 +15,7 @@ const NewProjectMessage = ({ messageRef }) => {
             </h3>
 
             <p className="profileMessage__text">
-                شما با موفقیت به پروژه <span className="profileMessage__textBold">{" "+activeProject?.topic+" "}</span>
+                شما با موفقیت به پروژه <span className="profileMessage__textBold">{" "+activeProject?.project?.topic+" "}</span>
                 اضافه شدید.
             </p>
 
@@ -26,7 +24,7 @@ const NewProjectMessage = ({ messageRef }) => {
                 <span className="profileMessage__textBold">{activeProject? convert(activeProject?.expiration):convert("0")}</span>، مبلغ
                 <span className="profileMessage__textBold">{activeProject? convert(addCommas(activeProject.price)):convert("0")}</span>
                 <span >تومان ماهانه از حقوق شما کسر و صرف کمک به </span>
-                <span>{" "+activeProject?.topic+" "}</span>
+                <span>{" "+activeProject?.project?.topic+" "}</span>
                 می‌شود.
             </p>
 

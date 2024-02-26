@@ -30,8 +30,8 @@
 .dropdown-container {
     background-color: var(--color-digikalaMehrBrandingFill);
     border-radius: var(--borderRadius-8);
-    width: 99vw;
-    max-width: 240px;
+    width: 100vw;
+    max-width: 230px;
     height: 200px;
     opacity: 0;
     transition: opacity 300ms ease-in-out;
@@ -132,12 +132,12 @@ a {
     font-size: var(--font-size-xhuge);
 }
 
-.dropdown-icons {
+.dropdown-icon {
     height: 24px;
     width: 24px;
-    color: #424750;
     text-align: center;
     margin-top: 8px;
+    color: var(--color-black)
 }
 
 .dropdown-li {

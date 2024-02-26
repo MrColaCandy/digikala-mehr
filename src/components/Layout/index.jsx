@@ -4,23 +4,53 @@ import { useEffect } from "react"
 import { useProject } from "../hooks/useProject"
 import { useAuth } from "../hooks/useAuth"
 import { useNavigate } from "react-router-dom"
+import { useLocation } from "react-router-dom"
+import { parse } from "cookie"
 const Layout = ({ children }) => {
-    const { updateUserData } = useProject()
-    const { token, logout, setIsLoggedIn } = useAuth();
+    const { getUser, activeProject } = useProject()
+    const { token, logout, setIsLoggedIn, isLoggedIn } = useAuth();
     const navigate = useNavigate()
+    const location = useLocation();
     useEffect(() => {
-        async function getUser() {
+        if (!token || token == "") {
+            logout();
+            return;
+        }
+        async function getUserOnRefresh() {
             try {
-                await updateUserData(token);
+                await getUser(token);
                 setIsLoggedIn(true)
             } catch (error) {
                 logout();
                 navigate("/");
             }
         }
-        getUser();
+        getUserOnRefresh();
     }, [])
-  
+
+    useEffect(() => {
+        console.log(activeProject);
+            if (location.pathname == "/choose-price" && (!parse(document.cookie).projectId || activeProject)) {
+                navigate("/choose-plan")
+            }
+            if (location.pathname == "/choose-plan" && activeProject) {
+                navigate("/profile")
+            }
+            if (location.pathname == "/edit-price" && (!parse(document.cookie).editing)) {
+                navigate("/choose-plan")
+            }
+        
+        if(!isLoggedIn)
+        {if (location.pathname == "/choose-price" ||
+            location.pathname == "/choose-plan" ||
+            location.pathname == "/edit-plan" ||
+            location.pathname == "/edit-price") {
+            
+                navigate("/");
+            
+        }
+        }
+    }, [location])
     return (
         <>
             <Header />

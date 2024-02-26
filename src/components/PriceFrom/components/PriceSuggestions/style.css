@@ -1,5 +1,5 @@
 
-.choosePrice__suggestionsText {
+.priceForm__suggestionsText {
     display: flex;
     flex-direction: column;
     gap: var(--space-12);
@@ -12,7 +12,7 @@
 }
 
 
-.choosePrice__suggestions{
+.priceForm__suggestions{
     display: flex;
     justify-content: flex-start;
     height: auto;
@@ -20,7 +20,7 @@
     align-items: center;
     gap: var(--space-8);
 }
-.choosePrice__suggestion {
+.priceForm__suggestion {
     background: var(--color-white);
     position: relative;
     border: 1px solid var(--color-input);
@@ -39,7 +39,7 @@
     justify-content: space-between;
     align-items: center;
 }
-.choosePrice__suggestion--active {
+.priceForm__suggestion--active {
     color: var(--color-white);
     position: relative;
     border: 1px solid var(--color-input);
@@ -59,7 +59,7 @@
     background-color: var(--color-primary);
 }
 
-.choosePrice__suggestionCurrency {
+.priceForm__suggestionCurrency {
    
     top: var(--space-12);
     font-size: var(--space-10);
@@ -68,7 +68,7 @@
     color: var(--color-primary);
 }
 
-.choosePrice__suggestionCurrency--active {
+.priceForm__suggestionCurrency--active {
    
     top: var(--space-12);
     font-size: var(--space-10);
