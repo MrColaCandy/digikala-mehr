@@ -48,6 +48,8 @@
     color: var(--color-textLight);
     font-size: var(--font-size-small);
     height: auto;
+    height: 40px;
+    padding-bottom: var(--space-24);
 }
 
 .profileHistory__tableHeaderPrice
