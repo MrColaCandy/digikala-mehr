@@ -50,16 +50,16 @@ function ProjectContext({ children }) {
 
         } catch (error) {
 
-            console.log("Failed to get all project. com:RequestContext. error: " + error.message);
+           throw new Error(error.response)
         }
     }
     async function getUser() {
-
+        if(!token || token=="")return;
         try {
             const { data } = await requestUser(token);
             return data;
         } catch (error) {
-            console.log("Failed to get user. com:RequestContext. error: " + error.message);
+            throw error.response? error.response.status : 12002;
         }
     }
     async function updateProject({ newProject, oldProject, price }) {
@@ -68,8 +68,7 @@ function ProjectContext({ children }) {
             await requestUpdateProject({ token: token, newProject: newProject, oldProject: oldProject, price: price });
 
         } catch (error) {
-            console.log("Failed to update project. com:RequestContext. error: " + error.message);
-            throw new Error(error.message);
+            throw error.response? error.response.status : 12002;
         }
     }
     async function getProject(projectId) {
@@ -77,11 +76,11 @@ function ProjectContext({ children }) {
             const { data } = await requestAllProjects(token);
             return data.find(p => p.id == projectId);
         } catch (error) {
-            console.log("Failed to get project by id. com:RequestContext. error: " + error.message);
-            throw new Error(error.message);
+            throw error.response? error.response.status : 12002;
         }
     }
     async function getHistories() {
+        if(!token || token=="")return;
         try {
             const user = await getUser();
             const { data } = await requestAllProjects(token);
@@ -93,8 +92,7 @@ function ProjectContext({ children }) {
             })
 
         } catch (error) {
-            console.log("failed to get histories. com:ProjectContext. error: " + error.message);
-            throw new Error(error.message)
+            throw error.response? error.response.status : 12002;
         }
     }
     async function getStats() {
@@ -106,8 +104,7 @@ function ProjectContext({ children }) {
                 ...res[1].data
             }
         } catch (error) {
-            console.log("Failed to get stats. com:RequestContext. error: " + error.message);
-            throw new Error(error.message);
+            throw error.response? error.response.status : 12002;
         }
     }
     async function getActiveProject() {
@@ -116,8 +113,7 @@ function ProjectContext({ children }) {
             const { data } = await requestActiveProject({ token: token });
             return data[0] || null;
         } catch (error) {
-            console.log("Failed to get active project. com:RequestContext. error: " + error.message);
-            return null;
+            throw error.response? error.response.status : 12002;
         }
     }
     async function addProject({ id, price }) {
@@ -125,8 +121,7 @@ function ProjectContext({ children }) {
         try {
             await requestAddProject({ token: token, price: parseInt(price), projectId: parseInt(id) });
         } catch (error) {
-            console.log("Failed to add project. id:" + id + ". com:RequestContext. error: " + error.message);
-            throw new Error(error.message);
+            throw error.response? error.response.status : 12002;
         }
     }
     async function extendProject({ id }) {
@@ -134,8 +129,7 @@ function ProjectContext({ children }) {
         try {
             await requestProjectExtend({ token: token, id: parseInt(id) });
         } catch (error) {
-            console.log("Failed to extend project. id:" + id + ". com:RequestContext. error: " + error.message);
-            throw new Error(error.message);
+            throw error.response? error.response.status : 12002;
         }
     }
 
@@ -146,8 +140,7 @@ function ProjectContext({ children }) {
             console.log(data);
             return data.totalMonths >= data.expiration;
         } catch (error) {
-            console.log("Failed to get Project life span. com:ProjectContext. error: " + error.message);
-            throw new Error(error.message);
+            throw error.response? error.response.status : 12002;
         }
     }
 
@@ -157,8 +150,7 @@ function ProjectContext({ children }) {
             const { data } = await requestProjectLifeSpan(token);
             return data.totalMonths;
         } catch (error) {
-            console.log("Failed to get  payments. com:ProjectContext. error: " + error.message);
-            throw new Error(error.message)
+            throw error.response? error.response.status : 12002;
         }
     }
 
@@ -168,8 +160,7 @@ function ProjectContext({ children }) {
             await requestCancelProject({ token: token, id: parseInt(id) });
             await requestConfirmCancelProject({ token: token, id: parseInt(id) });
         } catch (error) {
-            console.log("Failed to cancel project. com:RequestContext. id:  " + id + ". error: " + error.message);
-            throw new Error(error.message);
+            throw error.response? error.response.status : 12002;
         }
     }
 

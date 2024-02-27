@@ -40,7 +40,6 @@ function Home() {
       setProjects(projects)
     } catch (error) {
       setProjects([])
-      console.log(error);
     }
   }
 

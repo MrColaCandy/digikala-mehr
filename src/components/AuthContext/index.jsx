@@ -18,14 +18,10 @@ function AuthContext({ children }) {
         
         try {
             const { data } = await requestCode(phone);
-            if (data === "No user") {
-                throw new Error("404")
-            }
-           
             return data.otp
         } catch (error) {
 
-            throw new Error(error.message);
+            throw error.response? error.response.status : 12002;
         }
         
     }
@@ -36,13 +32,9 @@ function AuthContext({ children }) {
         try {
             const { data } = await requestCodeValidation(code);
             document.cookie = serialize("token", data.token);
-            setToken(data.token);
-            setIsLoggedIn(true);
             return data.token;
         } catch (error) {
-            
-            console.log("Failed to validate OTP Code. com:AuthContext. error: "+error.message);
-            throw new Error(error.message)
+             throw error.response? error.response.status : 12002;
         }
         
     }
@@ -54,8 +46,6 @@ function AuthContext({ children }) {
         document.cookie = serialize("token", "", { expires: new Date(0) });
         document.cookie=serialize("editing",null);
         document.cookie=serialize("projectId",null);
-       
-        
     }
     // Provide the authentication context value to the components in the tree
     return (

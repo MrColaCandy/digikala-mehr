@@ -40,21 +40,16 @@ function LoginPhoneNumberForm({ isLoading, setIsLoading, setCode, setRegistratio
             setCode(true)
             setError(null)
             setRegistrationError(false)
-        } catch (error) {
+        } catch (status) {
             setCode(false);
-            if (error.message.toLowerCase() == "network error") {
+            if (status == 12002) {
                 setFormError("لطفاًً اتصال به شبکه را برسی کنید.")
                 return;
             }
-            if (error.message.toLowerCase() == "request failed with status code 400") {
+            if (status == 404 || status == 400) {
                 setRegistrationError(true)
                 return;
             }
-
-            if (!error) {
-                setFormError(error.message);
-            }
-
         }
         finally {
             setIsLoading(false)
@@ -74,10 +69,9 @@ function LoginPhoneNumberForm({ isLoading, setIsLoading, setCode, setRegistratio
                 {error && <p className="login__error">{error}</p>}
             </div>
             <Button color={"#00B189"} width={332} isLoading={isLoading} text={"ورود"} variant={"filled"} />
-            {formError && <p className="login__error">{formError}</p>}
             <p className="login__paragraphTextCenter">ورود شما به معنای پذیرش <span className="login__paragraphBlue">
                 شرایط دیجی‌کالا</span>و <span className="login__paragraphBlue">قوانین حریم خصوصی</span> است</p>
-
+                <p className="login__formError">{formError}</p>
         </form>
     )
 }

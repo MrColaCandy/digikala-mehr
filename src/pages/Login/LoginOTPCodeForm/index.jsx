@@ -9,7 +9,7 @@ import { useProject } from '@components/hooks/useProject';
 
 function LoginOTPCodeForm({ isLoading, setIsLoading, phone, setCode }) {
     const inputRef = useRef(null)
-    const { validateOTPCode, getOTPCode,setIsLoggedIn} = useAuth()
+    const { validateOTPCode, getOTPCode,setIsLoggedIn,setToken} = useAuth()
     const navigate = useNavigate()
     const { convert } = usePersian()
     const { minutes, seconds, resetCountdown } = useCountdown(90, handleCountdownOverCallback);
@@ -26,38 +26,42 @@ function LoginOTPCodeForm({ isLoading, setIsLoading, phone, setCode }) {
             const otp = await getOTPCode(phone);
             console.log(otp);
             setCode(true);
-        } catch (error) {
+        } catch (status) {
             setCode(false);
-            if (error.message.toLowerCase() == "network error") {
+            if (status == 12002) {
                 setFormError("لطفاًً اتصال به شبکه را برسی کنید.")
                 return;
             }
-            if (!error) {
-                setFormError(error.message);
+            if (status == 400 ||status == 404 ) {
+                
+                setFormError("کد معتبر نیست!");
+                return;
             }
         }
     }
     async function login()
     {
         try {
-            await validateOTPCode({ otp: value.trim() });
+            const token= await validateOTPCode({ otp: value.trim() });
+            setToken(token);
             setIsLoggedIn(true);
             setError(null);
-        } catch (error) {
+        } catch (status) {
+            console.log("otp status",status);
             inputRef?.current?.focus()
             inputRef?.current?.select()
-            if (error.message.toLowerCase() == "network error") {
+            if (status == 12002) {
                 setFormError("لطفاًً اتصال به شبکه را برسی کنید.")
-                return;
+                throw status;
             }
-            if (error.message.toLowerCase() == "request failed with status code 400") {
+            if (status == 400) {
+                
                 setFormError("کد معتبر نیست!");
-                return;
+                throw status;
+            }
+            
 
-            }
-            if (!error) {
-                setFormError(error.message);
-            }
+           
         }
        
     }
@@ -67,9 +71,9 @@ function LoginOTPCodeForm({ isLoading, setIsLoading, phone, setCode }) {
         try {
             const user=await getUser();
             setUser(user);
-        } catch (error) {
+        } catch (status) {
             setUser(null);
-            navigate("/login")
+            throw status;
         }
     }
     async function initData()
@@ -77,20 +81,27 @@ function LoginOTPCodeForm({ isLoading, setIsLoading, phone, setCode }) {
         try{
           const activeProject=await getActiveProject();
           setActiveProject(activeProject);
-        }catch(error)
+        }catch(status)
         {
             setActiveProject(null);
+            throw status;
         }
     }
     async function handleSubmit(e) {
         e.preventDefault();
         if (error || !value || value == "" || formError) return;
+        try {
         setIsLoading(true)
         await login();
         await initUser();
         await initData();
         navigate("/");
-        setIsLoading(false);
+        } catch (status) {
+            console.log("Failed to  login error code: "+status);
+        }finally
+        {
+            setIsLoading(false);
+        }
 
     }
     function validate(value) {
