@@ -27,7 +27,6 @@ const EditPlanModal = ({ setModal, substitute, setSubstitute, title, variant = "
         if (variant === "change") {
             setTimeout(async () => {
                 await changeProjects();
-                setActiveProject(null)
                 setSubstitute(null);
                 setAnimation(false);
             }, 800);
@@ -37,7 +36,6 @@ const EditPlanModal = ({ setModal, substitute, setSubstitute, title, variant = "
                 await removeProject();
                 document.cookie= serialize("projectId",null);
                 document.cookie= serialize("editing",null);
-                setActiveProject(null);
                 setAnimation(false);
             }, 800);
         }
@@ -117,6 +115,7 @@ const EditPlanModal = ({ setModal, substitute, setSubstitute, title, variant = "
             
             await cancelProject(activeProject?.id);
             setSubstitute(null);
+            setActiveProject(false);
             document.cookie = serialize("newProject", "delete");
             navigate("/profile");
         } catch (error) {
@@ -131,11 +130,8 @@ const EditPlanModal = ({ setModal, substitute, setSubstitute, title, variant = "
     async function changeProjects() {
         try {
           
-          const project=  await updateProject({ token: token, newProject: substitute.id, oldProject:activeProject?.id, price:activeProject?.price });
-            console.log( "up",project);
-        
+            await updateProject({ token: token, newProject: substitute.id, oldProject:activeProject?.id, price:activeProject?.price });
             setSubstitute(null);
-            
             document.cookie = serialize("newProject", "edit");
             navigate("/profile");
         } catch (error) {

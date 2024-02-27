@@ -4,9 +4,9 @@ import Login from "@pages/Login";
 import ChoosePlan from "@pages/ChoosePlan";
 import Profile from "@pages/Profile";
 import History from "@pages/History";
-import ChoosePrice from "../pages/ChoosePrice";
-import EditPlan from "../pages/EditPlan";
-import EditPrice from "../pages/EditPrice";
+import ChoosePrice from "@pages/ChoosePrice";
+import EditPlan from "@pages/EditPlan";
+import EditPrice from "@pages/EditPrice";
 
 
 export const routes = [

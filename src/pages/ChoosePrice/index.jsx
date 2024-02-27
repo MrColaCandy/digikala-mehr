@@ -18,7 +18,7 @@ const ChoosePrice = () => {
 
     try {
       await addProject({ id: projectId, price: value })
-      setActiveProject(null)
+      setActiveProject({})
       document.cookie = serialize("newProject", "create");
       navigate("/profile")
     } catch (error) {
