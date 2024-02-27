@@ -7,18 +7,22 @@ import { useNavigate } from "react-router-dom"
 
 const Layout = ({ children }) => {
     const { setUser, getUser } = useProject();
-    const { logout, setIsLoggedIn } = useAuth()
+    const { logout, setIsLoggedIn, token } = useAuth()
     const navigate = useNavigate();
     async function getUserOnLoad() {
+        if (!token || token == "") {
+            logout();
+            return;
+        }
         try {
+
             const user = await getUser();
             setUser(user);
             setIsLoggedIn(true);
         } catch (error) {
             logout();
-            setUser(null);
             navigate("/");
-            
+
         }
     }
     useEffect(() => {

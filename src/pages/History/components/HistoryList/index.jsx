@@ -16,14 +16,14 @@ function HistoryList({  itemsPerPage }) {
   const [currentPage, setCurrentPage] = useState(1);
   const { convert } = usePersian();
   const listRef = useRef(null);
-  const totalPages = Math.ceil(histories.length / itemsPerPage);
+  const totalPages = Math.ceil(histories?.length / itemsPerPage);
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const currentItems = histories.slice(startIndex, endIndex);
+  const currentItems = histories?.slice(startIndex, endIndex);
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
@@ -71,7 +71,7 @@ function HistoryList({  itemsPerPage }) {
       </section>
 
       {
-        itemsPerPage < histories.length &&
+        itemsPerPage < histories?.length &&
 
         <section className="allPaymentsSlidePagination">
           <button onClick={handlePrevPage} className="allPaymentsSlidePagination__perviousBtn"><TbChevronRight />قبلی</button>

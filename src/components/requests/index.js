@@ -10,6 +10,7 @@ export function requestCodeValidation(code) {
 }
 
 export function requestUser(token) {
+
     return AxiosHttp.get("userDetails/", {
         headers: {
             "Authorization": `${token}`

@@ -54,7 +54,7 @@ function ProjectContext({ children }) {
         }
     }
     async function getUser() {
-        if (!token || token == "") return;
+
         try {
             const { data } = await requestUser(token);
             return data;
