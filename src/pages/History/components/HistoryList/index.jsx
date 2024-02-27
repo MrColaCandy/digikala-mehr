@@ -2,7 +2,7 @@ import { BsListCheck } from "react-icons/bs";
 import { TbChevronRight } from "react-icons/tb";
 import { TbChevronLeft } from "react-icons/tb";
 import './style.css';
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import HistoryItem from "@components/HistoryItem";
 import usePersian from "@components/hooks/usePersian";
 
@@ -10,8 +10,8 @@ import { useNavigate } from "react-router-dom";
 import { parse } from "cookie";
 import { useProject } from "@components/hooks/useProject";
 
-function HistoryList({  itemsPerPage }) {
-  const {histories}=useProject();
+function HistoryList({ itemsPerPage }) {
+  const { histories, getHistories, setHistories } = useProject();
   const navigate = useNavigate()
   const [currentPage, setCurrentPage] = useState(1);
   const { convert } = usePersian();
@@ -30,17 +30,31 @@ function HistoryList({  itemsPerPage }) {
 
   };
 
+  async function getHistoriesOnLoad(){
+    try {
+       const histories=await getHistories()
+       setHistories(histories)
+    } catch (error) {
+      console.log("histories: "+error);
+      setHistories([])
+    }
+  }
+  useEffect(() => {
+     const abortController = new AbortController();
+     getHistoriesOnLoad();
+     return ()=> abortController.abort(); 
+    }, 
+  [])
   const handlePrevPage = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
 
   };
   function handleBackButtonClick() {
-    const previousPage=parse(document.cookie).previousPage;
-    if(previousPage)
-    {
+    const previousPage = parse(document.cookie).previousPage;
+    if (previousPage) {
       navigate(previousPage);
     }
-    
+
   }
   return (
     <section className="historyList">
