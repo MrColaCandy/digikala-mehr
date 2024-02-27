@@ -5,16 +5,23 @@ import { parse } from "cookie";
 import { useEffect, useState } from "react";
 import {useNavigate} from "react-router-dom"
 const PriceHeader = () => {
-  const { getAllProjects } = useProject();
+  const { getAllProjects,activeProject } = useProject();
   const [project,setProject]=useState(null)
   const navigate=useNavigate();
   async function getProjectOnLoad()
   {
     try {
       const projects= await getAllProjects()
-      const id=parse(document.cookie).projectId || JSON.parse(parse(document.cookie).editing || "").projectId
-      const project= projects.find(p=>p.id==id);
-      setProject(project);
+      if(location.pathname=="/choose-price")
+      {
+        const id=parse(document.cookie).projectId 
+        const project= projects.find(p=>p.id==id)
+        setProject({title:project.topic,logo:project.institute.logo});
+      }
+      else
+      {
+        setProject({title:activeProject.project.topic,logo:activeProject.project.institute.logo})
+      }
     } catch (error) {
       console.log(error);
     }
@@ -49,8 +56,8 @@ const PriceHeader = () => {
           <span>این مبلغ ماهیانه از حقوقت صرف پروژه انتخابی‌ت میشه.</span>
         </div>
         <div className="priceForm__currentProject">
-          <span>{project?.topic} </span>
-          <img className="priceForm__currentProjectImage"  src={BASE_URL+ project?.institute?.logo} />
+          <span>{project?.title} </span>
+          <img className="priceForm__currentProjectImage"  src={BASE_URL+ project?.logo} />
         </div>
       </div>
     </div>
