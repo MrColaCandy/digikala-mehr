@@ -4,6 +4,7 @@ import { useProject } from "@components/hooks/useProject";
 import { parse, serialize } from "cookie";
 import {  useState } from "react";
 import { useNavigate } from "react-router-dom"
+import "./style.css"
 const ChoosePrice = () => {
   const { addProject,setActiveProject} = useProject()
   const navigate = useNavigate()

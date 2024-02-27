@@ -13,7 +13,21 @@
     text-align: center;
     
 }
-
+.priceForm__backButton {
+    font-weight: 500;
+    line-height: 20px;
+    text-align: right;
+    border: none;
+    outline:none;
+    background-color: transparent;
+    position: absolute;
+    top: 3%;
+    right: 8px;
+    color: var(--color-primary);
+    font-size: var(--font-size-normal);
+    cursor: pointer;
+    
+}
 .priceForm__currentPhase {
     color: var(--color-textLight);
     font-size: var(--font-size-tiny);
@@ -43,16 +57,32 @@
 
 .priceForm__headerSubtitle{
     line-height: 20px;
+    font-size: var(--font-size-small);
+    color: var(--color-primary);
+    width: 100%;
+    text-align: justify;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+   
+}
+.priceForm__currentProject{
+    line-height: 40px;
     font-size: var(--font-size-xsmall);
     color: var(--color-textLight);
     width: 100%;
-
-    text-align: center;
+    text-align: justify;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-   
+    flex-direction: row-reverse;
+}
+.priceForm__currentProjectImage{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
 }
 .priceForm__headerSubtitleBold
 {

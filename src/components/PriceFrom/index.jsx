@@ -20,17 +20,18 @@ const PriceForm = ({ onSubmit}) => {
     };
     async function handleSubmit(e)
     {   e.preventDefault()
+        validate(e.target["price"].value.trim());
         if(error || value=="" || !value)return;
         setIsLoading(true);
         try {
             await onSubmit(e);
-        } catch (error) {
-            console.log("Failed to add project. com:PriceForm. error: "+error.message);
-            if (error.message.toLowerCase() == "network error") {
+        } catch (state) {
+       
+            if (state ==12002) {
                 setFormError("لطفاًً اتصال به شبکه را برسی کنید.")
                 return;
             }
-            if(error.message.toLowerCase().includes("500"))
+            if(state==500)
             {
                 setFormError("لطفاًً اتصال به شبکه را برسی کنید.")
                 return;
@@ -44,13 +45,12 @@ const PriceForm = ({ onSubmit}) => {
         const regex = /^[0-9]*$/;
         if (!value || value == "") {
             setError("لطفاً این قسمت را خالی نگذارید.");
-
+            
         }
         else if (!regex.test(value)) {
             setError("لطفاً مبلغ را به عدد وارد کنید.");
-
+       
         }
-
         else {
             setError(null);
         }
