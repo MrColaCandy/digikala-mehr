@@ -1,6 +1,14 @@
+.priceForm__headerWrapper
+{
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
 .priceForm__header {
     margin-top: var(--space-32);
-    width: 90vw;
+    width: 100%;
     max-width: 442px;
     display: flex;
     justify-content: center;
@@ -20,12 +28,19 @@
     border: none;
     outline:none;
     background-color: transparent;
-    position: absolute;
-    top: 3%;
-    right: 8px;
     color: var(--color-primary);
     font-size: var(--font-size-normal);
     cursor: pointer;
+    
+}
+.priceForm__back
+{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: var(--space-32);
+    padding: 0 var(--space-8);
     
 }
 .priceForm__currentPhase {
@@ -34,7 +49,7 @@
     text-align: center;
 }
 .priceForm__phase {
-    width: 90vw;
+    width: 100%;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -95,4 +110,12 @@
     padding: 0 var(--space-8);
   
    
+}
+
+@media screen and (max-width: 1280px) {
+    .priceForm__back{
+        padding: 0 var(--space-24);
+        margin-top: var(--space-16);
+    }
+    
 }
