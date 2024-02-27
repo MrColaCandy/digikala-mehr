@@ -39,7 +39,7 @@ const Layout = ({ children }) => {
         {
             navigate("/profile")
         }
-        if(location.pathname=="/choose-price" && !parse(document.cookie).projectId)
+        if(location.pathname=="/choose-price" && parse(document.cookie).projectId==="null")
         {
             navigate("/choose-plan")
         }
@@ -47,7 +47,7 @@ const Layout = ({ children }) => {
         {
             navigate("/profile")
         }
-        if(location.pathname=="/edit-price" && (!parse(document.cookie).editing || !activeProject))
+        if(location.pathname=="/edit-price" && (parse(document.cookie).editing==="null" || !activeProject))
         {
             navigate("/profile")
         }
