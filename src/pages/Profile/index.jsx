@@ -48,8 +48,6 @@ function Profile() {
       setHistories(histories)
     } catch (error) {
       setHistories([])
-      
-
     }
   }
   async function getStatsOnLoad() {
