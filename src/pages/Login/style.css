@@ -168,5 +168,15 @@
 }
 .login__paragraph.login__countDown
 {
-    text-align: center;
+    text-align: justify;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.login__paragraph.login__countDown span
+{
+    width: 100%;
+    max-width: 35px;
+    text-align: left;
 }
