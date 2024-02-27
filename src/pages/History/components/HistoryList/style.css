@@ -8,6 +8,7 @@
     align-items: center;
     margin-top: var(--space-32);
     height: 500px;
+  
     
 }
 
@@ -73,14 +74,14 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding-bottom: var(--space-32);
+    padding: var(--space-32) 0;
 }
 
 .allPaymentsHeader__dateTitle,
 .allPaymentsHeader__statusTitle,
 .allPaymentsHeader__projectTitle,
 .allPaymentsHeader__costTitle {
-    height: 100%;
+    height: 40px;
     color: var(--color-textMid);
     font-size: var(--font-size-tiny);
     line-height: var(--lineHeight-20);
@@ -278,13 +279,9 @@
     align-items: center;
 }
 @media screen and (max-width: 1280px) {
-    .historyList,
-    .historyList__header,
-   .allPaymentsHeader
-   {
-    padding: 0 var(--space-10)
-
-   }
+  .historyList{
+    padding: 0 var(--space-20);
+  }
 }
 @media screen and (max-width: 500px) {
     .allPaymentsHeader{
