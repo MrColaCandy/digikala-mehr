@@ -62,7 +62,7 @@ function HistoryList({  itemsPerPage }) {
         </header>
 
         <ul ref={listRef} className="allPaymentsList">
-          {currentItems.map((history) => (
+          {currentItems?.map((history) => (
             <HistoryItem key={history.id} history={history} />
           ))}
         </ul>

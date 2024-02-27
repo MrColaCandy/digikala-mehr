@@ -126,7 +126,7 @@ function LoginOTPCodeForm({ isLoading, setIsLoading, phone, setCode }) {
                 <input ref={inputRef} autoFocus onBlur={handleBlur} value={value} onChange={handelValueChange} name='OTPCode' type="text" className={`login__inputController${error ? "--error" : ""}`} />
                 <p className="login__error">{error}</p>
             </div>
-            <p className='login__paragraph login__countDown'>{convert(minutes)}{minutes === 0 ? "" : ":"}{convert(seconds)} مانده تا دریافت مجدد کد</p>
+            <p className='login__paragraph login__countDown'><span>{convert(seconds)}{minutes !== 0 ? " : "+convert(minutes):"" }</span> مانده تا دریافت مجدد کد</p>
             <Button variant='filled' width={332} text={"تایید"} isLoading={isLoading} />
             <p className="login__formError">{formError}</p>
         </form>
