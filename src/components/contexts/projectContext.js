@@ -1,6 +1,8 @@
 import { createContext } from "react";
 export const projectContext = createContext({
   activeProject:null,
+  user:null,
+  histories:null,
   setActiveProject:()=>{},
   addProject:()=>{},
   cancelProject:()=>{},
@@ -13,7 +15,8 @@ export const projectContext = createContext({
   getStats:()=>{},
   getUser:()=>{},
   getAllProjects:()=>{},
-  getHistories:()=>{}
+  getHistories:()=>{},
+  setHistories:()=>{},
   });
 
 

@@ -3,12 +3,12 @@
   height:12px;
   background:var(--color);
   border-radius: 50%;
-  box-shadow: 20px 0 #00B18922,-20px 0 #00B189;
+  box-shadow: 20px 0 white,-20px 0 var(--color);
   animation:d5 1s infinite linear alternate;
   transform: scale(var(--scale));
 }
 @keyframes d5 {
-    0% {box-shadow: 20px 0 #00B189,-20px 0 #00B18922;background: #00B189}
-    33%{box-shadow: 20px 0 #00B189,-20px 0 #00B18922;background: #00B18922}
-    66%{box-shadow: 20px 0 #00B18922,-20px 0 #00B189;background: #00B18922}
+    0% {box-shadow: 20px 0 var(--color),-20px 0 white;background: var(--color)}
+    33%{box-shadow: 20px 0 var(--color),-20px 0 white;background: white}
+    66%{box-shadow: 20px 0 white,-20px 0 var(--color);background: white}
 }

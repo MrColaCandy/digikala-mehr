@@ -15,13 +15,12 @@ import { BASE_URL } from '../../configs/BASE_URL';
 import { NavLink } from 'react-router-dom';
 const DropDown = () => {
     const { convert, addCommas } = usePersian()
-    const { userData } = useProject();
+    const { user } = useProject();
     const { logout } = useAuth();
     const navigate = useNavigate();
     function handleLogoutClick() {
         logout();
         navigate("/")
-        window.location.reload();
     }
     const [open, setOpen] = useState(false);
     let menuRef = useRef()
@@ -49,8 +48,8 @@ const DropDown = () => {
 
     }
     function getHelpsSum() {
-        if (!userData || !userData?.help_history || userData?.help_history <= 0) return convert("0")
-        return convert(addCommas(userData?.help_history.filter(h => h.state === "success").reduce(function (acc, obj) { return acc + obj.price }, 0)));
+        if (!user || !user?.help_history || user?.help_history <= 0) return convert("0")
+        return convert(addCommas(user?.help_history.filter(h => h.state === "success").reduce(function (acc, obj) { return acc + obj.price }, 0)));
     }
     return (
         <>
@@ -63,9 +62,9 @@ const DropDown = () => {
                     <div className="main-dropdown">
                         <ul>
                             <li className="dropdown-li">
-                                <img className='img-user' width={40} height={40} src={userData ? `${BASE_URL}${userData?.user?.profilePhoto}` : avatarPlaceHolder} alt="avatar" />
+                                <img className='img-user' width={40} height={40} src={user ? `${BASE_URL}${user?.user?.profilePhoto}` : avatarPlaceHolder} alt="avatar" />
                                 <div className="account-id">
-                                    <NavLink to={"/profile"}>{userData?.user?.firstName}</NavLink>
+                                    <NavLink to={"/profile"}>{user?.user?.firstName}</NavLink>
                                     <p>جمع نیکوکاری های شما</p>
                                     <span>{getHelpsSum()}<img src={Toman} alt="تومان" /></span>
                                 </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useState } from "react";
 import { projectContext } from "../contexts/projectContext";
 
 import {
@@ -14,6 +14,7 @@ import {
     requestConfirmCancelProject,
 } from "../requests";
 import { useAuth } from "@components/hooks/useAuth"
+import { parse } from "cookie";
 
 
 
@@ -21,9 +22,12 @@ import { useAuth } from "@components/hooks/useAuth"
 function ProjectContext({ children }) {
     const { token } = useAuth();
     const [activeProject,setActiveProject]=useState(null);
-    
+    const [histories,setHistories]=useState(JSON.parse(parse(document.cookie).histories || null));
+    const [user,setUser]=useState(null);
+ 
    
    
+
     async function getAllProjects() {
 
         try {
@@ -52,10 +56,8 @@ function ProjectContext({ children }) {
         try {
             const { data } = await requestUser(token);
             return data;
-
         } catch (error) {
             console.log("Failed to get user. com:RequestContext. error: " + error.message);
-            throw new Error(error.message)
         }
     }
     async function updateProject({ newProject, oldProject, price }) {
@@ -188,8 +190,12 @@ function ProjectContext({ children }) {
                 getUser,
                 getAllProjects,
                 getHistories,
+                setActiveProject,
+                setHistories,
+                setUser,
                 activeProject,
-                setActiveProject
+                user,
+                histories
 
             }}>
             {children}

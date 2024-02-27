@@ -35,7 +35,7 @@ function LoginPhoneNumberForm({ isLoading, setIsLoading, setCode, setRegistratio
         if (error || !value || value == "" || formError) return;
         setIsLoading(true);
         try {
-            const otp = await getOTPCode(value)
+            const otp = await getOTPCode(value.trim())
             console.log(otp);
             setCode(true)
             setError(null)

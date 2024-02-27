@@ -5,17 +5,18 @@ import { useRef, useState } from 'react';
 import { useAuth } from "@components/hooks/useAuth"
 import { useNavigate } from "react-router-dom"
 import useCountdown from '../useCountdown';
+import { useProject } from '../../../components/hooks/useProject';
 
 function LoginOTPCodeForm({ isLoading, setIsLoading, phone, setCode }) {
     const inputRef = useRef(null)
-    const { validateOTPCode, getOTPCode } = useAuth()
+    const { validateOTPCode, getOTPCode,setIsLoggedIn} = useAuth()
     const navigate = useNavigate()
     const { convert } = usePersian()
     const { minutes, seconds, resetCountdown } = useCountdown(90, handleCountdownOverCallback);
     const [value, setValue] = useState("");
     const [error, setError] = useState(null);
     const [formError, setFormError] = useState(null);
-
+    const { getUser, setUser } = useProject();
 
 
 
@@ -41,7 +42,10 @@ function LoginOTPCodeForm({ isLoading, setIsLoading, phone, setCode }) {
         if (error || !value || value == "" || formError) return;
         setIsLoading(true);
         try {
-            await validateOTPCode({ otp: value });
+            await validateOTPCode({ otp: value.trim() });
+            setIsLoggedIn(true);
+            const user = await getUser();
+            setUser(user);
             navigate("/");
             setError(null);
         } catch (error) {
@@ -63,6 +67,7 @@ function LoginOTPCodeForm({ isLoading, setIsLoading, phone, setCode }) {
         finally {
             setIsLoading(false);
         }
+
 
 
     }

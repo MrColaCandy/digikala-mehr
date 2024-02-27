@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "@components/hooks/useAuth";
 function Home() {
 
-  const { getStats, getAllProjects,setActiveProject,getAllProject,activeProject,getActiveProject } = useProject()
+  const { getStats, getAllProjects,setActiveProject,activeProject,getActiveProject } = useProject()
   const navigate = useNavigate();
   const [stats, setStats] = useState(null);
   const [projects, setProjects] = useState([]);

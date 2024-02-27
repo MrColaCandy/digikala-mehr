@@ -12,7 +12,7 @@ const Button = ({color="#00B189", isLoading=false,width=355,margin=0,text,onClic
             }
             {
                 isLoading &&
-                <Loader color={variant==="outlined"?"#00B189":"white"}/>
+                <Loader color={variant==="outlined"?color:"white"}/>
             }
         </button>
     )

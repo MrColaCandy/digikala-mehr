@@ -12,7 +12,7 @@ import { requestCode, requestCodeValidation } from "@components/requests"
 function AuthContext({ children }) {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [token, setToken] = useState(parse(document.cookie).token || null)
-
+    
   
     async function getOTPCode(phone) {
         
@@ -52,6 +52,9 @@ function AuthContext({ children }) {
         setToken(null);
         setIsLoggedIn(false);
         document.cookie = serialize("token", "", { expires: new Date(0) });
+        document.cookie=serialize("editing",null);
+        document.cookie=serialize("projectId",null);
+       
         
     }
     // Provide the authentication context value to the components in the tree
