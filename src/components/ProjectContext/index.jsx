@@ -1,4 +1,4 @@
-import {useState } from "react";
+import { useState } from "react";
 import { projectContext } from "../contexts/projectContext";
 
 import {
@@ -14,26 +14,28 @@ import {
     requestConfirmCancelProject,
 } from "../requests";
 import { useAuth } from "@components/hooks/useAuth"
-import { parse } from "cookie";
 
 
 
 
 function ProjectContext({ children }) {
-    const { token } = useAuth();
-    const [activeProject,setActiveProject]=useState(null);
-    const [histories,setHistories]=useState(JSON.parse(parse(document.cookie).histories || null));
-    const [user,setUser]=useState(null);
- 
-   
-   
+    const { token,isLoggedIn } = useAuth();
+    const [activeProject, setActiveProject] = useState(null);
+    const [projects, setProjects] = useState(null)
+    const [histories, setHistories] = useState(null);
+    const [user, setUser] = useState(null);
+    const [payments, setPayments] = useState(0);
+    const [isExpired,setIsExpired]=useState(false);
+    const [stats,setStats]=useState(null);
+
+
 
     async function getAllProjects() {
 
         try {
             const { data } = await requestAllProjects();
-            if (token && token != "") {
-            
+            if (token && token != "" && isLoggedIn) {
+
                 try {
                     const activeProject = await getActiveProject()
                     if (activeProject) {
@@ -63,7 +65,7 @@ function ProjectContext({ children }) {
     async function updateProject({ newProject, oldProject, price }) {
         if (!token || token == "") return;
         try {
-            await requestUpdateProject({ token:token, newProject:newProject, oldProject:oldProject, price:price });
+            await requestUpdateProject({ token: token, newProject: newProject, oldProject: oldProject, price: price });
 
         } catch (error) {
             console.log("Failed to update project. com:RequestContext. error: " + error.message);
@@ -79,20 +81,19 @@ function ProjectContext({ children }) {
             throw new Error(error.message);
         }
     }
-    async function getHistories()
-    {
+    async function getHistories() {
         try {
-             const user=await getUser();
-             const {data}=await requestAllProjects(token);
-             const ids=user.help_history.map(h=>h.project_id);
-             const userProject= data.filter(p=>ids.includes(p.id));
-             return userProject.map((p)=>{
-                const h=user.help_history.find(h=>h.project_id==p.id)
-                return {...p,...h}
-             })
-             
+            const user = await getUser();
+            const { data } = await requestAllProjects(token);
+            const ids = user.help_history.map(h => h.project_id);
+            const userProject = data.filter(p => ids.includes(p.id));
+            return userProject.map((p) => {
+                const h = user.help_history.find(h => h.project_id == p.id)
+                return { ...p, ...h }
+            })
+
         } catch (error) {
-            console.log("failed to get histories. com:ProjectContext. error: "+ error.message );
+            console.log("failed to get histories. com:ProjectContext. error: " + error.message);
             throw new Error(error.message)
         }
     }
@@ -100,7 +101,7 @@ function ProjectContext({ children }) {
 
         try {
             const res = await requestStats();
-            return{
+            return {
                 ...res[0].data,
                 ...res[1].data
             }
@@ -138,7 +139,7 @@ function ProjectContext({ children }) {
         }
     }
 
-    async function isProjectExpired() {
+    async function getIsProjectExpired() {
         if (!token || token == "") return;
         try {
             const { data } = await requestProjectLifeSpan(token);
@@ -164,8 +165,8 @@ function ProjectContext({ children }) {
     async function cancelProject(id) {
         if (!token || token == "") return;
         try {
-            await requestCancelProject({ token: token, id: parseInt(id)});
-            await requestConfirmCancelProject({ token: token, id: parseInt(id)});
+            await requestCancelProject({ token: token, id: parseInt(id) });
+            await requestConfirmCancelProject({ token: token, id: parseInt(id) });
         } catch (error) {
             console.log("Failed to cancel project. com:RequestContext. id:  " + id + ". error: " + error.message);
             throw new Error(error.message);
@@ -182,7 +183,7 @@ function ProjectContext({ children }) {
                 cancelProject,
                 getPayments,
                 getProject,
-                isProjectExpired,
+                getIsProjectExpired,
                 extendProject,
                 updateProject,
                 getActiveProject,
@@ -193,9 +194,17 @@ function ProjectContext({ children }) {
                 setActiveProject,
                 setHistories,
                 setUser,
+                setProjects,
+                setIsExpired,
+                setPayments,
+                setStats,
                 activeProject,
                 user,
-                histories
+                histories,
+                projects,
+                payments,
+                isExpired,
+                stats,
 
             }}>
             {children}

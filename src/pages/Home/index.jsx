@@ -14,10 +14,10 @@ import { useEffect, useState } from "react";
 import { useAuth } from "@components/hooks/useAuth";
 function Home() {
 
-  const { getStats, getAllProjects,setActiveProject,activeProject,getActiveProject } = useProject()
+  const { getStats, projects, activeProject, getAllProjects, setProjects } = useProject()
   const navigate = useNavigate();
   const [stats, setStats] = useState(null);
-  const [projects, setProjects] = useState([]);
+
   const { isLoggedIn } = useAuth();
   async function getStatsOnLoad() {
     try {
@@ -28,41 +28,33 @@ function Home() {
     }
   }
 
+
+  useEffect(() => {
+    const abortController = new AbortController()
+    getStatsOnLoad();
+    return () => abortController.abort();
+  }, [])
   async function getAllProjectsOnLoad() {
     try {
       const projects = await getAllProjects();
-      setProjects(projects);
-      
+      setProjects(projects)
     } catch (error) {
-      setProjects([]);
+      setProjects([])
+      console.log(error);
     }
   }
-async function getActiveProjectOnLoad()
-{
-  try {
-     const active= await getActiveProject()
-     setActiveProject(active)
-  } catch (error) {
-    setActiveProject(null)
-  }
-}
 
   useEffect(() => {
-    getActiveProjectOnLoad();
-    getStatsOnLoad();
-    getAllProjectsOnLoad()
+    const abortController = new AbortController();
+    getAllProjectsOnLoad();
+    return () => abortController.abort();
   }, [])
-
-
-
   function handleStartButtonClick() {
     if (isLoggedIn) {
-      if(activeProject)
-      {
-         navigate("/profile")
+      if (activeProject) {
+        navigate("/profile")
       }
-      else
-      {
+      else {
         navigate("choose-plan")
       }
     }

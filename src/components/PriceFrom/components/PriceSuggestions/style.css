@@ -60,12 +60,11 @@
 }
 
 .priceForm__suggestionCurrency {
-   
-    top: var(--space-12);
     font-size: var(--space-10);
     line-height: var(--space-16);
     font-weight: 400;
     color: var(--color-primary);
+    transform: translate(-3px,1px) ;
 }
 
 .priceForm__suggestionCurrency--active {
@@ -74,6 +73,7 @@
     font-size: var(--space-10);
     line-height: var(--space-16);
     font-weight: 400;
-    color: white
+    color: white;
+    transform: translate(-3px,1px) ;
 }
 

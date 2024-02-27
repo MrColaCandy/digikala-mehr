@@ -5,7 +5,7 @@ import { useRef, useState } from 'react';
 import { useAuth } from "@components/hooks/useAuth"
 import { useNavigate } from "react-router-dom"
 import useCountdown from '../useCountdown';
-import { useProject } from '../../../components/hooks/useProject';
+import { useProject } from '@components/hooks/useProject';
 
 function LoginOTPCodeForm({ isLoading, setIsLoading, phone, setCode }) {
     const inputRef = useRef(null)
@@ -16,7 +16,7 @@ function LoginOTPCodeForm({ isLoading, setIsLoading, phone, setCode }) {
     const [value, setValue] = useState("");
     const [error, setError] = useState(null);
     const [formError, setFormError] = useState(null);
-    const { getUser, setUser } = useProject();
+    const { getUser, setUser,setActiveProject,getActiveProject } = useProject();
 
 
 
@@ -37,16 +37,11 @@ function LoginOTPCodeForm({ isLoading, setIsLoading, phone, setCode }) {
             }
         }
     }
-    async function handleSubmit(e) {
-        e.preventDefault();
-        if (error || !value || value == "" || formError) return;
-        setIsLoading(true);
+    async function login()
+    {
         try {
             await validateOTPCode({ otp: value.trim() });
             setIsLoggedIn(true);
-            const user = await getUser();
-            setUser(user);
-            navigate("/");
             setError(null);
         } catch (error) {
             inputRef?.current?.focus()
@@ -64,11 +59,38 @@ function LoginOTPCodeForm({ isLoading, setIsLoading, phone, setCode }) {
                 setFormError(error.message);
             }
         }
-        finally {
-            setIsLoading(false);
+       
+    }
+
+    async function initUser()
+    {
+        try {
+            const user=await getUser();
+            setUser(user);
+        } catch (error) {
+            setUser(null);
+            navigate("/login")
         }
-
-
+    }
+    async function initData()
+    {
+        try{
+          const activeProject=await getActiveProject();
+          setActiveProject(activeProject);
+        }catch(error)
+        {
+            setActiveProject(null);
+        }
+    }
+    async function handleSubmit(e) {
+        e.preventDefault();
+        if (error || !value || value == "" || formError) return;
+        setIsLoading(true)
+        await login();
+        await initUser();
+        await initData();
+        navigate("/");
+        setIsLoading(false);
 
     }
     function validate(value) {

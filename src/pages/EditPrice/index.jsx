@@ -13,6 +13,11 @@ const EditPrice = () => {
       const value=e.target["price"].value.trim();
       e.preventDefault()
       const editing=JSON.parse(parse(document.cookie).editing)
+      if(!editing)
+      {
+        navigate("/")
+        return;
+      }
       try {
           
           await requestUpdateProject({oldProject:editing.historyId,newProject:editing.projectId,price:value,token:token})

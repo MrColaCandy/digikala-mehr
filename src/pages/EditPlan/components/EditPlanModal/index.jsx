@@ -11,18 +11,10 @@ import "./style.css"
 const EditPlanModal = ({ setModal, substitute, setSubstitute, title, variant = "change" }) => {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
-    const { cancelProject,updateProject,activeProject,setActiveProject,getActiveProject } = useProject()
+    const { cancelProject,updateProject,activeProject,setActiveProject } = useProject()
     const { token } = useAuth()
     const [animation, setAnimation] = useState(false);
-     async function getActiveProjectAfterUpdate()
-     {
-        try {
-            const active=await getActiveProject();
-            setActiveProject(active);
-        } catch (error) {
-            setActiveProject(null);
-        }
-     }
+   
     function handleCancelClick() {
         if (isLoading) return;
         setSubstitute(null)
@@ -35,7 +27,7 @@ const EditPlanModal = ({ setModal, substitute, setSubstitute, title, variant = "
         if (variant === "change") {
             setTimeout(async () => {
                 await changeProjects();
-                await getActiveProjectAfterUpdate()
+                setActiveProject(null)
                 setSubstitute(null);
                 setAnimation(false);
             }, 800);

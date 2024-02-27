@@ -5,28 +5,32 @@ import Card from "@components/Card"
 import Button from "@components/Button"
 import { useNavigate } from "react-router-dom"
 import { serialize } from "cookie"
-import { useEffect, useState } from "react"
 import { useProject } from "@components/hooks/useProject"
+import { useEffect } from "react"
 
 const ChoosePlan = () => {
-  const { getAllProjects} = useProject();
-  const [projects,setProjects]=useState([]);
+  const {setProjects,projects,getAllProjects} = useProject();
+
   const navigate = useNavigate();
- 
-  async function getAllProjectsOnLoad()
-  {
+  
+  async function getAllProjectsOnLoad() {
     try {
-      const projects= await getAllProjects();
-      setProjects(projects);
+      const projects = await getAllProjects();
+      setProjects(projects)
     } catch (error) {
-      setProjects([]);
-      navigate("/")
+      setProjects([])
+      console.log(error);
     }
   }
- 
-  useEffect(()=>{
-    getAllProjectsOnLoad();
-  },[])
+
+  useEffect(() => {
+    const abortController = new AbortController();
+    if(!projects)
+    {
+      getAllProjectsOnLoad();
+    }
+    return () => abortController.abort();
+  }, [])
 
   async function handleCardButtonClick(project) {
     document.cookie = serialize("projectId", JSON.stringify(project.id));

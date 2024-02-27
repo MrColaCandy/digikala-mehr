@@ -1,7 +1,9 @@
 import usePersian from "@components/hooks/usePersian"
 import { useNavigate } from "react-router-dom"
 import { FaRegCircleCheck } from "react-icons/fa6";
-const NewProjectMessage = ({ messageRef ,userData,activeProject }) => {
+import { useProject } from "@components/hooks/useProject";
+const NewProjectMessage = ({ messageRef}) => {
+    const{user,activeProject}= useProject();
     const navigate = useNavigate();
     const { convert, addCommas } = usePersian()
     function handleEditButtonClick() {
@@ -11,7 +13,7 @@ const NewProjectMessage = ({ messageRef ,userData,activeProject }) => {
         <section ref={messageRef} className="profileMessage">
             <h3 className="profileMessage__title">
                 <FaRegCircleCheck className="profileMessage__icon" />
-                <span>خیلی ممنونیم {userData?.user?.firstName}</span>
+                <span>خیلی ممنونیم {user?.user?.firstName}</span>
             </h3>
 
             <p className="profileMessage__text">

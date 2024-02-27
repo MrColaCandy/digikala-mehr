@@ -1,10 +1,10 @@
 import usePersian from "@components/hooks/usePersian"
 import { FaRegCircleCheck } from "react-icons/fa6";
-const EditProjectMessage = ({ messageRef,activeProject }) => {
+import { useProject } from "@components/hooks/useProject";
+const EditProjectMessage = ({ messageRef }) => {
 
     const { convert, addCommas } = usePersian()
-
-
+    const {activeProject}= useProject();
     return (
         <section ref={messageRef} className="profileMessage">
             <h3 className="profileMessage__title">

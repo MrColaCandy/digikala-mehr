@@ -30,7 +30,7 @@
 .priceForm__inputController{
     border: 1px solid var(--color-input);
     border-radius: var(--space-8);
-    font-weight: 700;
+    font-weight: 600;
     width: 100%;
     padding: 13px;
     -moz-appearance: textfield;
@@ -42,8 +42,8 @@
 
 .priceForm__inputPrefix {
     position: absolute;
-    left: 15px;
-    top: var(--space-16);
+    left: 20px;
+    top:17px;
     font-weight: 400;
     font-size: var(--font-size-tiny);
     color: var(--color-primary);

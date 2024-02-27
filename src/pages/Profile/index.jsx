@@ -9,34 +9,20 @@ import Card from "@components/Card";
 import Button from "@components/Button";
 import ProfileMessage from "./Components/ProfileMessage";
 import "./style.css"
-import { parse, serialize } from "cookie";
-import { useEffect, useState } from "react";
+import { serialize } from "cookie";
+import { useEffect } from "react";
+
 
 
 
 function Profile() {
 
   const navigate = useNavigate();
-  const { user, getAllProjects, histories, setHistories, getHistories,activeProject } = useProject();
-
-
-  const [projects, setProjects] = useState([])
+  const { setStats,getStats, setHistories, getHistories, histories, activeProject, projects, setProjects, getAllProjects, getActiveProject, setActiveProject } = useProject();
   function handleChooseProjectClick(project) {
     document.cookie = serialize("projectId", project.id);
     navigate("/choose-price");
 
-  }
-  async function getHistoriesOnLoad() {
-    try {
-      const histories = await getHistories();
-      console.log(histories);
-      setHistories(histories)
-      document.cookie = serialize("histories", JSON.stringify(histories));
-    } catch (error) {
-      setHistories([])
-      console.log(error);
-
-    }
   }
   async function getAllProjectsOnLoad() {
     try {
@@ -44,66 +30,80 @@ function Profile() {
       setProjects(projects)
     } catch (error) {
       setProjects([])
-      console.log(error);
+      
+    }
+  }
+  async function getActiveProjectOnLoad() {
+    try {
+      const active = await getActiveProject()
+      setActiveProject(active)
+    } catch (error) {
+      setActiveProject(null)
+    }
+  }
+  async function getHistoriesOnLoad() {
+
+    try {
+      const histories = await getHistories();
+      setHistories(histories)
+    } catch (error) {
+      setHistories([])
+      
 
     }
   }
-  function isHistoryNew() {
+  async function getStatsOnLoad() {
     try {
-      const prevHistory = JSON.parse(parse(document.cookie).histories);
-      for (let index = 0; index < prevHistory.length; index++) {
-  
-        if (prevHistory[index].id != histories[index].id) {
-
-          return true;
-        }
-      }
-      return false;
+      const stats = await getStats();
+      setStats(stats);
     } catch (error) {
-      return true;  
+      setStats(null);
     }
-}
-  
-useEffect(() => {
-  getAllProjectsOnLoad()
-  if(!isHistoryNew())return;
-  getHistoriesOnLoad()
-}, [])
+  }
+  useEffect(() => {
+    
+  }, [])
+  useEffect(() => {
+    const abortController = new AbortController()
+    getActiveProjectOnLoad();
+    getAllProjectsOnLoad();
+    getHistoriesOnLoad()
+    getStatsOnLoad()
+    return () => abortController.abort();
+  }, [])
+  return (
+    <Layout>
+      <ProfileUserAvatar  />
+      <hr className="profile__hr" />
+      <ProfileActiveProjects />
+      <ProfileMessage  />
+      {
+        histories?.length > 0 &&
+        <ProfileHistory />
+      }
+      {
+        !activeProject &&
+        <>
+          <p className="profile__sliderTitle">اینجا می‌تونی از بین پروژه‌های مختلف یکیو برای شروع انتخاب کنی</p>
+          <Slider slideWidth={390} slideHeight={450} viewPortWidth={1280} gap={40}>
+            {
+              projects?.map((project) => {
+                return <Card
+                  key={project.id}
+                  project={project}
+                  cardButton={
+                    <Button onClick={() => { handleChooseProjectClick(project) }} variant="outlined" text={"انتخاب کنید"} />
+                  }
+                />
 
+              })
+            }
+          </Slider>
+        </>
+      }
+    </Layout>
 
-return (
-  <Layout>
-    <ProfileUserAvatar userData={user} />
-    <hr className="profile__hr" />
-    <ProfileActiveProjects />
-    <ProfileMessage userData={user} />
-    {
-      histories?.length > 0 &&
-      <ProfileHistory histories={histories} />
-    }
-    {
-      !activeProject &&
-      <>
-        <p className="profile__sliderTitle">اینجا می‌تونی از بین پروژه‌های مختلف یکیو برای شروع انتخاب کنی</p>
-        <Slider slideWidth={390} slideHeight={450} viewPortWidth={1280} gap={40}>
-          {
-            projects?.map((project) => {
-              return <Card
-                key={project.id}
-                project={project}
-                cardButton={
-                  <Button onClick={() => { handleChooseProjectClick(project) }} variant="outlined" text={"انتخاب کنید"} />
-                }
-              />
-
-            })
-          }
-        </Slider>
-      </>
-    }
-  </Layout>
-
-);
+  );
 }
 
 

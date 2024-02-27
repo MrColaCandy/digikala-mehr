@@ -5,16 +5,13 @@ import EditPlanUserProjects from "./components/EditPlanUserProjects"
 import EditPlanUserProject from "./components/EditPlanUserProject"
 import { useProject } from "@components/hooks/useProject"
 import Button from "@components/Button"
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import Card from "@components/Card"
 import "./style.css"
-import { useNavigate } from "react-router-dom"
+
 import EditPlanModal from "./components/EditPlanModal";
 const EditPlan = () => {
-    const [projects, setProjects] = useState([])
-    const [activeProject, setActiveProject] = useState(null)
-    const { getAllProjects, getActiveProject } = useProject()
-    const navigate = useNavigate();
+    const { activeProject, projects } = useProject()
     const [substitute, setSubstitute] = useState(null);
     const [modal, setModal] = useState(null);
     function handleCardButtonClick(project) {
@@ -23,28 +20,6 @@ const EditPlan = () => {
         setSubstitute(project);
     }
 
-    async function getActiveProjectOnLoad() {
-        try {
-            const activeProject = await getActiveProject();
-            setActiveProject(activeProject)
-        } catch (error) {
-            setActiveProject(null);
-            navigate("/");
-        }
-    }
-    async function getAllProjectsOnLoad() {
-        try {
-            const projects = await getAllProjects();
-            setProjects(projects)
-        } catch (error) {
-            setProjects(null);
-            navigate("/");
-        }
-    }
-    useEffect(() => {
-        getActiveProjectOnLoad()
-        getAllProjectsOnLoad();
-    }, [])
     return (
         <>
             {

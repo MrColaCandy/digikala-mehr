@@ -7,6 +7,7 @@ const Question = ({ questionText, answerText }) => {
     const questionRef = useRef(null);
 
     function handleCloseClick() {
+        
         setShowAnswer(!showAnswer);
         setTimeout(() => {
             questionRef.current.scrollIntoView(true);

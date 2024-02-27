@@ -2,21 +2,19 @@ import HistoryItem from "@components/HistoryItem";
 import { useNavigate } from "react-router-dom"
 import { serialize } from "cookie";
 import './style.css'
-import { useEffect } from "react";
+import { useProject } from "@components/hooks/useProject";
 
 
 
-function ProfileHistory({histories}) {
+function ProfileHistory() {
   const navigate = useNavigate();
-
+  const {histories}=useProject();
   function handleSeeAllHistoryClick() {
     const address = window.location.href.split("/");
     document.cookie = serialize("previousPage", `/${address[address.length - 1]}`);
     navigate("/history")
   }
- useEffect(()=>{
-  console.log(histories);
- },[])
+
   return (
     <section className="profileHistory">
 
