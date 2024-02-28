@@ -2,7 +2,7 @@ import "./style.css"
 import usePersian from "@components/hooks/usePersian";
 
 const PriceSuggestions = ({value,setValue,validate}) => {
-    const suggestions=[100000,200000,300000,500000];
+    const suggestions=[100000,200000,500000,1000000];
     const {convert,addCommas}=usePersian()
     const handleClick = (suggestion) => {
         validate(suggestion);

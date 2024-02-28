@@ -5,10 +5,11 @@
     padding: var(--space-12);
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     gap: var(--space-16);
     height: auto;
     min-height: 96px;
+   
 }
 
 .priceForm__footerItem{
