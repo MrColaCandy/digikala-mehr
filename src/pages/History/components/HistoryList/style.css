@@ -272,7 +272,7 @@
     color: var(--color-N700);
     font-size: var(--font-size-tiny);
     font-weight: 600;
-    line-height: calc(var(--lineHeight-16) + var(--lineHeight-10));
+    line-height: 26px;
     user-select: none;
     display: flex;
     justify-content: center;

@@ -45,6 +45,7 @@ function Profile() {
 
     try {
       const histories = await getHistories();
+      console.log(histories);
       setHistories(histories)
     } catch (error) {
       setHistories([])

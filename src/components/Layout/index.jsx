@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom"
 import {useLocation} from "react-router-dom"
 import { parse } from "cookie";
 const Layout = ({ children }) => {
-    const { setUser, getUser,activeProject } = useProject();
+    const { setUser, getUser,activeProject,getActiveProject,setActiveProject } = useProject();
     const { logout, setIsLoggedIn, token } = useAuth()
     const navigate = useNavigate();
     const location=useLocation();
@@ -27,9 +27,20 @@ const Layout = ({ children }) => {
             
         }
     }
+    async function getActiveProjectOnLoad()
+    {
+        if(activeProject)return;
+        try {
+            const activeProject=await getActiveProject();
+            setActiveProject(activeProject);
+        } catch (error) {
+            setActiveProject(null);
+        }
+    }
     useEffect(() => {
         const abortController= new AbortController();
         getUserOnLoad();
+        getActiveProjectOnLoad();
         return ()=>abortController.abort();
     }, [])
 

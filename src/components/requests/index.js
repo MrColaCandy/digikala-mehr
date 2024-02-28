@@ -83,3 +83,10 @@ export function requestActiveProject({ token }) {
         }
     });
 }
+export function requestHistories({ token }) {
+    return AxiosHttp.get(`getUserHelpHistory/`, {
+        headers: {
+            "Authorization": token
+        }
+    });
+}

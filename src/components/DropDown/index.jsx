@@ -15,15 +15,29 @@ import { BASE_URL } from '../../configs/BASE_URL';
 import { NavLink } from 'react-router-dom';
 const DropDown = () => {
     const { convert, addCommas } = usePersian()
-    const { user } = useProject();
+    const { histories, getHistories, setHistories, user } = useProject();
     const { logout } = useAuth();
     const navigate = useNavigate();
     function handleLogoutClick() {
         logout();
         navigate("/")
     }
+    async function getHistoriesOnLoad() {
+        try {
+            const histories = await getHistories();
+            setHistories(histories);
+        } catch (error) {
+            setHistories([]);
+        }
+    }
     const [open, setOpen] = useState(false);
     let menuRef = useRef()
+    useEffect(() => {
+
+        const abortController = new AbortController();
+        getHistoriesOnLoad()
+        return () => abortController.abort();
+    }, [])
     useEffect(() => {
         let handler = (e) => {
             if (!menuRef.current.contains(e.target)) {
@@ -48,8 +62,8 @@ const DropDown = () => {
 
     }
     function getHelpsSum() {
-        if (!user || !user?.help_history || user?.help_history <= 0) return convert("0")
-        return convert(addCommas(user?.help_history.filter(h => h.state === "success").reduce(function (acc, obj) { return acc + obj.price }, 0)));
+        if (histories?.length <= 0) return convert("0")
+        return convert(addCommas(histories?.filter(h => h.state == "success").reduce(function (acc, history) { return acc + parseInt(history.price) }, 0)));
     }
     return (
         <>

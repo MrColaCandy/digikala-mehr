@@ -12,6 +12,7 @@ import {
     requestProjectExtend,
     requestProjectLifeSpan,
     requestConfirmCancelProject,
+    requestHistories,
 } from "../requests";
 import { useAuth } from "@components/hooks/useAuth"
 
@@ -82,13 +83,24 @@ function ProjectContext({ children }) {
     async function getHistories() {
         if(!token || token=="")return;
         try {
-            const user = await getUser();
-            const { data } = await requestAllProjects(token);
-            const ids = user.help_history.map(h => h.project_id);
-            const userProject = data.filter(p => ids.includes(p.id));
-            return userProject.map((p) => {
-                const h = user.help_history.find(h => h.project_id == p.id)
-                return { ...p, ...h }
+            
+            const { data } = await requestHistories({token:token});
+            console.log("his",data.help_history);
+            return data.help_history
+            .sort((a,b)=>new Date(a.date).getTime() - new Date(b.data).getTime())
+            .sort((a,b)=>(Number(a.state=="success")-Number(b.state=="success")))
+            .map(h=>{
+                return{
+                    date:h.date,
+                    topic:h.project.topic,
+                    id:h.id,
+                    projectId:h.project.id,
+                    userId:h.user.id,
+                    price:h.price,
+                    state:h.state,
+                    expiration:h.expiration,
+                    logo:h.project.institute.logo
+                }
             })
 
         } catch (error) {

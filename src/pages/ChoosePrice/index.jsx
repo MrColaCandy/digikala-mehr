@@ -23,7 +23,7 @@ const ChoosePrice = () => {
       document.cookie = serialize("newProject", "create");
       navigate("/profile")
     } catch (error) {
-      console.log("Failed to add project. com:ChoosePrice. id: " + projectId + ". error: " + error.message);
+      console.log("Failed to add project. com:ChoosePrice. id: " + projectId + ". error: " + error);
       navigate("/")
     }
 
