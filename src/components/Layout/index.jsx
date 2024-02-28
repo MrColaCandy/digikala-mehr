@@ -29,7 +29,6 @@ const Layout = ({ children }) => {
     }
     async function getActiveProjectOnLoad()
     {
-        if(activeProject)return;
         try {
             const activeProject=await getActiveProject();
             setActiveProject(activeProject);
@@ -50,7 +49,7 @@ const Layout = ({ children }) => {
         {
             navigate("/profile")
         }
-        if(location.pathname=="/choose-price" && parse(document.cookie).projectId==="null")
+        if(location.pathname=="/choose-price" && parse(document.cookie).projectId=="")
         {
             navigate("/choose-plan")
         }
@@ -58,7 +57,7 @@ const Layout = ({ children }) => {
         {
             navigate("/profile")
         }
-        if(location.pathname=="/edit-price" && (parse(document.cookie).editing==="null" || !activeProject))
+        if(location.pathname=="/edit-price" && (parse(document.cookie).editing=="" || !activeProject))
         {
             navigate("/profile")
         }

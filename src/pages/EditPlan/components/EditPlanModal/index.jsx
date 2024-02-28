@@ -34,8 +34,8 @@ const EditPlanModal = ({ setModal, substitute, setSubstitute, title, variant = "
         else {
             setTimeout(async () => {
                 await removeProject();
-                document.cookie= serialize("projectId",null);
-                document.cookie= serialize("editing",null);
+                document.cookie= serialize("projectId","");
+                document.cookie= serialize("editing","");
                 setAnimation(false);
             }, 800);
         }

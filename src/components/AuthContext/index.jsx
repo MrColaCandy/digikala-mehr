@@ -44,8 +44,8 @@ function AuthContext({ children }) {
         setToken(null);
         setIsLoggedIn(false);
         document.cookie = serialize("token", "", { expires: new Date(0) });
-        document.cookie=serialize("editing",null);
-        document.cookie=serialize("projectId",null);
+        document.cookie=serialize("editing","");
+        document.cookie=serialize("projectId","");
     }
     // Provide the authentication context value to the components in the tree
     return (

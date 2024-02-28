@@ -20,7 +20,7 @@ import { useAuth } from "@components/hooks/useAuth"
 
 
 function ProjectContext({ children }) {
-    const { token,isLoggedIn } = useAuth();
+    const { token } = useAuth();
     const [activeProject, setActiveProject] = useState(null);
     const [projects, setProjects] = useState(null)
     const [histories, setHistories] = useState(null);
@@ -35,22 +35,9 @@ function ProjectContext({ children }) {
 
         try {
             const { data } = await requestAllProjects();
-            if (token && token != "" && isLoggedIn) {
-
-                try {
-                    const activeProject = await getActiveProject()
-                    if (activeProject) {
-                        return data.filter(p => p.id != activeProject.project.id);
-                    }
-                } catch (error) {
-                    return data;
-                }
-            }
-
             return data;
-
         } catch (error) {
-
+           
            throw new Error(error.response)
         }
     }
@@ -129,6 +116,7 @@ function ProjectContext({ children }) {
         }
     }
     async function addProject({ id, price }) {
+        console.log("add","id: "+id,"price: "+price);
         if (!token || token == "") return;
         try {
             await requestAddProject({ token: token, price: parseInt(price), projectId: parseInt(id) });

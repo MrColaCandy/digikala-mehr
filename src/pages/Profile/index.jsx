@@ -27,7 +27,14 @@ function Profile() {
   async function getAllProjectsOnLoad() {
     try {
       const projects = await getAllProjects();
-      setProjects(projects)
+      if(activeProject)
+      {
+        setProjects(projects?.filter(p=>p.id!=activeProject?.project?.id))
+      }
+      else
+      {
+        setProjects(projects)
+      }
     } catch (error) {
       setProjects([])
       

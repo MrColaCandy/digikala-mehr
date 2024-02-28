@@ -5,13 +5,13 @@ import EditPlanUserProjects from "./components/EditPlanUserProjects"
 import EditPlanUserProject from "./components/EditPlanUserProject"
 import { useProject } from "@components/hooks/useProject"
 import Button from "@components/Button"
-import {  useState } from "react";
+import {  useEffect, useState } from "react";
 import Card from "@components/Card"
 import "./style.css"
 
 import EditPlanModal from "./components/EditPlanModal";
 const EditPlan = () => {
-    const { activeProject, projects } = useProject()
+    const { activeProject, projects,getAllProjects,setProjects } = useProject()
     const [substitute, setSubstitute] = useState(null);
     const [modal, setModal] = useState(null);
     function handleCardButtonClick(project) {
@@ -19,7 +19,27 @@ const EditPlan = () => {
         document.body.style.overflow = "hidden"
         setSubstitute(project);
     }
-
+    async function getAllProjectsOnLoad() {
+        try {
+          const projects = await getAllProjects();
+          if(activeProject)
+          {
+            setProjects(projects?.filter(p=>p.id!=activeProject?.project?.id))
+          }
+          else
+          {
+            setProjects(projects)
+          }
+        } catch (error) {
+          setProjects([])
+          
+        }
+      }
+      useEffect(()=>{
+        const abortController =new AbortController();
+        getAllProjectsOnLoad();
+        return abortController.abort();
+      },[])
     return (
         <>
             {
