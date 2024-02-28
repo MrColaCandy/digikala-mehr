@@ -118,23 +118,23 @@
  }
 @media screen and (max-width: 390px) {
     .priceForm__suggestion:last-child{
-        width:100%;
+        width:49%;
         justify-content: space-between;
         align-items: center;
         padding: var(--space-8);
     } 
     .priceForm__suggestion--active:last-child{
-        width:100%;
+        width:49%;
         justify-content: space-between;
         align-items: center;
         padding: var(--space-8);
     } 
     .priceForm__suggestion {
-        width: 100%;
+        width: 49%;
     }
 
     .priceForm__suggestion--active {
-        width: 100%;
+        width: 49%;
     }
    
 }
