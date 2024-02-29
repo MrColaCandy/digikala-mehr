@@ -27,7 +27,7 @@ const Layout = ({ children }) => {
 
         }
     }
-    async function getActiveProjectOnLoad() {
+    async function restrictPageAccess() {
         try {
             const activeProject = await getActiveProject();
             if (location.pathname == "/choose-plan" && activeProject) {
@@ -50,7 +50,7 @@ const Layout = ({ children }) => {
     useEffect(() => {
         const abortController = new AbortController();
         getUserOnLoad();
-        getActiveProjectOnLoad();
+        restrictPageAccess();
         return () => abortController.abort();
     }, [location])
 

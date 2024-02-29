@@ -92,7 +92,9 @@
     width: var(--slide-width) !important;
 
   }
-
+  .slider__container{
+    gap: var(--space-16);
+  }
 }
 
 

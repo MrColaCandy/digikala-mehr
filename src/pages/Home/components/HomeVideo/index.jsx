@@ -5,7 +5,7 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 import { FaChevronLeft } from "react-icons/fa6";
 import './style.css'
 
-function HomeVideo({onStartButtonClick}) {
+function HomeVideo({ onStartButtonClick }) {
     return (
         <section className="homeVideo">
             <section className="homeVideo__video">
@@ -30,9 +30,11 @@ function HomeVideo({onStartButtonClick}) {
             </section>
 
             <section className="homeVideo__startPlan">
-                <p className="homeVideo__text">با <span className="homeVideo__boldText">بخش کوچکی از
-                    حقوقمون</span> به صورت ماهانه به <span className="homeVideo__greenText">پروژه‌ی خیرخواهانه
-                    </span> موردعلاقه‌مون.</p>
+                <p className="homeVideo__text">
+                        <span className="homeVideo__boldText">با بخش کوچکی از
+                            حقوقمون</span> به صورت ماهانه به <span className="homeVideo__greenText">پروژه‌ی خیرخواهانه
+                        </span> موردعلاقه‌مون.
+                </p>
 
                 <div className="homeVideo__startPlanItems">
                     <div className="homeVideo__startPlanItem">
@@ -40,16 +42,16 @@ function HomeVideo({onStartButtonClick}) {
                         وارد شو
                     </div>
                     <div className="homeVideo__startPlanItem">
-                        <BsClipboard2Check className="homeVideo__projectIcon"   />
+                        <BsClipboard2Check className="homeVideo__projectIcon" />
                         پروژه‌تو انتخاب کن
                     </div>
                     <div className="homeVideo__startPlanItem">
-                        <FaMoneyBill  className="homeVideo__moneyIcon" />
+                        <FaMoneyBill className="homeVideo__moneyIcon" />
 
                         مبلغ رو تعیین کن
                     </div>
                     <div className="homeVideo__startPlanItem">
-                        <FaRegCircleCheck   className="homeVideo__withUsIcon"/>
+                        <FaRegCircleCheck className="homeVideo__withUsIcon" />
 
                         بقیه‌ش با ما
                     </div>

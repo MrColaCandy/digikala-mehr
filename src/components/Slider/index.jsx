@@ -16,7 +16,7 @@ const Slider = ({ viewPortWidth = 800, slideWidth = 390, slideHeight = 450, scro
         })
         const observer = new ResizeObserver(() => {
             if (document.body.clientWidth <= 390) {
-                setSpace(20);
+                setSpace(16);
             }
             else {
                 setSpace(gap);
