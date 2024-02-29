@@ -66,6 +66,8 @@
     line-height: var(--space-16);
     color: var(--color-primary);
     height: 25px;
+    text-align: right;
+    width: 100%;
 }
 
 
@@ -73,6 +75,8 @@
 .priceForm__inputError{
     color: var(--color-red);
     font-size: var(--font-size-xsmall);
+    text-align: right;
+    width: 100%;
 }
 
 

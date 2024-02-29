@@ -3,14 +3,13 @@ import "./style.css"
 import Button from "@components/Button"
 import PriceSuggestions from "./components/PriceSuggestions";
 import PriceFooter from "./components/PriceFooter"
-import usePersian from "@components/hooks/usePersian";
 import PriceHeader from "./components/PriceHeader";
-
+import useMoney from "@components/hooks/useMoney"
 const PriceForm = ({ onSubmit}) => {
 
     const [value, setValue] = useState("");
+    const {convertToLetters}= useMoney();
     const [isLoading,setIsLoading]=useState(false);
-    const { convert, addCommas } = usePersian()
     const [error, setError] = useState(null);
     const [formError,setFormError]=useState(null)
     const handleInputChange = (e) => {
@@ -79,7 +78,7 @@ const PriceForm = ({ onSubmit}) => {
                     <p className="priceForm__inputInfo">
                         {
                             value && !error &&
-                            <span>{convert(addCommas(value))} تومان</span>
+                            <span>{convertToLetters(parseInt(value))} تومان</span>
                         }
                         {
                             error &&
