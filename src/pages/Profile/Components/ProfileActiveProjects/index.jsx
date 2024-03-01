@@ -2,13 +2,13 @@ import ProfileProject from "../ProfileProject"
 import ProfileProjectExpired from "../ProfileProjectExpired"
 import ProfileNoProject from "../ProfileNoProject"
 import './style.css'
-import { useProject } from "@components/hooks/useProject"
 
 
 
 
-function ProfileActiveProjects() {
-    const {payments,activeProject,isExpired} = useProject();
+
+function ProfileActiveProjects({activeProject}) {
+
     return (
 
 
@@ -22,7 +22,7 @@ function ProfileActiveProjects() {
                 <ProfileNoProject />
             }
             {
-                isExpired &&
+                activeProject.state==="expired" &&
                 <ProfileProjectExpired
                     activeProject={activeProject}
                     
@@ -30,7 +30,7 @@ function ProfileActiveProjects() {
             }
             {
                activeProject &&
-               <ProfileProject activeProject={activeProject} payments={payments} />
+               <ProfileProject activeProject={activeProject}  />
             }
 
         </section >

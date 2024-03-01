@@ -2,17 +2,16 @@ import Button from "@components/Button"
 import { CgArrowsExchangeV } from "react-icons/cg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
-import { useProject } from "@components/hooks/useProject";
-import { useAuth } from "@components/hooks/useAuth";
-import { BASE_URL } from "@configs/BASE_URL";
+import { useAuthContext } from "@contexts/auth";
+import { BASE_URL } from "@configs/end-points";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import { serialize } from "cookie";
+import {requestCancelProject,requestConfirmCancelProject,requestUpdateProject} from"@services/http"
 import "./style.css"
-const EditPlanModal = ({ setModal, substitute, setSubstitute, title, variant = "change" }) => {
+const EditPlanModal = ({ setModal, substitute, setSubstitute, title, variant = "change",activeProject }) => {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
-    const { cancelProject,updateProject,activeProject,setActiveProject } = useProject()
-    const { token } = useAuth()
+    const { token } = useAuthContext()
     const [animation, setAnimation] = useState(false);
    
     function handleCancelClick() {
@@ -113,9 +112,9 @@ const EditPlanModal = ({ setModal, substitute, setSubstitute, title, variant = "
     async function removeProject() {
         try {
             
-            await cancelProject(activeProject?.id);
+            await requestCancelProject(activeProject?.id);
+            await requestConfirmCancelProject(activeProject?.id);
             setSubstitute(null);
-            setActiveProject(false);
             document.cookie = serialize("newProject", "delete");
             navigate("/profile");
         } catch (error) {
@@ -130,7 +129,7 @@ const EditPlanModal = ({ setModal, substitute, setSubstitute, title, variant = "
     async function changeProjects() {
         try {
           
-            await updateProject({ token: token, newProject: substitute.id, oldProject:activeProject?.id, price:activeProject?.price });
+            await requestUpdateProject({ token: token, newProject: substitute.id, oldProject:activeProject?.id, price:activeProject?.price });
             setSubstitute(null);
             document.cookie = serialize("newProject", "edit");
             navigate("/profile");

@@ -1,45 +1,60 @@
+import {  useEffect, useState } from "react";
+
+import { requestActiveProject,  requestAllProjects } from '@services/http';
 import Layout from "@components/Layout";
 import Slider from "@components/Slider"
 import EditHeader from "@components/EditHeader";
+import Button from "@components/Button"
+import Card from "@components/Card"
+
 import EditPlanUserProjects from "./components/EditPlanUserProjects"
 import EditPlanUserProject from "./components/EditPlanUserProject"
-import { useProject } from "@components/hooks/useProject"
-import Button from "@components/Button"
-import {  useEffect, useState } from "react";
-import Card from "@components/Card"
+
 import "./style.css"
 
 import EditPlanModal from "./components/EditPlanModal";
 const EditPlan = () => {
-    const { activeProject, projects,getAllProjects,setProjects } = useProject()
     const [substitute, setSubstitute] = useState(null);
     const [modal, setModal] = useState(null);
+
+    const [activeProject, setActiveProject] = useState();
+    const [allProjects, setAllProjects] = useState();
+    const [isLoading, setLoading] = useState(false);
+    const [error, setError] = useState(false)
+    useEffect(() => {
+        setLoading(true)
+        Promise.all([
+          requestActiveProject(),
+          requestAllProjects(),
+        ]).then((responses) => {
+          const [ap, allProjects] = responses;
+          setActiveProject(ap)
+          setAllProjects(allProjects);
+       
+    
+        })
+        .catch(() => {
+          setError(true)
+        })
+        .finally(() => {
+          setLoading(false)
+        })  
+      }, []);
     function handleCardButtonClick(project) {
         setModal("change");
         document.body.style.overflow = "hidden"
         setSubstitute(project);
     }
-    async function getAllProjectsOnLoad() {
-        try {
-          const projects = await getAllProjects();
-          if(activeProject)
-          {
-            setProjects(projects?.filter(p=>p.id!=activeProject?.project?.id))
-          }
-          else
-          {
-            setProjects(projects)
-          }
-        } catch (error) {
-          setProjects([])
-          
-        }
-      }
-      useEffect(()=>{
-        const abortController =new AbortController();
-        getAllProjectsOnLoad();
-        return abortController.abort();
-      },[])
+
+    if(error)
+    {
+        return <div>Error</div>
+    }
+    
+    if(isLoading)
+    {
+        return <div>Loading...</div>
+    }
     return (
         <>
             {
@@ -50,7 +65,8 @@ const EditPlan = () => {
                     title={modal === "remove" ? "آیا مایل به حذف پروژه‌تان هستید؟" : "آیا مایل به تغییر پروژه‌تان هستید؟"}
                     selected={activeProject}
                     setSubstitute={setSubstitute}
-                    substitute={substitute} />
+                    substitute={substitute}
+                    activeProject={activeProject} />
 
             }
 
@@ -67,7 +83,7 @@ const EditPlan = () => {
                         </div>
                         <Slider slideWidth={390} slideHeight={450} viewPortWidth={1280} gap={40}>
                             {
-                                projects?.filter(p => !p.taken)?.map((project) => {
+                                allProjects?.map((project) => {
                                     return <Card
 
                                         key={project.id}

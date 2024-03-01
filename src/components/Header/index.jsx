@@ -3,12 +3,12 @@ import FillInside_digiMehr_logo_i from "@assets/decorations/FillInside_digiMehr_
 import Digikala_Mehr_Branding from "@assets/decorations/Digikala_Mehr_Branding.svg";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "@components/hooks/useAuth";
 import DropDown from "@components/DropDown";
 import { useEffect, useState } from "react";
+import { useAuthContext } from "@contexts/auth";
 
 function Header() {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn } = useAuthContext();
   const navigate = useNavigate();
   function handleSignInButtonClick() {
     navigate("/login");

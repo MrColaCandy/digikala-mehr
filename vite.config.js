@@ -13,6 +13,7 @@ export default defineConfig({
       '@services': path.resolve(__dirname, './src/services'),
       '@pages': path.resolve(__dirname, './src/pages'),
       '@localization': path.resolve(__dirname, './src/localization'),
+      '@contexts': path.resolve(__dirname, './src/contexts'),
     }
   },
   plugins: [react()],

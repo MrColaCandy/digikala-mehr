@@ -2,11 +2,11 @@ import phoneNumberErrorCat from '@assets/decorations/phone-number-error-cat.png'
 import Button from '@components/Button';
 import "./style.css"
 import usePersian from "@components/hooks/usePersian"
-function LoginError({ phone, setRegistrationError, setCode }) {
+function LoginError({ phone,  setPhoneNotFound, setCode }) {
   const {convert} =usePersian();
     
   function handleChangePhoneButtonClick() {
-    setRegistrationError(false);
+    setPhoneNotFound(false);
     setCode(null) }
   return (
     <section className="loginCatError">

@@ -3,12 +3,12 @@ import usePersian from "@components/hooks/usePersian";
 import "./style.css"
 import { useNavigate } from "react-router-dom"
 import { serialize } from "cookie";
-import { BASE_URL } from "@configs/BASE_URL";
-import { useProject } from "@components/hooks/useProject";
+import { BASE_URL } from "@configs/end-points";
 
-const EditPlanUserProject = () => {
+
+const EditPlanUserProject = ({activeProject}) => {
     const { convert, addCommas } = usePersian();
-    const {activeProject}=useProject();
+
     const navigate = useNavigate()
     function handleEditPriceClick() {
         document.cookie=serialize("editing",JSON.stringify({projectId:activeProject?.project.id,historyId:activeProject?.id}))

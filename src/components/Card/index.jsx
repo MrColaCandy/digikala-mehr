@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import TextBox from '@components/TextBox';
-import { BASE_URL } from '@configs/BASE_URL';
+import { BASE_URL } from '@configs/end-points';
 import "./style.css"
 function Card({ project, textBoxVariant = 0, className = "", cardButton }) {
     const [showFullText, setShowFullText] = useState(false);

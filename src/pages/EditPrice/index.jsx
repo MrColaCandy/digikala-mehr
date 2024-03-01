@@ -1,13 +1,13 @@
 import Layout from "@components/Layout"
-import {useAuth} from "@components/hooks/useAuth";
 import PriceForm from "@components/PriceFrom";
-import { requestUpdateProject } from "@components/requests"
+import { requestUpdateProject } from "@services/http"
 import { parse, serialize } from "cookie";
 import { useNavigate } from "react-router-dom"
+import { useAuthContext } from "@contexts/auth";
 const EditPrice = () => {
 
     const navigate = useNavigate();
-    const {token}=useAuth()
+    const {token}=useAuthContext()
     async function handleSubmit(e)
     {
       const value=e.target["price"].value.trim();

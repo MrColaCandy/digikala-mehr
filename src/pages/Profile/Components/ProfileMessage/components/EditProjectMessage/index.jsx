@@ -1,12 +1,12 @@
 import usePersian from "@components/hooks/usePersian"
 import { FaRegCircleCheck } from "react-icons/fa6";
-import { useProject } from "@components/hooks/useProject";
-const EditProjectMessage = ({ messageRef }) => {
+
+const EditProjectMessage = ({activeProject}) => {
 
     const { convert, addCommas } = usePersian()
-    const {activeProject}= useProject();
+   
     return (
-        <section ref={messageRef} className="profileMessage">
+        <section  className="profileMessage">
             <h3 className="profileMessage__title">
                 <FaRegCircleCheck className="profileMessage__icon" />
                 <span>پروژه شما با موفقیت ویرایش شد.</span>

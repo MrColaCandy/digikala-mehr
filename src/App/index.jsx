@@ -1,21 +1,17 @@
-import Router from '@components/Router'
-import { routes } from '@configs/routes';
-import AuthContext from '@components/AuthContext';
-import ProjectContext from '@components/ProjectContext';
-
+import { CookiesProvider } from "react-cookie";
+import { AuthProvider } from "@contexts/auth";
+import Router from "@components/Router";
+import { routes } from "@configs/routes";
 
 
 function App() {
-
-    return (
-        <>
-            <AuthContext>
-                <ProjectContext>
-                    <Router routes={routes} />
-                </ProjectContext>
-            </AuthContext>
-        </>
-    );
+  return (
+    <AuthProvider>
+      <CookiesProvider defaultSetOptions={{ path: "/" }}>
+        <Router routes={routes} />
+      </CookiesProvider>
+    </AuthProvider>
+  );
 }
 
 export default App;

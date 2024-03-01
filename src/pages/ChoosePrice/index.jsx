@@ -1,34 +1,43 @@
-import Layout from "@components/Layout"
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+
+import Layout from "@components/Layout";
 import PriceForm from "@components/PriceFrom";
-import { useProject } from "@components/hooks/useProject";
-import { parse, serialize } from "cookie";
-import { useNavigate } from "react-router-dom"
-import "./style.css"
+import { getSingleProject, requestAddProject } from "@services/http";
+
+import "./style.css";
+
 const ChoosePrice = () => {
-  const { addProject,setActiveProject} = useProject()
-  const navigate = useNavigate()
-   
-  
+  const { projectId } = useParams();
+  const navigate = useNavigate();
+  const [project, setProject] = useState();
+
+  useEffect(() => {
+    getSingleProject(projectId).then((data) => {
+      console.log({ data });
+      setProject(data);
+    });
+  }, [projectId]);
 
   async function handleSubmit(e) {
-    
-    const value = e.target["price"].value.trim();
-    if (!value || value === "") return;
-    const id=parse(document.cookie).projectId ;
-    try {
-      await addProject({ id: id, price: value })
-      setActiveProject(true)
-      document.cookie = serialize("newProject", "create");
-      navigate("/profile")
-    } catch (error) {
-      console.log("Failed to add project. com:ChoosePrice. id: " + id + ". error: " + error);
-      navigate("/")
+    const { target: { price: { value: rawPrice } = {} } = {} } = e;
+
+    const value = rawPrice.trim();
+    if (!value || value === "") {
+      return;
     }
 
+    await requestAddProject({ projectId: project.id, price: value });
+    navigate(`/profile?status=joined&projectId=${project.id}&projectName=${project.topic}&price=${value}`);
   }
+
+  if (!project) {
+    return null;
+  }
+
   return (
     <Layout>
-      <PriceForm onSubmit={handleSubmit} />
+      <PriceForm project={project} onSubmit={handleSubmit} />
     </Layout>
   );
 };

@@ -1,8 +1,10 @@
 import usePersian from "@components/hooks/usePersian";
-import "./style.css"
+import { BASE_URL } from "@configs/end-points";
+
 import {useNavigate} from "react-router-dom"
-import { BASE_URL } from "../../../../configs/BASE_URL";
-function ProfileProject({  activeProject,payments }) {
+
+import "./style.css"
+function ProfileProject({  activeProject }) {
     
     const { convert, addCommas } = usePersian()
 
@@ -37,15 +39,15 @@ function ProfileProject({  activeProject,payments }) {
                 </div>
             </div>
             {
-                payments > 0 &&
+                activeProject?.totalMonth > 0 &&
                 <>
                     <div className="profileProject__wrapper">
                         <div className="profileProject__finance">
-                            <span className="profileProject__financeTextBold">{convert(payments)}</span>
+                            <span className="profileProject__financeTextBold">{convert(activeProject?.totalMonth)}</span>
                             <span className="profileProject__financeText">تعداد ماه‌هایی که فعال بودید</span>
                         </div>
                         <div className="profileProject__finance">
-                            <span className="profileProject__financeTextBold">{activeProject? convert(addCommas(activeProject?.price * payments)):convert("0")} ریال</span>
+                            <span className="profileProject__financeTextBold">{activeProject? convert(addCommas(activeProject?.totalMonth)):convert("0")} ریال</span>
                             <span className="profileProject__financeText">مبلغی که تاکنون شریک شدید</span>
                         </div>
                     </div>
