@@ -14,7 +14,7 @@ export const Auth=({yes,no})=>{
         {
             navigate(no,{replace:true})
         }
-    },[yes,no,auth,navigate])
+    },[auth])
 }
 
 
@@ -47,7 +47,7 @@ export const ActiveHelp=({yes,no})=>{
        }
 
        fetchData();
-    },[auth,navigate,yes,no])
+    },[auth])
           
      
 }

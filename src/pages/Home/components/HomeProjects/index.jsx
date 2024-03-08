@@ -1,6 +1,6 @@
 import { FaChevronLeft } from "react-icons/fa6";
 import Slider from "@components/Slider";
-import Card from "@components/Card";
+import Slide from "@components/Slide";
 import './style.css'
 
 
@@ -15,10 +15,11 @@ function HomeProjects({ onStartButtonClick,projects,isLoading }) {
       <Slider isLoading={isLoading}  slideWidth={390} slideHeight={450} viewPortWidth={1250} gap={40}>
         {
           projects?.map((project) => {
-            return <Card
+            return <Slide
               key={project.id}
               project={project}
-              textBoxVariant={1}
+              variant="home"
+              
             />
 
           })

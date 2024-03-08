@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
 
 import { requestActiveHelp, requestAvailableProjects } from '@services/http';
+
 import Layout from "@components/Layout";
 import Slider from "@components/Slider"
 import EditHeader from "@components/EditHeader";
-import Button from "@components/Button"
-import Card from "@components/Card"
+import Slide from "@components/Slide"
 
-
-import EditPlanUserProjects from "./components/EditPlanUserProjects"
 import EditPlanUserProject from "./components/EditPlanUserProject"
 
 import "./style.css"
@@ -41,7 +39,7 @@ const EditPlan = () => {
     }, []);
 
 
-    function handleCardButtonClick(project) {
+    function handleSlideButtonClick(project) {
         setModal("change");
         document.body.style.overflow = "hidden"
         setProject(project);
@@ -71,9 +69,7 @@ const EditPlan = () => {
 
             <Layout>
                 <EditHeader activeHelp={activeHelp} setModal={setModal} />
-                <EditPlanUserProjects>
                     <EditPlanUserProject activeHelp={activeHelp} />
-                </EditPlanUserProjects>
                 {activeHelp &&
                     <>
                         <div className="editPlan__sliderHeader">
@@ -83,15 +79,12 @@ const EditPlan = () => {
                         <Slider slideWidth={390} slideHeight={450} viewPortWidth={1280} gap={40}>
                             {
                                 availableProjects?.map((project) => {
-                                    return <Card
+                                    return <Slide
 
                                         key={project.id}
                                         project={project}
-                                        cardButton={
-                                            <Button width={380} text={"تغییر به این پروژه"} onClick={() => {
-                                                handleCardButtonClick(project)
-                                            }} />
-                                        }
+                                        variant="edit"
+                                        onClick={()=>handleSlideButtonClick(project)}
                                     />
                                 })
                             }

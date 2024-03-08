@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import {useNavigate} from "react-router-dom";
 import Layout from "@components/Layout";
 import Slider from "@components/Slider";
-import Card from "@components/Card";
-import Button from "@components/Button";
+import Slide from "@components/Slide";
 import { requestAllProjects } from "@services/http";
 
 
@@ -60,16 +59,11 @@ const ChoosePlan = () => {
       >
         {allProjects?.map((project) => {
           return (
-            <Card
+            <Slide
               key={project.id}
               project={project}
-              cardButton={
-                <Button
-                  onClick={()=>handleSlideButtonClick(project)}
-                  width={350}
-                  text={"انتخاب کنید"}
-                />
-              }
+              variant="choosePlan"
+              onClick={()=>handleSlideButtonClick(project)}
             />
           );
         })}

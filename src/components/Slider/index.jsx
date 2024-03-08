@@ -27,12 +27,12 @@ const Slider = ({ viewPortWidth = 800, slideWidth = 390, slideHeight = 450, scro
         containerRef.current.addEventListener("wheel", () => {
             return false
         })
-    }, []);
+    }, [children,gap,space]);
     useEffect(() => {
         if (!children) return;
         if (!containerRef.current) return;
         handleButtonsVisibility(containerRef, space, nextButton, previousButton);
-    }, [children])
+    }, [children,space])
     return (
         <div className='slider' style={{ "--view-port-width": `${viewPortWidth}px`, "--slides-gap": `${space}px`, "--scroll-behavior": `${scrollBehavior}`, "--slide-height": `${slideHeight}px`, "--slide-width": `${slideWidth}px` }} >
             <div className={`slider__view`} >

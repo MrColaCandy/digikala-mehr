@@ -27,7 +27,7 @@ const PriceForm = ({ onSubmit }) => {
      requestProject({projectId})
      .then((data)=>setProject(data))
      .catch(()=>setProject(null));
-  },[])
+  },[projectId])
   async function handleSubmit(e) {
     e.preventDefault();
     validate(e.target["price"].value.trim());

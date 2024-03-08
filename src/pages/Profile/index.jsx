@@ -3,8 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 
 import Layout from "@components/Layout";
 import Slider from "@components/Slider";
-import Card from "@components/Card";
-import Button from "@components/Button";
+import Slide from "@components/Slide";
 import { useAuthContext } from "@contexts/auth";
 import { requestProjectsStats } from "@services/http";
 import { requestActiveHelp, requestAllProjects, requestHistories } from '@services/http';
@@ -30,7 +29,7 @@ function Profile() {
 
 
 
-  function handleChooseProjectClick(project) {
+  function handleSlideButtonClick(project) {
     navigate(`/choose-price/${project.id}`);
   }
 
@@ -85,18 +84,12 @@ function Profile() {
           >
             {allProjects?.map((project) => {
               return (
-                <Card
+                <Slide
                   key={project.id}
                   project={project}
-                  cardButton={
-                    <Button
-                      onClick={() => {
-                        handleChooseProjectClick(project);
-                      }}
-                      variant="outlined"
-                      text={"انتخاب کنید"}
-                    />
-                  }
+                  variant="profile"
+                  onClick={()=>handleSlideButtonClick(project)}
+                  
                 />
               );
             })}

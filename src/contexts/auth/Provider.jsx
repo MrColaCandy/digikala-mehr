@@ -43,7 +43,7 @@ function Provider({ children }) {
     setAuth(true);
     getUser();
 
-  }, [ getUser])
+  }, [ getUser,setCookie])
   useEffect(() => {
     getUser();
   }, [getUser, token])

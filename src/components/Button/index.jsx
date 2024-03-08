@@ -9,16 +9,14 @@ const Button = ({
   text,
   onClick = () => {},
   variant = "outlined",
-  className = "",
-  as: As = 'button',
   to,
   href,
 }) => {
   return (
-    <As
+    <button
       disabled={isLoading}
       style={{
-        maxWidth: `${width + "px" || "100%"}`,
+        maxWidth: `${width + "px"}`,
         margin: `${margin}`,
         backgroundColor: `${variant === "outlined" ? "white" : color}`,
         borderColor: `${color}`,
@@ -27,11 +25,11 @@ const Button = ({
       to={to}
       href={href}
       onClick={onClick}
-      className={`button--${variant} ${className}`}
+      className={`button button--${variant}`}
     >
       {!isLoading && <div>{text}</div>}
       {isLoading && <Loader color={color} />}
-    </As>
+    </button>
   );
 };
 

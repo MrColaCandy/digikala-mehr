@@ -12,7 +12,9 @@ const EditPlanUserProject = ({activeHelp}) => {
     const navigate = useNavigate()
     function handleEditPriceClick() {
       
-        navigate(`/edit-price/${activeHelp.project.id}/${activeHelp.id}`)
+        if (activeHelp && activeHelp.project && activeHelp.id) {
+            navigate(`/edit-price/${activeHelp.project.id}/${activeHelp.id}`);
+        }
     }
 
     return (
