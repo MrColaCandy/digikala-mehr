@@ -13,9 +13,9 @@ export const projectsStats = `${BASE_URL}/analytics/projects/`;
 //user data
 export const availableProjects = `${BASE_URL}/me/projects/`;
 export const userDetails = `${BASE_URL}/me/details/`;
-export const activeHelp = `${BASE_URL}/me/helps/active`;
+export const activeHelp = `${BASE_URL}/me/helps/active/`;
 export const createHelp = `${BASE_URL}/me/helps/create`;
-export const helps = `${BASE_URL}/me/helps`;
+export const helps = `${BASE_URL}/me/helps/`;
 
 //all projects
-export const allProjects = `${BASE_URL}/projects`;
+export const allProjects = `${BASE_URL}/projects/`;

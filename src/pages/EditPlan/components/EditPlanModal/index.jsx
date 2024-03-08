@@ -1,11 +1,12 @@
-import Button from "@components/Button"
-import { CgArrowsExchangeV } from "react-icons/cg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
-import { BASE_URL } from "@configs/end-points";
+import { CgArrowsExchangeV } from "react-icons/cg";
 import { IoMdInformationCircleOutline } from "react-icons/io";
-import { serialize } from "cookie";
+
+import Button from "@components/Button"
 import {requestCancelHelp,requestEditHelp} from"@services/http"
+import { BASE_URL } from "@configs/end-points";
+
 import "./style.css"
 const EditPlanModal = ({ setModal,  project, setProject, title, variant = "change", activeHelp }) => {
     const [isLoading, setIsLoading] = useState(false);
@@ -31,8 +32,6 @@ const EditPlanModal = ({ setModal,  project, setProject, title, variant = "chang
         else {
             setTimeout(async () => {
                 await removeProject();
-                document.cookie= serialize("projectId","");
-                document.cookie= serialize("editing","");
                 setAnimation(false);
             }, 800);
         }
@@ -42,9 +41,9 @@ const EditPlanModal = ({ setModal,  project, setProject, title, variant = "chang
             
             await requestCancelHelp({id:activeHelp?.id});
             setProject(null);
-            navigate("/profile?status=removed");
+            navigate("/profile");
         } catch (error) {
-            console.log("error failed to cancel project. com:EditPlanModal. error: " + error.message);
+            console.log("error failed to cancel project. com:EditPlanModal. error: " + JSON.stringify(error));
         } finally {
             setIsLoading(false);
             setModal(null);

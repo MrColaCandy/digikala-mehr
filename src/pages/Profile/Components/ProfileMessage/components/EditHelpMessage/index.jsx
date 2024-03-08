@@ -13,7 +13,7 @@ const EditHelpMessage = ({activeHelp}) => {
             </h3>
 
             <p className="profileMessage__text">
-                از این پس به مدت <span className="profileMessage__textBold">{activeHelp ? convert(activeHelp.expiration) + "ماه" : convert("0")}</span>، مبلغ<span className="profileMessage__textBold">{activeHelp ? convert(addCommas(activeHelp.price)) : convert("0")}</span> تومان ماهانه از حقوق شما کسر و صرف کمک به <span className="profileMessage__textBold">{" " + activeHelp?.project?.topic + " "}</span>
+                از این پس به مدت <span className="profileMessage__textBold">{activeHelp ? convert(activeHelp.expiration) + " ماه  "    : convert("0")}</span>، مبلغ<span className="profileMessage__textBold">{activeHelp ? convert(addCommas(activeHelp.price)) : convert("0")}</span> تومان ماهانه از حقوق شما کسر و صرف کمک به <span className="profileMessage__textBold">{" " + activeHelp?.project?.topic + " "}</span>
                 می‌شود.
             </p>
         </section>

@@ -47,7 +47,7 @@ const DropDown = () => {
     ? "dropdown-container open"
     : "dropdown-container";
   function handleHistoryClick() {
-    navigate("/history");
+    navigate("/histories");
   }
  
   return (

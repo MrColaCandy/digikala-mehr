@@ -14,9 +14,9 @@ const NewHelpMessage = ({  activeHelp, user  }) => {
       </h3>
 
       <p className="profileMessage__text">
-        شما با موفقیت به پروژه{" "}
+        شما با موفقیت به پروژه
         <span className="profileMessage__textBold">
-          {activeHelp?.project.topic}
+          {" "+activeHelp?.project.topic +" "}
         </span>
         اضافه شدید.
       </p>
@@ -24,7 +24,7 @@ const NewHelpMessage = ({  activeHelp, user  }) => {
       <p className="profileMessage__text">
         <span> از این پس به مدت </span>
         <span className="profileMessage__textBold">
-          {activeHelp?.expiration+" ماه" }
+          {activeHelp?.expiration+"  ماه" }
         </span>
         ، مبلغ
         <span className="profileMessage__textBold">

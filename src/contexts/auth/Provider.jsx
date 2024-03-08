@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 
-import { AuthContext } from "../context";
+import { AuthContext } from "./context";
 import { requestUser } from '@services/http';
 
 

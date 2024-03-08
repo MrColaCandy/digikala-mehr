@@ -14,7 +14,7 @@ import HomeProjects from "./components/HomeProjects";
 import HomeFAQ from "./components/HomeFAQ";
 
 import "./style.css";
-import { useAuthContext } from "@contexts/auth";
+
 
 function Home() {
   const navigate = useNavigate();
@@ -22,8 +22,8 @@ function Home() {
   const [projects, setProjects] = useState([]);
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(false);
+
   const [error, setError] = useState(false);
-  const { auth } = useAuthContext()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,35 +40,7 @@ function Home() {
     fetchData();
   }, []);
 
-  async function fetchAllProjects() {
-    try {
-      const projects = await requestAllProjects();
-      setProjects(projects);
-    } catch (error) {
-      setProjects([]);
-      setError(true);
-    }
-  }
-
-  async function fetchStats() {
-    try {
-      const statsRes = await requestProjectsStats();
-      setStats(statsRes);
-    } catch (error) {
-      setStats(null);
-      setError(true);
-    }
-  }
-
-  function handleStartButtonClick() {
-    if (auth) {
-      navigate("/profile")
-    }
-    else {
-      navigate("choose-plan")
-    }
-  }
-
+ 
   if(loading)
   {
     return <div>Loading</div>
@@ -93,6 +65,33 @@ function Home() {
       <HomeFAQ />
     </Layout>
   );
+
+  async function fetchAllProjects() {
+    try {
+      const projects = await requestAllProjects();
+      setProjects(projects);
+    } catch (error) {
+      setProjects([]);
+      setError(true);
+    }
+  }
+
+  async function fetchStats() {
+    try {
+      const statsRes = await requestProjectsStats();
+      setStats(statsRes);
+    } catch (error) {
+      setStats(null);
+      setError(true);
+    }
+  }
+
+ 
+
+  function handleStartButtonClick() {
+    navigate("/choose-plan")
+  }
+
 }
 
 export default Home;

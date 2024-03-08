@@ -26,7 +26,7 @@ export function requestAvailableProjects() {
   return http(endPoints.availableProjects, getAuthenticationConfig());
 }
 export function requestProject({projectId}) {
-  return http.get(`${endPoints.allProjects}/${projectId}`, getAuthenticationConfig())
+  return http.get(`${endPoints.allProjects}${projectId}`, getAuthenticationConfig())
 }
 
 export function requestCreateHelp({ projectId, price }) {
@@ -40,11 +40,11 @@ export function requestEditHelp({  helpId,  projectId, price }) {
     price: parseInt(price),
   };
 
-  return http.put(`${endPoints.helps}/${helpId}/edit/`, payload, getAuthenticationConfig());
+  return http.put(`${endPoints.helps}${helpId}/edit/`, payload, getAuthenticationConfig());
 }
 
 export function requestCancelHelp({ id }) {
-  return http.delete(`${endPoints.helps}/${id}/delete/`, getAuthenticationConfig());
+  return http.delete(`${endPoints.helps}${id}/delete/`, getAuthenticationConfig());
 }
 
 
@@ -59,7 +59,7 @@ export function requestProjectsStats()
 export function requestHelpExtend({ id }) {
   const payload = { helpId: id };
 
-  return http.post(`${endPoints.helps}/${id}/extend`, payload, getAuthenticationConfig());
+  return http.post(`${endPoints.helps}${id}/extend/`, payload, getAuthenticationConfig());
 }
 export function requestActiveHelp() {
   return http.get(endPoints.activeHelp, getAuthenticationConfig())
