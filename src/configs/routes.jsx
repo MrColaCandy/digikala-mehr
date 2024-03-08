@@ -1,4 +1,4 @@
-import { home, login, profile, history, pricing,choosePlan, editPlan,editPrice } from "./route-paths";
+import { home, login, profile, history, pricing, choosePlan, editPlan, editPrice } from "./route-paths";
 import Home from "@pages/Home";
 import Login from "@pages/Login";
 import ChoosePlan from "@pages/ChoosePlan";
@@ -9,39 +9,63 @@ import EditPlan from "@pages/EditPlan";
 import EditPrice from "@pages/EditPrice";
 
 
+
 export const routes = [
   {
     path: home,
     element: <Home />,
   },
   {
-    path:login,
-    element:<Login/>,
+    path: login,
+    element: <Login />,
   },
 
   {
-    path:choosePlan,
-    element: <ChoosePlan/>
+    path: choosePlan,
+    element:
+
+      <ChoosePlan />
+
+
+
+
   },
   {
     path: profile,
-    element: <Profile />,
+    element:
+
+      <Profile />
+
   },
   {
     path: history,
-    element: <History/>,
+    element:
+
+      <History />
+
   },
   {
     path: pricing,
-    element: <ChoosePrice />
+    element:
+
+      <ChoosePrice />
+
+
   },
   {
     path: editPlan,
-    element: <EditPlan />
+    element:
+
+      <EditPlan />
+
+
   },
   {
     path: editPrice,
-    element: <EditPrice />
+    element:
+      <EditPrice />
+
+
   }
 ];
 

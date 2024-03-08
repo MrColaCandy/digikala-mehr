@@ -2,39 +2,39 @@ import { FaChevronLeft } from "react-icons/fa6";
 import usePersian from "@components/hooks/usePersian";
 import "./style.css"
 import { useNavigate } from "react-router-dom"
-import { serialize } from "cookie";
 import { BASE_URL } from "@configs/end-points";
 
 
-const EditPlanUserProject = ({activeProject}) => {
+
+const EditPlanUserProject = ({activeHelp}) => {
     const { convert, addCommas } = usePersian();
 
     const navigate = useNavigate()
     function handleEditPriceClick() {
-        document.cookie=serialize("editing",JSON.stringify({projectId:activeProject?.project.id,historyId:activeProject?.id}))
-        navigate("/edit-price")
+      
+        navigate(`/edit-price/${activeHelp.project.id}/${activeHelp.id}`)
     }
 
     return (
-        <div data-history={activeProject?.id}  className="editPlanUserProject">
+        <div data-history={activeHelp?.id}  className="editPlanUserProject">
             <div className="editPlanUserProject__header">
 
-                <img src={`${BASE_URL}${activeProject?.project?.institute?.logo}`} className="editPlanUserProject__employerLogo" />
+                <img src={`${BASE_URL}${activeHelp?.project?.institute?.logo}`} className="editPlanUserProject__employerLogo" />
                 <div className="editPlanUserProject__col">
-                    <div className="editPlanUserProject__employerName">{activeProject?.project?.institute?.name || ". . ."}</div>
-                    <div className="editPlanUserProject__projectTitle">{activeProject?.project?.topic}</div>
+                    <div className="editPlanUserProject__employerName">{activeHelp?.project?.institute?.name || ". . ."}</div>
+                    <div className="editPlanUserProject__projectTitle">{activeHelp?.project?.topic}</div>
                 </div>
                 <div className={`editPlanUserProject__price`}>
                     ماهیانه
                     مبلغ
-                    <span>{activeProject ? convert(addCommas(activeProject?.price)) : 0 }</span>
+                    <span>{activeHelp ? convert(addCommas(activeHelp?.price)) : 0 }</span>
                     تومان
                 </div>
             </div>
             <div className="editPlanUserProject__description">
                 <div className="editPlanUserProject__text">
                     {
-                        activeProject?.project?.description
+                        activeHelp?.project?.description
                     }
                 </div>
                 <div  className="editPlanUserProject__textGreen">

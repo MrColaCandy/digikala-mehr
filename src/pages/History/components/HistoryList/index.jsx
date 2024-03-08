@@ -1,13 +1,14 @@
 import { BsListCheck } from "react-icons/bs";
 import { TbChevronRight } from "react-icons/tb";
-import { TbChevronLeft } from "react-icons/tb";
-import './style.css';
+import { useNavigate } from "react-router-dom";
 import {  useRef, useState } from "react";
+import { TbChevronLeft } from "react-icons/tb";
+
 import HistoryItem from "@components/HistoryItem";
 import usePersian from "@components/hooks/usePersian";
 
-import { useNavigate } from "react-router-dom";
-import { parse } from "cookie";
+import './style.css';
+
 
 
 function HistoryList({ itemsPerPage,histories }) {
@@ -36,11 +37,7 @@ function HistoryList({ itemsPerPage,histories }) {
 
   };
   function handleBackButtonClick() {
-    const previousPage = parse(document.cookie).previousPage;
-    if (previousPage) {
-      navigate(previousPage);
-    }
-
+    navigate(-1)
   }
   return (
     <section className="historyList">

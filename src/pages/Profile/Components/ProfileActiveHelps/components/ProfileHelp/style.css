@@ -1,4 +1,4 @@
-.profileProject {
+.profileHelp {
     width: 99%;
     max-width: 1280px;
     display: flex;
@@ -12,7 +12,7 @@
 }
 
 
-.profileProject__wrapper{
+.profileHelp__wrapper{
     width: 100%;
     max-width: 630px;
     border: 1px solid var(--color-border);
@@ -30,7 +30,7 @@
 }
 
 
-.profileProject__info {
+.profileHelp__info {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -44,20 +44,20 @@
 
 }
 
-.profileProject__infoLogo {
+.profileHelp__infoLogo {
     width: 48px;
     height: 48px;
     border-radius: var(--borderRadius-10);
 }
 
-.profileProject__infoText {
+.profileHelp__infoText {
 
     display: flex;
     flex-direction: column;
    
 }
 
-.profileProject__infoTitle {
+.profileHelp__infoTitle {
     width: 100%;
     color: var(--color-N700);
     font-size: var(--font-size-small);
@@ -66,7 +66,7 @@
     padding: 0;
 }
 
-.profileProject__infoEmployer {
+.profileHelp__infoEmployer {
     width: 100%;
     color: var(--color-textLight);
     font-size: var(--font-size-tiny);
@@ -75,7 +75,7 @@
     padding: 0;
 }
 
-.profileProject__edit {
+.profileHelp__edit {
     height: auto;
     height: 40px;
     display: flex;
@@ -88,7 +88,7 @@
 
 }
 
-.profileProject__price {
+.profileHelp__price {
     font-size: var(--font-size-xtiny);
     color: var(--color-textLight);
     font-weight: 400;
@@ -103,7 +103,7 @@
 
 
 
-.profileProject__editButtons {
+.profileHelp__editButtons {
     padding: var(--padding-12) var(--padding-16);
     display: flex;
     justify-content: center;
@@ -116,7 +116,7 @@
 }
 
 
-.profileProject__editButton {
+.profileHelp__editButton {
     color: var(--color-primary);
     font-size: var(--font-size-tiny);
     line-height: var(--lineHeight-12);
@@ -129,7 +129,7 @@
 
 
 
-.profileProject__finance {
+.profileHelp__finance {
     width: 100%;
     max-width: 200px;
     height: auto;
@@ -147,7 +147,7 @@
 }
 
 
-.profileProject__financeText {
+.profileHelp__financeText {
     color: var(--color-textLight);
     line-height: var(--lineHeight-20);
     font-size: var(--font-size-xsmall);
@@ -155,7 +155,7 @@
     width: 100%;
     text-align: center;
 }
-.profileProject__financeTextBold {
+.profileHelp__financeTextBold {
     color: var(--color-textDark);
     line-height: var(--lineHeight-20);
     font-size: var(--font-size-xsmall);
@@ -166,13 +166,13 @@
 
 
 @media screen and (max-width: 1280px) {
-    .profileProject {
+    .profileHelp {
      
         justify-content: center;
         align-items: center;
     
     }
-    .profileProject__wrapper{
+    .profileHelp__wrapper{
         max-width: 100%;
         
        
@@ -180,34 +180,34 @@
 }
 
 @media screen and (max-width: 550px) {
-    .profileProject__infoLogo {
+    .profileHelp__infoLogo {
       display: none;
     }
-    .profileProject__info
+    .profileHelp__info
     {
         flex-wrap: wrap;
     }
-    .profileProject {
+    .profileHelp {
        gap: var(--space-4);
     
     }
-    .profileProject__wrapper{
+    .profileHelp__wrapper{
         justify-content: start;
         border-radius: var(--space-10);
         
         
     }
    
-    .profileProject__financeText,.profileProject__financeTextBold
+    .profileHelp__financeText,.profileHelp__financeTextBold
     {
         text-align: right;
     }
-    .profileProject__edit
+    .profileHelp__edit
     {
         text-align: right;
         justify-content: flex-start;
     }
-    .profileProject__editButtons
+    .profileHelp__editButtons
     {
         padding:var(--space-4) 0;
         text-align: right;
@@ -216,7 +216,7 @@
         margin-top: var(--space-10);
 
     }
-    .profileProject__finance
+    .profileHelp__finance
     {
         flex-direction: row-reverse;
         justify-content: flex-start;
@@ -229,21 +229,21 @@
 
 @media screen and (max-width: 390px) {
    
-    .profileProject__edit
+    .profileHelp__edit
     {
         max-width: 100px;
     }
-    .profileProject__info{
+    .profileHelp__info{
         max-width: 100%;
     }
-    .profileProject__finance
+    .profileHelp__finance
     {
         flex-direction: column;
         justify-content: flex-start;
         max-width: 100%;
        
     }
-    .profileProject__price {
+    .profileHelp__price {
         display: none;
 
     }

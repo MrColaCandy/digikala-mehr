@@ -1,13 +1,16 @@
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import digikalaMehrLogo from "@assets/decorations/digikala-mehr-logo.png";
 import Button from "@components/Button";
 import usePersian from "@components/hooks/usePersian";
-import { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import useCountdown from "../useCountdown";
-import { useAuthContext } from "@contexts/auth";
 import { requestCode, requestCodeValidation } from "@services/http";
+import { useAuthContext } from "@contexts/auth";
 
-function LoginOTPCodeForm({ isLoading, setIsLoading, phone, setCode }) {
+import useCountdown from "../useCountdown";
+
+
+function LoginOTPCodeForm({ isLoading, setIsLoading, phone, setCode,code  }) {
   const inputRef = useRef(null);
   const { login } = useAuthContext();
   const navigate = useNavigate();
@@ -19,13 +22,12 @@ function LoginOTPCodeForm({ isLoading, setIsLoading, phone, setCode }) {
   const [value, setValue] = useState("");
   const [error, setError] = useState(null);
   const [formError, setFormError] = useState(null);
-
+  useEffect(()=>{setValue(code)},[code])
   async function handleCountdownOverCallback() {
     try {
       resetCountdown();
-      const { data: { otp } = {} } = await requestCode(phone);
-      console.log(otp);
-      setCode(true);
+      const { otp } = await requestCode(phone);
+      setCode(otp);
     } catch (error) {
       setCode(false);
       setError(error.message);
@@ -38,10 +40,10 @@ function LoginOTPCodeForm({ isLoading, setIsLoading, phone, setCode }) {
     try {
       setIsLoading(true);
       const { token } = await requestCodeValidation(
-        value.trim(),
+        code,
         phone
       );
-      console.log({ token });
+      
       login(token);
       setError(null);
       navigate("/");

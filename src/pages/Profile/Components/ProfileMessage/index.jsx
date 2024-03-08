@@ -1,21 +1,20 @@
-import { useAuthContext } from "@contexts/auth/context";
 
-import EditProjectMessage from "./components/EditProjectMessage";
-import NewProjectMessage from "./components/NewProjectMessage";
-import NoNewProjectMessage from "./components/NoNewProjectMessage"
+import EditHelpMessage from "./components/EditHelpMessage";
+import NewHelpMessage from "./components/NewHelpMessage";
+import NoNewHelp from "./components/NoNewHelpMessage"
 import "./style.css";
-const ProfileMessage = ({ status, price, projectName, projectId,stats,activeProject }) => {
-  const { user } = useAuthContext();
-  if(status === 'joined') {
-    return <NewProjectMessage projectName={projectName} price={price} id={projectId} user={user}/>;
+const ProfileMessage = ({ status, activeHelp,stats,user }) => {
+ 
+  if(status === 'created') {
+    return <NewHelpMessage activeHelp={activeHelp} user={user}/>;
   }
   else if(status==="edited")
   {
-    return <EditProjectMessage activeProject={activeProject} />
+    return <EditHelpMessage activeHelp={activeHelp} />
   }
   else
   {
-    return <NoNewProjectMessage user={user} stats={stats}/>
+    return <NoNewHelp user={user} stats={stats}/>
   }
 
    }

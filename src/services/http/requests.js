@@ -22,28 +22,29 @@ export function requestUser() {
 export function requestAllProjects() {
   return http(endPoints.allProjects, getAuthenticationConfig());
 }
-
-export function getSingleProject(projectId) {
-  return http.get(`${endPoints.allProjects}${projectId}`, getAuthenticationConfig())
+export function requestAvailableProjects() {
+  return http(endPoints.availableProjects, getAuthenticationConfig());
+}
+export function requestProject({projectId}) {
+  return http.get(`${endPoints.allProjects}/${projectId}`, getAuthenticationConfig())
 }
 
-export function requestAddHelp({ projectId, price }) {
+export function requestCreateHelp({ projectId, price }) {
   const payload = { projectId: Number(projectId), price: Number(price) };
-  return http.post(endPoints.help, payload, getAuthenticationConfig());
+  return http.post(endPoints.createHelp, payload, getAuthenticationConfig());
 }
 
-export function requestUpdateHelp({ oldProject, newProject, price }) {
+export function requestEditHelp({  helpId,  projectId, price }) {
   const payload = {
-    helpId: parseInt(oldProject),
-    projectId: parseInt(newProject),
+    projectId: parseInt(projectId),
     price: parseInt(price),
   };
 
-  return http.put(endPoints.updateHelp, payload, getAuthenticationConfig());
+  return http.put(`${endPoints.helps}/${helpId}/edit/`, payload, getAuthenticationConfig());
 }
 
 export function requestCancelHelp({ id }) {
-  return http.delete(`${endPoints.helps}${id}`, getAuthenticationConfig());
+  return http.delete(`${endPoints.helps}/${id}/delete/`, getAuthenticationConfig());
 }
 
 

@@ -42,8 +42,7 @@ function LoginPhoneNumberForm({
     setIsLoading(true);
     try {
       const { otp } = await requestCode(value.trim());
-      console.log(otp);
-      setCode(true);
+      setCode(otp)
       setError(null);
       setPhoneNotFound(false);
     } catch (error) {
@@ -92,8 +91,8 @@ function LoginPhoneNumberForm({
         variant={"filled"}
       />
       <p className="login__paragraphTextCenter">
-        ورود شما به معنای پذیرش{" "}
-        <span className="login__paragraphBlue">شرایط دیجی‌کالا</span>و{" "}
+        ورود شما به معنای پذیرش
+        <span className="login__paragraphBlue">شرایط دیجی‌کالا</span>و
         <span className="login__paragraphBlue">قوانین حریم خصوصی</span> است
       </p>
       <p className="login__formError">{formError}</p>

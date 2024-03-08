@@ -1,11 +1,12 @@
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-import { requestActiveProject,  requestAllProjects } from '@services/http';
+import { requestActiveHelp, requestAvailableProjects } from '@services/http';
 import Layout from "@components/Layout";
 import Slider from "@components/Slider"
 import EditHeader from "@components/EditHeader";
 import Button from "@components/Button"
 import Card from "@components/Card"
+
 
 import EditPlanUserProjects from "./components/EditPlanUserProjects"
 import EditPlanUserProject from "./components/EditPlanUserProject"
@@ -14,47 +15,46 @@ import "./style.css"
 
 import EditPlanModal from "./components/EditPlanModal";
 const EditPlan = () => {
-    const [substitute, setSubstitute] = useState(null);
+    const [project, setProject] = useState(null);
     const [modal, setModal] = useState(null);
 
-    const [activeProject, setActiveProject] = useState();
-    const [allProjects, setAllProjects] = useState();
+    const [activeHelp, setActiveHelp] = useState();
+    const [availableProjects, setAvailableProjects] = useState();
     const [isLoading, setLoading] = useState(false);
-    const [error, setError] = useState(false)
+    const [error, setError] = useState(false);
     useEffect(() => {
-        setLoading(true)
-        Promise.all([
-          requestActiveProject(),
-          requestAllProjects(),
-        ]).then((responses) => {
-          const [ap, allProjects] = responses;
-          setActiveProject(ap)
-          setAllProjects(allProjects);
-       
-    
-        })
-        .catch(() => {
-          setError(true)
-        })
-        .finally(() => {
-          setLoading(false)
-        })  
-      }, []);
+        const fetchData = async () => {
+            setLoading(true);
+            try {
+                await fetchActiveHelp();
+                await fetchAvailableProjects();
+            } catch (error) {
+                setError(true);
+            }
+            finally {
+                setError(false);
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+
     function handleCardButtonClick(project) {
         setModal("change");
         document.body.style.overflow = "hidden"
-        setSubstitute(project);
+        setProject(project);
     }
 
-    if(error)
-    {
+   
+    if (isLoading) {
+        return <div>Loading</div>
+    }
+    if (error) {
         return <div>Error</div>
     }
-    
-    if(isLoading)
-    {
-        return <div>Loading...</div>
-    }
+
     return (
         <>
             {
@@ -63,19 +63,18 @@ const EditPlan = () => {
                     setModal={setModal}
                     variant={modal}
                     title={modal === "remove" ? "آیا مایل به حذف پروژه‌تان هستید؟" : "آیا مایل به تغییر پروژه‌تان هستید؟"}
-                    selected={activeProject}
-                    setSubstitute={setSubstitute}
-                    substitute={substitute}
-                    activeProject={activeProject} />
+                    setProject={setProject}
+                    project={project}
+                    activeHelp={activeHelp} />
 
             }
 
             <Layout>
-                <EditHeader activeProject={activeProject} setModal={setModal} />
+                <EditHeader activeHelp={activeHelp} setModal={setModal} />
                 <EditPlanUserProjects>
-                    <EditPlanUserProject activeProject={activeProject} />
+                    <EditPlanUserProject activeHelp={activeHelp} />
                 </EditPlanUserProjects>
-                {activeProject &&
+                {activeHelp &&
                     <>
                         <div className="editPlan__sliderHeader">
                             <h3 className="editPlan__sliderTitle">دیگر پروژه‌های موجود</h3>
@@ -83,7 +82,7 @@ const EditPlan = () => {
                         </div>
                         <Slider slideWidth={390} slideHeight={450} viewPortWidth={1280} gap={40}>
                             {
-                                allProjects?.map((project) => {
+                                availableProjects?.map((project) => {
                                     return <Card
 
                                         key={project.id}
@@ -102,6 +101,25 @@ const EditPlan = () => {
             </Layout>
         </>
     )
+
+    async function fetchAvailableProjects() {
+        try {
+            const availableProjects = await requestAvailableProjects();
+            setAvailableProjects(availableProjects);
+        } catch (error) {
+            setAvailableProjects([]);
+            setError(true);
+        }
+    }
+
+    async function fetchActiveHelp() {
+        try {
+            const activeHelp = await requestActiveHelp();
+            setActiveHelp(activeHelp);
+        } catch (error) {
+            setActiveHelp(null);
+        }
+    }
 }
 
 export default EditPlan

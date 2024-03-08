@@ -1,7 +1,7 @@
 import usePersian from "@components/hooks/usePersian"
 import { FaRegCircleCheck } from "react-icons/fa6";
 
-const EditProjectMessage = ({activeProject}) => {
+const EditHelpMessage = ({activeHelp}) => {
 
     const { convert, addCommas } = usePersian()
    
@@ -13,11 +13,11 @@ const EditProjectMessage = ({activeProject}) => {
             </h3>
 
             <p className="profileMessage__text">
-                از این پس به مدت <span className="profileMessage__textBold">{activeProject ? convert(activeProject.expiration) + "ماه" : convert("0")}</span>، مبلغ<span className="profileMessage__textBold">{activeProject ? convert(addCommas(activeProject.price)) : convert("0")}</span> تومان ماهانه از حقوق شما کسر و صرف کمک به <span className="profileMessage__textBold">{" " + activeProject?.project?.topic + " "}</span>
+                از این پس به مدت <span className="profileMessage__textBold">{activeHelp ? convert(activeHelp.expiration) + "ماه" : convert("0")}</span>، مبلغ<span className="profileMessage__textBold">{activeHelp ? convert(addCommas(activeHelp.price)) : convert("0")}</span> تومان ماهانه از حقوق شما کسر و صرف کمک به <span className="profileMessage__textBold">{" " + activeHelp?.project?.topic + " "}</span>
                 می‌شود.
             </p>
         </section>
     )
 }
 
-export default EditProjectMessage
+export default EditHelpMessage

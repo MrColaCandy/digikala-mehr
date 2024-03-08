@@ -1,8 +1,8 @@
 import "./style.css"
-function ProfileNoProject() {
+function ProfileNoHelp() {
     return (
-        <section className="profileNoProject">
-            <p className="profileNoProject__text">
+        <section className="profileNoHelp">
+            <p className="profileNoHelp__text">
                 شما تا کنون پروژه‌ای را انتخاب نکردید
             </p>
         </section>
@@ -10,5 +10,5 @@ function ProfileNoProject() {
 }
 
 
-export default ProfileNoProject;
+export default ProfileNoHelp;
 

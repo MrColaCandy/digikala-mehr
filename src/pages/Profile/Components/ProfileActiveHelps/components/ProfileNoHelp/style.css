@@ -1,4 +1,4 @@
-.profileNoProject {
+.profileNoHelp {
     width: 99%;
     max-width: 1280px;
     height: 88px;
@@ -10,7 +10,7 @@
     border-radius: var(--space-12);
 }
 
-.profileNoProject__text {
+.profileNoHelp__text {
     color: var(--color-textLight);
     font-size: var(--font-size-normal);
     line-height: var(--lineHeight-24);

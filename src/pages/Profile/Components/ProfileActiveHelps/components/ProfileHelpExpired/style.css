@@ -1,4 +1,4 @@
-.profileProjectExpired {
+.profileHelpExpired {
     width: 100%;
     max-width: 1280px;
     height: auto;
@@ -16,7 +16,7 @@
 }
 
 
-.profileProjectExpired__info {
+.profileHelpExpired__info {
     height: 100%;
     width: 100%;
     max-width: 407px;
@@ -30,26 +30,26 @@
 
 
 
-.profileProjectExpired__infoLogo {
+.profileHelpExpired__infoLogo {
     width: 48px;
     height: 48px;
     border-radius: var(--borderRadius-10);
 }
 
-.profileProjectExpired__infoText {
+.profileHelpExpired__infoText {
     height: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.profileProjectExpired__infoTitle {
+.profileHelpExpired__infoTitle {
     color: var(--color-N700);
     font-size: var(--font-size-normal);
     font-weight: 400;
     line-height: var(--lineHeight-24);
 }
 
-.profileProjectExpired__infoEmployer {
+.profileHelpExpired__infoEmployer {
     color: var(--color-textLight);
     font-size: var(--font-size-tiny);
     font-weight: 400;
@@ -57,7 +57,7 @@
     width: 100%;
 }
 
-.profileProjectExpired__box {
+.profileHelpExpired__box {
     width: 118px;
     height: 24px;
     color: var(--color-N700);
@@ -73,7 +73,7 @@
     align-items: center;
 }
 
-.profileProjectExpired__button {
+.profileHelpExpired__button {
     width: 107px;
     height: 40px;
     color: var(--color-white);
@@ -88,14 +88,14 @@
 
 @media screen and (max-width:1280px) {
 
-    .profileProjectExpired {
+    .profileHelpExpired {
         justify-content: space-between;
         column-gap: var(--space-8);
         max-width: 99%;
         margin: 0 var(--space-8);
     }
 
-    .profileProjectExpired__info {
+    .profileHelpExpired__info {
         justify-content: flex-start;
     }
 
@@ -104,10 +104,10 @@
 
 
 @media screen and (max-width: 390px) {
-    .profileProjectExpired__infoLogo {
+    .profileHelpExpired__infoLogo {
       display: none;
     }
-    .profileProjectExpired {
+    .profileHelpExpired {
         border-radius: 16px;
         justify-content: flex-start;
         max-width: 99%;
@@ -115,16 +115,16 @@
         
     }
 
-    .profileProjectExpired__info {
+    .profileHelpExpired__info {
         justify-content: flex-start;
         width: 100%;
     }
-    .profileProjectExpired__infoText {
+    .profileHelpExpired__infoText {
         justify-content: flex-start;
         width: 100%;
     }
 
-    .profileProjectExpired__box {
+    .profileHelpExpired__box {
 
         background-color: var(--color-N700);
         color: var(--color-N200);

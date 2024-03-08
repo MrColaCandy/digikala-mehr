@@ -7,11 +7,15 @@ const httpServiceInstance = axios.create({
   timeoutErrorMessage: "لطفاً اتصال اینترنت خود را برسی کنید.",
 });
 
-function takeOutDataResponseInterceptor({ data }) {
-  return data
+function responseInterceptor(response) {
+  if (response?.data) {
+    return response.data;
+  } else {
+    return Promise.reject(response);
+  }
 }
 
-function withTokenRequestInterceptor(config) {
+function tokenInterceptor(config) {
   const { withToken = false, ...otherConfig } = config;
 
   if(!withToken) {
@@ -29,8 +33,8 @@ function withTokenRequestInterceptor(config) {
   }
 }
 
-httpServiceInstance.interceptors.request.use(withTokenRequestInterceptor)
-httpServiceInstance.interceptors.response.use(takeOutDataResponseInterceptor)
+httpServiceInstance.interceptors.request.use(tokenInterceptor)
+httpServiceInstance.interceptors.response.use(responseInterceptor)
 
 export * from './requests';
 

@@ -16,7 +16,6 @@ import "./style.css";
 const DropDown = () => {
   const { convert, addCommas } = usePersian();
   const { logout,user } = useAuthContext();
-
   const navigate = useNavigate();
   function handleLogoutClick(event) {
     event.preventDefault()
@@ -70,7 +69,7 @@ const DropDown = () => {
                 height={40}
                 src={
                   user
-                    ? `${BASE_URL}${user?.profilePhoto}`
+                    ? `${BASE_URL}/${user?.profilePhoto}`
                     : avatarPlaceHolder
                 }
                 alt="avatar"

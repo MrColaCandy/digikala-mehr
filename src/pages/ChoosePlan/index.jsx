@@ -1,30 +1,42 @@
-import { Link, generatePath } from "react-router-dom";
 import { useEffect, useState } from "react";
-
+import {useNavigate} from "react-router-dom";
 import Layout from "@components/Layout";
 import Slider from "@components/Slider";
 import Card from "@components/Card";
 import Button from "@components/Button";
 import { requestAllProjects } from "@services/http";
 
+
 import "./style.css";
 
 const ChoosePlan = () => {
-  const [projects, setProjects] = useState([]);
-
-  async function getAllProjectsOnLoad() {
-    try {
-      const projects = await requestAllProjects();
-      setProjects(projects);
-    } catch (error) {
-      setProjects([]);
-      console.log(error);
-    }
-  }
+  const [allProjects, setAllProjects] = useState([]);
+  const [loading,setLoading]=useState(false);
+  const [error,setError]=useState(false);
+  const navigate=useNavigate();
 
   useEffect(() => {
-    getAllProjectsOnLoad();
+    setLoading(true);
+    requestAllProjects()
+    .then(data=>setAllProjects(data))
+    .catch(()=>{
+      setError(true);
+      setAllProjects([])
+    })
+    .finally(setLoading(false));
   }, []);
+  function handleSlideButtonClick(project)
+  {
+    navigate("/choose-price/"+project.id)
+  }
+  if(loading)
+  {
+    return <div>Loading . . .</div>
+  }
+  if(error)
+  {
+    return null;
+  }
 
   return (
     <Layout>
@@ -46,17 +58,14 @@ const ChoosePlan = () => {
         viewPortWidth={390 * 2.5}
         gap={40}
       >
-        {projects?.map((project) => {
+        {allProjects?.map((project) => {
           return (
             <Card
               key={project.id}
               project={project}
               cardButton={
                 <Button
-                  as={Link}
-                  to={generatePath("/choose-price/:projectId", {
-                    projectId: project.id,
-                  })}
+                  onClick={()=>handleSlideButtonClick(project)}
                   width={350}
                   text={"انتخاب کنید"}
                 />

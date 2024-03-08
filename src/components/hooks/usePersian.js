@@ -2,6 +2,7 @@
 
 const usePersian = () => {
     const convert = (number=0) => {
+        if(!number)return "۰";
         const persian = {
             0: "۰",
             1: "۱",
@@ -18,6 +19,7 @@ const usePersian = () => {
     };
 
     const addCommas = (num=0) => {
+        if(!num)return "۰";
         return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     };
 

@@ -8,25 +8,32 @@ const History = () => {
   const [loading,setLoading]=useState(false);
   const [error,setError]=useState(false);
   useEffect(() => {
-    setLoading(true)
-    requestHistories()
-    .then(setHistories(histories))
-    .catch(setError(true))
-    .finally(setLoading(false));
+    fetchHistories();
   }, []);
   if(loading)
   {
-    return <div>Loading . . .</div>
+    return <div>Loading</div>
   }
   if(error)
   {
-    return null;
+    return <div>Error</div>;
   }
   return (
     <Layout>
       <HistoryList histories={histories}  itemsPerPage={5} />
     </Layout>
   )
+  async function fetchHistories() {
+    try {
+      const histories = await requestHistories();
+      setHistories(histories);
+    } catch (error) {
+      setHistories([]);
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
+  }
 }
 
 export default History

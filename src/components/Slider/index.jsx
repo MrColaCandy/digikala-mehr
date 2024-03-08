@@ -24,7 +24,7 @@ const Slider = ({ viewPortWidth = 800, slideWidth = 390, slideHeight = 450, scro
         })
         observer.observe(document.body);
 
-        containerRef.current.addEventListener("wheel",()=>{
+        containerRef.current.addEventListener("wheel", () => {
             return false
         })
     }, []);
@@ -37,16 +37,16 @@ const Slider = ({ viewPortWidth = 800, slideWidth = 390, slideHeight = 450, scro
         <div className='slider' style={{ "--view-port-width": `${viewPortWidth}px`, "--slides-gap": `${space}px`, "--scroll-behavior": `${scrollBehavior}`, "--slide-height": `${slideHeight}px`, "--slide-width": `${slideWidth}px` }} >
             <div className={`slider__view`} >
                 <div id="slider-container" className={`slider__container`} ref={containerRef}>
-                  {
-                    children
-                  }
+                    {
+                        children
+                    }
                 </div>
             </div>
             <button ref={nextButton} className={`slider__nextButton`} onClick={() => {
                 if (!children) return;
                 const slide = containerRef.current.querySelector("#slide");
 
-                  containerRef.current.scrollTo(containerRef.current.scrollLeft-slide.getBoundingClientRect().width,0)
+                containerRef.current.scrollTo(containerRef.current.scrollLeft - slide.getBoundingClientRect().width, 0)
 
             }}>
                 <FaChevronLeft size={"20px"} />
@@ -54,7 +54,7 @@ const Slider = ({ viewPortWidth = 800, slideWidth = 390, slideHeight = 450, scro
             <button ref={previousButton} className={`slider__previousButton`} onClick={() => {
                 if (!children) return;
                 const slide = containerRef.current.querySelector("#slide");
-                containerRef.current.scrollTo(containerRef.current.scrollLeft+slide.getBoundingClientRect().width,0)
+                containerRef.current.scrollTo(containerRef.current.scrollLeft + slide.getBoundingClientRect().width, 0)
 
 
             }}>

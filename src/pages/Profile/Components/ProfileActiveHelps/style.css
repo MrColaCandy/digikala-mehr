@@ -1,4 +1,4 @@
-.profileActiveProjects {
+.profileActiveHelps {
     position: relative;
     width: 100% ;
     max-width: 1280px;
@@ -12,7 +12,7 @@
 
 
 
-.profileActiveProjects__header {
+.profileActiveHelps__header {
     width: 100%;
     display: flex;
     justify-content: flex-start;
@@ -20,7 +20,7 @@
     gap: var(--space-8);
 }
 
-.profileActiveProjects__icon {
+.profileActiveHelps__icon {
     width: 4px;
     height: 16px;
     background: var(--color-primary);
@@ -29,7 +29,7 @@
 
 
 
-.profileActiveProjects__title {
+.profileActiveHelps__title {
     color: var(--color-darkBlue);
     font-size: var(--font-size-normal);
     line-height: var(--space-24);
@@ -38,7 +38,7 @@
 }
 
 @media screen and (max-width: 1185px) {
-    .profileActiveProjects {
+    .profileActiveHelps {
      
         justify-content: center;
         align-items: center;

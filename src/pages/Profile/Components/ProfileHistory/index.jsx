@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { serialize } from "cookie";
+
 
 import HistoryItem from "@components/HistoryItem";
 
@@ -9,11 +9,6 @@ import "./style.css";
 function ProfileHistory({histories}) {
   const navigate = useNavigate();
   function handleSeeAllHistoryClick() {
-    const address = window.location.href.split("/");
-    document.cookie = serialize(
-      "previousPage",
-      `/${address[address.length - 1]}`
-    );
     navigate("/history");
   }
 

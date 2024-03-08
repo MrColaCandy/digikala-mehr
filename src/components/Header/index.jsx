@@ -1,14 +1,16 @@
 import { BsBoxArrowInLeft } from "react-icons/bs";
-import FillInside_digiMehr_logo_i from "@assets/decorations/FillInside_digiMehr_logo_i.svg";
-import Digikala_Mehr_Branding from "@assets/decorations/Digikala_Mehr_Branding.svg";
-import "./style.css";
-import { useNavigate } from "react-router-dom";
-import DropDown from "@components/DropDown";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import FillInside_digiMehr_logo_i from "@assets/decorations/FillInside_digiMehr_logo_i.svg";
+import DropDown from "@components/DropDown";
+import Digikala_Mehr_Branding from "@assets/decorations/Digikala_Mehr_Branding.svg";
 import { useAuthContext } from "@contexts/auth";
 
+import "./style.css";
+
 function Header() {
-  const { isLoggedIn } = useAuthContext();
+  const { auth } = useAuthContext();
   const navigate = useNavigate();
   function handleSignInButtonClick() {
     navigate("/login");
@@ -49,11 +51,11 @@ function Header() {
         </div>
         <div className="header__button">
           {
-            isLoggedIn &&
+            auth &&
             <DropDown />
           }
           {
-            !isLoggedIn &&
+            !auth &&
             <button onClick={handleSignInButtonClick} className="signInProfileBtn">
               <BsBoxArrowInLeft className="signInProfileBtn__signInIcon" />
               <span className="signInProfileBtn__text">پروفایل I ثبت نام</span>

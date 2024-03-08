@@ -1,14 +1,15 @@
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import {useParams} from "react-router-dom" 
 import Button from "@components/Button";
+import useMoney from "@components/hooks/useMoney";
+import { requestProject } from "../../services/http";
 import PriceSuggestions from "./components/PriceSuggestions";
 import PriceFooter from "./components/PriceFooter";
 import PriceHeader from "./components/PriceHeader";
-import useMoney from "@components/hooks/useMoney";
 
 import "./style.css";
 
-const PriceForm = ({ onSubmit, project }) => {
+const PriceForm = ({ onSubmit }) => {
   const [value, setValue] = useState("");
   const { convertToLetters } = useMoney();
   const [isLoading, setIsLoading] = useState(false);
@@ -18,7 +19,15 @@ const PriceForm = ({ onSubmit, project }) => {
     validate(e.target.value.trim());
     setValue(e.target.value);
   };
-  
+
+  const {projectId}=useParams();
+  const [project,setProject]=useState(null);
+
+  useEffect(()=>{
+     requestProject({projectId})
+     .then((data)=>setProject(data))
+     .catch(()=>setProject(null));
+  },[])
   async function handleSubmit(e) {
     e.preventDefault();
     validate(e.target["price"].value.trim());
@@ -52,7 +61,7 @@ const PriceForm = ({ onSubmit, project }) => {
 
   return (
     <>
-      <PriceHeader projectName={project.topic} />
+      <PriceHeader projectName={project?.topic} />
       <form onSubmit={handleSubmit} className="priceForm__form">
         <label className="priceForm__formLabel">
           مبلغ را به تومان وارد کنید

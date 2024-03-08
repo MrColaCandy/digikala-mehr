@@ -2,21 +2,19 @@ import Button from "@components/Button"
 import { CgArrowsExchangeV } from "react-icons/cg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
-import { useAuthContext } from "@contexts/auth";
 import { BASE_URL } from "@configs/end-points";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import { serialize } from "cookie";
-import {requestCancelProject,requestConfirmCancelProject,requestUpdateProject} from"@services/http"
+import {requestCancelHelp,requestEditHelp} from"@services/http"
 import "./style.css"
-const EditPlanModal = ({ setModal, substitute, setSubstitute, title, variant = "change",activeProject }) => {
+const EditPlanModal = ({ setModal,  project, setProject, title, variant = "change", activeHelp }) => {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
-    const { token } = useAuthContext()
     const [animation, setAnimation] = useState(false);
    
     function handleCancelClick() {
         if (isLoading) return;
-        setSubstitute(null)
+        setProject(null)
         setModal(null);
         document.body.style.overflow = "auto"
     }
@@ -26,7 +24,7 @@ const EditPlanModal = ({ setModal, substitute, setSubstitute, title, variant = "
         if (variant === "change") {
             setTimeout(async () => {
                 await changeProjects();
-                setSubstitute(null);
+                setProject(null);
                 setAnimation(false);
             }, 800);
         }
@@ -39,37 +37,66 @@ const EditPlanModal = ({ setModal, substitute, setSubstitute, title, variant = "
             }, 800);
         }
     }
+    async function removeProject() {
+        try {
+            
+            await requestCancelHelp({id:activeHelp?.id});
+            setProject(null);
+            navigate("/profile?status=removed");
+        } catch (error) {
+            console.log("error failed to cancel project. com:EditPlanModal. error: " + error.message);
+        } finally {
+            setIsLoading(false);
+            setModal(null);
+            document.body.style.overflow = "auto";
+        }
+    }
+
+    async function changeProjects() {
+        try {
+          
+            await requestEditHelp({ helpId:activeHelp?.id,projectId: project?.id, price:activeHelp?.price });
+            setProject(null);
+            navigate("/profile?status=edited");
+        } catch (error) {
+            console.log("Failed to exchange projects. com:EditPlanModal. error: " + error.message);
+        } finally {
+            setIsLoading(false);
+            setModal(null);
+            document.body.style.overflow = "auto";
+        }
+    }
     return (
         <div className="editPlanModal" >
             <div className="editPlanModal__menu">
                 {
-                    substitute &&
+                    project &&
 
                     <CgArrowsExchangeV className={animation ? "editPlanModal__icon" : "editPlanModal__icon--rotate"} />
 
                 }
                 <div className={"editPlanModal__title" + "--" + variant + "Project"}>{title}</div>
                 <div className="editPlanModal__projects">
-                    <div className={variant==="remove"?"editPlanModal__project--removeProject":"editPlanModal__project"} style={{ "--order": animation && substitute ? 1 : 0,"--opacity":animation?0:1 }}>
+                    <div className={variant==="remove"?"editPlanModal__project--removeProject":"editPlanModal__project"} style={{ "--order": animation && project ? 1 : 0,"--opacity":animation?0:1 }}>
                         <div className="editPlanModal__textGreen">پروژه فعلی</div>
                         <div className="editPlanModal__row">
-                            <img src={`${BASE_URL}${activeProject?.project?.institute?.logo}`} className="editPlanModal__Logo" />
+                            <img src={`${BASE_URL}/${activeHelp?.project?.institute?.logo}`} className="editPlanModal__Logo" />
                             <div className="editPlanModal__col">
-                                <div className="editPlanModal__ProjectTitle">{activeProject?.project?.topic}</div>
-                                <div className="editPlanModal__ProjectEmployer">{activeProject?.project?.institute?.name}</div>
+                                <div className="editPlanModal__ProjectTitle">{activeHelp?.project?.topic}</div>
+                                <div className="editPlanModal__ProjectEmployer">{activeHelp?.project?.institute?.name}</div>
                             </div>
                         </div>
                     </div>
                     {
-                        substitute &&
+                        project &&
 
-                        <div className="editPlanModal__project" style={{ "--order": animation && substitute ? 0 : 1 }}>
+                        <div className="editPlanModal__project" style={{ "--order": animation && project ? 0 : 1 }}>
                             <div className="editPlanModal__textGreen">پروژه جایگزین</div>
                             <div className="editPlanModal__row">
-                                <img src={`${BASE_URL}${substitute?.institute?.logo}`} className="editPlanModal__Logo" />
+                                <img src={`${BASE_URL}/${project?.institute?.logo}`} className="editPlanModal__Logo" />
                                 <div className="editPlanModal__col">
-                                    <div className="editPlanModal__ProjectTitle">{substitute?.topic}</div>
-                                    <div className="editPlanModal__ProjectEmployer">{substitute?.institute?.name}</div>
+                                    <div className="editPlanModal__ProjectTitle">{project?.topic}</div>
+                                    <div className="editPlanModal__ProjectEmployer">{project?.institute?.name}</div>
                                 </div>
                             </div>
 
@@ -77,7 +104,7 @@ const EditPlanModal = ({ setModal, substitute, setSubstitute, title, variant = "
 
                     }
                     {
-                        !substitute &&
+                        !project &&
                         <div className="editPlanModal__message" style={{ "--order": 1 }}>
                             <div className="editPlanModal__row">
                                 <IoMdInformationCircleOutline className="editPlanModal__messageIcon" />
@@ -109,38 +136,7 @@ const EditPlanModal = ({ setModal, substitute, setSubstitute, title, variant = "
         </div>
     )
 
-    async function removeProject() {
-        try {
-            
-            await requestCancelProject(activeProject?.id);
-            await requestConfirmCancelProject(activeProject?.id);
-            setSubstitute(null);
-            document.cookie = serialize("newProject", "delete");
-            navigate("/profile");
-        } catch (error) {
-            console.log("error failed to cancel project. com:EditPlanModal. error: " + error.message);
-        } finally {
-            setIsLoading(false);
-            setModal(null);
-            document.body.style.overflow = "auto";
-        }
-    }
-
-    async function changeProjects() {
-        try {
-          
-            await requestUpdateProject({ token: token, newProject: substitute.id, oldProject:activeProject?.id, price:activeProject?.price });
-            setSubstitute(null);
-            document.cookie = serialize("newProject", "edit");
-            navigate("/profile");
-        } catch (error) {
-            console.log("Failed to exchange projects. com:EditPlanModal. error: " + error.message);
-        } finally {
-            setIsLoading(false);
-            setModal(null);
-            document.body.style.overflow = "auto";
-        }
-    }
+    
 }
 
 export default EditPlanModal

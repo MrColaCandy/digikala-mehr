@@ -1,31 +1,28 @@
 import Layout from "@components/Layout"
 import PriceForm from "@components/PriceFrom";
-import { requestUpdateProject } from "@services/http"
-import { parse, serialize } from "cookie";
-import { useNavigate } from "react-router-dom"
-import { useAuthContext } from "@contexts/auth";
+import { requestEditHelp } from "@services/http"
+import { useNavigate, useParams } from "react-router-dom"
 const EditPrice = () => {
 
     const navigate = useNavigate();
-    const {token}=useAuthContext()
+
+    const {projectId,helpId}=useParams();
     async function handleSubmit(e)
     {
-      const value=e.target["price"].value.trim();
       e.preventDefault()
-      const editing=JSON.parse(parse(document.cookie).editing)
-      if(!editing)
+      const value=e.target["price"].value.trim();
+
+      if(!projectId)
       {
         navigate("/")
         return;
       }
       try {
           
-          await requestUpdateProject({oldProject:editing.historyId,newProject:editing.projectId,price:value,token:token})
-
-          document.cookie=serialize("newProject","edit");
-          navigate("/profile")
+        await requestEditHelp({helpId,projectId,price:value})
+        navigate("/profile?status=edited")
       } catch (error) {
-          console.log("Failed to update project " +editing.historyId+ ". com:EditPriceForm. error: "+error.message);
+          console.log("Failed to update project " +helpId+ ". com:EditPriceForm. error: "+error.message);
          
       }
      

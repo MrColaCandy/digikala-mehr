@@ -1,4 +1,3 @@
-import { serialize } from "cookie";
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
@@ -6,10 +5,11 @@ import Layout from "@components/Layout";
 import Slider from "@components/Slider";
 import Card from "@components/Card";
 import Button from "@components/Button";
-import { useAuthContext } from "@contexts/auth/context";
-import { requestActiveProject, requestTotalHelps,  requestAllProjects, requestHistories } from '@services/http';
+import { useAuthContext } from "@contexts/auth";
+import { requestProjectsStats } from "@services/http";
+import { requestActiveHelp, requestAllProjects, requestHistories } from '@services/http';
 
-import ProfileActiveProjects from "./Components/ProfileActiveProjects";
+import ProfileActiveHelps from "./Components/ProfileActiveHelps";
 import ProfileUserAvatar from "./Components/ProfileUserAvatar";
 import ProfileHistory from "./Components/ProfileHistory";
 import ProfileMessage from "./Components/ProfileMessage";
@@ -18,68 +18,61 @@ import "./style.css";
 
 function Profile() {
   const navigate = useNavigate();
-  const {user}=useAuthContext();
-  const [activeProject, setActiveProject] = useState();
+  const { user } = useAuthContext();
+  const [activeHelp, setActiveHelp] = useState();
   const [allProjects, setAllProjects] = useState();
   const [histories, setHistories] = useState();
   const [stats, setStats] = useState();
   const [isLoading, setLoading] = useState(false);
-  const [hasError, setHasError] = useState(false)
+  const [error, setError] = useState(false)
 
-  const [searchParams] = useSearchParams()
+  const [params] = useSearchParams()
 
-  const queryParams = {
-    status: searchParams.get('status'),
-    projectId: searchParams.get('projectId'),
-    price: searchParams.get('price'),
-    projectName: searchParams.get('projectName')
-  }
+
 
   function handleChooseProjectClick(project) {
-    document.cookie = serialize("projectId", project.id);
-    navigate("/choose-price");
+    navigate(`/choose-price/${project.id}`);
   }
 
   useEffect(() => {
-    setLoading(true)
-    Promise.all([
-      requestActiveProject(),
-      requestAllProjects(),
-      requestHistories(),
-      requestTotalHelps()
-    ]).then((responses) => {
-      const [ap, allProjects, history, statsResponse] = responses;
-      setActiveProject(ap)
-      setAllProjects(allProjects);
-      setHistories(history)
-      setStats(statsResponse)
-    })
-    .catch(() => {
-      setHasError(true)
-    })
-    .finally(() => {
-      setLoading(false)
-    })  
+    const fetchData = async () => {
+
+      setLoading(true)
+      try {
+        await fetchActiveHelp();
+        await fetchAllProjects();
+        await fetchHistories();
+        await fetchStats();
+      } catch (error) {
+        setError(true);
+
+      } finally {
+        setLoading(false);
+      }
+
+    };
+
+    fetchData();
   }, []);
 
-  
 
-  if(isLoading) {
-    return <p>Loading</p>
+
+  if (isLoading) {
+    return <div>Loading</div>
   }
 
-  if(hasError || !allProjects) {
-    return null
+  if (error) {
+    return <div>Error</div>
   }
 
   return (
     <Layout>
       <ProfileUserAvatar user={user} />
       <hr className="profile__hr" />
-      <ProfileActiveProjects stats={stats} />
-      <ProfileMessage {...queryParams} stats={stats} activeProject={activeProject} />
+      <ProfileActiveHelps stats={stats} activeHelp={activeHelp} />
+      <ProfileMessage user={user} status={params?.get("status")} stats={stats} activeHelp={activeHelp} />
       {histories?.length > 0 && <ProfileHistory histories={histories} />}
-      {!activeProject && (
+      {!activeHelp && (
         <>
           <p className="profile__sliderTitle">
             اینجا می‌تونی از بین پروژه‌های مختلف یکیو برای شروع انتخاب کنی
@@ -112,6 +105,46 @@ function Profile() {
       )}
     </Layout>
   );
+
+  async function fetchStats() {
+    try {
+      const stats = await requestProjectsStats();
+      setStats(stats);
+    } catch (error) {
+      setStats(null);
+      setError(true);
+    }
+  }
+
+  async function fetchHistories() {
+    try {
+      const histories = await requestHistories();
+      setHistories(histories);
+    } catch (error) {
+      setHistories([]);
+    }
+  }
+
+  async function fetchAllProjects() {
+    try {
+      const allProjects = await requestAllProjects();
+      setAllProjects(allProjects);
+    } catch (error) {
+      setAllProjects([]);
+      setError(true);
+    }
+  }
+
+  async function fetchActiveHelp() {
+    try {
+      const activeHelp = await requestActiveHelp();
+      setActiveHelp(activeHelp);
+
+    } catch (error) {
+      setActiveHelp(null)
+      
+    }
+  }
 }
 
 export default Profile;

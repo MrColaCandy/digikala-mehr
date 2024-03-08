@@ -14,28 +14,68 @@ import HomeProjects from "./components/HomeProjects";
 import HomeFAQ from "./components/HomeFAQ";
 
 import "./style.css";
+import { useAuthContext } from "@contexts/auth";
 
 function Home() {
   const navigate = useNavigate();
 
   const [projects, setProjects] = useState([]);
   const [stats, setStats] = useState(null);
-
-  
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const { auth } = useAuthContext()
 
   useEffect(() => {
-    Promise.all([requestProjectsStats(), requestAllProjects()]).then(
-      ([statsRes, projects]) => {
-        setStats(statsRes);
-        setProjects(projects);
+    const fetchData = async () => {
+      setLoading(true)
+      try {
+        await fetchStats();
+        await fetchAllProjects();
+      } catch (error) {
+          setError(true);
+      }finally{
+        setLoading(false);
       }
-    );
+    };
+    fetchData();
   }, []);
 
-  function handleStartButtonClick() {
-    
+  async function fetchAllProjects() {
+    try {
+      const projects = await requestAllProjects();
+      setProjects(projects);
+    } catch (error) {
+      setProjects([]);
+      setError(true);
+    }
+  }
 
-    navigate('/choose-plan')
+  async function fetchStats() {
+    try {
+      const statsRes = await requestProjectsStats();
+      setStats(statsRes);
+    } catch (error) {
+      setStats(null);
+      setError(true);
+    }
+  }
+
+  function handleStartButtonClick() {
+    if (auth) {
+      navigate("/profile")
+    }
+    else {
+      navigate("choose-plan")
+    }
+  }
+
+  if(loading)
+  {
+    return <div>Loading</div>
+  }
+  if(error)
+  {
+    return <div>Error</div>
   }
 
   return (

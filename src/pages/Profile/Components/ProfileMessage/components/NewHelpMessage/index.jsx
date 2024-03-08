@@ -2,7 +2,7 @@ import usePersian from "@components/hooks/usePersian";
 import { Link } from "react-router-dom";
 import { FaRegCircleCheck } from "react-icons/fa6";
 
-const NewProjectMessage = ({ projectName, price, id,user  }) => {
+const NewHelpMessage = ({  activeHelp, user  }) => {
  
   const { convert, addCommas } = usePersian();
 
@@ -16,7 +16,7 @@ const NewProjectMessage = ({ projectName, price, id,user  }) => {
       <p className="profileMessage__text">
         شما با موفقیت به پروژه{" "}
         <span className="profileMessage__textBold">
-          {projectName}
+          {activeHelp?.project.topic}
         </span>
         اضافه شدید.
       </p>
@@ -24,22 +24,22 @@ const NewProjectMessage = ({ projectName, price, id,user  }) => {
       <p className="profileMessage__text">
         <span> از این پس به مدت </span>
         <span className="profileMessage__textBold">
-            6 ماه
+          {activeHelp?.expiration+" ماه" }
         </span>
         ، مبلغ
         <span className="profileMessage__textBold">
-          {price
-            ? convert(addCommas(price))
+          {activeHelp?.price
+            ? convert(addCommas(activeHelp?.price))
             : convert("0")}
         </span>
         <span>تومان ماهانه از حقوق شما کسر و صرف کمک به </span>
-        <span>{name}</span>
+        <span>{activeHelp?.project.topic}</span>
         می‌شود.
       </p>
 
       <p className="profileMessage__text">
         شما می‌توانید با مراجعه به بخش{" "}
-        <Link to={`/edit-plan?currentProject=${id}`} className="profileMessage__link">
+        <Link to={`/edit-plan/${activeHelp?.project.id}/${activeHelp?.id}`} className="profileMessage__link">
           ویرایش
         </Link>
         ، پروژه‌ی خود را تغییر دهید یا لغو کنید.
@@ -48,4 +48,4 @@ const NewProjectMessage = ({ projectName, price, id,user  }) => {
   );
 };
 
-export default NewProjectMessage;
+export default NewHelpMessage;

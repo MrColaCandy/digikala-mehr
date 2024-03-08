@@ -6,11 +6,11 @@ import { routes } from "@configs/routes";
 
 function App() {
   return (
-    <AuthProvider>
-      <CookiesProvider defaultSetOptions={{ path: "/" }}>
+    <CookiesProvider defaultSetOptions={{ path: "/" }}>
+      <AuthProvider>
         <Router routes={routes} />
-      </CookiesProvider>
-    </AuthProvider>
+      </AuthProvider>
+    </CookiesProvider>
   );
 }
 

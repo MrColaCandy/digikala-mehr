@@ -3,7 +3,7 @@ import organLogo from "@assets/decorations/organLogo.svg";
 import {requestHelpExtend} from "@services/http"
 import "./style.css";
 
-function ProfileProjectExpired({ activeProject }) {
+function ProfileHelpExpired({ activeProject }) {
   const navigate = useNavigate();
 
   async function handleExtendContributionClick() {
@@ -15,33 +15,33 @@ function ProfileProjectExpired({ activeProject }) {
       console.log(
         "Failed to extend activeProject. id: " +
           activeProject?.id +
-          ". com:ProfileProjectExpired. error: " +
+          ". com:ProfileHelpExpired. error: " +
           error.message
       );
     }
   }
   return (
-    <div className="profileProjectExpired">
-      <div className="profileProjectExpired__info">
+    <div className="profileHelpExpired">
+      <div className="profileHelpExpired__info">
         <img
           src={organLogo}
-          className="profileProjectExpired__infoLogo"
+          className="profileHelpExpired__infoLogo"
           alt="employer-logo"
         />
-        <div className="profileProjectExpired__infoText">
-          <span className="profileProjectExpired__infoTitle">
+        <div className="profileHelpExpired__infoText">
+          <span className="profileHelpExpired__infoTitle">
             {activeProject?.project?.topic}
           </span>
-          <span className="profileProjectExpired__infoEmployer">
+          <span className="profileHelpExpired__infoEmployer">
             {activeProject?.project?.institute?.name}
           </span>
         </div>
 
-        <p className="profileProjectExpired__box">دوره به پایان رسید</p>
+        <p className="profileHelpExpired__box">دوره به پایان رسید</p>
       </div>
       <button
         onClick={handleExtendContributionClick}
-        className="profileProjectExpired__button"
+        className="profileHelpExpired__button"
       >
         تمدید مشارکت
       </button>
@@ -49,4 +49,4 @@ function ProfileProjectExpired({ activeProject }) {
   );
 }
 
-export default ProfileProjectExpired;
+export default ProfileHelpExpired;

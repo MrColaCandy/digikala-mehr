@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import Layout from "@components/Layout";
+
 
 import LoginPhoneNumberForm from "./LoginPhoneNumberForm";
 import LoginOTPCodeForm from "./LoginOTPCodeForm";
@@ -31,6 +31,8 @@ function LoginColleagues() {
             isLoading={isLoading}
             setIsLoading={setIsLoading}
             phone={phone}
+            setCode={setCode}
+            code={code}
           />
         )}
         {phoneNotFound && (
