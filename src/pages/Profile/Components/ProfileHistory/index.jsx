@@ -9,7 +9,7 @@ import "./style.css";
 function ProfileHistory({histories}) {
   const navigate = useNavigate();
   function handleSeeAllHistoryClick() {
-    navigate("/history");
+    navigate("/histories");
   }
 
   return (

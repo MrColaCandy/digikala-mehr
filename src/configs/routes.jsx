@@ -7,7 +7,7 @@ import ChoosePrice from "@pages/ChoosePrice";
 import EditPlan from "@pages/EditPlan";
 import EditPrice from "@pages/EditPrice";
 
-import { home, login, profile, history,  choosePrice, choosePlan, editPlan, editPrice } from "./route-paths";
+import { home, login, profile, histories,  choosePrice, choosePlan, editPlan, editPrice } from "./route-paths";
 import {  ActiveHelp,Auth } from "./pages-restriction";
 
 
@@ -47,10 +47,10 @@ export const routes = [
 
   },
   {
-    path: history,
+    path: histories,
     element:
       <>
-        <Auth yse={history} no={login} />
+        <Auth yse={histories} no={login} />
         <History />
       </>
 
