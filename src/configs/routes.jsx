@@ -50,7 +50,7 @@ export const routes = [
     path: histories,
     element:
       <>
-        <Auth yse={histories} no={login} />
+        <Auth yes={histories} no={login} />
         <History />
       </>
 
@@ -60,7 +60,7 @@ export const routes = [
     path: choosePrice,
     element:
       <>
-        <ActiveHelp yse={profile} no={ChoosePrice} />
+        <ActiveHelp yes={profile} no={ChoosePrice} />
         <ChoosePrice />
       </>
 
