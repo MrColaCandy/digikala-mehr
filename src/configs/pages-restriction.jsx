@@ -8,11 +8,11 @@ export const Auth=({yes,no})=>{
     useEffect(()=>{
         if(auth)
         {
-            navigate(yes)
+            navigate(yes,{replace:true})
         }
         else
         {
-            navigate(no)
+            navigate(no,{replace:true})
         }
     },[yes,no,auth,navigate])
 }
@@ -25,7 +25,7 @@ export const ActiveHelp=({yes,no})=>{
     useEffect(()=>{
         if(!auth)
         {
-           navigate("/login")
+           navigate("/login",{replace:true})
            return;
         }
        const fetchData= async ()=>{
@@ -33,16 +33,16 @@ export const ActiveHelp=({yes,no})=>{
            const activeHelp= await requestActiveHelp();
            if(activeHelp)
            {
-               navigate(yes)
+               navigate(yes,{replace:true})
 
            }
            else
            {
-            navigate(no)
+            navigate(no,{replace:true})
            }
             
          } catch (error) {
-            navigate(no)
+            navigate(no,{replace:true})
          }
        }
 
